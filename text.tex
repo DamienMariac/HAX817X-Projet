@@ -1,0 +1,58 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+\title{Titre}
+\author{Nom} 
+\date{\today} 
+
+\begin{document}
+
+\maketitle 
+\newpage
+\section{Introduction} 
+
+Le théorème central limite, formulé par Pierre-Simon de Laplace en 1809, garantit que, sous des conditions raisonnables, la somme normalisée de ces variables suit asymptotiquement une loi normale. Cette convergence est utile pour étudier le comportement \textbf{global} des observations, mais elle ne renseigne pas sur le comportement des valeurs extrêmes.
+
+Il est donc naturel de se demander quelle peut être la convergence en loi de ses valeurs extrêmes. 
+\\
+Autrement dit, pour \( X = (X_1, ..., X_n) \) un échantillon de variables aléatoires i.i.d , on pose :
+
+
+\[
+M_n = \max\{X_i \mid i \in \{1, ..., n\} \}
+\]
+
+et on s'intéresse à la convergence de \( M_n \), ainsi qu'aux hypothèses sous lesquelles cette convergence a lieu.
+\\
+\\
+\\
+Remarque : Etudier le minimum est totalement analogue dans ce qui suit.
+
+\section{Lois de $M_n$} 
+
+Une premiere approche serait de considerer la fonction de repartition et d'utiliser le fait que les $X_i$ sont i.i.d :
+\\
+En effet,
+\[
+F_{M_n}(t) = \mathbb{P}(M_n < t) = \mathbb{P}(X_1 < t,...,X_n <t)=\mathbb{P}(X_1<t)^n = F_{X_1}(t)^n 
+\]
+
+Mais on rencontre un probleme ici, puisque si $n\to + \infty$, $F_{X_1}(t)^n$ converge vers 0 (ou 1 si t est la borne sup du support des $X_i$).
+\\
+\\
+L'idée est donc d'introduire 2 suites ($b_n$) et ($a_n$) (avec $a_n > $  0 pour tout n) afin de pouvoir contrôler $M_n$.
+
+Puis étudier la loi de la limite de $\frac{M_n - b_n}{a_n}$. Comme la fonction de repartition caracterise la loi, il nous suffit d'étudier la fonction $G$ définie pour tout t dans le support des $X_i$ comme :
+
+\[
+\mathbb{P} \left( \frac{M_n - b_n}{a_n} < t \right) \xrightarrow[n\to +\infty]{} G(t)
+\]
+
+
+\end{document}
