@@ -40,7 +40,7 @@ Une premiere approche serait de considerer la fonction de repartition et d'utili
 \\
 En effet,
 \[
-F_{M_n}(t) = \mathbb{P}(M_n < t) = \mathbb{P}(X_1 < t,...,X_n <t)=\mathbb{P}(X_1<t)^n = F_{X_1}(t)^n 
+F_{M_n}(t) = \mathbb{P}(M_n < t) = \mathbb{P}(X_1 < t,...,X_n <t)=\mathbb{P}(X_1<t)^n = F_{X_1}^n(t) 
 \]
 
 Mais on rencontre un probleme ici, puisque si $n\to + \infty$, $F_{X_1}(t)^n$ converge vers 0 (ou 1 si t est la borne sup du support des $X_i$).
@@ -54,5 +54,112 @@ Puis étudier la loi de la limite de $\frac{M_n - b_n}{a_n}$. Comme la fonction 
 \mathbb{P} \left( \frac{M_n - b_n}{a_n} < t \right) \xrightarrow[n\to +\infty]{} G(t)
 \]
 
+à ce stade la, il nous faut donc trouver toutes les distributions G qui peuvent apparaître comme limite dans l’équation ci-dessus.
+\\
+\\
+Pour ce faire, nous allons utiliser le théoreme suivant : 
+\\
+\\
+\underline{\textbf{Théorème}:}
+Soit \( Y_n \) une variable aléatoire de fonction de répartition \( F_n \), et soit \( Y \) une variable aléatoire de fonction de répartition \( F \).  
+Alors $Y_n \xrightarrow{\mathcal{L} } Y$ si et seulement si pour toute fonction $z$ réelle, bornée et continue :
+\[
+\mathbb{E}[z(Y_n)] \to \mathbb{E}[z(Y)].
+\]
+
+En prenant ici $Y_n = \frac{M_n -b_n}{a_n}$, on obtient :
+\[
+\mathbb{E}[z(\frac{M_n -b_n}{a_n})] = \int_{-\infty}^{\infty} z(\frac{x-b_n}{a_n}) n F^{n-1} (x)dF(x)
+\]
+
+L'astuce ici va être de faire un changement de variable astucieux. On va poser : 
+
+\[
+x = Q(1-\frac{1}{y}) = K(y) \; \; \; \; \; \; \text{avec Q la fonction quantile}
+\]
+
+\[
+\text{donc} \;\;\;\;\;\;\;\; \int_{-\infty}^{\infty} z(\frac{x-b_n}{a_n}) n F^{n-1} (x)dF(x) = \int_{0}^{n} z(\frac{K(\frac{n}{v}) - b_n}{a_n}) ( 1 - \frac{v}{n})^{n-1} dv
+\]
+\\
+\\
+Or, on a $\lim_{n \to \infty} ( 1 - \frac{v}{n})^{n-1} = e^{-v}$ , et on a $\lim_{n \to \infty} \int_{0}^{n} = \int_{0}^{+ \infty}$.
+\\
+On trouve ici une bonne valeur pour $b_n = K(n)$ (pas bien compris pourquoi).
+\\
+On obtient alors une condition, il faut qu'il existe une fonction $a$ tel que $\lim_{x \to \infty} \frac{K(\frac{x}{v}) - K(x)}{a(x)}$ converge (vers une fonction $h(n)$).
+
+Les limites possibles dans la condition \( (C) \) sont données par :
+
+\[
+ch_\gamma (u) = c \int_1^u v^{-\gamma - 1} dv = c \frac{u^\gamma - 1}{\gamma}.
+\]
+
+où \( c \geq 0 \) et \( \gamma \) est un réel.
+
+Nous interprétons \( h_0 (u) = \log u \) lorsque \( \gamma = 0 \).
+\\
+\\
+Pour ca, nous partons de la condition extrémale du domaine d’attraction :
+
+\[
+\lim_{x \to \infty} \frac{K(xu) - K(x)}{a(x)} = h (u).
+\]
+
+Si nous supposons que la fonction d'échelle \( a(x) \) est de la forme :
+
+\[
+a(x) = x^\gamma \ell(x),
+\]
+
+où \( \ell(x) \) est une fonction de variation lente ($\text{i.e.} \; \forall a > 0 \; \; \lim_{x \to + \infty} \frac{l(ux)}{l(x)}=1$), alors la relation limite implique que :
+
+\[
+\frac{K(xu) - K(x)}{x^\gamma \ell(x)} \to h (u).
+\]
+
+En supposant que la fonction quantile de queue \( K(x) \) satisfait une loi de variation régulière, nous pouvons écrire :
+
+\[
+K(x) = x^\gamma \ell(x).
+\]
+
+Ainsi, nous avons :
+
+\[
+K(xu) - K(x) = (xu)^\gamma \ell(xu) - x^\gamma \ell(x).
+\]
+
+En divisant par \( x^\gamma \ell(x) \), nous obtenons :
+
+\[
+\frac{K(xu) - K(x)}{x^\gamma \ell(x)} = u^\gamma \frac{\ell(xu)}{\ell(x)} - 1.
+\]
+
+Comme \( \ell(x) \) est une fonction de variation lente, nous avons \( \ell(xu)/\ell(x) \to 1 \) lorsque \( x \to \infty \), ce qui donne :
+
+\[
+h (u) = u^\gamma - 1.
+\]
+
+Si nous introduisons un paramètre \( c \geq 0 \), nous pouvons écrire :
+
+\[
+ch_\gamma (u) = c \int_1^u v^{-\gamma - 1} dv.
+\]
+
+En intégrant :
+
+\[
+ch_\gamma (u) = c \frac{u^\gamma - 1}{\gamma}.
+\]
+
+Enfin, pour \( \gamma = 0 \), nous utilisons l'interprétation logarithmique de la variation lente :
+
+\[
+h_0 (u) = \log u.
+\]
+
+\hfill\(\square\)
 
 \end{document}

@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1738333721.52793 "/home/damien/Documents/projet/redaction/text.tex" "text.pdf" "text" 1738333721.8676 0
+["pdflatex"] 1739391112.15172 "/home/damien/Documents/projet/redaction/text.tex" "text.pdf" "text" 1739391112.50542 0
   "/etc/texmf/web2c/texmf.cnf" 1738070165.10808 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/damien/Documents/projet/redaction/text.tex" 1738333721.0114 1967 50826604d05d5a4cb584e0f06b31de92 ""
+  "/home/damien/Documents/projet/redaction/text.tex" 1739391111.97904 5103 8fef75f60d05bfc44db8e0a08a057e9f ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -38,6 +38,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb" 1248133631 31764 459c573c03a4949a528c2cc7f557e217 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel-french/french.ldf" 1703367853 67406 dceb79d013836a96b38471bc632b9fc3 ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty" 1704662920 150008 7a05b0fdc0167c04e192003e780ab195 ""
@@ -66,8 +67,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1738070180.25185 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1738070213 8211103 7ffcdc26a0444d51a6376434f82fe5f8 ""
-  "text.aux" 1738333721.82542 392 36d62f8cfdd29cecd0f66641805716bc "pdflatex"
-  "text.tex" 1738333721.0114 1967 50826604d05d5a4cb584e0f06b31de92 ""
+  "text.aux" 1739391112.45604 392 d301e60685f8077491abc6097e716499 "pdflatex"
+  "text.tex" 1739391111.97904 5103 8fef75f60d05bfc44db8e0a08a057e9f ""
   (generated)
   "text.aux"
   "text.log"
