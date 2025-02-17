@@ -88,8 +88,11 @@ Or, on a $\lim_{n \to \infty} ( 1 - \frac{v}{n})^{n-1} = e^{-v}$ , et on a $\lim
 On trouve ici une bonne valeur pour $b_n = K(n)$ (pas bien compris pourquoi).
 \\
 On obtient alors une condition, il faut qu'il existe une fonction $a$ tel que $\lim_{x \to \infty} \frac{K(\frac{x}{v}) - K(x)}{a(x)}$ converge (vers une fonction $h(n)$).
-
-Les limites possibles dans la condition \( (C) \) sont données par :
+\\
+\\
+\textbf{Demontrons alors que :}
+\\
+Les limites possibles sont données par :
 
 \[
 ch_\gamma (u) = c \int_1^u v^{-\gamma - 1} dv = c \frac{u^\gamma - 1}{\gamma}.
@@ -97,11 +100,12 @@ ch_\gamma (u) = c \int_1^u v^{-\gamma - 1} dv = c \frac{u^\gamma - 1}{\gamma}.
 
 où \( c \geq 0 \) et \( \gamma \) est un réel.
 
-Nous interprétons \( h_0 (u) = \log u \) lorsque \( \gamma = 0 \).
+Nous interpréterons \( h_0 (u) = \log u \) lorsque \( \gamma = 0 \).
 \\
 \\
-Pour ca, nous partons de la condition extrémale du domaine d’attraction :
-
+\underline{preuve:}
+Par hypothèse, on a :
+\\
 \[
 \lim_{x \to \infty} \frac{K(xu) - K(x)}{a(x)} = h (u).
 \]
@@ -161,5 +165,7 @@ h_0 (u) = \log u.
 \]
 
 \hfill\(\square\)
+
+Remarque : Etant données qu'on cherche une loi limite non dégénéré, on va exclure le cas où $c = 0$.
 
 \end{document}
