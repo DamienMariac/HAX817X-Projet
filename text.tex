@@ -167,5 +167,260 @@ h_0 (u) = \log u.
 \hfill\(\square\)
 
 Remarque : Etant données qu'on cherche une loi limite non dégénéré, on va exclure le cas où $c = 0$.
+\section{Estimation du paramètre gamma} 
 
+Soient \(X_1, \dots, X_n\) i.i.d. On définit la fonction de répartition :
+
+\[
+F(x) = P(X_1 \leq x), \quad x \in \mathbb{R}
+\]
+
+Nous allons définir la fonction de répartition empirique.
+
+\subsection{Fonction de répartition empirique}
+
+\textbf{Définition :} Pour tout \(x \in \mathbb{R}\), la fonction de répartition empirique est donnée par :
+
+\[
+F_n(x) = \frac{1}{n} \sum_{i=1}^{n} \mathbb{1}_{(-\infty, x]}(X_i)
+\]
+
+où \(\mathbb{1}_{(-\infty, x]}(X_i)\) est l'indicatrice de l'événement \(\{X_i \leq x\}\).
+La fonction de répartition empirique utilise la statistique d'ordre.
+
+\subsection{Quantiles et inverse généralisée}
+
+\textbf{Définition :} Soit \(p \in (0,1)\), on appelle \textit{\(p\)-quantile}, noté \(x_p\), de la loi \(F\) toute quantité satisfaisant :
+
+\[
+F(x_p) = p
+\]
+
+Pour définir un quantile de manière plus générale, on considère l'inverse généralisée de \(F\).
+
+\textbf{Définition :} Pour tout \(u \in [0,1]\), on appelle \textit{inverse généralisée} de \(F\), notée \(F^-\), la fonction définie par :
+
+\[
+F^-(u) = \inf \{ x \in \mathbb{R} \mid F(x) \geq u \}
+\]
+
+\subsection{Quantiles empiriques}
+
+\textbf{Définition :} Soit \(p \in (0,1)\), on appelle \textit{\(p\)-quantile empirique}, noté \(x_p(n)\), la valeur :
+
+\[
+x_p(n) = F_n^-(p) = \inf \{ x \in \mathbb{R} \mid F_n(x) \geq p \}
+\]
+
+\subsection{Estimation de \(\gamma\) par la méthode des quantiles}
+
+Pour déterminer les estimateurs de \(\gamma\) pour ces trois distributions, nous utilisons l'estimation par la méthode des quantiles.  
+Nous allons commencer par estimer le paramètre \(\gamma\) pour la distribution de Fréchet.
+
+\subsubsection{Rappel de la fonction de répartition}
+
+Rappelons que la fonction de répartition de la loi de Fréchet s'écrit comme :
+
+\[
+F(x) = \exp(-x^{-\gamma}), \quad x > 0, \quad \gamma > 0.
+\]
+
+On cherche \(x\) tel que :
+
+\[
+\exp(-x^{-\gamma}) = p.
+\]
+
+En prenant le logarithme, on obtient :
+
+\[
+\ln(p) = -x^{-\gamma}
+\]
+
+\[
+x^{\gamma} = -\frac{1}{\ln(p)}
+\]
+
+\subsubsection{Estimation de \(\gamma\) à partir du quantile médian}
+
+On utilise l'estimateur du quantile avec la médiane de la distribution (\(x_{1/2}\)) :
+
+\[
+x_{1/2} = (\ln 2)^{-1/\gamma} = f(\gamma),
+\]
+
+où \(f(\gamma)\) est une fonction bijective.  
+Si l'on sait estimer \(x_{1/2}\), alors on peut facilement estimer \(\gamma\) en inversant \(f\) :
+
+\[
+\gamma = f^{-1}(x_{1/2}).
+\]
+
+On résout :
+
+\[
+x = f(\gamma) \iff x = (\ln 2)^{-1/\gamma}
+\]
+
+\[
+\iff (\ln 2)^{1/\gamma} = \frac{1}{x}
+\]
+
+\[
+\iff \frac{1}{\gamma} \ln (\ln 2) = \ln \left(\frac{1}{x}\right) = -\ln x.
+\]
+
+D'où :
+
+\[
+\gamma = -\frac{\ln (\ln 2)}{\ln x} = f^{-1}(x).
+\]
+
+\subsubsection{Convergence et estimation empirique}
+
+Rappelons que le quantile empirique converge en probabilité vers le quantile théorique :
+
+\[
+x_p(n) \xrightarrow{\mathbb{P}} x_p = F^{-1}(p).
+\]
+
+En particulier, pour \(p = \frac{1}{2}\) :
+
+\[
+x_{1/2}(n) \xrightarrow{\mathbb{P}} x_{1/2},
+\]
+
+où \(x_{1/2}(n)\) est le quantile empirique d'ordre \(1/2\) (médiane empirique).  
+
+Or, la convergence en probabilité est stable par transformation continue, d'où :
+
+\[
+f^{-1}(x_{1/2}(n)) \xrightarrow{\mathbb{P}} f^{-1}(x_{1/2}) = \gamma.
+\]
+
+Ainsi, 
+
+\[
+\gamma = f^{-1}(x_{1/2}(n))
+\]
+
+est un estimateur convergent de \(\gamma\).  
+Finalement, l'estimateur de \(\gamma\) est donné par :
+
+\[
+\hat{\gamma} = -\frac{\ln (\ln 2)}{\ln x_{1/2}(n)}.
+\]
+\subsection{Estimation de \(\gamma\) pour la distribution de Gumbel}
+
+La fonction de répartition de Gumbel est donnée par :
+
+\[
+F(x) = \exp(-\exp(-x/\gamma)).
+\]
+
+Ainsi, pour \(p = \frac{1}{2}\), on a :
+
+\[
+F(x_{1/2}) = \frac{1}{2}
+\]
+
+\[
+\iff \exp(-\exp(-x_{1/2}/\gamma)) = \frac{1}{2}
+\]
+
+\[
+\iff -\exp(-x_{1/2}/\gamma) = -\ln(2)
+\]
+
+\[
+\iff \exp(-x_{1/2}/\gamma) = \ln(2)
+\]
+
+\[
+\iff -\frac{x_{1/2}}{\gamma} = \ln(\ln(2))
+\]
+
+\[
+\iff \gamma = -\frac{x_{1/2}}{\ln(\ln(2))} = f(x_{1/2}),
+\]
+
+où \(f\) est une fonction continue.
+
+\subsubsection{Convergence et estimation empirique}
+
+En utilisant le quantile empirique, on a :
+
+\[
+x_{1/2}(n) \xrightarrow{\mathbb{P}} x_{1/2}.
+\]
+
+Puisque la convergence en probabilité est stable par transformation continue, il en résulte :
+
+\[
+f(x_{1/2}(n)) \xrightarrow{\mathbb{P}} \gamma = f(x_{1/2}).
+\]
+
+Ainsi, un estimateur convergent de \(\gamma\) est donné par :
+
+\[
+\hat{\gamma} = f(x_{1/2}(n)) = -\frac{x_{1/2}(n)}{\ln(\ln(2))}.
+\]
+
+\subsection{Estimation de \(\gamma\) pour la distribution de Weibull}
+
+Ainsi, l'estimateur \(\hat{\gamma}\) est un estimateur convergent de \(\gamma\).
+
+La fonction de répartition de Weibull est donnée par :
+
+\[
+F(x) = 1 - \exp(-x^{\gamma}).
+\]
+
+Pour \(p = \frac{1}{2}\), nous avons :
+
+\[
+F(x_{1/2}) = \frac{1}{2}
+\]
+
+\[
+\iff 1 - \exp(-x_{1/2}^{\gamma}) = \frac{1}{2}
+\]
+
+\[
+\iff \frac{1}{2} = \exp(-x_{1/2}^{\gamma})
+\]
+
+\[
+\iff -\ln(2) = -x_{1/2}^{\gamma}
+\]
+
+\[
+\iff \ln(2) = x_{1/2}^{\gamma}.
+\]
+
+En appliquant le logarithme népérien :
+
+\[
+\gamma \ln(x_{1/2}) = \ln(\ln 2)
+\]
+
+\[
+\iff \gamma = \frac{\ln(\ln 2)}{\ln(x_{1/2})} = \varphi(x_{1/2}),
+\]
+
+où \(\varphi\) est une fonction continue.
+
+\subsubsection{Convergence et estimation empirique}
+
+Puisque \(x_{1/2}(n)\) converge en probabilité vers \(x_{1/2}\), on a :
+
+\[
+\varphi(x_{1/2}(n)) \xrightarrow{\mathbb{P}} \varphi(x_{1/2}) = \gamma.
+\]
+
+Finalement, un estimateur convergent de \(\gamma\) est donné par :
+
+\[
+\hat{\gamma} = \frac{\ln(\ln 2)}{\ln(x_{1/2}(n))}.
+\]
 \end{document}
