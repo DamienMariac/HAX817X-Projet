@@ -122,86 +122,67 @@ b_n = Q(1-\frac{1}{n}) = K(n)
 Dans la dernière équivalence, on a composé par la fonction quantile (qui est bien définie pour chaque distribution)
 \\
 \subsection{Paramètre $a_n$}
-On obtient alors une condition, il faut qu'il existe une fonction $a$ tel que $\lim_{x \to \infty} \frac{K(\frac{x}{v}) - K(x)}{a(x)}$ converge (vers une fonction $h(n)$).
+Avec le parametre $b_n$ définie au dessus, on obtient alors une condition (C), il faut qu'il existe une fonction $a$ tel que $\lim_{x \to \infty} \frac{K(\frac{x}{v}) - K(x)}{a(x)}$ converge (vers une fonction $h(n)$). 
 \\
 \\
-\textbf{Demontrons alors que :}
+\textbf{Proposition :}
 \\
 Les limites possibles sont données par :
-
 \[
-ch_\gamma (u) = c \int_1^u v^{-\gamma - 1} dv = c \frac{u^\gamma - 1}{\gamma}.
+c\,h_{\gamma}(u) 
+\;=\; 
+c \int_{1}^{u} v^{-\gamma - 1}\,dv 
+\;=\; 
+c\,\frac{u^{\gamma} - 1}{\gamma}.
 \]
-
-où \( c \geq 0 \) et \( \gamma \) est un réel.
-
-Nous interpréterons \( h_0 (u) = \log u \) lorsque \( \gamma = 0 \).
+Nous interprétons $h_{0}(u) = \log(u)$ lorsque $\gamma = 0$. 
 \\
 \\
-\underline{preuve:}
-Par hypothèse, on a :
+
+\; On ne veut pas que $c=0$, car il conduit à une limite dégénérée pour $\frac{X_{n,n} - b_n}{a_n}$. 
+Ensuite, le cas $c>0$ peut être ramené au cas $c=1$ en incorporant $c$ dans la fonction $a$. 
+
+Nous remplaçons la condition $(C)$ par une condition plus informative, appelée 
+"\textit{condition extrémale du domaine d’attraction}" :
+\[
+\lim_{x\to \infty} \frac{U(xu) - U(x)}{a(x)} 
+\;=\; 
+h_{\gamma}(u), 
+\quad 
+\text{pour } u>0.
+\]
+Ceci indique que les limites possibles sont essentiellement décrites par la \textit{famille à un paramètre} $h_{\gamma}$. 
+Si nécessaire, nous ferons référence à la fonction auxiliaire $a$ en notant $\mathcal{C}_{\gamma}(a)$. 
+Nous dirons que la distribution $F$ satisfait la condition de valeurs extrêmes 
+$\mathcal{C}_{\gamma}(a)$ avec la fonction auxiliaire $a$.
 \\
+\\
+\\
+\textbf{Preuve de la Proposition}  
+\\
+Soient $u,v > 0$. Alors :
 \[
-\lim_{x \to \infty} \frac{K(xu) - K(x)}{a(x)} = h (u).
+\frac{U(xuv) - U(x)}{a(x)} 
+\;=\; 
+\frac{U(xuv) - U(xu)}{a(xu)} \,\frac{a(xu)}{a(x)}
+\;+\;
+\frac{U(xu) - U(x)}{a(x)}.
+\tag{2.3}
 \]
-
-Si nous supposons que la fonction d'échelle \( a(x) \) est de la forme :
-
+Si la limite dans $(C)$ est satisfaite, alors le rapport 
 \[
-a(x) = x^\gamma \ell(x),
+\frac{a(ux)}{a(x)}
 \]
-
-où \( \ell(x) \) est une fonction de variation lente ($\text{i.e.} \; \forall a > 0 \; \; \lim_{x \to + \infty} \frac{l(ux)}{l(x)}=1$), alors la relation limite implique que :
-
+doit converger. Nous notons cette limite par $g(u)$. En effet, pour $u,v>0$,
 \[
-\frac{K(xu) - K(x)}{x^\gamma \ell(x)} \to h (u).
+\frac{a(xuv)}{a(x)} 
+\;=\;
+\frac{a(xuv)}{a(xv)} \,\frac{a(xv)}{a(x)}.
 \]
-
-En supposant que la fonction quantile de queue \( K(x) \) satisfait une loi de variation régulière, nous pouvons écrire :
-
+Par passage à la limite, la fonction $g$ satisfait l'\textit{équation fonctionnelle de Cauchy} :
 \[
-K(x) = x^\gamma \ell(x).
+g(uv) = g(u)\,g(v).
 \]
-
-Ainsi, nous avons :
-
-\[
-K(xu) - K(x) = (xu)^\gamma \ell(xu) - x^\gamma \ell(x).
-\]
-
-En divisant par \( x^\gamma \ell(x) \), nous obtenons :
-
-\[
-\frac{K(xu) - K(x)}{x^\gamma \ell(x)} = u^\gamma \frac{\ell(xu)}{\ell(x)} - 1.
-\]
-
-Comme \( \ell(x) \) est une fonction de variation lente, nous avons \( \ell(xu)/\ell(x) \to 1 \) lorsque \( x \to \infty \), ce qui donne :
-
-\[
-h (u) = u^\gamma - 1.
-\]
-
-Si nous introduisons un paramètre \( c \geq 0 \), nous pouvons écrire :
-
-\[
-ch_\gamma (u) = c \int_1^u v^{-\gamma - 1} dv.
-\]
-
-En intégrant :
-
-\[
-ch_\gamma (u) = c \frac{u^\gamma - 1}{\gamma}.
-\]
-
-Enfin, pour \( \gamma = 0 \), nous utilisons l'interprétation logarithmique de la variation lente :
-
-\[
-h_0 (u) = \log u.
-\]
-
-\hfill\(\square\)
-
-Remarque : Etant données qu'on cherche une loi limite non dégénéré, on va exclure le cas où $c = 0$.
 \section{Estimation du paramètre gamma} 
 
 Soient \(X_1, \dots, X_n\) i.i.d. On définit la fonction de répartition :
