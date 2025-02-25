@@ -34,16 +34,22 @@ et on s'intéresse à la convergence de \( M_n \), ainsi qu'aux hypothèses sous
 \\
 Remarque : Etudier le minimum est totalement analogue dans ce qui suit.
 
-\section{Lois de $M_n$} 
+\section{Lois de $M_n$}
 
-Une premiere approche serait de considerer la fonction de repartition et d'utiliser le fait que les $X_i$ sont i.i.d :
+\subsection{Quelque notation }
+
+On commence par faire une remarque sur la fonction de repartion de $M_n$ en utilisant le fait que les $X_i$ sont i.i.d :
 \\
 En effet,
 \[
 F_{M_n}(t) = \mathbb{P}(M_n < t) = \mathbb{P}(X_1 < t,...,X_n <t)=\mathbb{P}(X_1<t)^n = F_{X_1}^n(t) 
 \]
-
-Mais on rencontre un probleme ici, puisque si $n\to + \infty$, $F_{X_1}(t)^n$ converge vers 0 (ou 1 si t est la borne sup du support des $X_i$).
+\\
+Dans la suite, on notera $F(t)$, la fonction de repartition des $X_i$.
+\\
+\\
+Mais on rencontre un probleme ici, puisque si $n\to + \infty$, $F(t)^n$ converge vers 0 (ou 1 si t est la borne sup du support des $X_i$).
+\\
 \\
 \\
 L'idée est donc d'introduire 2 suites ($b_n$) et ($a_n$) (avec $a_n > $  0 pour tout n) afin de pouvoir contrôler $M_n$.
@@ -69,7 +75,7 @@ Alors $Y_n \xrightarrow{\mathcal{L} } Y$ si et seulement si pour toute fonction 
 
 En prenant ici $Y_n = \frac{M_n -b_n}{a_n}$, on obtient :
 \[
-\mathbb{E}[z(\frac{M_n -b_n}{a_n})] = \int_{-\infty}^{\infty} z(\frac{x-b_n}{a_n}) n F^{n-1} (x)dF(x)
+\mathbb{E}[z(\frac{M_n -b_n}{a_n})] = \int_{-\infty}^{\infty} z(\frac{x-b_n}{a_n}) \: n \:  F^{n-1} (x)dF(x)
 \]
 
 L'astuce ici va être de faire un changement de variable astucieux. On va poser : 
@@ -79,14 +85,43 @@ x = Q(1-\frac{1}{y}) = K(y) \; \; \; \; \; \; \text{avec Q la fonction quantile}
 \]
 
 \[
-\text{donc} \;\;\;\;\;\;\;\; \int_{-\infty}^{\infty} z(\frac{x-b_n}{a_n}) n F^{n-1} (x)dF(x) = \int_{0}^{n} z(\frac{K(\frac{n}{v}) - b_n}{a_n}) ( 1 - \frac{v}{n})^{n-1} dv
+\text{donc} \;\;\;\;\;\;\;\; \int_{-\infty}^{\infty} z(\frac{x-b_n}{a_n}) \: n \: F^{n-1} (x)dF(x) = \int_{0}^{n} z(\frac{K(\frac{n}{v}) - b_n}{a_n}) ( 1 - \frac{v}{n})^{n-1} dv
 \]
 \\
 \\
 Or, on a $\lim_{n \to \infty} ( 1 - \frac{v}{n})^{n-1} = e^{-v}$ , et on a $\lim_{n \to \infty} \int_{0}^{n} = \int_{0}^{+ \infty}$.
+
+\subsection{Paramètre $b_n$}
+
+On en déduit une bonne valeur pour $b_n$. En effet,
+\[
+\mathbb{P} \left( \frac{M_n - b_n}{a_n} < t \right) \xrightarrow[n\to +\infty]{} G(t) \in ]0:1[
+\]
+\[
+\Longleftrightarrow F^n(a_n t + b_n) \xrightarrow[n\to +\infty]{} G(t)
+\]
+\[
+\Longleftrightarrow n \: ln(F(a_n t + b_n)) \xrightarrow[n\to +\infty]{} ln(G(t))
+\]
+\[
+\Longleftrightarrow n(- F(a_n t + b_n) + 1) \xrightarrow[n\to +\infty]{} ln(G(t))
+\]
+\[
+\Longleftrightarrow n \: \mathbb{P}(X_1 > a_n t + b_n ) \xrightarrow[n\to +\infty]{} - ln(G(t))
+\]
+On obtient alors pour paramètre d'échelle :
+\[
+n \mathbb{P}(X_1 > b_n) =1  \Longleftrightarrow \mathbb{P}(X_1 < b_n) = 1 - \frac{1}{n}
+\]
+\[
+\Longleftrightarrow F(b_n) = 1 - \frac{1}{n}
+\]
+\[
+b_n = Q(1-\frac{1}{n}) = K(n)
+\]
+Dans la dernière équivalence, on a composé par la fonction quantile (qui est bien définie pour chaque distribution)
 \\
-On trouve ici une bonne valeur pour $b_n = K(n)$ (pas bien compris pourquoi).
-\\
+\subsection{Paramètre $a_n$}
 On obtient alors une condition, il faut qu'il existe une fonction $a$ tel que $\lim_{x \to \infty} \frac{K(\frac{x}{v}) - K(x)}{a(x)}$ converge (vers une fonction $h(n)$).
 \\
 \\
