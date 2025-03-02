@@ -6,7 +6,6 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 
-
 \title{Titre}
 \author{Nom} 
 \date{\today} 
@@ -441,56 +440,122 @@ Finalement, un estimateur convergent de \(\gamma\) est donné par :
 \]
 
 \section{Méthodes d'estimation de l'indice de valeurs extrêmes}
-
-Dans cette partie, nous allons présenter deux estimateurs différents.
-
-\textbf{Définition :} On appelle \textit{statistique d'ordre} la permutation aléatoire de l'échantillon $X_1, \dots, X_n$, qui ordonne les valeurs de l’échantillon par ordre croissant :
+Dans cette section, nous nous intéressons aux différentes méthodes d'estimation du paramètre \(\gamma\), intervenant dans la distribution des valeurs extrêmes généralisée. D'une part, des approches non paramétriques sont dédiées à l'estimation de l'indice de queue, notamment les estimateurs de Hill et de Pickands. D'autre part, des méthodes paramétriques ont été développées, parmi lesquelles la méthode du maximum de vraisemblance, la méthode des moments et les approches bayésiennes.
+\newline
+\textbf{Définition :} On appelle \textit{statistique d'ordre} la permutation aléatoire de l'échantillon \(X_1, \dots, X_n\), qui ordonne les valeurs de l’échantillon par ordre croissant :
 
 \[
 X_{(1)} \leq X_{(2)} \leq \dots \leq X_{(n)}
 \]
 
-En particulier, $X_{(1)} = \min X_i$ et $X_{(n)} = \max X_i$.
+En particulier, \(X_{(1)} = \min X_i\) et \(X_{(n)} = \max X_i\).
 
-\textbf{Attention !!!} Même si les $X_i$ sont i.i.d., les statistiques d’ordre $X_{(i)}$ ne le sont pas.
+\textbf{Attention !!!} Même si les \(X_i\) sont i.i.d., les statistiques d’ordre \(X_{(i)}\) ne le sont pas.
 
+\textbf{Définition :} On dit qu'une suite \((k_n)_{n \geq 0}\) d'entiers est intermédiaire si :
+
+\[
+\lim_{n \to \infty} k_n = \infty \quad et \lim_{n \to \infty} \frac{k_n}{n} = 0
+\]
 \subsection{Estimateur de Pickands}
 
-L'estimateur de Pickands est défini par la statistique :
+L'estimateur de Pickands est défini par la statistique 
 \[
-\hat{\gamma}_{(k,n)} = \frac{1}{\ln(2)} \ln\left(\frac{X_{(k,n)} - X_{(2k,n)}}{X_{(2k,n)} - X_{(4k,n)}}\right)
+\hat{\gamma}_{k,n} = \frac{1}{\ln(2)} \ln\left(\frac{X_{k,n} - X_{2k,n}}{X_{2k,n} - X_{4k,n}}\right)
 \]
 
-Cet estimateur présente l'intérêt d'être valable quelle que soit la distribution des extrêmes.  
-La représentation graphique de cet estimateur en fonction du nombre \( k \) d'observations considérées montre un comportement en général très volatil au départ, ce qui nuit à la lisibilité du graphique.  
-
-Ensuite, cet estimateur est très sensible à la taille de l'échantillon sélectionné, ce qui le rend peu robuste.  
+Cet estimateur présente l'avantage d'être applicable quelle que soit la distribution des extrêmes. Cependant, la représentation graphique de cet estimateur en fonction du nombre \(k\) d'observations considérées révèle généralement un comportement volatil au départ, ce qui peut nuire à la lisibilité du graphique. De plus, cet estimateur est particulièrement sensible à la taille de l'échantillon sélectionné, ce qui le rend peu robuste.
 
 Cet estimateur est asymptotiquement normal, avec :
 \[
-\sqrt{k} \frac{\gamma_{(k,n)} - \gamma}{\sigma} \xrightarrow{\mathcal{L}} \mathcal{N}(0,1)
+\sqrt{k} \frac{\hat{\gamma_{k,n}} - \gamma}{\sigma(\gamma)} \xrightarrow{\mathcal{L}} \mathcal{N}(0,1)
 \]
 Lorsque \( k \to +\infty \), la variance asymptotique est donnée par :
 
 \[
 \sigma(\gamma)= \frac{\gamma \sqrt{2^{(2\gamma+1)}+1}}{2(2^{\gamma}-1) \ln(2)}
 \]
-\textbf{Démonstration :}
+
+Une généralisation de l'estimateur de Pickands a été introduite comme suit :
+\[
+\hat{\gamma}_{(k,u,v)} = \frac{1}{\ln(v)} \ln\left(\frac{X_{n-k+1,n} - X_{n-[uk]+1,n}}{X_{n-[vk]+1,n} - X_{n-[uvk]+1,n}}\right)
+\]
+où \(u\) et \(v\) sont des réels positifs différents de 1, de sorte que les indices \([vk]\), \([uk]\) et \([uvk]\) ne dépassent pas \(n\). Lorsque \(u = v = 2\), on retrouve l'estimateur de Hill \(\hat{\gamma}_{k,n}\).
 
 \subsection{Estimateur de Hill}
 
-Tout d'abord, l'estimateur de Hill n'est utilisable que pour les distributions de Fréchet ($\gamma > 0$) pour lesquelles il fournit un estimateur de l'indice de queue plus efficace que l'estimateur de Pickands. Cet estimateur est défini par la statistique suivante :
+Tout d'abord, l'estimateur de Hill est applicable uniquement aux distributions de Fréchet (\(\gamma > 0\)), où il permet d'obtenir un estimateur de l'indice de queue plus efficace que celui de Pickands. Cet estimateur est défini par la statistique suivante :
 \[
-\hat{\gamma}_{(k,n)} = \frac{1}{k-1} \sum_{j=1}^{k-1} \ln(\frac{X_{(j,n)}}{X_{(k,n)}})
+\hat{\gamma}_{k,n} = \frac{1}{k} \sum_{i=1}^{k} \ln(\frac{X_{n-i+1,n}}{X_{n-k,n}})
 \]
-Si on choisit \( k,n \to +\infty \), de sorte que \(\frac{k}{n} \to 0\) alors on peut montrer que $\lim_{k \to \infty} \hat{\gamma_{(k,n)}} = \gamma$ et l'estimateur de Hill est le plus asymptotiquement normal :
+pour \( k \in \{1, \dots, n-1\} \).
+Si l'on choisit \( k, n \to +\infty \), de sorte que \(\frac{k}{n} \to 0\), alors on peut montrer que \(\lim_{k \to \infty} \hat{\gamma}_{k,n} = \gamma\). Cet estimateur possède la propriété d'être asymptotiquement normal, ce qui signifie que :
 
 \[
-\sqrt{k} \frac{\hat{\gamma_{(k,n)}} - \gamma}{\gamma} \xrightarrow{\mathcal{L}} \mathcal{N}(0,1)
+\sqrt{k} \frac{\hat{\gamma}_{k,n} - \gamma}{\gamma} \xrightarrow{\mathcal{L}} \mathcal{N}(0,1)
 \]
 
-\textbf{Démonstration :}
+Il existe plusieurs approches pour construire l'estimateur de Hill. Une approche possible consiste à utiliser la méthode du maximum de vraisemblance. 
 
+Tout d'abord, on considère une suite de variables aléatoires \( X_1, \dots, X_n \) i.i.d. suivant une loi de Pareto de paramètre \( \lambda > 0 \), dont la fonction de répartition est donnée par :  
+
+\[
+F(x) = 1 - x^{-\lambda}, \quad \text{pour } x \geq 1.
+\]
+
+La densité de probabilité associée est alors :
+
+\[
+f(x) = \lambda x^{-\lambda - 1}, \quad \text{pour } x \geq 1.
+\]
+
+La fonction de vraisemblance est donnée par :
+
+\[
+L(x_1, \dots, x_n, \lambda) = \prod_{i=1}^{n} f(x_i) = \lambda^{n} \prod_{i=1}^{n} x_i^{-\lambda - 1}.
+\]
+
+En prenant le logarithme, on obtient la log-vraisemblance :
+
+\[
+\log L(x_1, \dots, x_n, \lambda) = n \log \lambda - (\lambda + 1) \sum_{i=1}^{n} \log x_i.
+\]
+
+En dérivant cette expression par rapport à \( \lambda \), on obtient :
+
+\[
+\frac{d \log L}{d \lambda} = \frac{n}{\lambda} - \sum_{i=1}^{n} \log x_i.
+\]
+
+En dérivant une seconde fois, nous obtenons :
+
+\[
+\frac{d^2 \log L}{d \lambda^2} = -\frac{n}{\lambda^2} < 0,
+\]
+
+ce qui confirme qu'il s'agit bien d'un maximum.  
+
+Ainsi, l'estimateur du maximum de vraisemblance de \( \frac{1}{\lambda} \) est donné par :
+
+\[
+\hat{\lambda}^{-1} = \frac{1}{n} \sum_{i=1}^{n} \log X_i.
+\]
+
+Cela implique que l'estimateur du paramètre \( \lambda \) est :
+
+\[
+\hat{\lambda} = \left( \frac{1}{n} \sum_{i=1}^{n} \log X_i \right)^{-1}.
+\]
+
+\subsection{Estimateur des moments}
+L'estimateur des moments a été proposé par Dekkers, Einmahl et Haan en 1989 comme une alternative aux estimateurs de Hill et de Pickands pour l'estimation de l'indice de queue \(\gamma\) dans les modèles de valeurs extrêmes. Ce type d'estimateur est particulièrement adapté lorsque les données ne suivent pas exactement les hypothèses des autres estimateurs. Cet estimateur est défini comme suit 
+\[
+\hat{\gamma}_{n} = 1 + \hat{\gamma}_{n}^{(1)} - \frac{1}{2}[1 - \frac{(\hat{\gamma_{n}^{(1)}})^2}{\hat{\gamma_{n}^{(2)}}}]^{-1}
+\]
+avec 
+\[
+\hat{\gamma}_{n}^{(i)} = \left[ \frac{1}{k} \sum_{j = 1}^{k} \log\left(\frac{X_{j,n}}{X_{k-1,n}}\right) \right]^i, \quad \text{où } i = 1,2
+\]
 \section{Convergence des estimateurs}
 
 \textbf{Définition :}
@@ -526,6 +591,12 @@ Si \(\lim_{n \to \infty} k(n) = \infty\) et \(\lim_{n \to \infty} \frac{k(n)}{n}
 Soit \((X_n)_{n \geq 1}\) une suite de variables aléatoires indépendantes de même fonction de répartition \(F \in D(H(\gamma))\), où \(\gamma \in \mathbb{R}\).
 Si \(\lim_{n \to \infty} k(n) = \infty\) et \(\lim_{n \to \infty} \frac{k(n)}{n} = 0\), alors l'estimateur de Pickands converge en probabilité vers \(\gamma\).
 
+\subsection{Estimateur des moments}
+Supposons que \(F \in D(H_{\gamma}), \gamma \in \mathbb{R}, k_n \to \infty \quad et \quad \frac{k}{n} \to 0 \quad quand \quad n \to \infty\):
+\[
+\hat{\gamma_n} \xrightarrow{\mathbb{P}} \gamma \quad \text{quand } n \to \infty
+\]
+
 
 \section{Sélection des estimateurs de l'indice de valeurs extrêmes}
 
@@ -534,6 +605,4 @@ Le choix de l’estimateur dépend du type de distribution sous-jacente. L’est
 Cependant, pour les distributions de Weibull (\(\gamma < 0\)) et Gumbel (\(\gamma = 0\)), l’estimateur de Hill n’est pas applicable. Dans ces cas, on utilise l’estimateur de Pickands, qui est valide quel que soit le signe de \( \gamma \).  
 
 Ainsi, la sélection de l’estimateur repose sur la nature de la distribution des valeurs extrêmes.  
-
-\section{Simulation de lois et estimations}
 \end{document}
