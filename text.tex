@@ -151,9 +151,6 @@ h_{\gamma}(u),
 \text{pour } u>0.
 \]
 Ceci indique que les limites possibles sont essentiellement décrites par la \textit{famille à un paramètre} $h_{\gamma}$. 
-Si nécessaire, nous ferons référence à la fonction auxiliaire $a$ en notant $\mathcal{C}_{\gamma}(a)$. 
-Nous dirons que la distribution $F$ satisfait la condition de valeurs extrêmes 
-$\mathcal{C}_{\gamma}(a)$ avec la fonction auxiliaire $a$.
 \\
 \\
 \\
@@ -168,20 +165,107 @@ Soient $u,v > 0$. Alors :
 \frac{U(xu) - U(x)}{a(x)}.
 \tag{2.3}
 \]
-Si la limite dans $(C)$ est satisfaite, alors le rapport 
-\[
-\frac{a(ux)}{a(x)}
-\]
-doit converger. Nous notons cette limite par $g(u)$. En effet, pour $u,v>0$,
+Si la limite dans $(C)$ est satisfaite, alors le rapport $\frac{a(ux)}{a(x)}$ converge vers g(u).
+\\
+De plus, pour $u,v>0$,
 \[
 \frac{a(xuv)}{a(x)} 
 \;=\;
 \frac{a(xuv)}{a(xv)} \,\frac{a(xv)}{a(x)}.
 \]
-Par passage à la limite, la fonction $g$ satisfait l'\textit{équation fonctionnelle de Cauchy} :
+Par passage à la limite (pour x), la fonction $g$ satisfait l'\textit{équation fonctionnelle de Cauchy} :
 \[
 g(uv) = g(u)\,g(v).
 \]
+\\
+Les solutions de cette équation sont de la forme $g(u)= u^{\gamma}$ avec $\gamma$ un réel.
+\\
+Donc, $a$ est une fonction à variation régulière c'est à dire qu'on a $\lim_{x\to \infty} \frac{a(ux)}{a(x)} \;=\; x^{\gamma} l(x)$
+\\
+\\
+\subsection{Les formes des lois limites}
+En reprenant $(2.3)$ et en utilisant ce qui précède, on obtient :
+\[
+\lim_{x\to \infty} \frac{U(xuv) - U(x)}{a(x)} = = u^{\gamma} h(v) + h(u)
+\]
+\[
+\text{autrement dit :} \; \; h_{\gamma}(uv)= h_{\gamma}(u) + h_{\gamma}(v)
+\]
+\\
+\\
+On fait alors une disjonction de cas sur la valeur de gamma.
+\\
+\subsubsection{1. Cas \(\gamma\neq0\)}
+
+On a,
+\[
+h_\gamma\Bigl(\frac{1}{v}\Bigr)=\frac{(1/v)^\gamma-1}{\gamma}=\frac{v^{-\gamma}-1}{\gamma}.
+\]
+Posons \(u=\frac{v^{-\gamma}-1}{\gamma}\). On résout alors pour \(v\) :
+\[
+v^{-\gamma}=1+\gamma u\quad\Longrightarrow\quad v=(1+\gamma u)^{-1/\gamma}.
+\]
+On définit ainsi la fonction
+\[
+\eta_\gamma(u)=(1+\gamma u)^{-1/\gamma}.
+\]
+Le changement de variable de \(v\) à \(u\) permet de réécrire l'intégrale limite sous la forme
+\[
+\int_{u\in S_\gamma} z(u)\,d\Bigl\{\exp\Bigl[-\eta_\gamma(u)\Bigr]\Bigr\},
+\]
+ce qui conduit à identifier la loi limite par
+\[
+G_\gamma(u)=\exp\Bigl\{-\eta_\gamma(u)\Bigr\}=\exp\Bigl\{-\left(1+\gamma u\right)^{-1/\gamma}\Bigr\}.
+\]
+La nature du support \(S_\gamma\) dépend du signe de \(\gamma\) :
+\begin{itemize}
+    \item Si \(\gamma>0\), l'inversion montre que \(v\in(0,1)\) correspond à \(u>-\frac{1}{\gamma}\) (loi de Fréchet).
+    \item Si \(\gamma<0\), on trouve que \(u<-\frac{1}{\gamma}\) (loi de Weibull).
+\end{itemize}
+\subsubsection{2. Cas \(\gamma=0\)}
+Lorsque \(\gamma\to0\), la fonction \(h_\gamma\) tend par continuité vers
+\[
+h_0(u)=\ln u.
+\]
+De même, le changement de variable s'adapte : 
+\[
+u=h_0\Bigl(\frac{1}{v}\Bigr)=\ln\Bigl(\frac{1}{v}\Bigr)=-\ln v,
+\]
+ce qui implique
+\[
+v=e^{-u}.
+\]
+Le changement de variable transforme alors l'intégrale limite en
+\[
+\int_{-\infty}^{\infty} z(u)\,d\Bigl\{\exp\Bigl[-e^{-u}\Bigr]\Bigr\},
+\]
+et la loi limite est alors donnée par
+\[
+G_0(u)=\exp\Bigl\{-e^{-u}\Bigr\},\qquad u\in\mathbb{R},
+\]
+ce qui correspond à la loi de Gumbel.
+\\
+\subsubsection{Résumé}
+Les lois limites qui s'imposent dependent d'un parametre $\gamma$ et sont les suivantes :
+\\
+\begin{itemize}
+    \item \textbf{Si \(\gamma>0\)} (loi de Fréchet) :
+    \[
+    G_\gamma(u)=\exp\left\{-\left(1+\gamma u\right)^{-1/\gamma}\right\}, \quad u > -\frac{1}{\gamma}.
+    \]
+    
+    \item \textbf{Si \(\gamma=0\)} (loi de Gumbel) :
+    \[
+    G_0(u)=\exp\left\{-e^{-u}\right\}, \quad u\in\mathbb{R}.
+    \]
+    
+    \item \textbf{Si \(\gamma<0\)} (loi de Weibull) :
+    \[
+    G_\gamma(u)=\exp\left\{-\left(1+\gamma u\right)^{-1/\gamma}\right\}, \quad u < -\frac{1}{\gamma}.
+    \]
+\end{itemize}
+
+\newpage
 \section{Estimation du paramètre gamma} 
 
 Soient \(X_1, \dots, X_n\) i.i.d. On définit la fonction de répartition :
