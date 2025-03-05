@@ -83,9 +83,11 @@ L'astuce ici va être de faire un changement de variable astucieux. On va poser 
 x = Q(1-\frac{1}{y}) = K(y) \; \; \; \; \; \; \text{avec Q la fonction quantile}
 \]
 
-\[
-\text{donc} \;\;\;\;\;\;\;\; \int_{-\infty}^{\infty} z(\frac{x-b_n}{a_n}) \: n \: F^{n-1} (x)dF(x) = \int_{0}^{n} z(\frac{K(\frac{n}{v}) - b_n}{a_n}) ( 1 - \frac{v}{n})^{n-1} dv
-\]
+\begin{equation}\label{eq:1.1}
+    \text{Donc,} \; \; \int_{-\infty}^{\infty} z\Bigl(\frac{x-b_n}{a_n}\Bigr) \, n \, F^{n-1}(x)\,dF(x)
+    =\int_{0}^{n} z\Bigl(\frac{K\Bigl(\frac{n}{v}\Bigr)-b_n}{a_n}\Bigr)
+    \Bigl(1-\frac{v}{n}\Bigr)^{n-1}dv.
+    \end{equation}
 \\
 \\
 Or, on a $\lim_{n \to \infty} ( 1 - \frac{v}{n})^{n-1} = e^{-v}$ , et on a $\lim_{n \to \infty} \int_{0}^{n} = \int_{0}^{+ \infty}$.
@@ -197,7 +199,7 @@ On fait alors une disjonction de cas sur la valeur de gamma.
 \\
 \subsubsection{1. Cas \(\gamma\neq0\)}
 
-On a,
+En reprenant l'équation \eqref{eq:1.1}, on obtient :
 \[
 h_\gamma\Bigl(\frac{1}{v}\Bigr)=\frac{(1/v)^\gamma-1}{\gamma}=\frac{v^{-\gamma}-1}{\gamma}.
 \]
