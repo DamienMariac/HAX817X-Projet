@@ -91,7 +91,7 @@ x = Q(1-\frac{1}{y}) = K(y) \; \; \; \; \; \; \text{avec Q la fonction quantile}
     \text{Donc,} \; \; \int_{-\infty}^{\infty} z\Bigl(\frac{x-b_n}{a_n}\Bigr) \, n \, F^{n-1}(x)\,dF(x)
     =\int_{0}^{n} z\Bigl(\frac{K\Bigl(\frac{n}{v}\Bigr)-b_n}{a_n}\Bigr)
     \Bigl(1-\frac{v}{n}\Bigr)^{n-1}dv.
-    \end{equation}
+\end{equation}
 \\
 \\
 Or, on a $\lim_{n \to \infty} ( 1 - \frac{v}{n})^{n-1} = e^{-v}$ , et on a $\lim_{n \to \infty} \int_{0}^{n} = \int_{0}^{+ \infty}$.
@@ -133,17 +133,18 @@ Avec le parametre $b_n$ définie au dessus, on obtient alors une condition (C), 
 \textbf{Proposition :}
 \\
 Les limites possibles sont données par :
-\[
-c\,h_{\gamma}(u) 
-\;=\; 
-c \int_{1}^{u} v^{-\gamma - 1}\,dv 
-\;=\; 
-c\,\frac{u^{\gamma} - 1}{\gamma}.
-\]
-Nous interprétons $h_{0}(u) = \log(u)$ lorsque $\gamma = 0$. 
-\\
-\\
 
+\begin{equation}\label{eq:1.2}
+    c\,h_{\gamma}(u) 
+    \;=\; 
+    c \int_{1}^{u} v^{-\gamma - 1}\,dv 
+    \;=\; 
+    c\,\frac{u^{\gamma} - 1}{\gamma}.
+\end{equation}
+
+Nous interprétons $h_{0}(u) = \log(u)$ lorsque $\gamma = 0$.*
+\\
+\\
 \; On ne veut pas que $c=0$, car il conduit à une limite dégénérée pour $\frac{X_{n,n} - b_n}{a_n}$. 
 Ensuite, le cas $c>0$ peut être ramené au cas $c=1$ en incorporant $c$ dans la fonction $a$. 
 
@@ -189,7 +190,7 @@ Les solutions de cette équation sont de la forme $g(u)= u^{\gamma}$ avec $\gamm
 Donc, $a$ est une fonction à variation régulière c'est à dire qu'on a $\lim_{x\to \infty} \frac{a(ux)}{a(x)} \;=\; x^{\gamma} l(x)$
 \\
 \\
-\subsection{Les formes des lois limites}
+\subsection{Les lois limites}
 En reprenant $(2.3)$ et en utilisant ce qui précède, on obtient :
 \[
 \lim_{x\to \infty} \frac{U(xuv) - U(x)}{a(x)} = = u^{\gamma} h(v) + h(u)
@@ -203,7 +204,7 @@ On fait alors une disjonction de cas sur la valeur de gamma.
 \\
 \subsubsection{1. Cas \(\gamma\neq0\)}
 
-En reprenant l'équation \eqref{eq:1.1}, on obtient :
+En reprenant l'équation \eqref{eq:1.2}, on obtient :
 \[
 h_\gamma\Bigl(\frac{1}{v}\Bigr)=\frac{(1/v)^\gamma-1}{\gamma}=\frac{v^{-\gamma}-1}{\gamma}.
 \]
@@ -251,7 +252,7 @@ G_0(u)=\exp\Bigl\{-e^{-u}\Bigr\},\qquad u\in\mathbb{R},
 \]
 ce qui correspond à la loi de Gumbel.
 \\
-\subsubsection{Résumé}
+\subsection{Résumé}
 Les lois limites qui s'imposent dependent d'un parametre $\gamma$ et sont les suivantes :
 \\
 \begin{itemize}

@@ -4,10 +4,10 @@
 \contentsline {subsection}{\numberline {2.1}Quelque notation }{3}{}%
 \contentsline {subsection}{\numberline {2.2}Paramètre $b_n$}{4}{}%
 \contentsline {subsection}{\numberline {2.3}Paramètre $a_n$}{4}{}%
-\contentsline {subsection}{\numberline {2.4}Les formes des lois limites}{5}{}%
+\contentsline {subsection}{\numberline {2.4}Les lois limites}{5}{}%
 \contentsline {subsubsection}{\numberline {2.4.1}1. Cas \(\gamma \neq 0\)}{5}{}%
-\contentsline {subsubsection}{\numberline {2.4.2}2. Cas \(\gamma =0\)}{6}{}%
-\contentsline {subsubsection}{\numberline {2.4.3}Résumé}{6}{}%
+\contentsline {subsubsection}{\numberline {2.4.2}2. Cas \(\gamma =0\)}{5}{}%
+\contentsline {subsection}{\numberline {2.5}Résumé}{6}{}%
 \contentsline {section}{\numberline {3}Estimation du paramètre gamma}{7}{}%
 \contentsline {subsection}{\numberline {3.1}Fonction de répartition empirique}{7}{}%
 \contentsline {subsection}{\numberline {3.2}Quantiles et inverse généralisée}{7}{}%
