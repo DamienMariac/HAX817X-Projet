@@ -5,8 +5,30 @@
 \usepackage[a4paper, left=2cm, right=2cm, top=2.5cm, bottom=2.5cm]{geometry}
 \usepackage{amssymb}
 \usepackage{amsmath}
+\usepackage{graphicx} % pour les images 
+\usepackage{listings} % pour intégrer un code R
+\usepackage{xcolor} % pour coloriser le code R intégré
 
-
+\lstset{
+	language=R,
+	inputencoding=utf8, 
+	extendedchars=true,       
+	basicstyle=\ttfamily\footnotesize,
+	keywordstyle=\color{blue},
+	commentstyle=\color{green!50!black},
+	stringstyle=\color{red},
+	numbers=left,
+	numberstyle=\tiny,
+	stepnumber=1,
+	breaklines=true,
+	literate=%
+	{é}{{\'e}}1
+	{è}{{\`e}}1
+	{ê}{{\^e}}1
+	{à}{{\`a}}1
+	{ù}{{\`u}}1
+	{ç}{{\c{c}}}1
+}
 
 \title{Étude des valeurs extrêmes univariées}
 \author{El Mazzouji Wahel, Mariac Damien, Condamy Fabian} 
@@ -271,6 +293,46 @@ Les lois limites qui s'imposent dependent d'un parametre $\gamma$ et sont les su
     G_\gamma(u)=\exp\left\{-\left(1+\gamma u\right)^{-1/\gamma}\right\}, \quad u < -\frac{1}{\gamma}.
     \]
 \end{itemize}
+
+\subsection{Quelques exemples numériques}
+
+\noindent Voici maintenant quelques applications numériques sur des lois usuelles de ce que nous avons vu dans cette section. Pour chacune des représentations suivantes, nous avons simulé 1000 fois chaque loi puis ensuite effectué 10000 simulations pour le maximum afin d'avoir une précision correcte.
+
+\subsubsection{Loi uniforme}
+
+\noindent Pour la loi uniforme sur [0,1], on peut montrer théoriquement que la limite du max est une loi exponentielle de paramètre 1. \\
+\noindent Avec notre machine, nous obtenons le graphe suivant :
+
+\begin{center}
+	\includegraphics[scale=0.8]{./Codes_R/Max_Uniforme.png} 
+\end{center}
+
+\subsubsection{Loi exponentielle}
+\noindent Pour une loi exponentielle de paramètre 1, la loi limite est une loi de Gumbel. 
+
+\begin{center}
+	\includegraphics[scale=0.8]{./Codes_R/Max_Expo.png} 
+\end{center}
+
+
+\subsubsection{Loi normale}
+
+\noindent Pour maintenant une loi normale centrée-réduite, on peut montrer que la loi limite est encore une fois une loi de Gumbel.
+
+\begin{center}
+	\includegraphics[scale=0.8]{./Codes_R/Max_Normale.png} 
+\end{center}
+
+\noindent Notons ainsi que l'on a la même loi limite que pour la loi exponentielle de paramètre 1.
+
+\subsubsection{Loi de Cauchy}
+
+\noindent Enfin, pour une loi de Cauchy (de paramètres 0 et 1 ici), la loi limite est une loi de Fréchet. 
+
+\begin{center}
+	\includegraphics[scale=0.8]{./Codes_R/Max_Cauchy.png} 
+\end{center}
+
 
 \newpage
 \section{Estimation du paramètre gamma} 
@@ -696,4 +758,37 @@ Le choix de l’estimateur dépend du type de distribution sous-jacente. L’est
 Cependant, pour les distributions de Weibull (\(\gamma < 0\)) et Gumbel (\(\gamma = 0\)), l’estimateur de Hill n’est pas applicable. Dans ces cas, on utilise l’estimateur de Pickands, qui est valide quel que soit le signe de \( \gamma \).  
 
 Ainsi, la sélection de l’estimateur repose sur la nature de la distribution des valeurs extrêmes.  
+
+
+\section{Annexe}
+
+\subsection{Codes R}
+
+\noindent Voici un exemple de code R utilisé dans la première section :
+
+\begin{lstlisting}
+	# Paramètres
+	n <- 1000        # Taille de l'échantillon pour la simulation des lois uniformes
+	N <- 10000       # Nombre de simulations pour le maximum
+	
+	# Simulation des maxima de lois uniformes(0,1)
+	set.seed(123)    # fixation de l'aléa
+	M_n <- replicate(N, max(runif(n))) # M_n = max / X_n = runif
+	
+	# Normalisation pour observer la convergence
+	Y_n <- n * (1 - M_n)
+	
+	# Histogramme des valeurs transformées
+	hist(Y_n, breaks = 50, probability = TRUE, 
+	col = "lightblue", border = "white", ylab = "Densité",
+	xlab = expression(Y_n), main = "Max de 1000 lois uniformes")
+	
+	# Densité théorique de la loi exponentielle (paramètre = 1)
+	curve(dexp(x, rate = 1), col = "red", lwd = 2, add = TRUE)
+	
+	# Légende
+	legend("topright", legend = c("Simulation", "Densité théorique : exp(1)"),
+	fill = c("lightblue", NA), border = c("white", NA), 
+	lty = c(NA, 1), col = c(NA, "red"), lwd = c(NA, 2))
+\end{lstlisting}
 \end{document}

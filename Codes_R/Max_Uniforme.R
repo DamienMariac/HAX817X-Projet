@@ -11,14 +11,14 @@ Y_n <- n * (1 - M_n)
 
 # Histogramme des valeurs transformées
 hist(Y_n, breaks = 50, probability = TRUE, 
-     col = "lightblue", border = "white",
-     xlab = expression(n*(1 - M[n])))
+     col = "lightblue", border = "white", ylab = "Densité",
+     xlab = expression(Y_n), main = "Max de 1000 lois uniformes")
 
 # Densité théorique de la loi exponentielle (paramètre = 1)
 curve(dexp(x, rate = 1), col = "red", lwd = 2, add = TRUE)
 
 # Légende
-legend("topright", legend = c("Simulation du max de n lois uniformes sur [0,1]", "Densité théorique loi Exp(1)"),
+legend("topright", legend = c("Simulation", "Densité théorique : exp(1)"),
        fill = c("lightblue", NA), border = c("white", NA), 
        lty = c(NA, 1), col = c(NA, "red"), lwd = c(NA, 2))
 
