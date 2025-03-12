@@ -610,6 +610,12 @@ En particulier, \(X_{(1)} = \min X_i\) et \(X_{(n)} = \max X_i\).
 \[
 \lim_{n \to \infty} k_n = \infty \quad et \lim_{n \to \infty} \frac{k_n}{n} = 0
 \]
+
+\textbf{Définition :}
+On dit qu'un estimateur \(\hat{\gamma_{n}}\) est convergent s'il converge en probabilité vers \(\gamma\), soit :
+\[
+\lim_{n \to \infty} P(\lvert \hat{\gamma_{n}} - \gamma \rvert > \epsilon) = 0 \quad \forall \epsilon > 0
+\]
 \subsection{Estimateur de Pickands}
 
 L'estimateur de Pickands est défini par la statistique 
@@ -650,7 +656,7 @@ Pour \( \gamma \in \mathbb{R} \), les affirmations suivantes sont équivalentes.
 \end{cases}
 \quad \text{pour } x > 0.
 \]
-
+La dernière affirmation est équivalente à :
 \[
 \lim_{s \to 0} \frac{U(sx) - U(s)}{U(sy) - U(s)} = 
 \begin{cases} 
@@ -658,6 +664,61 @@ Pour \( \gamma \in \mathbb{R} \), les affirmations suivantes sont équivalentes.
 \frac{\log(x)}{\log(y)} & \text{si } \gamma = 0.
 \end{cases}
 \]
+pour \(x,y > 0\) et \(y \neq 1\). \newline
+
+\textbf{Lemme A:}
+Soit \(X_1, \dots, X_n\) des variables aléatoires indépendantes et de fonction de répartition \(F\).
+Soit \(U_1, \dots, U_n\) des variables aléatoires indépendantes de loi uniforme \(\left[0,1\right]\). Alors \(F^{-1}(U_{1,n}), \dots, F^{-1}(U_{n,n})\) a même loi que \((X_{1,n}, \dots, X_{n,n})\)\newline
+\textbf{Preuve de la construction de l'estimateur de Pickands :}
+
+On déduit de la proposition précédente que pour $\gamma \in \mathbb{R}$ et $\alpha$ on a avec le choix $t = 2s$, $x = 2$ et $y = \frac{1}{2}$,
+\[
+\lim_{t \to \infty} \frac{U(t) - U(t/2)}{U(t/2) - U(t/4)} = 2^{\gamma}.
+\]
+
+En fait, en utilisant la croissance de $U$ qui se déduit de la croissance de $F$, on obtient
+\[
+\lim_{t \to \infty} \frac{U(t) - U(t_{c_1}(t))}{U(t_{c_1}(t)) - U(t_{c_2}(t))} = 2^{\gamma}
+\]
+dès que $\lim_{t \to \infty} c_1(t) = \frac{1}{2}$ et $\lim_{t \to \infty} c_2(t) = \frac{1}{4}$. Il reste donc à trouver des estimateurs pour $U(t)$.
+
+Soit $k(n), n \geq 1$ une suite d’entiers telle que $1 \leq k(n) \leq \frac{n}{4}$ et $\lim_{n \to \infty} \frac{k(n)}{n} = 0$ et $\lim_{n \to \infty} k(n) = \infty$.
+
+Soit $(V_{1,n},\dots,V_{n,n})$ la statistique d’ordre d’un échantillon de variables aléatoires indépendantes de loi de Pareto. On note $F_V(x) = 1 - x^{-1}, x \geq 1$.
+
+On déduit avec certains résultats de bases liés à $(V_{1,n},\dots,V_{n,n})$ que les suites
+\[
+\frac{k}{n} V_{n-k+1,n}, \quad \frac{2k}{n} V_{n-2k+1,n}, \quad \frac{4k}{n} V_{n-4k+1,n}
+\]
+pour \(n \geq 1\) convergent en probabilité vers 1.
+
+On en déduit en particulier, les convergences en probabilité suivantes :
+\[
+V_{n-k+1,n}  \to \infty, \quad \frac{V_{n-2k+1,n}}{V_{n-k+1,n}} \to \frac{1}{2}, \quad \frac{V_{n-4k+1,n}}{V_{n-k+1,n}} \to \frac{1}{4}.
+\]
+
+Donc la convergence suivante a lieu en probabilité :
+\[
+\frac{U(V_{n-k+1,n}) - U(V_{n-2k+1,n})}{U(V_{n-2k+1,n}) - U(V_{n-4k+1,n})} \to 2^{\gamma}.
+\]
+
+Remarquons que si $x \geq 1$, alors $U(x) = F^{-1}(F_V(x))$. On a donc
+\[
+(U(V_{1,n}), \dots, U(V_{n,n})) = (F^{-1}(F_V(V_{1,n})), \dots, F^{-1}(F_V(V_{n,n}))).
+\]
+
+Or \(F_V\) est la fonction de répartition de la loi de Pareto. \newline
+On déduit de la croissance de $F_V$ que $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_V(V_{n,n})))$ a la même loi qu’une suite de $n$ variables aléatoires uniformes sur $[0,1]$ indépendantes. 
+
+On déduit du lemme A que le vecteur aléatoire $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_V(V_{n,n})))$ a la même loi que $(X_1,\dots,X_n)$. 
+
+Donc la variable aléatoire \(\frac{U(V_{n-k+1,n}) - U(V_{n-2k+1,n})}{U(V_{n-k+1,n}) - U(V_{n-4k+1,n})}\) a la même loi que :
+
+\[
+\frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-k+1,n} - X_{n-4k+1,n}}
+\]
+
+Ainsi cette quantité converge en loi vers $2^{\gamma}$ quand $n$ tend vers l’infini.
 
 \subsection{Estimateur de Hill}
 
@@ -756,47 +817,6 @@ où :
 \]
 
 En pratique, il est difficile de comparer ces estimateurs de manière tranchée. Toutefois, l'estimateur de Hill se distingue par une variance asymptotique plus faible, ce qui justifie son choix dans la suite. Étant donné que cet estimateur n'est valide uniquement pour les distributions appartenant au domaine d'attraction de Fréchet, c'est-à-dire dans le cas où \(\gamma > 0\), il est essentiel de vérifier cette hypothèse. 
-\section{Convergence des estimateurs}
-
-\textbf{Définition :}
-On dit qu'un estimateur \(\hat{\gamma_{n}}\) est convergent s'il converge en probabilité vers \(\gamma\), soit :
-\[
-\lim_{n \to \infty} P(\lvert \hat{\gamma_{n}} - \gamma \rvert > \epsilon) = 0 \quad \forall \epsilon > 0
-\]
-\subsection{Estimateur de Hill}
-
-Si on choisit \(k,n \to +\infty\) de sorte que \(\frac{k}{n} \to 0\) alors on peut montrer que \(\lim_{k \to \infty} \hat{\gamma_{k,n}} = \gamma\).
-
-\textbf{Démonstration :}
-
-\subsection{Estimateur de Pickands}
-\textbf{Lemme :} Soit \(X_1, \dots, X_n\) des variables aléatoires indépendantes et de fonction de répartition \(F\). Soit \(U_1, \dots, U_n\) des variables aléatoires indépendantes de loi uniforme sur $[0,1]$. Alors :
-\[
-(F(U_{(1,n)}), \dots, F(U_{(n,n)}))
-\]
-a la meme loi que :
-\[
-(F(X_{(1,n)}), \dots, F(X_{(n,n)}))
-\]
-Pour la suite, nous utiliserons cette notation :
-\[
-F \in D(H(\gamma)) \Longleftrightarrow n \lim_{n \to \infty} n \bar{F}(xan + bn) = -\log(H(\gamma(x)))
-\]
-pour une certaine suite \((an,bn)_{n\geq 1}\) où \(an > 0\) et \(bn \in \mathbb{R}\).
-On a alors la convergence en loi de \((an^{-1}(Mn-bn))_{n \geq 1}\) vers une variable aléatoire de la fonction de répartition \(H(\gamma)\).
-
-Soit \((X_n)_{n \leq 1}\) une suite de variables aléatoires indépendantes de même fonction de répartition \(F \in D(H(\gamma))\), où \(\gamma \in \mathbb{R}\).
-Si \(\lim_{n \to \infty} k(n) = \infty\) et \(\lim_{n \to \infty} \frac{k(n)}{n} = 0\), alors l'estimateur de Pickands converge en probabilité vers \(\gamma\).
-
-Soit \((X_n)_{n \geq 1}\) une suite de variables aléatoires indépendantes de même fonction de répartition \(F \in D(H(\gamma))\), où \(\gamma \in \mathbb{R}\).
-Si \(\lim_{n \to \infty} k(n) = \infty\) et \(\lim_{n \to \infty} \frac{k(n)}{n} = 0\), alors l'estimateur de Pickands converge en probabilité vers \(\gamma\).
-
-\subsection{Estimateur des moments}
-Supposons que \(F \in D(H_{\gamma}), \gamma \in \mathbb{R}, k_n \to \infty \quad et \quad \frac{k}{n} \to 0 \quad quand \quad n \to \infty\):
-\[
-\hat{\gamma_n} \xrightarrow{\mathbb{P}} \gamma \quad \text{quand } n \to \infty
-\]
-
 
 \section{Sélection des estimateurs de l'indice de valeurs extrêmes}
 
@@ -816,7 +836,6 @@ avec
 \hat{\gamma}_{j,n}^{(UH)} = X_{(n-j)} \hat{\gamma}_{n}^{(H)}(k_n).
 \]
 La difficulté pratique dans le calcul de ces estimateurs réside dans le choix du nombre d'excès \(k_n\) à prendre en compte. Si les estimateurs sont calculés en utilisant un trop grand nombre d'observations, leur biais sera élevé. À l'inverse, si le nombre d'observations est trop faible, cela entraînera une variance importante.
-
 
 \section{Annexe}
 
