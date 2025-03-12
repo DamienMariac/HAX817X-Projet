@@ -635,6 +635,30 @@ Une généralisation de l'estimateur de Pickands a été introduite comme suit :
 \]
 où \(u\) et \(v\) sont des réels positifs différents de 1, de sorte que les indices \([vk]\), \([uk]\) et \([uvk]\) ne dépassent pas \(n\). Lorsque \(u = v = 2\), on retrouve l'estimateur de Hill \(\hat{\gamma}_{k,n}\).
 
+\subsection{Construction de l'estimateur de Pickands}
+\textbf{Proposition :} (Caractérisations de \( D(H_{\gamma}) \))
+
+Pour \( \gamma \in \mathbb{R} \), les affirmations suivantes sont équivalentes. \newline
+\( (a) \quad F \in D(H_{\gamma}) \) \newline
+\( (b) \) Pour une certaine fonction positive \( c(t) = a\left( \frac{1}{t} \right) \) :
+
+\[
+\lim_{t \to 0} \frac{U(tx) - U(t)}{c(t)} = 
+\begin{cases} 
+\frac{x^\gamma - 1}{\gamma} & \text{si } \gamma \neq 0, \\
+\log(x) & \text{si } \gamma = 0, 
+\end{cases}
+\quad \text{pour } x > 0.
+\]
+
+\[
+\lim_{s \to 0} \frac{U(sx) - U(s)}{U(sy) - U(s)} = 
+\begin{cases} 
+\frac{x^\gamma - 1}{y^\gamma - 1} & \text{si } \gamma \neq 0, \\
+\frac{\log(x)}{\log(y)} & \text{si } \gamma = 0.
+\end{cases}
+\]
+
 \subsection{Estimateur de Hill}
 
 Tout d'abord, l'estimateur de Hill est applicable uniquement aux distributions de Fréchet (\(\gamma > 0\)), où il permet d'obtenir un estimateur de l'indice de queue plus efficace que celui de Pickands. Cet estimateur est défini par la statistique suivante :
@@ -700,15 +724,38 @@ Cela implique que l'estimateur du paramètre \( \lambda \) est :
 \hat{\lambda} = \left( \frac{1}{n} \sum_{i=1}^{n} \log X_i \right)^{-1}.
 \]
 
-\subsection{Estimateur des moments}
-L'estimateur des moments a été proposé par Dekkers, Einmahl et Haan en 1989 comme une alternative aux estimateurs de Hill et de Pickands pour l'estimation de l'indice de queue \(\gamma\) dans les modèles de valeurs extrêmes. Ce type d'estimateur est particulièrement adapté lorsque les données ne suivent pas exactement les hypothèses des autres estimateurs. Cet estimateur est défini comme suit 
+\subsection{Estimateur de DEDH}
+Le troisième estimateur de l'indice de queue est celui proposé par Dekkers, Einmahl et De Haan. Il s'agit d'une généralisation de l'estimateur de Hill, applicable à tous les domaines d'attraction. Il est défini par :
+
 \[
-\hat{\gamma}_{n} = 1 + \hat{\gamma}_{n}^{(1)} - \frac{1}{2}[1 - \frac{(\hat{\gamma_{n}^{(1)}})^2}{\hat{\gamma_{n}^{(2)}}}]^{-1}
+\hat{\gamma}_n^{(DEdH)}(k_n) = \mathcal{M}^{(1)}_{k_n} + 1 - \frac{1}{2} \left( 1 - \frac{(\mathcal{M}^{(1)}_{k_n})^2}{\mathcal{M}^{(2)}_{k_n}} \right)^{-1}
 \]
-avec 
+
+où 
 \[
-\hat{\gamma}_{n}^{(i)} = \left[ \frac{1}{k} \sum_{j = 1}^{k} \log\left(\frac{X_{j,n}}{X_{k-1,n}}\right) \right]^i, \quad \text{où } i = 1,2
+\mathcal{M}^{(r)}_{k_n} = \frac{1}{k_n} \sum_{i=1}^{k_n} (\ln(X_{(n-i+1)}) - \ln(X_{(n-k_n)}))^r.
 \]
+La valeur de \(\mathcal{M}^{(1)}_{k_n}\) correspond à l'estimateur de Hill.
+
+L'estimateur de DEDH possède la propriété de convergence en loi :
+
+\[
+\sqrt{k_n}(\frac{\hat{\gamma}_n^{(DEdH)}(k_n) - \gamma}{\sigma_M}) \xrightarrow{\mathcal{L}} \mathcal{N}(0,1) \quad \text{quand } n \to \infty.
+\]
+
+où :
+
+\[
+\sigma_M^2 = 
+\begin{cases} 
+1 + \gamma^2, & \text{si } \gamma \geq 0, \\ 
+(1 - \gamma^2)(1 - 2\gamma)
+\left( 4 - \frac{8 (1 - 2\gamma)}{1 - 3\gamma} - \frac{(5 - 11\gamma)(1 - 2\gamma)}{(1 - 3\gamma)(1 - 4\gamma)} \right), 
+& \text{si } \gamma < 0.
+\end{cases}
+\]
+
+En pratique, il est difficile de comparer ces estimateurs de manière tranchée. Toutefois, l'estimateur de Hill se distingue par une variance asymptotique plus faible, ce qui justifie son choix dans la suite. Étant donné que cet estimateur n'est valide uniquement pour les distributions appartenant au domaine d'attraction de Fréchet, c'est-à-dire dans le cas où \(\gamma > 0\), il est essentiel de vérifier cette hypothèse. 
 \section{Convergence des estimateurs}
 
 \textbf{Définition :}
@@ -757,7 +804,18 @@ Le choix de l’estimateur dépend du type de distribution sous-jacente. L’est
 
 Cependant, pour les distributions de Weibull (\(\gamma < 0\)) et Gumbel (\(\gamma = 0\)), l’estimateur de Hill n’est pas applicable. Dans ces cas, on utilise l’estimateur de Pickands, qui est valide quel que soit le signe de \( \gamma \).  
 
-Ainsi, la sélection de l’estimateur repose sur la nature de la distribution des valeurs extrêmes.  
+L'estimateur de Pickands est basé sur les distances entre deux statistiques d'ordre, sans tenir compte du maximum de l’échantillon, ce qui entraîne une perte d'information sur la queue de distribution. Par conséquent, il présente une plus grande volatilité que l'estimateur de Hill, qui repose sur la moyenne des logarithmes des observations.
+
+\section{Détermination du domaine d'attraction}
+Une approche graphique qui permet de déterminer à quel domaine d'attraction appartiennent les données consiste à tracer le quantile plot généralisé repris de Anis Borchani (2010). Le quantile plot généralisé est défini par :
+\[
+\left( \ln\left( \frac{n+1}{j} \right), \ln\left( \hat{\gamma}_{j,n}^{(UH)} \right) \right) \quad \text{pour tout } j \in \left[ 1; k_n \right]
+\]
+avec 
+\[
+\hat{\gamma}_{j,n}^{(UH)} = X_{(n-j)} \hat{\gamma}_{n}^{(H)}(k_n).
+\]
+La difficulté pratique dans le calcul de ces estimateurs réside dans le choix du nombre d'excès \(k_n\) à prendre en compte. Si les estimateurs sont calculés en utilisant un trop grand nombre d'observations, leur biais sera élevé. À l'inverse, si le nombre d'observations est trop faible, cela entraînera une variance importante.
 
 
 \section{Annexe}

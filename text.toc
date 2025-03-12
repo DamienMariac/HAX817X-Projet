@@ -27,12 +27,14 @@
 \contentsline {subsubsection}{\numberline {3.6.1}Convergence et estimation empirique}{12}{}%
 \contentsline {section}{\numberline {4}Méthodes d'estimation de l'indice de valeurs extrêmes}{12}{}%
 \contentsline {subsection}{\numberline {4.1}Estimateur de Pickands}{12}{}%
-\contentsline {subsection}{\numberline {4.2}Estimateur de Hill}{13}{}%
-\contentsline {subsection}{\numberline {4.3}Estimateur des moments}{14}{}%
+\contentsline {subsection}{\numberline {4.2}Construction de l'estimateur de Pickands}{13}{}%
+\contentsline {subsection}{\numberline {4.3}Estimateur de Hill}{13}{}%
+\contentsline {subsection}{\numberline {4.4}Estimateur de DEDH}{14}{}%
 \contentsline {section}{\numberline {5}Convergence des estimateurs}{14}{}%
 \contentsline {subsection}{\numberline {5.1}Estimateur de Hill}{14}{}%
 \contentsline {subsection}{\numberline {5.2}Estimateur de Pickands}{14}{}%
-\contentsline {subsection}{\numberline {5.3}Estimateur des moments}{14}{}%
+\contentsline {subsection}{\numberline {5.3}Estimateur des moments}{15}{}%
 \contentsline {section}{\numberline {6}Sélection des estimateurs de l'indice de valeurs extrêmes}{15}{}%
-\contentsline {section}{\numberline {7}Annexe}{15}{}%
-\contentsline {subsection}{\numberline {7.1}Codes R}{15}{}%
+\contentsline {section}{\numberline {7}Détermination du domaine d'attraction}{15}{}%
+\contentsline {section}{\numberline {8}Annexe}{15}{}%
+\contentsline {subsection}{\numberline {8.1}Codes R}{15}{}%
