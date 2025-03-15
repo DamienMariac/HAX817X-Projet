@@ -8,6 +8,7 @@
 \usepackage{graphicx} % pour les images 
 \usepackage{listings} % pour intégrer un code R
 \usepackage{xcolor} % pour coloriser le code R intégré
+\usepackage{comment}
 
 \lstset{
 	language=R,
@@ -44,7 +45,7 @@
 
 Le théorème central limite, formulé par Pierre-Simon de Laplace en 1809, garantit que, sous des conditions raisonnables, la somme normalisée de ces variables suit asymptotiquement une loi normale. Cette convergence est utile pour étudier le comportement \textbf{global} des observations, mais elle ne renseigne pas sur le comportement des valeurs extrêmes.
 
-Il est donc naturel de se demander quelle peut être la convergence en loi de ses valeurs extrêmes. 
+Il est donc naturel de se demander quelle peut être la convergence en loi de ses dernières. 
 \\
 Autrement dit, pour \( X = (X_1, ..., X_n) \) un échantillon de variables aléatoires i.i.d , on pose :
 
@@ -59,15 +60,15 @@ et on s'intéresse à la convergence de \( M_n \), ainsi qu'aux hypothèses sous
 \\
 Remarque : Etudier le minimum est totalement analogue dans ce qui suit.
 
-\section{Lois de $M_n$}
+\section{Les lois de $M_n$}
 
-\subsection{Quelque notation }
+\subsection{Quelques notations }
 
 On commence par faire une remarque sur la fonction de repartion de $M_n$ en utilisant le fait que les $X_i$ sont i.i.d :
 \\
-En effet,
+En effet, si on note $F_{M_n}$ la fonction de repartition de $M_n$, et $F_{X_i}$ la fonction de repartition de $X_i$ on a :
 \[
-F_{M_n}(t) = \mathbb{P}(M_n < t) = \mathbb{P}(X_1 < t,...,X_n <t)=\mathbb{P}(X_1<t)^n = F_{X_1}^n(t) 
+\forall t \in \mathbb{R} \quad F_{M_n}(t) = \mathbb{P}(M_n < t) = \mathbb{P}(X_1 < t,...,X_n <t)=\mathbb{P}(X_1<t)^n = F_{X_1}^n(t) 
 \]
 \\
 Dans la suite, on notera $F(t)$, la fonction de repartition des $X_i$.
@@ -84,14 +85,17 @@ Puis étudier la loi de la limite de $\frac{M_n - b_n}{a_n}$. Comme la fonction 
 \[
 \mathbb{P} \left( \frac{M_n - b_n}{a_n} < t \right) \xrightarrow[n\to +\infty]{} G(t)
 \]
-
-à ce stade la, il nous faut donc trouver toutes les distributions G qui peuvent apparaître comme limite dans l’équation ci-dessus.
+\\
+Si il existe de tel suite $a_n$ et $b_n$ alors on dit que $F$ est dans le domaine d'attraction de $G$.
+\\
+\\
+à ce stade la, il nous faut donc trouver les distributions G qui peuvent apparaître comme limite dans l’équation ci-dessus.
 \\
 \\
 Pour ce faire, nous allons utiliser le théoreme suivant : 
 \\
 \\
-\underline{\textbf{Théorème}:}
+\underline{\textbf{Théorème (méthode de la fonction muette)}:}
 Soit \( Y_n \) une variable aléatoire de fonction de répartition \( F_n \), et soit \( Y \) une variable aléatoire de fonction de répartition \( F \).  
 Alors $Y_n \xrightarrow{\mathcal{L} } Y$ si et seulement si pour toute fonction $z$ réelle, bornée et continue :
 \[
@@ -131,7 +135,7 @@ On en déduit une bonne valeur pour $b_n$. En effet,
 \Longleftrightarrow n \: ln(F(a_n t + b_n)) \xrightarrow[n\to +\infty]{} ln(G(t))
 \]
 \[
-\Longleftrightarrow n(- F(a_n t + b_n) + 1) \xrightarrow[n\to +\infty]{} ln(G(t))
+\Longleftrightarrow n(- F(a_n t + b_n) + 1) \xrightarrow[n\to +\infty]{} ln(G(t)) \quad \quad (\text{car} \quad \lim_{x \to 0} \frac{ln(1-x)}{x} = -1)
 \]
 \[
 \Longleftrightarrow n \: \mathbb{P}(X_1 > a_n t + b_n ) \xrightarrow[n\to +\infty]{} - ln(G(t))
@@ -146,10 +150,10 @@ n \mathbb{P}(X_1 > b_n) =1  \Longleftrightarrow \mathbb{P}(X_1 < b_n) = 1 - \fra
 \[
 b_n = Q(1-\frac{1}{n}) = K(n)
 \]
-Dans la dernière équivalence, on a composé par la fonction quantile (qui est bien définie pour chaque distribution)
+Dans la dernière équivalence, on a composé par la fonction quantile.
 \\
 \subsection{Paramètre $a_n$}
-Avec le parametre $b_n$ définie au dessus, on obtient alors une condition (C), il faut qu'il existe une fonction $a$ tel que $\lim_{x \to \infty} \frac{K(\frac{x}{v}) - K(x)}{a(x)}$ converge (vers une fonction $h(n)$). 
+Avec le parametre $b_n$ définie au dessus, on obtient alors une condition, il faut qu'il existe une fonction $a$ tel que $\lim_{x \to \infty} \frac{K(\frac{x}{v}) - K(x)}{a(x)}$ converge (vers une fonction $h(n)$).
 \\
 \\
 \textbf{Proposition :}
@@ -167,9 +171,9 @@ Les limites possibles sont données par :
 Nous interprétons $h_{0}(u) = \log(u)$ lorsque $\gamma = 0$.*
 \\
 \\
-\; On ne veut pas que $c=0$, car il conduit à une limite dégénérée pour $\frac{X_{n,n} - b_n}{a_n}$. 
+\; On ne veut pas que $c=0$, car il conduit à une limite dégénérée pour $\frac{M_{n} - b_n}{a_n}$. 
 Ensuite, le cas $c>0$ peut être ramené au cas $c=1$ en incorporant $c$ dans la fonction $a$. 
-
+\iffalse
 Nous remplaçons la condition $(C)$ par une condition plus informative, appelée 
 "\textit{condition extrémale du domaine d’attraction}" :
 \[
@@ -179,8 +183,8 @@ h_{\gamma}(u),
 \quad 
 \text{pour } u>0.
 \]
-Ceci indique que les limites possibles sont essentiellement décrites par la \textit{famille à un paramètre} $h_{\gamma}$. 
-\\
+Ceci indique que les limites possibles sont essentiellement décrites par la \textit{famille à un paramètre} $h_{\gamma}$. \\
+\fi
 \\
 \\
 \textbf{Preuve de la Proposition}  
@@ -194,7 +198,7 @@ Soient $u,v > 0$. Alors :
 \frac{U(xu) - U(x)}{a(x)}.
 \tag{2.3}
 \]
-Si la limite dans $(C)$ est satisfaite, alors le rapport $\frac{a(ux)}{a(x)}$ converge vers g(u).
+Si la limite dans $F$ est dans le domaine d'attraction de $G$ (ce qu'on suppose à ce stade), alors le rapport $\frac{a(ux)}{a(x)}$ converge vers g(u).
 \\
 De plus, pour $u,v>0$,
 \[
@@ -202,14 +206,14 @@ De plus, pour $u,v>0$,
 \;=\;
 \frac{a(xuv)}{a(xv)} \,\frac{a(xv)}{a(x)}.
 \]
-Par passage à la limite (pour x), la fonction $g$ satisfait l'\textit{équation fonctionnelle de Cauchy} :
+Par passage à la limite pour x, la fonction $g$ satisfait l'\textit{équation fonctionnelle de Cauchy} :
 \[
 g(uv) = g(u)\,g(v).
 \]
 \\
 Les solutions de cette équation sont de la forme $g(u)= u^{\gamma}$ avec $\gamma$ un réel.
 \\
-Donc, $a$ est une fonction à variation régulière c'est à dire qu'on a $\lim_{x\to \infty} \frac{a(ux)}{a(x)} \;=\; x^{\gamma} l(x)$
+Donc, on a $\lim_{x\to \infty} \frac{a(ux)}{a(x)} \;=\; x^{\gamma} l(x)$, on dit dans ce cas que $a$ est une fonction à variation régulière.
 \\
 \\
 \subsection{Les lois limites}
@@ -218,7 +222,7 @@ En reprenant $(2.3)$ et en utilisant ce qui précède, on obtient :
 \lim_{x\to \infty} \frac{U(xuv) - U(x)}{a(x)} = u^{\gamma} h(v) + h(u)
 \]
 \[
-\text{autrement dit :} \; \; h_{\gamma}(uv)= h_{\gamma}(u) + h_{\gamma}(v)
+\text{autrement dit :} \; \; h_{\gamma}(uv)= u^{\gamma} h_{\gamma}(v) + h_{\gamma}(u)
 \]
 \\
 \\
@@ -293,7 +297,7 @@ Les lois limites qui s'imposent dependent d'un parametre $\gamma$ et sont les su
     G_\gamma(u)=\exp\left\{-\left(1+\gamma u\right)^{-1/\gamma}\right\}, \quad u < -\frac{1}{\gamma}.
     \]
 \end{itemize}
-
+\newpage
 \section{Quelques exemples numériques}
 
 \noindent Voici maintenant quelques applications numériques sur des lois usuelles de ce que nous avons vu dans cette section. Pour chacune des représentations suivantes, nous avons simulé 1000 fois chaque loi puis ensuite effectué 10000 simulations pour le maximum afin d'avoir une précision correcte.
@@ -836,7 +840,10 @@ avec
 \hat{\gamma}_{j,n}^{(UH)} = X_{(n-j)} \hat{\gamma}_{n}^{(H)}(k_n).
 \]
 La difficulté pratique dans le calcul de ces estimateurs réside dans le choix du nombre d'excès \(k_n\) à prendre en compte. Si les estimateurs sont calculés en utilisant un trop grand nombre d'observations, leur biais sera élevé. À l'inverse, si le nombre d'observations est trop faible, cela entraînera une variance importante.
+\newpage
+\section{Application sur des données réelles}
 
+\newpage
 \section{Annexe}
 
 \subsection{Codes R}

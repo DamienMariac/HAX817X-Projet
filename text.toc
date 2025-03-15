@@ -1,18 +1,18 @@
 \babel@toc {french}{}\relax 
 \contentsline {section}{\numberline {1}Introduction}{3}{}%
-\contentsline {section}{\numberline {2}Lois de $M_n$}{3}{}%
-\contentsline {subsection}{\numberline {2.1}Quelque notation }{3}{}%
+\contentsline {section}{\numberline {2}Les lois de $M_n$}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Quelques notations }{3}{}%
 \contentsline {subsection}{\numberline {2.2}Paramètre $b_n$}{4}{}%
 \contentsline {subsection}{\numberline {2.3}Paramètre $a_n$}{4}{}%
 \contentsline {subsection}{\numberline {2.4}Les lois limites}{5}{}%
 \contentsline {subsubsection}{\numberline {2.4.1}1. Cas \(\gamma \neq 0\)}{5}{}%
 \contentsline {subsubsection}{\numberline {2.4.2}2. Cas \(\gamma =0\)}{5}{}%
 \contentsline {subsection}{\numberline {2.5}Résumé}{6}{}%
-\contentsline {section}{\numberline {3}Quelques exemples numériques}{6}{}%
-\contentsline {subsubsection}{\numberline {3.0.1}Loi uniforme}{6}{}%
+\contentsline {section}{\numberline {3}Quelques exemples numériques}{7}{}%
+\contentsline {subsubsection}{\numberline {3.0.1}Loi uniforme}{7}{}%
 \contentsline {subsubsection}{\numberline {3.0.2}Loi exponentielle}{7}{}%
 \contentsline {subsubsection}{\numberline {3.0.3}Loi normale}{7}{}%
-\contentsline {subsubsection}{\numberline {3.0.4}Loi de Cauchy}{7}{}%
+\contentsline {subsubsection}{\numberline {3.0.4}Loi de Cauchy}{8}{}%
 \contentsline {section}{\numberline {4}Estimation du paramètre gamma}{9}{}%
 \contentsline {subsection}{\numberline {4.1}Fonction de répartition empirique}{9}{}%
 \contentsline {subsection}{\numberline {4.2}Quantiles et inverse généralisée}{9}{}%
@@ -32,5 +32,6 @@
 \contentsline {subsection}{\numberline {5.4}Estimateur de DEDH}{15}{}%
 \contentsline {section}{\numberline {6}Sélection des estimateurs de l'indice de valeurs extrêmes}{15}{}%
 \contentsline {section}{\numberline {7}Détermination du domaine d'attraction}{15}{}%
-\contentsline {section}{\numberline {8}Annexe}{16}{}%
-\contentsline {subsection}{\numberline {8.1}Codes R}{16}{}%
+\contentsline {section}{\numberline {8}Application sur des données réelles}{16}{}%
+\contentsline {section}{\numberline {9}Annexe}{17}{}%
+\contentsline {subsection}{\numberline {9.1}Codes R}{17}{}%
