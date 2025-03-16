@@ -843,6 +843,50 @@ La difficulté pratique dans le calcul de ces estimateurs réside dans le choix 
 \newpage
 \section{Application sur des données réelles}
 
+Afin d'illustrer les méthodes d'estimation de l'indice de valeurs extrêmes, nous allons appliquer ces techniques sur des données réelles.
+Nous allons utiliser les données du package $ismev$ de R. Plus précisement wooster et rain. Wooster contient les données
+de temperature minimal (en Fahrenheit) annuelle à Wooster de 1983 à 1988.
+Tandis que Rain contient les données de pluie journalière dans en Angletterre de 1914 à 1962.
+\\
+Nous allons utiliser deux méthodes d'estimation sur les paramêtres $a_n$, $b_n$ et $\gamma$ afin de d'estimer la valeur extrêmes.
+
+\subsection{Première méthode (Méthode des maxima en bloc) avec Wooster}
+\subsubsection{Principe}
+
+La première étape consiste à decouper nos données en blocs de taille $k$ et de calculer le maximum sur chaque bloc. Le parametre
+$k$ est choisit en fonction de l'interpretation des données. (par exemple, si on a des données journalières, on peut choisir $k=365$ pour avoir des maximums annuelle).
+Ensuite, pour chaque bloc on calcule le maximum. Cela nous donne une suite de maximum.
+Une fois les maximums obtenus, on estime $a_n$,$b_n$ et $\gamma$ en utilisant la méthode du maximum de vraisemblance.
+
+\subsubsection{Application sur les données de Wooster}
+L'objectif sur ces données est de savoir si il existe (et dans le cas écheant de le calculer) un seuil tel que les températures ne puisse pas depasser.
+Chercher cette valeur seuil serait utilse en agriculure par exemple pour savoir si les températures ne sont pas trop élevées pour les cultures.
+
+\begin{center}
+	\includegraphics[scale=0.8]{./images/woosterhisto.png} 
+\end{center}
+
+Nous avons découper ici nos données en blocs de taille $60$ et de calculer le maximum sur chaque bloc.
+L'estimation numériques par l'algorithme de Nelder-Mead des paramètres $a_n$,$b_n$ et $\gamma$ nous donne :
+\[
+a_n = 36.02, \quad b_n = 18.82, \quad \gamma = -0.5
+\]
+
+Nous obtenons une valeur de $\gamma$ négative, ce qui signifie que la distribution des températures max à Wooster est de type Weibull.
+Nous pouvons donc conclure que les températures à Wooster sont pas limitées par un seuil.
+Ce seuil est donc de : $x_{max} = \mu - \frac{\sigma}{\gamma} = 74.93 $
+\\
+\\
+Il est alors raisonnables de penser que les températures à Wooster ne depassent pas $74.93$.
+
+\begin{center}
+	\includegraphics[scale=0.8]{./images/wooster.png} 
+\end{center}
+
+\subsection{Deuxieme méthode (Méthode de depassement de seuil) avec Rain}
+
+
+
 \newpage
 \section{Annexe}
 

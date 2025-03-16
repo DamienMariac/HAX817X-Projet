@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1742065715.32233 "/home/damien/Documents/projet/redaction/text.tex" "text.pdf" "text" 1742065715.90427 0
+["pdflatex"] 1742135436.60039 "/home/damien/Documents/projet/redaction/text.tex" "text.pdf" "text" 1742135437.86229 0
   "/etc/texmf/web2c/texmf.cnf" 1738070165.10808 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/damien/Documents/projet/redaction/text.tex" 1742065714.51705 30001 9c5bc0ac858688527b6084fbd00988aa ""
+  "/home/damien/Documents/projet/redaction/text.tex" 1742135436.28137 32473 7b1e531e7c89cf182386aaafb9d8970b ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -96,9 +96,11 @@
   "Codes_R/Max_Expo.png" 1741601977.52336 15632 c137b4c1518a08d2526968ed352e04b9 ""
   "Codes_R/Max_Normale.png" 1741601977.52336 16072 e28c09bcc5dfff9459671bf279e3edb5 ""
   "Codes_R/Max_Uniforme.png" 1741601977.52436 13615 c7dd48017fb3c60612af934e8d64ff6f ""
-  "text.aux" 1742065715.84506 4645 637da9e42a6ff466d69c469557d94b18 "pdflatex"
-  "text.tex" 1742065714.51705 30001 9c5bc0ac858688527b6084fbd00988aa ""
-  "text.toc" 1742065715.84606 2941 85bed736ffc35f427b8b3a22ec7fcafd "pdflatex"
+  "images/wooster.png" 1742135432.58837 31816 346d418a92ae28cc01b2e354c6325d08 ""
+  "images/woosterhisto.png" 1742134405.59364 19145 110487480b673355c9b2d1b1182bb7c8 ""
+  "text.aux" 1742135437.72237 5201 4327ce8c2b137da835367d0c99ba9d02 "pdflatex"
+  "text.tex" 1742135436.28137 32473 7b1e531e7c89cf182386aaafb9d8970b ""
+  "text.toc" 1742135437.72537 3333 75904a02c333b32cdc1ce1f6d6ac35bf "pdflatex"
   (generated)
   "text.aux"
   "text.log"

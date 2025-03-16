@@ -33,5 +33,9 @@
 \contentsline {section}{\numberline {6}Sélection des estimateurs de l'indice de valeurs extrêmes}{15}{}%
 \contentsline {section}{\numberline {7}Détermination du domaine d'attraction}{15}{}%
 \contentsline {section}{\numberline {8}Application sur des données réelles}{16}{}%
-\contentsline {section}{\numberline {9}Annexe}{17}{}%
-\contentsline {subsection}{\numberline {9.1}Codes R}{17}{}%
+\contentsline {subsection}{\numberline {8.1}Première méthode (Méthode des maxima en bloc) avec Wooster}{16}{}%
+\contentsline {subsubsection}{\numberline {8.1.1}Principe}{16}{}%
+\contentsline {subsubsection}{\numberline {8.1.2}Application sur les données de Wooster}{16}{}%
+\contentsline {subsection}{\numberline {8.2}Deuxieme méthode (Méthode de depassement de seuil) avec Rain}{17}{}%
+\contentsline {section}{\numberline {9}Annexe}{18}{}%
+\contentsline {subsection}{\numberline {9.1}Codes R}{18}{}%
