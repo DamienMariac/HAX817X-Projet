@@ -300,43 +300,81 @@ Les lois limites qui s'imposent dependent d'un parametre $\gamma$ et sont les su
 \newpage
 \section{Quelques exemples numériques}
 
-\noindent Voici maintenant quelques applications numériques sur des lois usuelles de ce que nous avons vu dans cette section. Pour chacune des représentations suivantes, nous avons simulé 1000 fois chaque loi puis ensuite effectué 10000 simulations pour le maximum afin d'avoir une précision correcte.
+\noindent Voici maintenant quelques applications numériques sur des lois usuelles de ce que nous avons vu dans cette section. Pour chacune des représentations suivantes, nous avons simulé 1000 fois chaque loi puis ensuite effectué 10000 simulations pour le maximum afin d'avoir une précision correcte. 
 
 \subsubsection{Loi uniforme}
 
-\noindent Pour la loi uniforme sur [0,1], on peut montrer théoriquement que la limite du max est une loi exponentielle de paramètre 1. \\
+\noindent Pour la loi uniforme sur [0,1], on peut montrer théoriquement que la limite du max est une loi exponentielle de paramètre 1 (loi de Weibull bien particulière). \\
+\noindent Soient \( U_1, U_2, \dots, U_n \) des variables aléatoires indépendantes et identiquement distribuées selon la loi uniforme sur \([0,1]\).
+
+\noindent On a, pour $ x \in [0,1]$ :
+
+\begin{align*}
+	P(M_n \leq x) &= P(U_1 \leq x, \dots, U_n \leq x) \\
+	&= P(U_1 \leq x)^n \text{ par indépendance des $U_i$}\\
+	&= x^n
+\end{align*}
+
+\noindent Nous allons maintenant effectuer le changement de variable $ x = 1 - y/n $ avec $y > 0 $ pour examiner la queue de la distribution :
+
+\[
+P(M_n \leq 1 - y/n) = (1 - y/n)^n.
+\]
+
+\noindent Pour $ n $ grand, on a: $(1 - y/n)^n \approx e^{-y} $. Donc, $ P(M_n \leq 1 - y/n) \approx e^{-y} $.
+
+
+\noindent Or, par définition, la loi exponentielle de paramètre 1 a pour fonction de répartition : $ P(Y \leq y) = 1 - e^{-y}, \quad y > 0. $
+
+\noindent Ainsi, on a donc montré que :
+
+\[
+P(n(1 - M_n) \leq y) \to P(Y \leq y) = 1 - e^{-y},
+\]
+
+\noindent ce qui établit la convergence en loi :
+
+\[
+Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
+\] 
+\noindent Ainsi, on trouve que $a_n$ = $\frac{1}{n}$ et $b_n$ = 1.
+
 \noindent Avec notre machine, nous obtenons le graphe suivant :
 
 \begin{center}
 	\includegraphics[scale=0.8]{./Codes_R/Max_Uniforme.png} 
 \end{center}
 
+\noindent Remarquons que l'on obtient une loi de Gumbell, ce qui est assez logique au vu du fait que ce soit une loi à queue très légère (elle n'en a tout simplement pas car son support est borné).
+
 \subsubsection{Loi exponentielle}
-\noindent Pour une loi exponentielle de paramètre 1, la loi limite est une loi de Gumbel. 
+\noindent Pour une loi exponentielle de paramètre 1, la loi limite est une loi de Gumbel. Théoriquement, on trouve $a_n = 1 $ et $b_n = \log(n) $.
 
 \begin{center}
 	\includegraphics[scale=0.8]{./Codes_R/Max_Expo.png} 
 \end{center}
 
+\noindent Cette fois-ci, on avait une loi à queue fine, et on obtient loi de Gumbel, ce qui était attendu.
 
 \subsubsection{Loi normale}
 
-\noindent Pour maintenant une loi normale centrée-réduite, on peut montrer que la loi limite est encore une fois une loi de Gumbel.
+\noindent Pour maintenant une loi normale centrée-réduite, on peut montrer que la loi limite est encore une fois une loi de Gumbel. On trouve les paramètres généralisés $a_n = \frac{1}{\sqrt{(2*\log(n)}} $ et $b_n = \frac{1}{a_n} - \frac{\log(\log(n)) + \log(4 * pi)}{2 * \sqrt{2 * \log(n)}} $.
 
 \begin{center}
 	\includegraphics[scale=0.8]{./Codes_R/Max_Normale.png} 
 \end{center}
 
-\noindent Notons ainsi que l'on a la même loi limite que pour la loi exponentielle de paramètre 1.
+\noindent Notons ainsi que l'on a la même loi limite que pour la loi exponentielle de paramètre 1, les graphes sont quasiment identiques.
 
 \subsubsection{Loi de Cauchy}
 
-\noindent Enfin, pour une loi de Cauchy (de paramètres 0 et 1 ici), la loi limite est une loi de Fréchet. 
+\noindent Enfin, pour une loi de Cauchy (de paramètres 0 et 1 ici), la loi limite est une loi de Fréchet. On a les coefficients suivants : $a_n = pi $ et $b_n = n $.
 
 \begin{center}
 	\includegraphics[scale=0.8]{./Codes_R/Max_Cauchy.png} 
 \end{center}
 
+\noindent Enfin ici, on avait une loi à queue lourde, et on obtient bien la loi de Fréchet attendue.
 
 \newpage
 \section{Estimation du paramètre gamma} 
