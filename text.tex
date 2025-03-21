@@ -998,4 +998,104 @@ L'avantage de cette méthode est qu'elle est plus efficace car elle utilise plus
 	fill = c("lightblue", NA), border = c("white", NA), 
 	lty = c(NA, 1), col = c(NA, "red"), lwd = c(NA, 2))
 \end{lstlisting}
+
+\begin{lstlisting}
+	#################### CODE POUR WOOSTER ####################
+	library(ismev)
+	library(evd)
+	data("wooster")
+	
+	gev_fit <- fgev(wooster)
+	
+	mu <- as.numeric(gev_fit$param[1])
+	sigma <- as.numeric(gev_fit$param[2])
+	gamma <- as.numeric(gev_fit$param[3])
+	
+	# estimation de gamma avec pickands (juste pour comparer)
+	
+	x <- sort(wooster)
+	n <- length(x)
+	k <- floor(0.1 * length(wooster))
+	X1 <- x[n - k + 1]
+	X2 <- x[n - 2*k + 1]
+	X3 <- x[n - 4*k + 1]
+	pickands_est <- (1 / log(2)) * log((X1 - X2) / (X2 - X3))
+	print(pickands_est)
+	
+	
+	# gamma est < 0 donc on calcule la borne max
+	x_max <- mu - sigma / gamma
+	
+	# Définir la densité de la loi (pour gamma < 0)
+	dgev <- function(x, mu, sigma, gamma) {
+	  t <- 1 + gamma * ((x - mu) / sigma)
+	  dens <- ifelse(t > 0, 
+					 (1/sigma) * t^(-1/gamma - 1) * exp(-t^(-1/gamma)), 
+					 0)
+	  return(dens)
+	}
+	
+	xseq <- seq(min(wooster), max(wooster), length.out = 200)
+	
+	# PLOT   
+	
+	hist(wooster,main = "Histogram de wooster" ,breaks = 60, probability = TRUE, col = "lightgray")
+	
+	lines(xseq, dgev(xseq, mu, sigma, gamma), col = "blue", lwd = 2)
+	
+	
+	abline(v = x_max, col = "red", lwd = 2, lty = 2)
+	legend("topright", legend = paste("x_max =", round(x_max, 2)), col = "red", lwd = 2, lty = 2)
+	
+	# plot plus détaillé
+	plot(gev_fit)
+
+
+
+	
+\end{lstlisting}
+
+\begin{lstlisting}
+	#################### CODE POUR RAIN ####################
+	library(ismev)
+	library(evd)
+	data(rain)
+	rain_data <- rain
+
+	# seuil	
+	threshold <- quantile(rain_data, probs = 0.95)
+	gpd_result <- gpd.fit(rain_data, threshold)
+
+	# on stocke la parametre d'échelle et de forme
+	sigma <- gpd_result$mle[1]
+	gamma <- gpd_result$mle[2]
+	SE <- gpd_result$se[2]
+	IC <- c(gamma - 1.96 * SE, gamma + 1.96 * SE)    # contient 0 (oups)
+
+
+	# On code la fonction de pareto généralisée parametre echel sigma et de forme gamma
+	pareto <- function(x, gamma, sigma) {
+	  if (gamma == 0) {
+		return(1/sigma * exp(-x/sigma))
+	  } else {
+		return(1/sigma * (1 + gamma * x/sigma)^(-1/gamma - 1))
+	  }
+	}
+
+	# on trace l'histogramme des données
+	hist(rain_data, breaks = 50, freq = FALSE, main = "Rain")
+
+	# on trace l'histogramme des données en excés par rapport au seuil et la loi de pareto
+	hist(rain_data[rain_data > threshold] - threshold, breaks = 50, freq = FALSE, main = "Rain Excesses et densité de Pareto")
+
+	# on trace la loi de gpd avec les paramètres estimés
+	xseq <- seq(min(rain), max(rain), length.out = 200)
+	lines(xseq, pareto(xseq, gamma, sigma),col='red', lwd=2)
+
+
+
+	# pour le qq-plot et residus
+	gpd.diag(gpd_result)
+
+\end{lstlisting}
 \end{document}
