@@ -36,6 +36,8 @@
 \contentsline {subsection}{\numberline {8.1}Première méthode (Méthode des maxima en bloc) avec Wooster}{17}{}%
 \contentsline {subsubsection}{\numberline {8.1.1}Principe}{17}{}%
 \contentsline {subsubsection}{\numberline {8.1.2}Application sur les données de Wooster}{17}{}%
-\contentsline {subsection}{\numberline {8.2}Deuxieme méthode (Méthode de depassement de seuil) avec Rain}{18}{}%
-\contentsline {section}{\numberline {9}Annexe}{19}{}%
-\contentsline {subsection}{\numberline {9.1}Codes R}{19}{}%
+\contentsline {subsection}{\numberline {8.2}Méthode de depassement de seuil avec Rain}{18}{}%
+\contentsline {subsubsection}{\numberline {8.2.1}Principe}{18}{}%
+\contentsline {subsubsection}{\numberline {8.2.2}Application sur les données de Rain}{18}{}%
+\contentsline {section}{\numberline {9}Annexe}{20}{}%
+\contentsline {subsection}{\numberline {9.1}Codes R}{20}{}%

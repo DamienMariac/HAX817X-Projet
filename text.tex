@@ -905,9 +905,9 @@ Chercher cette valeur seuil serait utilse en agriculure par exemple pour savoir 
 \end{center}
 
 Nous avons découper ici nos données en blocs de taille $60$ et de calculer le maximum sur chaque bloc.
-L'estimation numériques par l'algorithme de Nelder-Mead des paramètres $a_n$,$b_n$ et $\gamma$ nous donne :
+L'estimation numériques par l'algorithme de Nelder-Mead des paramètres $a_n$,$b_n$  (qu'on note pour la suite $\sigma$ et $\mu$) et $\gamma$ nous donne :
 \[
-a_n = 36.02, \quad b_n = 18.82, \quad \gamma = -0.5
+\sigma = 36.02, \quad \mu= 18.82, \quad \gamma = -0.5
 \]
 
 Nous obtenons une valeur de $\gamma$ négative, ce qui signifie que la distribution des températures max à Wooster est de type Weibull.
@@ -917,13 +917,54 @@ Ce seuil est donc de : $x_{max} = \mu - \frac{\sigma}{\gamma} = 74.93 $
 \\
 Il est alors raisonnables de penser que les températures à Wooster ne depassent pas $74.93$.
 
+v
+\subsection{Méthode de depassement de seuil avec Rain}
+
+\subsubsection{Principe}
+
+La deuxieme méthode consiste à fixer un seuil $u$ et de considèrer les données qui depassent ce seuil. C'est à dire $X_i$ tel que $X_i > u$.
+Ensuite, on stocke les excès $X_i - u$. Cela nous donne un jeu de données positifs.
+La clé de cette méthode est que pour un seuil $u$ bien choisit, les excès suivent une loi de Pareto de parametres $\sigma$ (échelle) et $\gamma$ (le gamma qu'on estime dans toute la théorie).
+C'est alors qu'on ajuste les paramêtres $\sigma$ et $\gamma$ par maximum de vraisemblance.
+
+\subsubsection{Application sur les données de Rain}
+
+L'objectif sur ces données est de savoir si il existe (et dans le cas écheant de le calculer) un seuil tel que les pluies ne puisse pas depasser.
+Chercher cette valeur seuil serait utilse en agriculure par exemple pour savoir si les pluies ne sont pas trop élevées pour les cultures.
+
 \begin{center}
-	\includegraphics[scale=0.8]{./images/wooster.png} 
+	\includegraphics[scale=0.8]{./images/rainhisto.png} 
 \end{center}
 
-\subsection{Deuxieme méthode (Méthode de depassement de seuil) avec Rain}
+On remarque dans un premier temps que les données sont concentrés autour de 0. Mais qu'elles sont capable de prendre des données très élevées.
+Il est alors raisonnables de penser qu'apres estimation, on va obtenir une valeur de gamma positive ou nulle. En effet, il n'apparait pas de cassure dansla distribution des données.
+De plus, la queue de distribution est longue mais ne parait pas lourde. Ce qui suggererait une valeur de gamma proche de 0.
+\\
+\\
+Après estimation numériques, on obtient : $\sigma = 7.94$ et $\gamma = 0.034$ avec pour $\gamma$ un intervalle de confiance : $[-0.022 ; 0.102]$.
+\\
+\\ 
+Une valeur de gamma aussi proche de 0 doit nous conduire à une étude plus approfondie.
+Plusieurs méthode s'offre à nous pour améliorer l'estimation de gamma. 
+\\
+ON Peut considere la premiere méthode afin de comparer les résultats.
+\\
+On peut faire varier le seuil $u$ est juger de l'impact sur l'estimation de gamma.
+\\
+Ou alors de façon plus arbitraire, on peut considère de la valeur de gamma en fonction du type de donnée qu'on étudie et de la cohérence que cela apporte.
+\\
+\\
+\\
+Pour notre exemple, on considère que $\gamma > 0$
 
+\begin{center}
+	\includegraphics[scale=0.8]{./images/rainhistodensite.png} 
+\end{center}
 
+La distribution de Pareto (courbe rouge) avec les parametres estimmés semblent bien coller avec les données. Cela signifie qu’on s’attend à des excès au-delà du seuil de plus en plus rares, sans pour autant exclure la survenue de précipitations sensiblement élevées,
+\\
+\\
+L'avantage de cette méthode est qu'elle est plus efficace car elle utilise plus de données. Cependant, elle est plus difficile à mettre en place car il faut choisir un seuil $u$ qui est crucial pour l'estimation de gamma.
 
 \newpage
 \section{Annexe}
