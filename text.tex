@@ -826,7 +826,12 @@ Cela implique que l'estimateur du paramètre \( \lambda \) est :
 \[
 \hat{\lambda} = \left( \frac{1}{n} \sum_{i=1}^{n} \log X_i \right)^{-1}.
 \]
-
+\subsubsection{Graphique pour l'estimateur de Hill}
+Dans cette section nous allons analyser le comportement de l'estimateur de Hill sur des données simulées à partir de la distribution de Pareto.
+\begin{center}
+	\includegraphics[scale=0.6]{./Codes_R/estimateur_hill_pareto.png} 
+\end{center}
+L’estimateur de Hill décroît globalement et présente une forte volatilité, surtout pour les faibles valeurs du paramètre de forme.
 \subsection{Estimateur de DEDH}
 Le troisième estimateur de l'indice de queue est celui proposé par Dekkers, Einmahl et De Haan. Il s'agit d'une généralisation de l'estimateur de Hill, applicable à tous les domaines d'attraction. Il est défini par :
 
