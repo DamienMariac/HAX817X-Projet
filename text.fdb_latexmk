@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1743095957.44718 "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" "text.pdf" "text" 1743095960.20216 0
+["pdflatex"] 1743161608.82643 "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" "text.pdf" "text" 1743161611.06417 0
   "C:/Users/welma/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1743094046.09533 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/welma/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tctt0800.pk" 1743094055.03429 7416 cff2b8291c97934c152a95be18fa94f9 ""
   "C:/Users/welma/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1739470578.36164 11948197 a83cad5fd4d63851ef9633912bb3f1d9 ""
@@ -47,7 +47,6 @@
   "C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1247596667 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb" 1247596666 24287 6b803fa9eb1ddff9112e00519b09dd9e ""
   "C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1247596673 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
-  "C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb" 1247596673 35309 940e81a5b9e04201a07e8b33a3ae6e64 ""
   "C:/Users/welma/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/welma/AppData/Local/Programs/MiKTeX/tex/generic/babel-french/french.ldf" 1722934043 66864 5ea28be04c8922f57dc437cc5c1c2c31 ""
   "C:/Users/welma/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty" 1724932513 146459 bc754156bcff0b0651cf59d8ba0cb2bc ""
@@ -98,12 +97,13 @@
   "Codes_R/Max_Normale.png" 1741602924.96335 16072 e28c09bcc5dfff9459671bf279e3edb5 ""
   "Codes_R/Max_Uniforme.png" 1741602924.96506 13615 c7dd48017fb3c60612af934e8d64ff6f ""
   "Codes_R/estimateur_hill_pareto.png" 1743093845.15747 95279 a7da2539032442fda6c11715655b9c17 ""
-  "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" 1743095957.8875 41131 f1e8ebeef82be4e201f4eced15211db1 ""
+  "Codes_R/estimateur_pickands_pareto.png" 1743156020.98267 57333 e4f88edf77338c828d490acb287a181c ""
+  "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" 1743161605.18562 36368 af832ce2521d4c3c1db45241385ccd67 ""
   "images/rainhisto.png" 1743094035.88691 15391 fcc4701932f5090998a8bf7e0659151b ""
   "images/rainhistodensite.png" 1743094035.88691 31487 198697f692baf7ba92a60847322f8175 ""
   "images/woosterhisto.png" 1743094035.89519 19145 110487480b673355c9b2d1b1182bb7c8 ""
-  "text.aux" 1743095959.68948 5601 e159cad3786cc3f41a40fcfed45e635e "pdflatex"
-  "text.toc" 1743095959.69245 3572 d5761ba0d7a6282e1c40340df5c9d5e0 "pdflatex"
+  "text.aux" 1743161610.62516 3969 85fad6ba5c1fe8bf5ecd7c3c4e9b4abe "pdflatex"
+  "text.toc" 1743161610.63316 2432 010c110b11df8f55060cee8d9eb9f763 "pdflatex"
   (generated)
   "text.aux"
   "text.log"

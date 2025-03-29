@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.13)  27 MAR 2025 18:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.13)  28 MAR 2025 12:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -462,111 +462,125 @@ Package pdftex.def Info: ./Codes_R/Max_Cauchy.png  used on input line 374.
 [8 <./Codes_R/Max_Expo.png> <./Codes_R/Max_Normale.png>]
 
 [9 <./Codes_R/Max_Cauchy.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 382--384
 
-[10]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 409--410
+
+ []
+
+<./Codes_R/estimateur_pickands_pareto.png, id=56, 702.82574pt x 442.65375pt>
+File: ./Codes_R/estimateur_pickands_pareto.png Graphic file (type png)
+<use ./Codes_R/estimateur_pickands_pareto.png>
+Package pdftex.def Info: ./Codes_R/estimateur_pickands_pareto.png  used on input line 414.
+(pdftex.def)             Requested size: 421.6987pt x 265.59428pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 416--417
+
+ []
+
+
+
+[10 <./Codes_R/estimateur_pickands_pareto.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 456--458
+
+ []
+
+
 
 [11]
 
 [12]
-
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 708--710
-
- []
-
-
-
-[14]
-<./Codes_R/estimateur_hill_pareto.png, id=73, 704.6325pt x 479.99326pt>
+<./Codes_R/estimateur_hill_pareto.png, id=68, 704.6325pt x 479.99326pt>
 File: ./Codes_R/estimateur_hill_pareto.png Graphic file (type png)
 <use ./Codes_R/estimateur_hill_pareto.png>
-Package pdftex.def Info: ./Codes_R/estimateur_hill_pareto.png  used on input line 832.
+Package pdftex.def Info: ./Codes_R/estimateur_hill_pareto.png  used on input line 580.
 (pdftex.def)             Requested size: 422.78278pt x 287.99817pt.
 
 
-[15]
+[13 <./Codes_R/estimateur_hill_pareto.png>]
 
-[16 <./Codes_R/estimateur_hill_pareto.png>]
-
-[17]
-<./images/woosterhisto.png, id=85, 515.526pt x 329.00056pt>
+[14]
+<./images/woosterhisto.png, id=77, 515.526pt x 329.00056pt>
 File: ./images/woosterhisto.png Graphic file (type png)
 <use ./images/woosterhisto.png>
-Package pdftex.def Info: ./images/woosterhisto.png  used on input line 909.
+Package pdftex.def Info: ./images/woosterhisto.png  used on input line 657.
 (pdftex.def)             Requested size: 412.42137pt x 263.20079pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 918--924
+Underfull \hbox (badness 10000) in paragraph at lines 666--672
 
  []
 
 
 
-[18 <./images/woosterhisto.png (PNG copy)>]
-<./images/rainhisto.png, id=89, 515.526pt x 364.79143pt>
+[15 <./images/woosterhisto.png (PNG copy)>]
+<./images/rainhisto.png, id=81, 515.526pt x 364.79143pt>
 File: ./images/rainhisto.png Graphic file (type png)
 <use ./images/rainhisto.png>
-Package pdftex.def Info: ./images/rainhisto.png  used on input line 941.
+Package pdftex.def Info: ./images/rainhisto.png  used on input line 689.
 (pdftex.def)             Requested size: 412.42137pt x 291.83353pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 944--964
+Underfull \hbox (badness 10000) in paragraph at lines 692--712
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 944--964
+Underfull \hbox (badness 10000) in paragraph at lines 692--712
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 944--964
+Underfull \hbox (badness 10000) in paragraph at lines 692--712
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 944--964
+Underfull \hbox (badness 10000) in paragraph at lines 692--712
 
  []
 
-<./images/rainhistodensite.png, id=90, 515.526pt x 364.79143pt>
+<./images/rainhistodensite.png, id=82, 515.526pt x 364.79143pt>
 File: ./images/rainhistodensite.png Graphic file (type png)
 <use ./images/rainhistodensite.png>
-Package pdftex.def Info: ./images/rainhistodensite.png  used on input line 966.
+Package pdftex.def Info: ./images/rainhistodensite.png  used on input line 714.
 (pdftex.def)             Requested size: 412.42137pt x 291.83353pt.
 
 
-[19 <./images/rainhisto.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 969--973
+[16 <./images/rainhisto.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 717--721
 
  []
 
 
 
-[20 <./images/rainhistodensite.png (PNG copy)>]
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 1015.
+[17 <./images/rainhistodensite.png (PNG copy)>]
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 763.
  (C:\Users\welma\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmtt.fd
 File: ts1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 
-[21]
+[18]
 
-[22] (text.aux)
+[19] (text.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 8134 strings out of 473899
- 124823 string characters out of 5726500
+ 8139 strings out of 473899
+ 125128 string characters out of 5726500
  1124552 words of memory out of 5000000
- 30922 multiletter control sequences out of 15000+600000
+ 30927 multiletter control sequences out of 15000+600000
  568158 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,13n,65p,576b,1829s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\welma\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt0800.pk><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on text.pdf (22 pages, 496331 bytes).
+ 57i,13n,65p,709b,1829s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\welma\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt0800.pk><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on text.pdf (19 pages, 520013 bytes).
 PDF statistics:
- 192 PDF objects out of 1000 (max. 8388607)
+ 180 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
