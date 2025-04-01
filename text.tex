@@ -153,7 +153,7 @@ b_n = Q(1-\frac{1}{n}) = K(n)
 Dans la dernière équivalence, on a composé par la fonction quantile.
 \\
 \subsection{Paramètre $a_n$}
-Avec le parametre $b_n$ définie au dessus, on obtient alors une condition, il faut qu'il existe une fonction $a$ tel que $\lim_{x \to \infty} \frac{K(\frac{x}{v}) - K(x)}{a(x)}$ converge (vers une fonction $h(n)$).
+Avec le parametre $b_n$ définie au dessus et en posant $u=\frac{1}{v}$ on obtient alors une condition, il faut qu'il existe une fonction $a$ tel que $\lim_{x \to \infty} \frac{K(xu) - K(x)}{a(x)}$ converge \textbf{vers une fonction $h(u)$}.
 \\
 \\
 \textbf{Proposition :}
@@ -168,45 +168,34 @@ Les limites possibles sont données par :
     c\,\frac{u^{\gamma} - 1}{\gamma}.
 \end{equation}
 
-Nous interprétons $h_{0}(u) = \log(u)$ lorsque $\gamma = 0$.*
+Nous interprétons $h_{0}(u) = \log(u)$ lorsque $\gamma = 0$.
 \\
 \\
-\; On ne veut pas que $c=0$, car il conduit à une limite dégénérée pour $\frac{M_{n} - b_n}{a_n}$. 
-Ensuite, le cas $c>0$ peut être ramené au cas $c=1$ en incorporant $c$ dans la fonction $a$. 
-\iffalse
-Nous remplaçons la condition $(C)$ par une condition plus informative, appelée 
-"\textit{condition extrémale du domaine d’attraction}" :
-\[
-\lim_{x\to \infty} \frac{U(xu) - U(x)}{a(x)} 
-\;=\; 
-h_{\gamma}(u), 
-\quad 
-\text{pour } u>0.
-\]
-Ceci indique que les limites possibles sont essentiellement décrites par la \textit{famille à un paramètre} $h_{\gamma}$. \\
-\fi
+\textbf{Remarque :} On ne veut pas que $c=0$, car il conduit à une limite dégénérée pour $\frac{M_{n} - b_n}{a_n}$. 
+Ensuite, le cas $c>0$ peut être ramené au cas $c=1$ en incorporant $c$ dans la fonction $a$.   
 \\
 \\
 \textbf{Preuve de la Proposition}  
 \\
-Soient $u,v > 0$. Alors :
+Soient $u,v >0$. Alors :
 \[
-\frac{U(xuv) - U(x)}{a(x)} 
+\frac{K(xuv) - K(x)}{a(x)} 
 \;=\; 
-\frac{U(xuv) - U(xu)}{a(xu)} \,\frac{a(xu)}{a(x)}
+\frac{K(xuv) - K(xu)}{a(xu)} \,\frac{a(xu)}{a(x)}
 \;+\;
-\frac{U(xu) - U(x)}{a(x)}.
+\frac{K(xu) - K(x)}{a(x)}.
 \tag{2.3}
 \]
-Si la limite dans $F$ est dans le domaine d'attraction de $G$ (ce qu'on suppose à ce stade), alors le rapport $\frac{a(ux)}{a(x)}$ converge vers g(u).
+Si la limite dans $F$ est dans le domaine d'attraction de $G$ (\textit{ce qu'on suppose depuis le début}), alors le rapport $\frac{a(ux)}{a(x)}$ converge vers $g(u)$.
 \\
-De plus, pour $u,v>0$,
+\\
+De plus,
 \[
 \frac{a(xuv)}{a(x)} 
 \;=\;
 \frac{a(xuv)}{a(xv)} \,\frac{a(xv)}{a(x)}.
 \]
-Par passage à la limite pour x, la fonction $g$ satisfait l'\textit{équation fonctionnelle de Cauchy} :
+Par passage à la limite pour $x$, la fonction $g$ satisfait l'\textit{équation fonctionnelle de Cauchy} :
 \[
 g(uv) = g(u)\,g(v).
 \]
@@ -215,6 +204,18 @@ Les solutions de cette équation sont de la forme $g(u)= u^{\gamma}$ avec $\gamm
 \\
 Donc, on a $\lim_{x\to \infty} \frac{a(ux)}{a(x)} \;=\; x^{\gamma} l(x)$, on dit dans ce cas que $a$ est une fonction à variation régulière.
 \\
+\\
+En réécrivant l'expression (2.3) avec cette convergence, on en déduit que la fonction limite est de la forme
+\[
+h_\gamma(u)= c\,\frac{u^\gamma-1}{\gamma},
+\]
+avec la convention \(h_0(u)=\ln u\).
+\\
+Ainsi, nous concluons que
+\[
+h_\gamma(u)=\frac{u^\gamma-1}{\gamma} \quad \text{(avec \(h_0(u)=\ln u\))},
+\]
+\hfill $\square$
 \\
 \subsection{Les lois limites}
 En reprenant $(2.3)$ et en utilisant ce qui précède, on obtient :
@@ -228,39 +229,66 @@ En reprenant $(2.3)$ et en utilisant ce qui précède, on obtient :
 \\
 On fait alors une disjonction de cas sur la valeur de gamma.
 \\
-\subsubsection{1. Cas \(\gamma\neq0\)}
+\subsubsection{Nature du support}
 
 En reprenant l'équation \eqref{eq:1.2}, on obtient :
 \[
-h_\gamma\Bigl(\frac{1}{v}\Bigr)=\frac{(1/v)^\gamma-1}{\gamma}=\frac{v^{-\gamma}-1}{\gamma}.
+h_\gamma\Bigl(\frac{1}{v}\Bigr)=\frac{(1/v)^\gamma-1}{\gamma}=\frac{v^{-\gamma}-1}{\gamma}
 \]
 Posons \(u=\frac{v^{-\gamma}-1}{\gamma}\). On résout alors pour \(v\) :
 \[
-v^{-\gamma}=1+\gamma u\quad\Longrightarrow\quad v=(1+\gamma u)^{-1/\gamma}.
-\]
-On définit ainsi la fonction
-\[
-\eta_\gamma(u)=(1+\gamma u)^{-1/\gamma}.
+v^{-\gamma}=1+\gamma u\quad\Longrightarrow\quad v=(1+\gamma u)^{-1/\gamma}
 \]
 Le changement de variable de \(v\) à \(u\) permet de réécrire l'intégrale limite sous la forme
 \[
-\int_{u\in S_\gamma} z(u)\,d\Bigl\{\exp\Bigl[-\eta_\gamma(u)\Bigr]\Bigr\},
+\int_{u\in S_\gamma} z(u)\,d\Bigl\{\exp\Bigl[-\left(1+\gamma u\right)^{-1/\gamma}]\Bigr\}
 \]
 ce qui conduit à identifier la loi limite par
 \[
-G_\gamma(u)=\exp\Bigl\{-\eta_\gamma(u)\Bigr\}=\exp\Bigl\{-\left(1+\gamma u\right)^{-1/\gamma}\Bigr\}.
+G_\gamma(u)=\exp\Bigl\{-\left(1+\gamma u\right)^{-1/\gamma}\Bigr\}
 \]
 La nature du support \(S_\gamma\) dépend du signe de \(\gamma\) :
-\begin{itemize}
-    \item Si \(\gamma>0\), l'inversion montre que \(v\in(0,1)\) correspond à \(u>-\frac{1}{\gamma}\) (loi de Fréchet).
-    \item Si \(\gamma<0\), on trouve que \(u<-\frac{1}{\gamma}\) (loi de Weibull).
-\end{itemize}
-\subsubsection{2. Cas \(\gamma=0\)}
-Lorsque \(\gamma\to0\), la fonction \(h_\gamma\) tend par continuité vers
+
+\subsubsection{Si \(\gamma>0\)}
+L'inversion montre que \(v\in [0,1]\) correspond à \(u>-\frac{1}{\gamma}\).
+\\
+\\
+De plus, pour de grandes valeurs \(x\) on a :
 \[
-h_0(u)=\ln u.
+S(x) \approx \exp\Bigl[-\bigl(1 + \gamma x\bigr)^{-1/\gamma}\Bigr]
 \]
-De même, le changement de variable s'adapte : 
+Or, par un développement asymptotique,  \(\bigl(1 + \gamma x\bigr)^{-1/\gamma}\) est proportionnel à \(x^{-1/\gamma}\) pour \(x\) grand. On obtient alors
+\[
+S(x) \approx \exp\bigl[-C\,x^{-1/\gamma}\bigr] 
+\quad (\text{pour une constante } C>0).
+\]
+Par croissance comparé, comme \(x^{-1/\gamma}\) tend vers 0 relativement lentement, la décroissance de \(S(x)\) est \og moins rapide \fg{} que \(\exp(-\alpha x)\). On a alors : 
+\[
+S(x)\,\sim\, K\,x^{-1/\gamma} 
+\quad (\text{pour } x\to\infty),
+\]
+ce qui caractérise une \emph{queue lourde} : la probabilité d'observer des valeurs très grandes est plus élevée que dans un modèle à décroissance exponentielle.
+
+\subsubsection{Si \(\gamma<0\)}
+Pour \(\gamma < 0\), la loi est définie quand :
+\[
+1 + \gamma u > 0 \quad \Longrightarrow \quad u < - \frac{1}{\gamma}
+\]
+Cela signifie que la distribution a son support dans \(]-\infty, - \frac{1}{\gamma} [ \) 
+\\
+On pose alors \(x_{\max} = - \frac{1}{\gamma} \).
+\\
+Par conséquent, la fonction de survie $S(x) = 1 - G(x)$ = 0 pour \(x \ge - \frac{1}{\gamma} \).
+\\
+\\
+Autrement dit, il n'y a aucune probabilité d'observer une valeur au-delà de \(x_{\max}\).
+\\
+\\
+On dit alors que que queue de distribution est bornée.
+\subsubsection{2. Cas \(\gamma=0\)}
+Lorsque \(\gamma = 0\), on a posé $h_0(u)=\ln u$.
+\\
+Donc, le changement de variable s'adapte : 
 \[
 u=h_0\Bigl(\frac{1}{v}\Bigr)=\ln\Bigl(\frac{1}{v}\Bigr)=-\ln v,
 \]
@@ -276,7 +304,7 @@ et la loi limite est alors donnée par
 \[
 G_0(u)=\exp\Bigl\{-e^{-u}\Bigr\},\qquad u\in\mathbb{R},
 \]
-ce qui correspond à la loi de Gumbel.
+On retrouve ici une queue à décroissance exponentielle, ce qui est caractéristique d'une \og queue légère \fg{} : la probabilité d'observer des valeurs extrêmes est faible.
 \\
 \subsection{Résumé}
 Les lois limites qui s'imposent dependent d'un parametre $\gamma$ et sont les suivantes :
