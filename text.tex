@@ -220,7 +220,7 @@ h_\gamma(u)=\frac{u^\gamma-1}{\gamma} \quad \text{(avec \(h_0(u)=\ln u\))},
 \subsection{Les lois limites}
 En reprenant $(2.3)$ et en utilisant ce qui précède, on obtient :
 \[
-\lim_{x\to \infty} \frac{U(xuv) - U(x)}{a(x)} = u^{\gamma} h(v) + h(u)
+\lim_{x\to \infty} \frac{K(xuv) - K(x)}{a(x)} = u^{\gamma} h(v) + h(u)
 \]
 \[
 \text{autrement dit :} \; \; h_{\gamma}(uv)= u^{\gamma} h_{\gamma}(v) + h_{\gamma}(u)
@@ -247,7 +247,7 @@ ce qui conduit à identifier la loi limite par
 \[
 G_\gamma(u)=\exp\Bigl\{-\left(1+\gamma u\right)^{-1/\gamma}\Bigr\}
 \]
-La nature du support \(S_\gamma\) dépend du signe de \(\gamma\) :
+Il reste alors à étudier la nature du support \(S_\gamma\), mais celui-ci dépend du signe de \(\gamma\) :
 
 \subsubsection{Si \(\gamma>0\)}
 L'inversion montre que \(v\in [0,1]\) correspond à \(u>-\frac{1}{\gamma}\).
@@ -262,12 +262,12 @@ Or, par un développement asymptotique,  \(\bigl(1 + \gamma x\bigr)^{-1/\gamma}\
 S(x) \approx \exp\bigl[-C\,x^{-1/\gamma}\bigr] 
 \quad (\text{pour une constante } C>0).
 \]
-Par croissance comparé, comme \(x^{-1/\gamma}\) tend vers 0 relativement lentement, la décroissance de \(S(x)\) est \og moins rapide \fg{} que \(\exp(-\alpha x)\). On a alors : 
+Par croissance comparé, comme \(x^{-1/\gamma}\) tend vers 0 moins vite que \(\exp(-\alpha x)\). On a alors : 
 \[
 S(x)\,\sim\, K\,x^{-1/\gamma} 
 \quad (\text{pour } x\to\infty),
 \]
-ce qui caractérise une \emph{queue lourde} : la probabilité d'observer des valeurs très grandes est plus élevée que dans un modèle à décroissance exponentielle.
+ce qui caractérise une \textbf{queue bornée} : la probabilité d'observer des valeurs très grandes est plus élevée que dans un modèle à décroissance exponentielle.
 
 \subsubsection{Si \(\gamma<0\)}
 Pour \(\gamma < 0\), la loi est définie quand :
@@ -281,7 +281,7 @@ On pose alors \(x_{\max} = - \frac{1}{\gamma} \).
 Par conséquent, la fonction de survie $S(x) = 1 - G(x)$ = 0 pour \(x \ge - \frac{1}{\gamma} \).
 \\
 \\
-Autrement dit, il n'y a aucune probabilité d'observer une valeur au-delà de \(x_{\max}\).
+Autrement dit, il n'y a aucune probabilité d'observer une valeur au-delà de \(x_{\max}\). Dans ce cas, on dit que la distribution est à \textbf{queue bornée}.
 \\
 \\
 On dit alors que que queue de distribution est bornée.
@@ -304,7 +304,7 @@ et la loi limite est alors donnée par
 \[
 G_0(u)=\exp\Bigl\{-e^{-u}\Bigr\},\qquad u\in\mathbb{R},
 \]
-On retrouve ici une queue à décroissance exponentielle, ce qui est caractéristique d'une \og queue légère \fg{} : la probabilité d'observer des valeurs extrêmes est faible.
+On retrouve ici une queue à décroissance exponentielle, ce qui est caractéristique d'une \textbf{queue légère} : la probabilité d'observer des valeurs extrêmes est faible.
 \\
 \subsection{Résumé}
 Les lois limites qui s'imposent dependent d'un parametre $\gamma$ et sont les suivantes :
@@ -693,7 +693,7 @@ L'estimation numériques par l'algorithme de Nelder-Mead des paramètres $a_n$,$
 
 Nous obtenons une valeur de $\gamma$ négative, ce qui signifie que la distribution des températures max à Wooster est de type Weibull.
 Nous pouvons donc conclure que les températures à Wooster sont pas limitées par un seuil.
-Ce seuil est donc de : $x_{max} = \mu - \frac{\sigma}{\gamma} = 74.93 $
+Ce seuil étant donnée dans la partie 1, il vaut : $x_{max} = \mu - \frac{\sigma}{\gamma} = 74.93 $
 \\
 \\
 Il est alors raisonnables de penser que les températures à Wooster ne depassent pas $74.93$.
