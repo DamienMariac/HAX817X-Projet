@@ -747,6 +747,25 @@ La distribution de Pareto (courbe rouge) avec les parametres estimmés semblent 
 \\
 L'avantage de cette méthode est qu'elle est plus efficace car elle utilise plus de données. Cependant, elle est plus difficile à mettre en place car il faut choisir un seuil $u$ qui est crucial pour l'estimation de gamma.
 
+
+\subsubsection{Méthode de Nelder-Mead}
+
+\noindent Le package "evd", que nous avons utilisé pour réaliser les méthodes de dépassement de seuil et des maxima en bloc, utilise l'algorithme de Nelder-Mead pour calculer les paramètres de la fonction limite et ainsi savoir dans quel cas où se trouve : Fréchet, Gumbel ou Weibull. \\
+
+\noindent Nelder-Mead est un algorithme d'optimisation non linéaire, il consiste en la chose suivante dans le cadre des valeurs extrêmes : 
+\begin{itemize}
+	\item \textbf{Etape 1} : on commence par choisir 3 premiers points $x_1, x_2, x_3$ par une rapide estimation des paramètres $\sigma$, $\mu$ et $\gamma$ de nos données. Ce seront nos points de départs de l'algorithme et ils définissent notre premier simplexe (triangle ici) dans $R^2$.
+	\item \textbf{Etape 2} : on calcule ensuite la valeur de la fonction en ces 3 points : f est la fonction GEV généralisée (à définir plus précisément) et on les trie par valeurs décroissantes.
+	\item \textbf{Etape 3} : on cherche le centre de gravité $x_0$ de nos premiers points : $x_0 = \frac{x_1 + x_2 + x_3}{3}$.
+	\item \textbf{Etape 4} : on fait ensuite une réflexion en calculant $x_r = x_0 + \alpha (x_0 - x_3)$ où $\alpha > 0$ est appelé le coefficient de réflexion
+	\item \textbf{Etape 5} : si $f(x_1) \le  f(x_r) \le  f(x_3)$ : on remplace $x_3$ par $x_r$ et on retourne à l'étape 2.
+	\item \textbf{Etape 6} : si $f(x_r) \le  f(x_1)$ : on procède à une expansion du simplexe, on calcule $x_3 = x_0 + \gamma(x_r - x_0)$ où $\gamma$ > 1. Si $f(x_e) \le  f(x_r) $, on remplace $x_3$ par $x_e$ sinon on remplace $x_3$ par $x_r$ et on retourne à l'étape 2
+	\item \textbf{Etape 7} : si $f(x_r) \geq f(x_3)$ : on procède à une contraction du simplexe, on cherche $x_c = x_0 + \rho(x_3 - x_0)$. Si $f(x_c) \le  f(x_3)$, on remplace $x_3$ par $x_c$ et on retourne à l'étape 2, sinon on continue jusqu'à l'étape 8.
+	\item \textbf{Etape 8} : on effectue une homothétie de rapport $\sigma$ et de centre $x_1$ : on remplace ainsi $x_i$ par $x_1 + \sigma(x_i - x_1)$ et on retourne à l'étape 2
+\end{itemize}
+
+\noindent On répète cela jusqu'à atteinte du critère d'arrêt, à définir. \\
+
 \newpage
 \section{Annexe}
 
