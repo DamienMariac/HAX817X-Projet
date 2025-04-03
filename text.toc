@@ -27,9 +27,9 @@
 \contentsline {subsection}{\numberline {7.1}Première méthode (Méthode des maxima en bloc) avec Wooster}{16}{}%
 \contentsline {subsubsection}{\numberline {7.1.1}Principe}{16}{}%
 \contentsline {subsubsection}{\numberline {7.1.2}Application sur les données de Wooster}{16}{}%
-\contentsline {subsection}{\numberline {7.2}Méthode de depassement de seuil avec Rain}{17}{}%
+\contentsline {subsection}{\numberline {7.2}Méthode de dépassement de seuil avec \textbf {Rain}}{17}{}%
 \contentsline {subsubsection}{\numberline {7.2.1}Principe}{17}{}%
 \contentsline {subsubsection}{\numberline {7.2.2}Application sur les données de Rain}{17}{}%
 \contentsline {subsubsection}{\numberline {7.2.3}Méthode de Nelder-Mead}{18}{}%
-\contentsline {section}{\numberline {8}Annexe}{19}{}%
-\contentsline {subsection}{\numberline {8.1}Codes R}{19}{}%
+\contentsline {section}{\numberline {8}Annexe}{20}{}%
+\contentsline {subsection}{\numberline {8.1}Codes R}{20}{}%

@@ -663,23 +663,22 @@ La difficulté pratique dans le calcul de ces estimateurs réside dans le choix 
 \section{Application sur des données réelles}
 
 Afin d'illustrer les méthodes d'estimation de l'indice de valeurs extrêmes, nous allons appliquer ces techniques sur des données réelles.
-Nous allons utiliser les données du package $ismev$ de R. Plus précisement wooster et rain. Wooster contient les données
-de temperature minimal (en Fahrenheit) annuelle à Wooster de 1983 à 1988.
-Tandis que Rain contient les données de pluie journalière dans en Angletterre de 1914 à 1962.
+Nous allons utiliser les données du package $ismev$ de R. Plus précisément wooster et rain. Wooster contient les données de température minimale (en Fahrenheit) annuelle à Wooster de 1983 à 1988.
+Tandis que Rain contient les données de pluie journalière dans en Angleterre de 1914 à 1962.
 \\
-Nous allons utiliser deux méthodes d'estimation sur les paramêtres $a_n$, $b_n$ et $\gamma$ afin de d'estimer la valeur extrêmes.
+Nous allons utiliser deux méthodes d'estimation sur les paramètres $a_n$, $b_n$ et $\gamma$ afin de d'estimer la valeur extrême.
 
 \subsection{Première méthode (Méthode des maxima en bloc) avec Wooster}
 \subsubsection{Principe}
 
-La première étape consiste à decouper nos données en blocs de taille $k$ et de calculer le maximum sur chaque bloc. Le parametre
-$k$ est choisit en fonction de l'interpretation des données. (par exemple, si on a des données journalières, on peut choisir $k=365$ pour avoir des maximums annuelle).
+La première étape consiste à découper nos données en blocs de taille $k$ et de calculer le maximum sur chaque bloc. Le paramètre
+$k$ est choisit en fonction de l'interprétation des données. (par exemple, si on a des données journalières, on peut choisir $k=365$ pour avoir des maximums annuels).
 Ensuite, pour chaque bloc on calcule le maximum. Cela nous donne une suite de maximum.
 Une fois les maximums obtenus, on estime $a_n$,$b_n$ et $\gamma$ en utilisant la méthode du maximum de vraisemblance.
 
 \subsubsection{Application sur les données de Wooster}
-L'objectif sur ces données est de savoir si il existe (et dans le cas écheant de le calculer) un seuil tel que les températures ne puisse pas depasser.
-Chercher cette valeur seuil serait utilse en agriculure par exemple pour savoir si les températures ne sont pas trop élevées pour les cultures.
+L'objectif sur ces données est de savoir s'il existe (et dans le cas échéant de le calculer) un seuil tel que les températures ne puissent pas dépasser.
+Chercher cette valeur seuil serait utile en agriculture par exemple pour savoir si les températures ne sont pas trop élevées pour les cultures.
 
 \begin{center}
 	\includegraphics[scale=0.8]{./images/woosterhisto.png} 
@@ -696,43 +695,43 @@ Nous pouvons donc conclure que les températures à Wooster sont pas limitées p
 Ce seuil étant donnée dans la partie 1, il vaut : $x_{max} = \mu - \frac{\sigma}{\gamma} = 74.93 $
 \\
 \\
-Il est alors raisonnables de penser que les températures à Wooster ne depassent pas $74.93$.
+Il est alors raisonnables de penser que les températures à Wooster ne dépassent pas $74.93$.
 
 v
-\subsection{Méthode de depassement de seuil avec Rain}
+\subsection{Méthode de dépassement de seuil avec \textbf{Rain}}
 
 \subsubsection{Principe}
 
-La deuxieme méthode consiste à fixer un seuil $u$ et de considèrer les données qui depassent ce seuil. C'est à dire $X_i$ tel que $X_i > u$.
+La deuxième méthode consiste à fixer un seuil $u$ et de considérer les données qui dépassent ce seuil. C'est à dire $X_i$ tel que $X_i > u$.
 Ensuite, on stocke les excès $X_i - u$. Cela nous donne un jeu de données positifs.
-La clé de cette méthode est que pour un seuil $u$ bien choisit, les excès suivent une loi de Pareto de parametres $\sigma$ (échelle) et $\gamma$ (le gamma qu'on estime dans toute la théorie).
-C'est alors qu'on ajuste les paramêtres $\sigma$ et $\gamma$ par maximum de vraisemblance.
+La clé de cette méthode est que pour un seuil $u$ bien choisi, les excès suivent une loi de Pareto de paramètres $\sigma$ (échelle) et $\gamma$ (le gamma qu'on estime dans toute la théorie).
+C'est alors qu'on ajuste les paramètres $\sigma$ et $\gamma$ par maximum de vraisemblance.
 
 \subsubsection{Application sur les données de Rain}
 
-L'objectif sur ces données est de savoir si il existe (et dans le cas écheant de le calculer) un seuil tel que les pluies ne puisse pas depasser.
-Chercher cette valeur seuil serait utilse en agriculure par exemple pour savoir si les pluies ne sont pas trop élevées pour les cultures.
+L'objectif sur ces données est de savoir s'il existe (et le cas échéant de le calculer) un seuil tel que les pluies ne puissent pas dépasser.
+Chercher cette valeur seuil serait utile en agriculture par exemple pour savoir si les pluies ne sont pas trop élevées pour les cultures.
 
 \begin{center}
 	\includegraphics[scale=0.8]{./images/rainhisto.png} 
 \end{center}
 
-On remarque dans un premier temps que les données sont concentrés autour de 0. Mais qu'elles sont capable de prendre des données très élevées.
-Il est alors raisonnables de penser qu'apres estimation, on va obtenir une valeur de gamma positive ou nulle. En effet, il n'apparait pas de cassure dansla distribution des données.
-De plus, la queue de distribution est longue mais ne parait pas lourde. Ce qui suggererait une valeur de gamma proche de 0.
+On remarque dans un premier temps que les données sont concentrées autour de 0 mais qu'elles sont capables de prendre des valeurs très élevées.
+Il est alors raisonnable de penser qu'après estimation, on va obtenir une valeur de gamma positive ou nulle. En effet, il n'apparait pas de cassure dans la distribution des données.
+De plus, la queue de distribution est longue mais ne parait pas lourde. Ce qui suggèrerait une valeur de gamma proche de 0.
 \\
 \\
-Après estimation numériques, on obtient : $\sigma = 7.94$ et $\gamma = 0.034$ avec pour $\gamma$ un intervalle de confiance : $[-0.022 ; 0.102]$.
+Après estimation numérique, on obtient : $\sigma = 7.94$ et $\gamma = 0.034$ avec pour $\gamma$ un intervalle de confiance : $[-0.022 ; 0.102]$.
 \\
 \\ 
 Une valeur de gamma aussi proche de 0 doit nous conduire à une étude plus approfondie.
-Plusieurs méthode s'offre à nous pour améliorer l'estimation de gamma. 
+Plusieurs méthodes s'offrent à nous pour améliorer l'estimation de gamma. 
 \\
-ON Peut considere la premiere méthode afin de comparer les résultats.
+ON Peut considère la première méthode afin de comparer les résultats.
 \\
-On peut faire varier le seuil $u$ est juger de l'impact sur l'estimation de gamma.
+On peut faire varier le seuil $u$ et juger de l'impact sur l'estimation de gamma.
 \\
-Ou alors de façon plus arbitraire, on peut considère de la valeur de gamma en fonction du type de donnée qu'on étudie et de la cohérence que cela apporte.
+Ou alors de façon plus arbitraire, on peut considérer la valeur de gamma en fonction du type de donnée qu'on étudie et de la cohérence que cela apporte.
 \\
 \\
 \\
@@ -742,7 +741,7 @@ Pour notre exemple, on considère que $\gamma > 0$
 	\includegraphics[scale=0.8]{./images/rainhistodensite.png} 
 \end{center}
 
-La distribution de Pareto (courbe rouge) avec les parametres estimmés semblent bien coller avec les données. Cela signifie qu’on s’attend à des excès au-delà du seuil de plus en plus rares, sans pour autant exclure la survenue de précipitations sensiblement élevées,
+La distribution de Pareto (courbe rouge) avec les paramètres estimés semblent bien coller avec les données. Cela signifie qu’on s’attend à des excès au-delà du seuil de plus en plus rares, sans pour autant exclure la survenue de précipitations sensiblement élevées.
 \\
 \\
 L'avantage de cette méthode est qu'elle est plus efficace car elle utilise plus de données. Cependant, elle est plus difficile à mettre en place car il faut choisir un seuil $u$ qui est crucial pour l'estimation de gamma.
@@ -759,12 +758,12 @@ L'avantage de cette méthode est qu'elle est plus efficace car elle utilise plus
 	\item \textbf{Etape 3} : on cherche le centre de gravité $x_0$ de nos premiers points : $x_0 = \frac{x_1 + x_2 + x_3}{3}$.
 	\item \textbf{Etape 4} : on fait ensuite une réflexion en calculant $x_r = x_0 + \alpha (x_0 - x_3)$ où $\alpha > 0$ est appelé le coefficient de réflexion
 	\item \textbf{Etape 5} : si $f(x_1) \le  f(x_r) \le  f(x_3)$ : on remplace $x_3$ par $x_r$ et on retourne à l'étape 2.
-	\item \textbf{Etape 6} : si $f(x_r) \le  f(x_1)$ : on procède à une expansion du simplexe, on calcule $x_3 = x_0 + \gamma(x_r - x_0)$ où $\gamma$ > 1. Si $f(x_e) \le  f(x_r) $, on remplace $x_3$ par $x_e$ sinon on remplace $x_3$ par $x_r$ et on retourne à l'étape 2
-	\item \textbf{Etape 7} : si $f(x_r) \geq f(x_3)$ : on procède à une contraction du simplexe, on cherche $x_c = x_0 + \rho(x_3 - x_0)$. Si $f(x_c) \le  f(x_3)$, on remplace $x_3$ par $x_c$ et on retourne à l'étape 2, sinon on continue jusqu'à l'étape 8.
-	\item \textbf{Etape 8} : on effectue une homothétie de rapport $\sigma$ et de centre $x_1$ : on remplace ainsi $x_i$ par $x_1 + \sigma(x_i - x_1)$ et on retourne à l'étape 2
+	\item \textbf{Etape 6} : si $f(x_r) \le  f(x_1)$ : on procède à une expansion du simplexe, on calcule $x_3 = x_0 + \gamma(x_r - x_0)$ où $\gamma > 1$. Si $f(x_e) \le  f(x_r) $, on remplace $x_3$ par $x_e$ sinon on remplace $x_3$ par $x_r$ et on retourne à l'étape 2
+	\item \textbf{Etape 7} : si $f(x_r) \geq f(x_3)$ : on procède à une contraction du simplexe, on cherche $x_c = x_0 + \rho(x_3 - x_0)$ où $0 < \rho < 0.5 $ . Si $f(x_c) \le  f(x_3)$, on remplace $x_3$ par $x_c$ et on retourne à l'étape 2, sinon on continue jusqu'à l'étape 8.
+	\item \textbf{Etape 8} : on effectue une homothétie de rapport $\omega$ et de centre $x_1$ : on remplace ainsi $x_i$ par $x_1 + \omega(x_i - x_1)$ où $0 < \omega < 1$et on retourne à l'étape 2
 \end{itemize}
 
-\noindent On répète cela jusqu'à atteinte du critère d'arrêt, à définir. \\
+\noindent On répète cela jusqu'à atteinte du critère d'arrêt, en général : $ \sqrt{\sum_{i=1}^{n+1}  \frac{(f_i - \bar{f})^2}{n}} < \epsilon $ où $\bar{f} =\frac{1}{n+1} \sum_{i=1}^{n+1} f_i $ et $ \epsilon $ est un réel proche de 0. \\
 
 \newpage
 \section{Annexe}
