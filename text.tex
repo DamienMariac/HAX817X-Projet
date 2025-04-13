@@ -370,7 +370,7 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
 \noindent Avec notre machine, nous obtenons le graphe suivant :
 
 \begin{center}
-	\includegraphics[scale=0.8]{./Codes_R/Max_Uniforme.png} 
+	\includegraphics[scale=0.8]{./images/Max_Uniforme.png} 
 \end{center}
 
 \noindent Remarquons que l'on obtient une loi de Gumbell, ce qui est assez logique au vu du fait que ce soit une loi à queue très légère (elle n'en a tout simplement pas car son support est borné).
@@ -379,7 +379,7 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
 \noindent Pour une loi exponentielle de paramètre 1, la loi limite est une loi de Gumbel. Théoriquement, on trouve $a_n = 1 $ et $b_n = \log(n) $.
 
 \begin{center}
-	\includegraphics[scale=0.8]{./Codes_R/Max_Expo.png} 
+	\includegraphics[scale=0.8]{./images/Max_Expo.png} 
 \end{center}
 
 \noindent Cette fois-ci, on avait une loi à queue fine, et on obtient loi de Gumbel, ce qui était attendu.
@@ -389,7 +389,7 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
 \noindent Pour maintenant une loi normale centrée-réduite, on peut montrer que la loi limite est encore une fois une loi de Gumbel. On trouve les paramètres généralisés $a_n = \frac{1}{\sqrt{(2*\log(n)}} $ et $b_n = \frac{1}{a_n} - \frac{\log(\log(n)) + \log(4 * pi)}{2 * \sqrt{2 * \log(n)}} $.
 
 \begin{center}
-	\includegraphics[scale=0.8]{./Codes_R/Max_Normale.png} 
+	\includegraphics[scale=0.8]{./images/Max_Normale.png} 
 \end{center}
 
 \noindent Notons ainsi que l'on a la même loi limite que pour la loi exponentielle de paramètre 1, les graphes sont quasiment identiques.
@@ -399,7 +399,7 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
 \noindent Enfin, pour une loi de Cauchy (de paramètres 0 et 1 ici), la loi limite est une loi de Fréchet. On a les coefficients suivants : $a_n = pi $ et $b_n = n $.
 
 \begin{center}
-	\includegraphics[scale=0.8]{./Codes_R/Max_Cauchy.png} 
+	\includegraphics[scale=0.8]{./images/Max_Cauchy.png} 
 \end{center}
 
 \noindent Enfin ici, on avait une loi à queue lourde, et on obtient bien la loi de Fréchet attendue.
@@ -439,7 +439,7 @@ Cet estimateur présente l'avantage d'être applicable quelle que soit la distri
 Cependant, la représentation graphique de cet estimateur en fonction du nombre \(k\) d'observations considérées révèle généralement un comportement volatil au départ, ce qui peut nuire à la lisibilité du graphique. De plus, cet estimateur est particulièrement sensible à la taille de l'échantillon sélectionné, ce qui le rend peu robuste.
 Afin d'illustrer ces observations, nous appliquons l'estimateur de Pickands à des données simulées suivant une loi de Pareto avec différents paramètres de forme \(\alpha\).
 \begin{center}
-	\includegraphics[scale=0.6]{./Codes_R/estimateur_pickands_pareto.png} 
+	\includegraphics[scale=0.6]{./images/estimateur_pickands_pareto.png} 
 \end{center}
 Les résultats obtenus montrent que pour \( \alpha = 1\), nous obtenons \(\gamma \approx 1.1\), tandis que pour \(\alpha = 5\), l'estimateur converge vers \(\gamma \approx 0.24\), proche de la valeur théorique de \(0.2\). Ces différences illustrent la sensibilité de l'estimateur aux paramètres choisis et aux fluctuations des données extrêmes.  \\
 
@@ -605,7 +605,7 @@ Cela implique que l'estimateur du paramètre \( \lambda \) est :
 \subsubsection{Graphique pour l'estimateur de Hill}
 Dans cette section nous allons analyser le comportement de l'estimateur de Hill sur des données simulées à partir de la distribution de Pareto.
 \begin{center}
-	\includegraphics[scale=0.6]{./Codes_R/estimateur_hill_pareto.png} 
+	\includegraphics[scale=0.6]{./images/estimateur_hill_pareto.png} 
 \end{center}
 L'estimateur de Hill, appliqué à des données simulées à partir de la distribution de Pareto avec des paramètres de forme de 1 et 5, montre une décroissance globale et présente une forte volatilité, particulièrement pour les faibles valeurs du paramètre de forme \(\alpha = 1\). Cette volatilité est due au fait que l'estimateur repose sur un nombre limité d'observations extrêmes, ce qui peut entraîner des fluctuations importantes. À mesure que le paramètre de forme augmente \(\alpha = 5\), l'estimateur tend à se stabiliser plus rapidement, illustrant ainsi la convergence vers la valeur théorique de l'indice de forme.
 \subsection{Estimateur de DEDH}
