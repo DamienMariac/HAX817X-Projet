@@ -41,24 +41,39 @@
 \newpage
 \tableofcontents 
 \newpage
-\section{Introduction} 
+\section{Introduction}
 
-Le théorème central limite, formulé par Pierre-Simon de Laplace en 1809, garantit que, sous des conditions raisonnables, la somme normalisée de ces variables suit asymptotiquement une loi normale. Cette convergence est utile pour étudier le comportement \textbf{global} des observations, mais elle ne renseigne pas sur le comportement des valeurs extrêmes.
+Les événements extrêmes tels que les inondations, les crues, les canicules, les crises financières ou encore les krachs boursiers sont certes rares, mais peuvent avoir des conséquences considérables. Leur modélisation statistique constitue aujourd’hui un enjeu majeur dans des domaines aussi variés que la climatologie, l’assurance, la finance ou encore l’ingénierie.
 
-Il est donc naturel de se demander quelle peut être la convergence en loi de ses dernières. 
-\\
-Autrement dit, pour \( X = (X_1, ..., X_n) \) un échantillon de variables aléatoires i.i.d , on pose :
+Bien que de tels phénomènes ne puissent pas toujours être évités, la société peut mettre en œuvre des stratégies préventives afin d’en limiter les impacts. C’est dans cette optique que s’inscrit la théorie des valeurs extrêmes (TVE), un outil statistique essentiel dédié à l’analyse et à la prédiction des événements rares. Développée dès le début du XX\textsuperscript{e} siècle grâce aux travaux fondateurs de Fréchet (1927), Fisher et Tippett (1928), puis formalisée par Gnedenko (1943), cette théorie vise à modéliser les observations situées dans les queues des distributions de probabilité.
 
+Dans la plupart des approches statistiques classiques, l’accent est mis sur le comportement global d’un échantillon, notamment par l’étude de ses moments (moyenne, variance, etc.). Ces méthodes reposent en grande partie sur le théorème central limite (TCL), énoncé par Pierre-Simon de Laplace en 1809, qui stipule que la somme (ou la moyenne) normalisée d’un grand nombre de variables aléatoires indépendantes et identiquement distribuées converge en loi vers une distribution normale.
 
+Toutefois, le TCL ne donne aucune information sur le comportement des valeurs extrêmes, les plus grandes ou les plus petites observations qui sont pourtant cruciales dans les situations de risque. Il est donc naturel de se demander s’il existe un résultat asymptotique analogue au TCL pour les extrêmes d’un échantillon.
+
+Pour cela, on considère un échantillon de variables aléatoires i.i.d. $(X_1, X_2, \dots, X_n)$, et l’on s’intéresse au comportement du maximum :
 \[
-M_n = \max\{X_i \mid i \in \{1, ..., n\} \}
+M_n = \max\{X_1, X_2, \dots, X_n\}.
 \]
 
-et on s'intéresse à la convergence de \( M_n \), ainsi qu'aux hypothèses sous lesquelles cette convergence a lieu.
-\\
-\\
-\\
-Remarque : Etudier le minimum est totalement analogue dans ce qui suit.
+La théorie des valeurs extrêmes cherche à étudier la convergence en loi de $M_n$ (après normalisation éventuelle), ainsi que les conditions sous lesquelles cette convergence a lieu. Elle permet d’identifier les lois limites possibles pour les maxima (ou minima), qui sont : la loi de \textit{Fréchet}, la loi de \textit{Gumbel} et la loi de \textit{Weibull}, chacune correspondant à un type de comportement de la queue de distribution.
+
+\medskip
+\noindent
+\textbf{Remarque :} L’étude du minimum est entièrement analogue, il suffit d’examiner $-\min(X_1, \dots, X_n)$.
+
+\medskip
+\noindent
+La théorie des valeurs extrêmes trouve des applications concrètes dans de nombreux domaines. Elle est utilisée en :
+\begin{itemize}
+    \item \textbf{Hydrologie}, pour prévoir les crues et protéger les zones inondables ;
+    \item \textbf{Climatologie}, pour modéliser les épisodes météorologiques extrêmes ;
+    \item \textbf{Assurance}, pour estimer la probabilité de sinistres rares et coûteux ;
+    \item \textbf{Finance}, pour évaluer les risques extrêmes liés aux variations de marché ;
+    \item \textbf{Ingénierie}, pour garantir la fiabilité des structures face à des sollicitations exceptionnelles.
+\end{itemize}
+
+En fournissant un cadre théorique rigoureux pour l’analyse des queues de distribution, la TVE permet d’anticiper la fréquence et l’intensité des événements rares, et ainsi d’aider à la prise de décision dans des contextes à fort enjeu.
 
 \section{Les lois de $M_n$}
 
@@ -649,16 +664,6 @@ Cependant, pour les distributions de Weibull (\(\gamma < 0\)) et Gumbel (\(\gamm
 
 L'estimateur de Pickands est basé sur les distances entre deux statistiques d'ordre, sans tenir compte du maximum de l’échantillon, ce qui entraîne une perte d'information sur la queue de distribution. Par conséquent, il présente une plus grande volatilité que l'estimateur de Hill, qui repose sur la moyenne des logarithmes des observations.
 
-\section{Détermination du domaine d'attraction}
-Une approche graphique qui permet de déterminer à quel domaine d'attraction appartiennent les données consiste à tracer le quantile plot généralisé repris de Anis Borchani (2010). Le quantile plot généralisé est défini par :
-\[
-\left( \ln\left( \frac{n+1}{j} \right), \ln\left( \hat{\gamma}_{j,n}^{(UH)} \right) \right) \quad \text{pour tout } j \in \left[ 1; k_n \right]
-\]
-avec 
-\[
-\hat{\gamma}_{j,n}^{(UH)} = X_{(n-j)} \hat{\gamma}_{n}^{(H)}(k_n).
-\]
-La difficulté pratique dans le calcul de ces estimateurs réside dans le choix du nombre d'excès \(k_n\) à prendre en compte. Si les estimateurs sont calculés en utilisant un trop grand nombre d'observations, leur biais sera élevé. À l'inverse, si le nombre d'observations est trop faible, cela entraînera une variance importante.
 \newpage
 \section{Application sur des données réelles}
 
