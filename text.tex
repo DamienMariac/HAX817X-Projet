@@ -9,6 +9,7 @@
 \usepackage{listings} % pour intégrer un code R
 \usepackage{xcolor} % pour coloriser le code R intégré
 \usepackage{comment}
+\usepackage{float}
 
 \lstset{
 	language=R,
@@ -442,37 +443,107 @@ On dit qu'un estimateur \(\hat{\gamma_{n}}\) est convergent s'il converge en pro
 \[
 \lim_{n \to \infty} P(\lvert \hat{\gamma_{n}} - \gamma \rvert > \epsilon) = 0 \quad \forall \epsilon > 0
 \]
+
 \subsection{Estimateur de Pickands}
 
-L'estimateur de Pickands est défini par la statistique 
-\[
-\hat{\gamma}_{k,n} = \frac{1}{\ln(2)} \ln\left(\frac{X_{k,n} - X_{2k,n}}{X_{2k,n} - X_{4k,n}}\right)
-\]
+L’estimateur de Pickands est construit à partir de trois statistiques d’ordre dans un échantillon. Il constitue l’un des premiers estimateurs non paramétriques proposés pour estimer l’indice des valeurs extrêmes \(\gamma\). Son principal avantage réside dans le fait qu’il est valide quel que soit le domaine d’attraction de la loi sous-jacente : Fréchet (\(\xi > 0\)), Gumbel (\(\xi = 0\)) ou Weibull (\(\xi < 0\)). Il n'est donc pas restreint à une famille particulière de distributions et reste applicable dans un cadre très général.
 
-Cet estimateur présente l'avantage d'être applicable quelle que soit la distribution des extrêmes. \\
+Néanmoins, cet estimateur est connu pour être assez sensible à la taille de l’échantillon, et en particulier au choix du paramètre intermédiaire \(k\), ce qui peut entraîner une certaine instabilité dans les estimations. Cela limite parfois sa robustesse, en particulier pour des tailles d’échantillon modestes.
 
-Cependant, la représentation graphique de cet estimateur en fonction du nombre \(k\) d'observations considérées révèle généralement un comportement volatil au départ, ce qui peut nuire à la lisibilité du graphique. De plus, cet estimateur est particulièrement sensible à la taille de l'échantillon sélectionné, ce qui le rend peu robuste.
-Afin d'illustrer ces observations, nous appliquons l'estimateur de Pickands à des données simulées suivant une loi de Pareto avec différents paramètres de forme \(\alpha\).
-\begin{center}
-	\includegraphics[scale=0.6]{./images/estimateur_pickands_pareto.png} 
-\end{center}
-Les résultats obtenus montrent que pour \( \alpha = 1\), nous obtenons \(\gamma \approx 1.1\), tandis que pour \(\alpha = 5\), l'estimateur converge vers \(\gamma \approx 0.24\), proche de la valeur théorique de \(0.2\). Ces différences illustrent la sensibilité de l'estimateur aux paramètres choisis et aux fluctuations des données extrêmes.  \\
+En 1975, Pickands a démontré la consistance faible de son estimateur, c’est-à-dire la convergence en probabilité vers le vrai paramètre lorsque la taille de l’échantillon tend vers l’infini. Plus tard en 1989, Dekkers et de Haan ont établi la convergence forte ainsi que la normalité asymptotique de cet estimateur sous des conditions plus générales.
 
-Cet estimateur est asymptotiquement normal, avec :
-\[
-\sqrt{k} \frac{\hat{\gamma_{k,n}} - \gamma}{\sigma(\gamma)} \xrightarrow{\mathcal{L}} \mathcal{N}(0,1)
-\]
-Lorsque \( k \to +\infty \), la variance asymptotique est donnée par :
+\medskip
+\textbf{Définition.} Soit \(X_1, \dots, X_n\) une suite de variables aléatoires i.i.d. de loi \(F\), appartenant à l’un des domaines d’attraction des lois de valeurs extrêmes. On note \(X_{1,n} \leq \dots \leq X_{n,n}\) les statistiques d’ordre croissantes. Soit \((k_n)_{n \geq 1}\) une suite intermédiaire telle que \(k_n \to \infty\) et \(k_n / n \to 0\), l’estimateur de Pickands est défini par :
 
 \[
-\sigma(\gamma)= \frac{\gamma \sqrt{2^{(2\gamma+1)}+1}}{2(2^{\gamma}-1) \ln(2)}
+\hat{\gamma}_{k,n} = \frac{1}{\ln(2)} \ln\left( \frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-2k+1,n} - X_{n-4k+1,n}} \right)
 \]
 
-Une généralisation de l'estimateur de Pickands a été introduite comme suit :
+\medskip
+L’estimateur de Pickands repose sur l’idée que, dans les queues d’une distribution extrême, les plus grandes observations suivent un comportement régulier. En considérant des statistiques d’ordre décroissantes, on peut approximer la structure de la queue à l’aide de différences successives entre grandes valeurs. L’utilisation d’une transformation logarithmique permet alors d’isoler l’indice de queue \(\gamma\), sous des conditions d’attraction à une loi limite.
+
+\medskip
+\textbf{Propriété de consistance.} Si \((k_n)\) est une suite intermédiaire, alors :
 \[
-\hat{\gamma}_{(k,u,v)} = \frac{1}{\ln(v)} \ln\left(\frac{X_{n-k+1,n} - X_{n-[uk]+1,n}}{X_{n-[vk]+1,n} - X_{n-[uvk]+1,n}}\right)
+\hat{\gamma}_{k,n} \xrightarrow{\mathbb{P}} \gamma
+\quad \text{lorsque } n \to \infty.
 \]
-où \(u\) et \(v\) sont des réels positifs différents de 1, de sorte que les indices \([vk]\), \([uk]\) et \([uvk]\) ne dépassent pas \(n\). Lorsque \(u = v = 2\), on retrouve l'estimateur de Hill \(\hat{\gamma}_{k,n}\).
+
+De plus, sous hypothèses régulières, l’estimateur est asymptotiquement normal :
+\[
+\sqrt{k} \left( \hat{\gamma}_{k,n} - \gamma \right) \xrightarrow{\mathcal{L}} \mathcal{N}(0, \sigma^2(\gamma))
+\]
+où la variance asymptotique est donnée par :
+\[
+\sigma(\gamma) = \frac{\gamma \sqrt{2^{2\gamma + 1} + 1}}{2(2^{\gamma} - 1)\ln(2)}.
+\]
+
+\medskip
+Cette formule théorique permet de construire des intervalles de confiance pour l’estimation de \(\gamma\), bien qu’en pratique la variance soit souvent estimée par simulation.
+
+\medskip
+Enfin, une version généralisée de cet estimateur existe, introduisant deux paramètres \(u, v > 1\), permettant une plus grande flexibilité :
+\[
+\hat{\gamma}_{(k,u,v)} = \frac{1}{\ln(v)} \ln\left( \frac{X_{n-k+1,n} - X_{n-[uk]+1,n}}{X_{n-[vk]+1,n} - X_{n-[uvk]+1,n}} \right)
+\]
+Cette généralisation permet d'ajuster la stabilité de l'estimation. On retrouve l'estimateur de Pickands classique en prenant \(u = v = 2\).
+
+\subsection{Représentation graphique de l’estimateur de Pickands}
+
+Afin d'illustrer le comportement de l’estimateur de Pickands dans différents contextes, nous l'appliquons à des échantillons simulés de taille \(n = 40\,000\), issus de quatre lois représentatives : la loi de Pareto, la loi exponentielle, la loi uniforme sur \([0,1]\), et la loi de Cauchy. Ces lois permettent de couvrir les trois domaines d’attraction des lois de valeurs extrêmes, avec des indices théoriques respectifs de queue \(\gamma\) valant \(0.5\), \(0\), \(-1\), et \(1\).
+
+Les figures ci-dessous présentent l’évolution de l’estimateur \(\hat{\gamma}_{k,n}\) en fonction de \(k\), c’est-à-dire du nombre d’observations extrêmes utilisées dans le calcul. Une ligne rouge horizontale indique la valeur théorique de \(\gamma\) pour chaque distribution, afin de visualiser la qualité de convergence.
+
+\subsubsection{Loi de Pareto (\(\alpha = 2\))}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./images/pareto.png}
+    \caption{Estimateur de Pickands pour la distribution de Pareto (shape = 2).}
+    \label{fig:pickands_pareto}
+\end{figure}
+
+La figure \ref{fig:pickands_pareto} illustre l’estimateur de Pickands appliqué à un échantillon simulé selon une loi de Pareto de paramètre \(\alpha = 2\), ce qui correspond à un indice de queue \(\gamma = 1/\alpha = 0.5\). L’estimateur converge clairement vers cette valeur lorsque \(k\) augmente, ce qui confirme la bonne performance de l’estimateur dans le cas d’une distribution à queue lourde.
+
+\subsubsection{Loi exponentielle}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./images/exponentielle.png}
+    \caption{Estimateur de Pickands pour la distribution exponentielle.}
+    \label{fig:pickands_exponentielle}
+\end{figure}
+
+Dans la figure \ref{fig:pickands_exponentielle}, on observe que l’estimateur de Pickands reste proche de zéro, en accord avec l’indice théorique \(\gamma = 0\) de la loi exponentielle. Ce résultat est cohérent avec le fait que cette loi appartient au domaine d’attraction de Gumbel.
+\subsubsection{Loi uniforme \([0,1]\)}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./images/uniforme.png}
+    \caption{Estimateur de Pickands pour la distribution uniforme sur \([0,1]\).}
+    \label{fig:pickands_uniforme}
+\end{figure}
+
+Comme le montre la figure \ref{fig:pickands_uniforme}, l’estimateur décroît vers \(\gamma = -1\), valeur attendue pour la loi uniforme qui possède une queue bornée. La plus grande instabilité observée est due au fait que cette loi n’a pas de queue lourde, ce qui affecte la stabilité de l’estimation.
+
+\subsubsection{Loi de Cauchy}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./images/cauchy.png}
+    \caption{Estimateur de Pickands pour la distribution de Cauchy.}
+    \label{fig:pickands_cauchy}
+\end{figure}
+
+La figure \ref{fig:pickands_cauchy} présente l’estimateur de Pickands appliqué à un échantillon de loi de Cauchy. Cette loi est caractérisée par une queue extrêmement lourde et appartient au domaine d’attraction de Fréchet, avec un indice de queue théorique \(\gamma = 1\).
+
+Le comportement de l’estimateur est ici particulièrement intéressant. Pour les faibles valeurs de \(k\), l’estimateur est très instable, ce qui est attendu compte tenu de la nature explosive des grandes valeurs dans une loi de Cauchy. À partir d’un certain seuil (environ \(k = 500\)), une phase de stabilisation est visible, avec une estimation qui reste relativement proche de la valeur attendue.
+
+Cependant, on note qu’au-delà de \(k \approx 4000\), l’estimateur décroît significativement. Cela s’explique par le fait que l’inclusion d’observations moins extrêmes perturbe la qualité de l’estimation.
+Ainsi, le cas de la Cauchy montre bien les limites pratiques de l’estimateur, malgré sa validité théorique.
+
+\subsubsection{Synthèse}
+Ces représentations graphiques montrent que l’estimateur de Pickands parvient globalement à capturer l’indice de queue \(\gamma\) pour différentes familles de distributions. Il converge correctement pour les cas classiques (Pareto, exponentielle), mais présente une instabilité accrue pour les queues bornées ou très lourdes. Ces résultats illustrent à la fois les points forts et les limites de l’estimateur, notamment sa sensibilité au choix de \(k\).
 
 \subsection{Construction de l'estimateur de Pickands}
 \textbf{Proposition :} (Caractérisations de \( D(H_{\gamma}) \))

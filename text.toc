@@ -17,18 +17,24 @@
 \contentsline {subsubsection}{\numberline {3.0.4}Loi de Cauchy}{9}{}%
 \contentsline {section}{\numberline {4}Méthodes d'estimation de l'indice de valeurs extrêmes}{11}{}%
 \contentsline {subsection}{\numberline {4.1}Estimateur de Pickands}{11}{}%
-\contentsline {subsection}{\numberline {4.2}Construction de l'estimateur de Pickands}{12}{}%
-\contentsline {subsection}{\numberline {4.3}Estimateur de Hill}{13}{}%
-\contentsline {subsubsection}{\numberline {4.3.1}Graphique pour l'estimateur de Hill}{14}{}%
-\contentsline {subsection}{\numberline {4.4}Estimateur de DEDH}{15}{}%
-\contentsline {section}{\numberline {5}Sélection des estimateurs de l'indice de valeurs extrêmes}{15}{}%
-\contentsline {section}{\numberline {6}Application sur des données réelles}{16}{}%
-\contentsline {subsection}{\numberline {6.1}Première méthode (Méthode des maxima en bloc) avec Wooster}{16}{}%
-\contentsline {subsubsection}{\numberline {6.1.1}Principe}{16}{}%
-\contentsline {subsubsection}{\numberline {6.1.2}Application sur les données de Wooster}{16}{}%
-\contentsline {subsection}{\numberline {6.2}Méthode de dépassement de seuil avec \textbf {Rain}}{17}{}%
-\contentsline {subsubsection}{\numberline {6.2.1}Principe}{17}{}%
-\contentsline {subsubsection}{\numberline {6.2.2}Application sur les données de Rain}{17}{}%
-\contentsline {subsubsection}{\numberline {6.2.3}Méthode de Nelder-Mead}{18}{}%
-\contentsline {section}{\numberline {7}Annexe}{20}{}%
-\contentsline {subsection}{\numberline {7.1}Codes R}{20}{}%
+\contentsline {subsection}{\numberline {4.2}Représentation graphique de l’estimateur de Pickands}{12}{}%
+\contentsline {subsubsection}{\numberline {4.2.1}Loi de Pareto (\(\alpha = 2\))}{12}{}%
+\contentsline {subsubsection}{\numberline {4.2.2}Loi exponentielle}{13}{}%
+\contentsline {subsubsection}{\numberline {4.2.3}Loi uniforme \([0,1]\)}{14}{}%
+\contentsline {subsubsection}{\numberline {4.2.4}Loi de Cauchy}{15}{}%
+\contentsline {subsubsection}{\numberline {4.2.5}Synthèse}{15}{}%
+\contentsline {subsection}{\numberline {4.3}Construction de l'estimateur de Pickands}{15}{}%
+\contentsline {subsection}{\numberline {4.4}Estimateur de Hill}{17}{}%
+\contentsline {subsubsection}{\numberline {4.4.1}Graphique pour l'estimateur de Hill}{18}{}%
+\contentsline {subsection}{\numberline {4.5}Estimateur de DEDH}{18}{}%
+\contentsline {section}{\numberline {5}Sélection des estimateurs de l'indice de valeurs extrêmes}{19}{}%
+\contentsline {section}{\numberline {6}Application sur des données réelles}{20}{}%
+\contentsline {subsection}{\numberline {6.1}Première méthode (Méthode des maxima en bloc) avec Wooster}{20}{}%
+\contentsline {subsubsection}{\numberline {6.1.1}Principe}{20}{}%
+\contentsline {subsubsection}{\numberline {6.1.2}Application sur les données de Wooster}{20}{}%
+\contentsline {subsection}{\numberline {6.2}Méthode de dépassement de seuil avec \textbf {Rain}}{21}{}%
+\contentsline {subsubsection}{\numberline {6.2.1}Principe}{21}{}%
+\contentsline {subsubsection}{\numberline {6.2.2}Application sur les données de Rain}{21}{}%
+\contentsline {subsubsection}{\numberline {6.2.3}Méthode de Nelder-Mead}{22}{}%
+\contentsline {section}{\numberline {7}Annexe}{24}{}%
+\contentsline {subsection}{\numberline {7.1}Codes R}{24}{}%
