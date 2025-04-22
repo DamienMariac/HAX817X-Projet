@@ -625,75 +625,59 @@ Donc la variable aléatoire \(\frac{U(V_{n-k+1,n}) - U(V_{n-2k+1,n})}{U(V_{n-k+1
 Ainsi cette quantité converge en loi vers $2^{\gamma}$ quand $n$ tend vers l’infini.
 
 \subsection{Estimateur de Hill}
+Cet estimateur a été introduit par Hill en 1975 dans le but d’estimer, de manière non paramétrique, le paramètre de queue des lois appartenant au domaine d’attraction de Fréchet. Il offre une estimation de l’indice de queue généralement plus efficace que celle fournie par l’estimateur de Pickands. La construction de cet estimateur repose sur l’utilisation des $k_n$ plus grandes statistiques d’ordre de l’échantillon.
+\section*{La construction de l’estimateur de Hill}
 
-Tout d'abord, l'estimateur de Hill est applicable uniquement aux distributions de Fréchet (\(\gamma > 0\)), où il permet d'obtenir un estimateur de l'indice de queue plus efficace que celui de Pickands. Cet estimateur est défini par la statistique suivante :
-\[
-\hat{\gamma}_{k,n} = \frac{1}{k} \sum_{i=1}^{k} \ln(\frac{X_{n-i+1,n}}{X_{n-k,n}})
-\]
-pour \( k \in \{1, \dots, n-1\} \).
-Si l'on choisit \( k, n \to +\infty \), de sorte que \(\frac{k}{n} \to 0\), alors on peut montrer que \(\lim_{k \to \infty} \hat{\gamma}_{k,n} = \gamma\). Cet estimateur possède la propriété d'être asymptotiquement normal, ce qui signifie que :
+Soient $\alpha_n$ et $\beta_n$ deux suites de nombres positifs, la construction de l’estimateur de Hill basée sur la relation suivante :
 
-\[
-\sqrt{k} \frac{\hat{\gamma}_{k,n} - \gamma}{\gamma} \xrightarrow{\mathcal{L}} \mathcal{N}(0,1)
-\]
+\begin{equation}
+    q_{\beta_n} \simeq q_{\alpha_n} \left( \frac{\alpha_n}{\beta_n} \right)^{\gamma}.
+    \tag{1.6}
+\end{equation}
 
-Il existe plusieurs approches pour construire l'estimateur de Hill. Une approche possible consiste à utiliser la méthode du maximum de vraisemblance. 
-
-Tout d'abord, on considère une suite de variables aléatoires \( X_1, \dots, X_n \) i.i.d. suivant une loi de Pareto de paramètre \( \lambda > 0 \), dont la fonction de répartition est donnée par :  
+Passons au logarithme dans l’équation (1.6), ce qui donne :
 
 \[
-F(x) = 1 - x^{-\lambda}, \quad \text{pour } x \geq 1.
+\log(q_{\beta_n}) - \log(q_{\alpha_n}) \simeq \gamma \log\left( \frac{\alpha_n}{\beta_n} \right).
 \]
 
-La densité de probabilité associée est alors :
+On choisit $\alpha_n = k_n/n$ et on considère plusieurs valeurs pour $\beta_n$, $\beta_n = i/n$ avec $i = 1, \ldots, k_n - 1$ tout en ayant $\beta_n < \alpha_n$. On obtient alors :
 
 \[
-f(x) = \lambda x^{-\lambda - 1}, \quad \text{pour } x \geq 1.
+\log(q_{i/n}) - \log(q_{k_n/n}) \simeq \gamma \log(k_n/i).
 \]
 
-La fonction de vraisemblance est donnée par :
+Ainsi, en estimant les quantiles par leurs équivalents empiriques, on obtient :
 
 \[
-L(x_1, \dots, x_n, \lambda) = \prod_{i=1}^{n} f(x_i) = \lambda^{n} \prod_{i=1}^{n} x_i^{-\lambda - 1}.
+\log(X_{n - i + 1, n}) - \log(X_{n - k_n + 1, n}) \simeq \gamma \log(k_n / i).
 \]
 
-En prenant le logarithme, on obtient la log-vraisemblance :
+En sommant de part et d’autre sur $i = 1, \ldots, k_n - 1$, on obtient :
 
 \[
-\log L(x_1, \dots, x_n, \lambda) = n \log \lambda - (\lambda + 1) \sum_{i=1}^{n} \log x_i.
+\gamma = \frac{\displaystyle \sum_{i=1}^{k_n - 1} \log(X_{n - i + 1, n}) - \log(X_{n - k_n + 1, n})}{\displaystyle \sum_{i=1}^{k_n - 1} \log(k_n / i)}.
 \]
 
-En dérivant cette expression par rapport à \( \lambda \), on obtient :
+Le dénominateur se réécrit $\log(k_n^{k_n - 1}/(k_n - 1)!)$. En utilisant la formule de Stirling, il est équivalent à $k_n$ au voisinage de l’infini. On obtient alors l’estimateur de Hill.
+
+Soit $(k_n)_{n \geq 1}$ une suite d'entiers avec $1 \leq k_n \leq n$, l’estimateur de Hill est défini par :
 
 \[
-\frac{d \log L}{d \lambda} = \frac{n}{\lambda} - \sum_{i=1}^{n} \log x_i.
+\hat{\gamma}^{H}_{k_n} = \frac{1}{k_n - 1} \sum_{i=1}^{k_n - 1} \log(X_{n - i + 1, n}) - \log(X_{n - k_n + 1, n}).
 \]
 
-En dérivant une seconde fois, nous obtenons :
-
+L’estimateur de Hill satisfait la propriété de consistance faible. Plus précisément, si $(k_n)_{n \geq 1}$ est une suite intermédiaire, alors l’estimateur $\hat{\gamma}^{H}_{k_n}$ converge en probabilité vers le paramètre de queue $\gamma$, c’est-à-dire :
 \[
-\frac{d^2 \log L}{d \lambda^2} = -\frac{n}{\lambda^2} < 0,
+\hat{\gamma}^{H}_{k_n} \xrightarrow{\mathbb{P}} \gamma.
 \]
 
-ce qui confirme qu'il s'agit bien d'un maximum.  
 
-Ainsi, l'estimateur du maximum de vraisemblance de \( \frac{1}{\lambda} \) est donné par :
+\subsection{Le choix du nombre de statistiques d’ordre}
 
-\[
-\hat{\lambda}^{-1} = \frac{1}{n} \sum_{i=1}^{n} \log X_i.
-\]
+Dans la pratique, déterminer une valeur appropriée pour le paramètre $k_n$, c’est-à-dire le nombre de plus grandes observations à retenir, constitue une étape délicate. Il faut en effet trouver un compromis entre la variance et le biais : utiliser suffisamment de données pour obtenir une estimation fiable, tout en s’assurant que ces données proviennent bien de la queue de la distribution. Diverses approches ont été développées dans la littérature pour guider ce choix.
 
-Cela implique que l'estimateur du paramètre \( \lambda \) est :
 
-\[
-\hat{\lambda} = \left( \frac{1}{n} \sum_{i=1}^{n} \log X_i \right)^{-1}.
-\]
-\subsubsection{Graphique pour l'estimateur de Hill}
-Dans cette section nous allons analyser le comportement de l'estimateur de Hill sur des données simulées à partir de la distribution de Pareto.
-\begin{center}
-	\includegraphics[scale=0.6]{./images/estimateur_hill_pareto.png} 
-\end{center}
-L'estimateur de Hill, appliqué à des données simulées à partir de la distribution de Pareto avec des paramètres de forme de 1 et 5, montre une décroissance globale et présente une forte volatilité, particulièrement pour les faibles valeurs du paramètre de forme \(\alpha = 1\). Cette volatilité est due au fait que l'estimateur repose sur un nombre limité d'observations extrêmes, ce qui peut entraîner des fluctuations importantes. À mesure que le paramètre de forme augmente \(\alpha = 5\), l'estimateur tend à se stabiliser plus rapidement, illustrant ainsi la convergence vers la valeur théorique de l'indice de forme.
 \subsection{Estimateur de DEDH}
 Le troisième estimateur de l'indice de queue est celui proposé par Dekkers, Einmahl et De Haan. Il s'agit d'une généralisation de l'estimateur de Hill, applicable à tous les domaines d'attraction. Il est défini par :
 

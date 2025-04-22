@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1745353356.12137 "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" "text.pdf" "text" 1745353358.9693 0
+["pdflatex"] 1745360753.76554 "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" "text.pdf" "text" 1745360756.62892 0
   "C:/Users/welma/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1743747220.82019 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/welma/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tctt0800.pk" 1743094055.03429 7416 cff2b8291c97934c152a95be18fa94f9 ""
   "C:/Users/welma/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1739470578.36164 11948197 a83cad5fd4d63851ef9633912bb3f1d9 ""
@@ -97,21 +97,20 @@
   "C:/Users/welma/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstmisc.sty" 1716806137 77023 71dc8ec77fb5648c3af15ec4b791f591 ""
   "C:/Users/welma/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstpatch.sty" 1716806137 353 9024412f43e92cd5b21fe9ded82d0610 ""
   "C:/Users/welma/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
-  "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" 1745353350.6915 48062 bc5ec8d54999c196351573fd9ac0dd31 ""
+  "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" 1745360748.57432 47801 f68dccfcb693fc1bd7e41b8b3f001ed6 ""
   "images/Max_Cauchy.png" 1744975402.84079 13946 72b414540d1d1f27c679ee53da1d37b4 ""
   "images/Max_Expo.png" 1744975402.84234 15632 c137b4c1518a08d2526968ed352e04b9 ""
   "images/Max_Normale.png" 1744975402.84364 16072 e28c09bcc5dfff9459671bf279e3edb5 ""
   "images/Max_Uniforme.png" 1744975402.84472 13615 c7dd48017fb3c60612af934e8d64ff6f ""
   "images/cauchy.png" 1745349038.03704 46843 6c2052ea91431cc219aa3fd993ad92f5 ""
-  "images/estimateur_hill_pareto.png" 1744975402.84635 95279 a7da2539032442fda6c11715655b9c17 ""
   "images/exponentielle.png" 1745348987.43102 51367 95ea8626254ffe212fe4227ed0be474e ""
   "images/pareto.png" 1745348958.04846 51331 5a66557f13ec03536ae241a730904237 ""
   "images/rainhisto.png" 1743094035.88691 15391 fcc4701932f5090998a8bf7e0659151b ""
   "images/rainhistodensite.png" 1743094035.88691 31487 198697f692baf7ba92a60847322f8175 ""
   "images/uniforme.png" 1745349011.67127 52523 43c66319cfcdf4b8532dbbb84b2e9750 ""
   "images/woosterhisto.png" 1743094035.89519 19145 110487480b673355c9b2d1b1182bb7c8 ""
-  "text.aux" 1745353358.52682 5785 0937946d088add6cf89d686d86706ffd "pdflatex"
-  "text.toc" 1745353358.5349 3066 393da21f0bf7305810782dbf51fa3a65 "pdflatex"
+  "text.aux" 1745360756.21774 5789 d45123ace3e5c903c5c1f657cb7d7141 "pdflatex"
+  "text.toc" 1745360756.21774 3070 931e10ef6023cfcda4314111ac290092 "pdflatex"
   (generated)
   "text.aux"
   "text.log"
