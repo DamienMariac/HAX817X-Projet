@@ -31,8 +31,9 @@
 \contentsline {paragraph}{Loi exponentielle :}{18}{}%
 \contentsline {paragraph}{Loi uniforme :}{19}{}%
 \contentsline {paragraph}{Loi de Cauchy :}{19}{}%
-\contentsline {subsection}{\numberline {4.7}Estimateur de DEDH}{20}{}%
-\contentsline {section}{\numberline {5}Sélection des estimateurs de l'indice de valeurs extrêmes}{20}{}%
+\contentsline {section}{\numberline {5}Méthode des excès}{20}{}%
+\contentsline {subsection}{\numberline {5.1}Loi de Pareto généralisée (GPD)}{20}{}%
+\contentsline {subsection}{\numberline {5.2}Théorème de Balkema–de Haan–Pickands}{20}{}%
 \contentsline {section}{\numberline {6}Application sur des données réelles}{21}{}%
 \contentsline {subsection}{\numberline {6.1}Première méthode (Méthode des maxima en bloc) avec Wooster}{21}{}%
 \contentsline {subsubsection}{\numberline {6.1.1}Principe}{21}{}%
