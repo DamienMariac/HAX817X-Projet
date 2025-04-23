@@ -26,15 +26,20 @@
 \contentsline {subsection}{\numberline {4.3}Construction de l'estimateur de Pickands}{15}{}%
 \contentsline {subsection}{\numberline {4.4}Estimateur de Hill}{16}{}%
 \contentsline {subsection}{\numberline {4.5}Le choix du nombre de statistiques d’ordre}{17}{}%
-\contentsline {subsection}{\numberline {4.6}Estimateur de DEDH}{17}{}%
-\contentsline {section}{\numberline {5}Sélection des estimateurs de l'indice de valeurs extrêmes}{18}{}%
-\contentsline {section}{\numberline {6}Application sur des données réelles}{19}{}%
-\contentsline {subsection}{\numberline {6.1}Première méthode (Méthode des maxima en bloc) avec Wooster}{19}{}%
-\contentsline {subsubsection}{\numberline {6.1.1}Principe}{19}{}%
-\contentsline {subsubsection}{\numberline {6.1.2}Application sur les données de Wooster}{19}{}%
-\contentsline {subsection}{\numberline {6.2}Méthode de dépassement de seuil avec \textbf {Rain}}{20}{}%
-\contentsline {subsubsection}{\numberline {6.2.1}Principe}{20}{}%
-\contentsline {subsubsection}{\numberline {6.2.2}Application sur les données de Rain}{20}{}%
-\contentsline {subsubsection}{\numberline {6.2.3}Méthode de Nelder-Mead}{21}{}%
-\contentsline {section}{\numberline {7}Annexe}{23}{}%
-\contentsline {subsection}{\numberline {7.1}Codes R}{23}{}%
+\contentsline {subsection}{\numberline {4.6}Comportement empirique de l’estimateur de Hill}{17}{}%
+\contentsline {paragraph}{Loi de Pareto :}{18}{}%
+\contentsline {paragraph}{Loi exponentielle :}{18}{}%
+\contentsline {paragraph}{Loi uniforme :}{19}{}%
+\contentsline {paragraph}{Loi de Cauchy :}{19}{}%
+\contentsline {subsection}{\numberline {4.7}Estimateur de DEDH}{20}{}%
+\contentsline {section}{\numberline {5}Sélection des estimateurs de l'indice de valeurs extrêmes}{20}{}%
+\contentsline {section}{\numberline {6}Application sur des données réelles}{21}{}%
+\contentsline {subsection}{\numberline {6.1}Première méthode (Méthode des maxima en bloc) avec Wooster}{21}{}%
+\contentsline {subsubsection}{\numberline {6.1.1}Principe}{21}{}%
+\contentsline {subsubsection}{\numberline {6.1.2}Application sur les données de Wooster}{21}{}%
+\contentsline {subsection}{\numberline {6.2}Méthode de dépassement de seuil avec \textbf {Rain}}{22}{}%
+\contentsline {subsubsection}{\numberline {6.2.1}Principe}{22}{}%
+\contentsline {subsubsection}{\numberline {6.2.2}Application sur les données de Rain}{22}{}%
+\contentsline {subsubsection}{\numberline {6.2.3}Méthode de Nelder-Mead}{23}{}%
+\contentsline {section}{\numberline {7}Annexe}{25}{}%
+\contentsline {subsection}{\numberline {7.1}Codes R}{25}{}%

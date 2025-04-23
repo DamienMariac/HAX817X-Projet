@@ -677,6 +677,45 @@ L’estimateur de Hill satisfait la propriété de consistance faible. Plus pré
 
 Dans la pratique, déterminer une valeur appropriée pour le paramètre $k_n$, c’est-à-dire le nombre de plus grandes observations à retenir, constitue une étape délicate. Il faut en effet trouver un compromis entre la variance et le biais : utiliser suffisamment de données pour obtenir une estimation fiable, tout en s’assurant que ces données proviennent bien de la queue de la distribution. Diverses approches ont été développées dans la littérature pour guider ce choix.
 
+\subsection{Comportement empirique de l’estimateur de Hill}
+
+Nous présentons ci-dessous des représentations graphiques de l’estimateur de Hill appliqué à des échantillons de taille $n = 40000$ générés à partir de quatre lois différentes : Pareto, exponentielle, uniforme et Cauchy. Pour chacune d’elles, nous comparons les valeurs estimées de l’indice de queue $\gamma$ à leur valeur théorique.
+
+\paragraph{Loi de Pareto :}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./images/hill_pareto.png}
+    \caption{Estimateur de Hill — Loi de Pareto ($\gamma = 0{,}5$)}
+\end{figure}
+
+Dans ce cas, la loi suit un comportement de queue lourde avec un indice théorique $\gamma = 0.5$, ce qui correspond parfaitement aux hypothèses de l’estimateur de Hill. Comme le montre la Figure, l’estimation converge de manière satisfaisante vers la valeur théorique pour un intervalle raisonnable de seuils $k$. On observe une certaine instabilité pour les petites valeurs de $k$, mais une fois la courbe stabilisée, elle oscille autour de la vraie valeur. Ce comportement valide l'efficacité de l’estimateur dans ce cadre.
+\paragraph{Loi exponentielle :}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./images/hill_expo.png}
+    \caption{Estimateur de Hill — Loi exponentielle ($\gamma = 0$)}
+\end{figure}
+
+La loi exponentielle appartient au domaine de Gumbel, avec un indice de queue $\gamma = 0$. L’estimateur de Hill n’est pas adapté à ce domaine. Le graphique le confirme clairement : la courbe estimée commence avec des valeurs très élevées, puis décroît lentement sans jamais converger vers la valeur théorique nulle. L’absence de convergence met en évidence l’inadéquation de l’estimateur dans ce contexte.
+\paragraph{Loi uniforme :}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./images/hill_uniforme.png}
+    \caption{Estimateur de Hill — Loi uniforme ($\gamma = -1$)}
+\end{figure}
+
+Cette loi présente une queue bornée, avec un indice $\gamma = -1$, ce qui sort du domaine d’application de Hill. L’estimateur suppose en effet que $\gamma > 0$. Le graphique montre une estimation extrêmement instable, avec des valeurs incohérentes, souvent très grandes ou très faibles, indiquant que le modèle n’est pas du tout approprié à ce type de données. 
+\paragraph{Loi de Cauchy :}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./images/hill_cauchy.png}
+    \caption{Estimateur de Hill — Loi de Cauchy ($\gamma = 1$)}
+\end{figure}
+
+La distribution de Cauchy, avec un indice $\gamma = 1$, est dans le domaine de Fréchet, donc en principe bien adaptée à l’estimateur de Hill. Le graphique montre une bonne estimation dans les faibles valeurs de $k$, la courbe noire se stabilisant autour de la valeur théorique. Cependant, dès que $k$ devient trop grand, l’estimation chute fortement, trahissant un biais introduit par l'inclusion d’observations moins extrêmes. Ce phénomène illustre la sensibilité de l’estimateur au choix du seuil $k$.
+\medskip
+
+En résumé, ces observations soulignent la pertinence de l’estimateur de Hill pour les lois à queue lourde (Pareto, Cauchy), et son inadéquation manifeste pour les lois à queue légère ou bornée (exponentielle, uniforme). Le choix judicieux du paramètre $k$ demeure également crucial pour obtenir une estimation fiable.
 
 \subsection{Estimateur de DEDH}
 Le troisième estimateur de l'indice de queue est celui proposé par Dekkers, Einmahl et De Haan. Il s'agit d'une généralisation de l'estimateur de Hill, applicable à tous les domaines d'attraction. Il est défini par :
