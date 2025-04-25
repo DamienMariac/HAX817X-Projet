@@ -283,7 +283,7 @@ Par croissance comparé, comme \(x^{-1/\gamma}\) tend vers 0 moins vite que \(\e
 S(x)\,\sim\, K\,x^{-1/\gamma} 
 \quad (\text{pour } x\to\infty),
 \]
-ce qui caractérise une \textbf{queue bornée} : la probabilité d'observer des valeurs très grandes est plus élevée que dans un modèle à décroissance exponentielle.
+ce qui caractérise une \textbf{queue lourde} : la probabilité d'observer des valeurs très grandes est plus élevée que dans un modèle à décroissance exponentielle.
 
 \subsubsection{Si \(\gamma<0\)}
 Pour \(\gamma < 0\), la loi est définie quand :
@@ -341,6 +341,15 @@ Les lois limites qui s'imposent dependent d'un parametre $\gamma$ et sont les su
     G_\gamma(u)=\exp\left\{-\left(1+\gamma u\right)^{-1/\gamma}\right\}, \quad u < -\frac{1}{\gamma}.
     \]
 \end{itemize}
+
+La loi se généralise pour toute valeur de gamma et on l'appelle GEV (Generalized Extreme Value), et donne :
+\[
+	G_{\mu,\sigma,\gamma}(x)
+	\;=\;
+	\exp\!\Bigl\{-\bigl[1 + \gamma\,u\bigr]^{-1/\gamma}\Bigr\}.
+\]
+
+
 \newpage
 \section{Quelques exemples numériques}
 
@@ -721,7 +730,7 @@ En résumé, ces observations soulignent la pertinence de l’estimateur de Hill
 
 La méthode des excès, également appelée approche par dépassement de seuil (en anglais \textit{Peaks Over Threshold}, ou POT), a été introduite par Pickands en 1975. Elle constitue une alternative à l’approche classique par blocs pour modéliser les phénomènes extrêmes.
 
-Le principe est de ne conserver que les observations excédant un seuil déterministe élevé \( u \). Si ce seuil est bien choisi (suffisamment grand), la distribution des excès définis par :
+Le principe est de ne conserver que les observations excédant un seuil élevé \( u \). Si ce seuil est bien choisi (suffisamment grand), la distribution des excès définis par :
 \[
 Y_i = X_i - u \quad \text{pour} \quad X_i > u
 \]
@@ -793,41 +802,12 @@ Tandis que Rain contient les données de pluie journalière dans en Angleterre d
 \\
 Nous allons utiliser deux méthodes d'estimation sur les paramètres $a_n$, $b_n$ et $\gamma$ afin de d'estimer la valeur extrême.
 
-\subsection{Première méthode (Méthode des maxima en bloc) avec Wooster}
-\subsubsection{Principe}
 
-La première étape consiste à découper nos données en blocs de taille $k$ et de calculer le maximum sur chaque bloc. Le paramètre
-$k$ est choisit en fonction de l'interprétation des données. (par exemple, si on a des données journalières, on peut choisir $k=365$ pour avoir des maximums annuels).
-Ensuite, pour chaque bloc on calcule le maximum. Cela nous donne une suite de maximum.
-Une fois les maximums obtenus, on estime $a_n$,$b_n$ et $\gamma$ en utilisant la méthode du maximum de vraisemblance.
-
-\subsubsection{Application sur les données de Wooster}
-L'objectif sur ces données est de savoir s'il existe (et dans le cas échéant de le calculer) un seuil tel que les températures ne puissent pas dépasser.
-Chercher cette valeur seuil serait utile en agriculture par exemple pour savoir si les températures ne sont pas trop élevées pour les cultures.
-
-\begin{center}
-	\includegraphics[scale=0.8]{./images/woosterhisto.png} 
-\end{center}
-
-Nous avons découper ici nos données en blocs de taille $60$ et de calculer le maximum sur chaque bloc.
-L'estimation numériques par l'algorithme de Nelder-Mead des paramètres $a_n$,$b_n$  (qu'on note pour la suite $\sigma$ et $\mu$) et $\gamma$ nous donne :
-\[
-\sigma = 36.02, \quad \mu= 18.82, \quad \gamma = -0.5
-\]
-
-Nous obtenons une valeur de $\gamma$ négative, ce qui signifie que la distribution des températures max à Wooster est de type Weibull.
-Nous pouvons donc conclure que les températures à Wooster sont pas limitées par un seuil.
-Ce seuil étant donnée dans la partie 1, il vaut : $x_{max} = \mu - \frac{\sigma}{\gamma} = 74.93 $
-\\
-\\
-Il est alors raisonnables de penser que les températures à Wooster ne dépassent pas $74.93$.
-
-v
-\subsection{Méthode de dépassement de seuil avec \textbf{Rain}}
+\subsection{Méthode de dépassement de seuil}
 
 \subsubsection{Principe}
 
-La deuxième méthode consiste à fixer un seuil $u$ et de considérer les données qui dépassent ce seuil. C'est à dire $X_i$ tel que $X_i > u$.
+Cette méthode consiste à fixer un seuil $u$ et de considérer les données qui dépassent ce seuil. C'est à dire $X_i$ tel que $X_i > u$.
 Ensuite, on stocke les excès $X_i - u$. Cela nous donne un jeu de données positifs.
 La clé de cette méthode est que pour un seuil $u$ bien choisi, les excès suivent une loi de Pareto de paramètres $\sigma$ (échelle) et $\gamma$ (le gamma qu'on estime dans toute la théorie).
 C'est alors qu'on ajuste les paramètres $\sigma$ et $\gamma$ par maximum de vraisemblance.
@@ -841,9 +821,9 @@ Chercher cette valeur seuil serait utile en agriculture par exemple pour savoir 
 	\includegraphics[scale=0.8]{./images/rainhisto.png} 
 \end{center}
 
-On remarque dans un premier temps que les données sont concentrées autour de 0 mais qu'elles sont capables de prendre des valeurs très élevées.
+On remarque dans un premier temps que les données sont concentrées autour de 0 mais qu'elles sont capables de prendre des valeurs très élevées jusqu'à 90.
 Il est alors raisonnable de penser qu'après estimation, on va obtenir une valeur de gamma positive ou nulle. En effet, il n'apparait pas de cassure dans la distribution des données.
-De plus, la queue de distribution est longue mais ne parait pas lourde. Ce qui suggèrerait une valeur de gamma proche de 0.
+De plus, les données prennent des valeurs grandes mais perdent rapidement en densité pour celle-ci. Ce qui suggèrerait une valeur de gamma proche de 0.
 \\
 \\
 Après estimation numérique, on obtient : $\sigma = 7.94$ et $\gamma = 0.034$ avec pour $\gamma$ un intervalle de confiance : $[-0.022 ; 0.102]$.
@@ -852,11 +832,17 @@ Après estimation numérique, on obtient : $\sigma = 7.94$ et $\gamma = 0.034$ a
 Une valeur de gamma aussi proche de 0 doit nous conduire à une étude plus approfondie.
 Plusieurs méthodes s'offrent à nous pour améliorer l'estimation de gamma. 
 \\
-ON Peut considère la première méthode afin de comparer les résultats.
 \\
-On peut faire varier le seuil $u$ et juger de l'impact sur l'estimation de gamma.
+1) On peut faire varier le seuil $u$ et juger de l'impact sur l'estimation de gamma.
 \\
-Ou alors de façon plus arbitraire, on peut considérer la valeur de gamma en fonction du type de donnée qu'on étudie et de la cohérence que cela apporte.
+\\
+2) On peut chercher les valeurs des paramêtres via une autre méthode (présentée plus bas).
+\\
+\\
+3) Par l'argument au-dessus, comment on s'attend à avoir une valeur de $\gamma$ positive ou nul. On peut estimmer $\gamma$ avec l'estimateur de Hill.
+\\
+\\
+4) Ou alors de façon plus arbitraire, on peut considérer la valeur de gamma en fonction du type de donnée qu'on étudie et de la cohérence que cela apporte.
 \\
 \\
 \\
@@ -867,12 +853,81 @@ Pour notre exemple, on considère que $\gamma > 0$
 \end{center}
 
 La distribution de Pareto (courbe rouge) avec les paramètres estimés semblent bien coller avec les données. Cela signifie qu’on s’attend à des excès au-delà du seuil de plus en plus rares, sans pour autant exclure la survenue de précipitations sensiblement élevées.
-\\
-\\
+
+\subsubsection{Application sur les données de Wind}
+
+
+
+\subsubsection{conclusion sur la méthode de dépassement de seuil}
 L'avantage de cette méthode est qu'elle est plus efficace car elle utilise plus de données. Cependant, elle est plus difficile à mettre en place car il faut choisir un seuil $u$ qui est crucial pour l'estimation de gamma.
 
 
-\subsubsection{Méthode de Nelder-Mead}
+
+\subsection{Autre méthode : Méthode des maxima en bloc}
+\subsubsection{Principe}
+
+La première étape consiste à découper nos données en blocs de taille $k$ et de calculer le maximum sur chaque bloc. Le paramètre
+$k$ est choisit en fonction de l'interprétation des données. (par exemple, si on a des données journalières, on peut choisir $k=365$ pour avoir des maximums annuels).
+Ensuite, pour chaque bloc on calcule le maximum. Cela nous donne une suite de maximum.
+Une fois les maximums obtenus, on estime $a_n$,$b_n$ et $\gamma$ en utilisant la méthode du maximum de vraisemblance.
+\\
+Afin de comparer les deux méthodes et de se conforter aux valeurs estimmer, on va utiliser les mêmes données que précédemment.
+
+
+\subsubsection{Application sur les données de Rain}
+
+Les données étant journalières, on va choisir des blocs de taille 365, comme les données vont de 1914 à 1962, on se retrouve avec 48 blocs de 365 jours.
+\\
+\\
+Via le package \textbf{evd}, on obtient avec la fonction \textbf{fgev} les paramètres suivants :
+\\
+$\mu = 40.8$, $\sigma = 9.73$ et $\gamma = 0.107$.
+\\
+L'estimation des paramètres sont calculées par l'algorithme de Nelder-Mead. On peut étendre l'estimation des paramètres notamment $\gamma$ via la méthode de Hill afin d'avoir une va
+\begin{center}
+	\includegraphics[scale=0.8]{./images/gevrainmaxbloc.png} 
+\end{center}
+
+Le graphique ci-dessus montre la distribution de Frechet avec les paramètres estimés.
+On obtient alors une valeur de gamma plus élevée que dans la méthode de dépassement de seuil. Cela conforte l'idée d'une distribution à queue lourde.
+\\
+\\
+Il n’existe pas de valeur maximale finie : la probabilité de très gros maxima décroît lentement, selon un comportement polynomial plutôt qu’exponentiel ce qui est embettant dans le cas pratique.
+On peut néamoins donner une valeur qui nous assure que la probabilité de dépasser cette valeur est très faible.
+\\
+On introduit alors le \textbf{quantile de retour}. On pose $z_t$ la valeur que l’on dépasse en moyenne une fois tous les T ans.
+\\
+Dans notre cas, on a intérêt à prendre une grande valeur pour T pour être sûr de dépasser cette valeur que rarement. Prenons pour la suite T = 100.
+\\
+En particulier, $z_t$ est solution de l'équation suivante :
+\[
+P\bigl(M \le z_T\bigr)
+\;=\;
+G_{\mu,\sigma,\xi}(z_T)
+\;=\;
+1 - \frac{1}{T},
+\]
+où \(G_{\mu,\sigma,\xi}\) est la fonction de répartition de la GEV. En résolvant cette équation que l'on admet, on obtient
+\[
+z_T =
+\begin{cases}
+\displaystyle
+\mu \;+\;\frac{\sigma}{\xi}\Bigl[(-\ln(1 - 1/T))^{-\xi} - 1\Bigr],
+&\xi \neq 0,\\[1em]
+\displaystyle
+\mu \;-\;\sigma\,\ln\bigl(-\ln(1 - 1/T)\bigr),
+&\xi = 0.
+\end{cases}
+\]
+Dans notre cas, on obtient alors : $z_t = 98.636$. C'est à dire que la probabilité de dépasser cette valeur est de 1/100.
+
+
+
+
+\newpage
+\section{Annexe}
+
+\subsection{Méthode de Nelder-Mead}
 
 \noindent Le package "evd", que nous avons utilisé pour réaliser les méthodes de dépassement de seuil et des maxima en bloc, utilise l'algorithme de Nelder-Mead pour calculer les paramètres de la fonction limite et ainsi savoir dans quel cas où se trouve : Fréchet, Gumbel ou Weibull. \\
 
@@ -890,8 +945,6 @@ L'avantage de cette méthode est qu'elle est plus efficace car elle utilise plus
 
 \noindent On répète cela jusqu'à atteinte du critère d'arrêt, en général : $ \sqrt{\sum_{i=1}^{n+1}  \frac{(f_i - \bar{f})^2}{n}} < \epsilon $ où $\bar{f} =\frac{1}{n+1} \sum_{i=1}^{n+1} f_i $ et $ \epsilon $ est un réel proche de 0. \\
 
-\newpage
-\section{Annexe}
 
 \subsection{Codes R}
 
