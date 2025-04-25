@@ -854,19 +854,15 @@ Pour notre exemple, on considère que $\gamma > 0$
 
 La distribution de Pareto (courbe rouge) avec les paramètres estimés semblent bien coller avec les données. Cela signifie qu’on s’attend à des excès au-delà du seuil de plus en plus rares, sans pour autant exclure la survenue de précipitations sensiblement élevées.
 
-\subsubsection{Application sur les données de Wind}
-
-
-
 \subsubsection{conclusion sur la méthode de dépassement de seuil}
-L'avantage de cette méthode est qu'elle est plus efficace car elle utilise plus de données. Cependant, elle est plus difficile à mettre en place car il faut choisir un seuil $u$ qui est crucial pour l'estimation de gamma.
+L'avantage de cette méthode est qu'elle est la plus efficace en pratique car elle utilise plus de données. Cependant, elle est plus difficile à mettre en place car il faut choisir un seuil $u$ qui est crucial pour l'estimation de $\gamma$.
 
 
 
 \subsection{Autre méthode : Méthode des maxima en bloc}
 \subsubsection{Principe}
 
-La première étape consiste à découper nos données en blocs de taille $k$ et de calculer le maximum sur chaque bloc. Le paramètre
+La première étape consiste à subdiviser nos données en blocs de taille $k$ et de calculer le maximum sur chaque bloc. Le paramètre
 $k$ est choisit en fonction de l'interprétation des données. (par exemple, si on a des données journalières, on peut choisir $k=365$ pour avoir des maximums annuels).
 Ensuite, pour chaque bloc on calcule le maximum. Cela nous donne une suite de maximum.
 Une fois les maximums obtenus, on estime $a_n$,$b_n$ et $\gamma$ en utilisant la méthode du maximum de vraisemblance.
@@ -883,17 +879,19 @@ Via le package \textbf{evd}, on obtient avec la fonction \textbf{fgev} les param
 \\
 $\mu = 40.8$, $\sigma = 9.73$ et $\gamma = 0.107$.
 \\
-L'estimation des paramètres sont calculées par l'algorithme de Nelder-Mead. On peut étendre l'estimation des paramètres notamment $\gamma$ via la méthode de Hill afin d'avoir une va
+L'estimation des paramètres sont calculées par l'algorithme de Nelder-Mead (voir annexe). On peut pousser l'estimation des paramètres notamment $\gamma$ via la méthode de Hill afin d'avoir une valeur plus précise. D'autant plus que dans le cas de la méthode par depassement de seuil, on a vu que la valeur de $\gamma$ était aussi positive. Cela nous conforte dans l'idée d'une valeur de gamma positive.
 \begin{center}
 	\includegraphics[scale=0.8]{./images/gevrainmaxbloc.png} 
 \end{center}
 
-Le graphique ci-dessus montre la distribution de Frechet avec les paramètres estimés.
-On obtient alors une valeur de gamma plus élevée que dans la méthode de dépassement de seuil. Cela conforte l'idée d'une distribution à queue lourde.
+Le graphique ci-dessus montre la distribution de Frechet en blue avec les paramètres estimés superposant l'histogramme des maximums par année.
 \\
 \\
-Il n’existe pas de valeur maximale finie : la probabilité de très gros maxima décroît lentement, selon un comportement polynomial plutôt qu’exponentiel ce qui est embettant dans le cas pratique.
-On peut néamoins donner une valeur qui nous assure que la probabilité de dépasser cette valeur est très faible.
+On suppose alors que $\gamma > 0$, donc il n’existe pas de valeur maximale finie : la probabilité de très gros maxima décroît lentement, selon un comportement polynomial plutôt que exponentiel ce qui est embettant dans le cas pratique.
+\\
+\\
+\\
+On peut néamoins donner une valeur "seuil" qui nous assurerait que la probabilité de dépasser cette valeur est très faible.
 \\
 On introduit alors le \textbf{quantile de retour}. On pose $z_t$ la valeur que l’on dépasse en moyenne une fois tous les T ans.
 \\
@@ -903,26 +901,27 @@ En particulier, $z_t$ est solution de l'équation suivante :
 \[
 P\bigl(M \le z_T\bigr)
 \;=\;
-G_{\mu,\sigma,\xi}(z_T)
+G_{\mu,\sigma,\gamma}(z_T)
 \;=\;
 1 - \frac{1}{T},
 \]
-où \(G_{\mu,\sigma,\xi}\) est la fonction de répartition de la GEV. En résolvant cette équation que l'on admet, on obtient
+où \(G_{\mu,\sigma,\gamma}\) est la fonction de répartition de la GEV. En résolvant cette équation que l'on admet, on obtient
 \[
 z_T =
 \begin{cases}
 \displaystyle
-\mu \;+\;\frac{\sigma}{\xi}\Bigl[(-\ln(1 - 1/T))^{-\xi} - 1\Bigr],
-&\xi \neq 0,\\[1em]
+\mu \;+\;\frac{\sigma}{\gamma}\Bigl[(-\ln(1 - 1/T))^{-\gamma} - 1\Bigr],
+&\gamma \neq 0,\\[1em]
 \displaystyle
 \mu \;-\;\sigma\,\ln\bigl(-\ln(1 - 1/T)\bigr),
-&\xi = 0.
+&\gamma = 0.
 \end{cases}
 \]
 Dans notre cas, on obtient alors : $z_t = 98.636$. C'est à dire que la probabilité de dépasser cette valeur est de 1/100.
 
+\subsubsection{synthèse sur la méthode des maxima en bloc}
 
-
+Quand on dispose des données sur une longue période, la méthode des maxima en bloc est efficace. D'autant plus quand on a des données temporelles (journalières, mensuelles, annuelles). En revanche, elle est moins efficace que la méthode de dépassement de seuil car elle utilise moins de données. En effet, on ne garde que les maximums et on perd donc une partie des données qui peuvent etre consequents en fonction du choix de $k$.
 
 \newpage
 \section{Annexe}
