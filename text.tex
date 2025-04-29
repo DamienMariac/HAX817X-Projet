@@ -635,7 +635,9 @@ Ainsi cette quantité converge en loi vers $2^{\gamma}$ quand $n$ tend vers l’
 
 \subsection{Estimateur de Hill}
 Cet estimateur a été introduit par Hill en 1975 dans le but d’estimer, de manière non paramétrique, le paramètre de queue des lois appartenant au domaine d’attraction de Fréchet. Il offre une estimation de l’indice de queue généralement plus efficace que celle fournie par l’estimateur de Pickands. La construction de cet estimateur repose sur l’utilisation des $k_n$ plus grandes statistiques d’ordre de l’échantillon.
-\section*{La construction de l’estimateur de Hill}
+
+
+\section{La construction de l’estimateur de Hill}
 
 Soient $\alpha_n$ et $\beta_n$ deux suites de nombres positifs, la construction de l’estimateur de Hill basée sur la relation suivante :
 
@@ -847,7 +849,7 @@ Il est alors raisonnable de penser qu'après estimation, on va obtenir une valeu
 De plus, les données prennent des valeurs grandes mais perdent rapidement en densité pour celle-ci. Ce qui suggèrerait une valeur de gamma proche de 0.
 \\
 \\
-Après estimation numérique, on obtient : $\sigma = 7.94$ et $\gamma = 0.034$ avec pour $\gamma$ un intervalle de confiance : $[-0.022 ; 0.102]$.
+Après estimation numérique, on obtient : $\sigma = 7.94$ et $\gamma = 0.034$.
 \\
 \\ 
 Une valeur de gamma aussi proche de 0 doit nous conduire à une étude plus approfondie.
@@ -860,24 +862,41 @@ Plusieurs méthodes s'offrent à nous pour améliorer l'estimation de gamma.
 2) On peut chercher les valeurs des paramêtres via une autre méthode (présentée plus bas).
 \\
 \\
-3) Par l'argument au-dessus, comment on s'attend à avoir une valeur de $\gamma$ positive ou nul. On peut estimmer $\gamma$ avec l'estimateur de Hill.
-\\
-\\
-4) Ou alors de façon plus arbitraire, on peut considérer la valeur de gamma en fonction du type de donnée qu'on étudie et de la cohérence que cela apporte.
+3) Ou alors de façon plus arbitraire, on peut considérer la valeur de gamma en fonction du type de donnée qu'on étudie et de la cohérence que cela apporte.
 \\
 \\
 \\
-Pour notre exemple, on considère que $\gamma > 0$
+Pour notre exemple, on considère que $\gamma > 0$.
+
+\subsubsection{Estimation de $\gamma$ plus approfondie}
+
+On assume que $\gamma > 0$ et on va estimer la valeur de $\gamma$ via l'estimateur de Hill. En effet, comme on s'attend à avoir une valeur de $\gamma$ positive ou nul apres avoir fait une première estimation, on peut estimmer $\gamma$ avec l'estimateur de Hill.
+De plus, cela concorde avec la nature des données.
+\\
+\\
+En traçant le Hill-plot, on obtient :
+
 
 \begin{center}
-	\includegraphics[scale=0.8]{./images/rainhistodensite.png} 
+	\includegraphics[scale=0.8]{./images/hill-plotrain.png} 
 \end{center}
 
-La distribution de Pareto (courbe rouge) avec les paramètres estimés semblent bien coller avec les données. Cela signifie qu’on s’attend à des excès au-delà du seuil de plus en plus rares, sans pour autant exclure la survenue de précipitations sensiblement élevées.
+Dans un tel graphique, on cherche un ou des plateaux, c’est-à-dire un intervalle sur lequel la courbe noire est horizontale et stable,
+et idéalement à l’intérieur des bandes de confiance rouges.
+\\
+On remarque notament que pour k entre 50 et 200 on a un plateau mais aussi pour k entre 400 et 600. On essaye de trouver 
+un juste milieu entre biais et variance.
+\begin{center}
+	\includegraphics[scale=0.8]{./images/hillplateaurain.png}
+\end{center}
+Ainsi, pour $k=125$, on obtient $\hat{\gamma} = 0.204$.
+\\
+Pour $k=500$, on obtient $\hat{\gamma} = 0.388$.
 
-\subsubsection{conclusion sur la méthode de dépassement de seuil}
-L'avantage de cette méthode est qu'elle est la plus efficace en pratique car elle utilise plus de données. Cependant, elle est plus difficile à mettre en place car il faut choisir un seuil $u$ qui est crucial pour l'estimation de $\gamma$.
+\subsubsection{synthèse sur la méthode de dépassement de seuil}
 
+Pour Hill marche pas ? Sans doute parce que avoir un gamma trop proche de 0
+est pas bon.
 
 
 \subsection{Autre méthode : Méthode des maxima en bloc}
@@ -939,7 +958,8 @@ z_T =
 \end{cases}
 \]
 Dans notre cas, on obtient alors : $z_t = 98.636$. C'est à dire que la probabilité de dépasser cette valeur est de 1/100.
-
+\\
+Autrement dit, une fois tous les 100 ans, on peut s'attendre à avoir une pluie de plus de 98.636 mm.
 \subsubsection{synthèse sur la méthode des maxima en bloc}
 
 Quand on dispose des données sur une longue période, la méthode des maxima en bloc est efficace. D'autant plus quand on a des données temporelles (journalières, mensuelles, annuelles). En revanche, elle est moins efficace que la méthode de dépassement de seuil car elle utilise moins de données. En effet, on ne garde que les maximums et on perd donc une partie des données qui peuvent etre consequents en fonction du choix de $k$.
