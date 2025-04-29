@@ -726,6 +726,27 @@ La distribution de Cauchy, avec un indice $\gamma = 1$, est dans le domaine de F
 
 En résumé, ces observations soulignent la pertinence de l’estimateur de Hill pour les lois à queue lourde (Pareto, Cauchy), et son inadéquation manifeste pour les lois à queue légère ou bornée (exponentielle, uniforme). Le choix judicieux du paramètre $k$ demeure également crucial pour obtenir une estimation fiable.
 
+\section{Méthode des maxima par blocs}
+
+\noindent L'approche des maxima par blocs (en anglais Blocks Maxima) consiste à diviser les N observations en n blocs de taille k. Concrètement, la suite $X_1, ..., X_n$ est divisée en N blocs, le premier bloc est $X_1, ..., X_k$, le second $X_{k+1}, ..., X_{2k}$, etc. On obtient ainsi une suite de maxima $M_1, ..., M_n$ définis sur chacun des blocs.\\
+\noindent En général, on considère une période temporelle, comme une journée ou bien une année pour refléter le sens des observations.  \\
+\noindent On peut alors déterminer la loi limite des maxima, en vertu du théorème de Fisher-Tippett c'est une distribution GEV classique de la forme :
+\[
+G_{\mu,\sigma,\gamma}(x)
+\;=\;
+\exp\!\Bigl\{-\bigl[1 + \gamma\,u\bigr]^{-1/\gamma}\Bigr\}.
+\]
+
+\noindent De la même manière que ce que l'on avait sans les blocs, il faut alors déterminer les valeurs des paramètres en les approximant par des méthodes comme le maximum de vraisemblance. Des auteurs comme Ferreira et de Haan (2006 et 2015) ont alors démontré l'existence d'estimateurs pertinents pour cette méthode, nommés PWM (pour "probability weighted moment"). Pour les définir, on part de la statistique suivante. Soient $X_{1,k}, ..., X_{k,k}$ les observations ordonnées du bloc $X_1, ..., X_k$, on définit :
+\[
+\beta_r = \frac{1}{k} \sum_{i=1}^{k} \frac{(i-1)...(i-r)}{(k-1)...(k-r)} X_{i,k} ~ \text{ pour $r = 1,2,3,...,k>r $}
+\] \\
+\noindent A partir de $\beta_r$, on peut ensuite définir des estimateurs pour $\gamma, a_n$ et $b_n$ qui possèdent de bonnes propriétés (normalité asymptotique) sous certaines conditions. \\
+
+\noindent Sous certaines conditions, on peut enfin démontrer que les quantiles élevés sont facilement estimables par cette méthode. \\
+
+\noindent Cette approche possède tout de même un défaut car lorsque l'on prend le maximum sur un bloc, on fait potentiellement disparaître des valeurs élevées, on perd des données intéressantes. 
+
 \section{Méthode des excès}
 
 La méthode des excès, également appelée approche par dépassement de seuil (en anglais \textit{Peaks Over Threshold}, ou POT), a été introduite par Pickands en 1975. Elle constitue une alternative à l’approche classique par blocs pour modéliser les phénomènes extrêmes.

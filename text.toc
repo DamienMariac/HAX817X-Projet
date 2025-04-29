@@ -31,18 +31,19 @@
 \contentsline {paragraph}{Loi exponentielle :}{18}{}%
 \contentsline {paragraph}{Loi uniforme :}{19}{}%
 \contentsline {paragraph}{Loi de Cauchy :}{19}{}%
-\contentsline {section}{\numberline {5}Méthode des excès}{20}{}%
-\contentsline {subsection}{\numberline {5.1}Loi de Pareto généralisée (GPD)}{20}{}%
-\contentsline {subsection}{\numberline {5.2}Théorème de Balkema–de Haan–Pickands}{20}{}%
-\contentsline {section}{\numberline {6}Application sur des données réelles}{21}{}%
-\contentsline {subsection}{\numberline {6.1}Méthode de dépassement de seuil}{21}{}%
-\contentsline {subsubsection}{\numberline {6.1.1}Principe}{21}{}%
-\contentsline {subsubsection}{\numberline {6.1.2}Application sur les données de Rain}{21}{}%
-\contentsline {subsubsection}{\numberline {6.1.3}conclusion sur la méthode de dépassement de seuil}{22}{}%
-\contentsline {subsection}{\numberline {6.2}Autre méthode : Méthode des maxima en bloc}{22}{}%
-\contentsline {subsubsection}{\numberline {6.2.1}Principe}{22}{}%
-\contentsline {subsubsection}{\numberline {6.2.2}Application sur les données de Rain}{23}{}%
-\contentsline {subsubsection}{\numberline {6.2.3}synthèse sur la méthode des maxima en bloc}{24}{}%
-\contentsline {section}{\numberline {7}Annexe}{25}{}%
-\contentsline {subsection}{\numberline {7.1}Méthode de Nelder-Mead}{25}{}%
-\contentsline {subsection}{\numberline {7.2}Codes R}{25}{}%
+\contentsline {section}{\numberline {5}Méthode des maxima par blocs}{20}{}%
+\contentsline {section}{\numberline {6}Méthode des excès}{20}{}%
+\contentsline {subsection}{\numberline {6.1}Loi de Pareto généralisée (GPD)}{21}{}%
+\contentsline {subsection}{\numberline {6.2}Théorème de Balkema–de Haan–Pickands}{21}{}%
+\contentsline {section}{\numberline {7}Application sur des données réelles}{22}{}%
+\contentsline {subsection}{\numberline {7.1}Méthode de dépassement de seuil}{22}{}%
+\contentsline {subsubsection}{\numberline {7.1.1}Principe}{22}{}%
+\contentsline {subsubsection}{\numberline {7.1.2}Application sur les données de Rain}{22}{}%
+\contentsline {subsubsection}{\numberline {7.1.3}conclusion sur la méthode de dépassement de seuil}{23}{}%
+\contentsline {subsection}{\numberline {7.2}Autre méthode : Méthode des maxima en bloc}{23}{}%
+\contentsline {subsubsection}{\numberline {7.2.1}Principe}{23}{}%
+\contentsline {subsubsection}{\numberline {7.2.2}Application sur les données de Rain}{24}{}%
+\contentsline {subsubsection}{\numberline {7.2.3}synthèse sur la méthode des maxima en bloc}{25}{}%
+\contentsline {section}{\numberline {8}Annexe}{26}{}%
+\contentsline {subsection}{\numberline {8.1}Méthode de Nelder-Mead}{26}{}%
+\contentsline {subsection}{\numberline {8.2}Codes R}{26}{}%
