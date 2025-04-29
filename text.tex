@@ -732,22 +732,40 @@ En résumé, ces observations soulignent la pertinence de l’estimateur de Hill
 
 \noindent L'approche des maxima par blocs (en anglais Blocks Maxima) consiste à diviser les N observations en n blocs de taille k. Concrètement, la suite $X_1, ..., X_n$ est divisée en N blocs, le premier bloc est $X_1, ..., X_k$, le second $X_{k+1}, ..., X_{2k}$, etc. On obtient ainsi une suite de maxima $M_1, ..., M_n$ définis sur chacun des blocs.\\
 \noindent En général, on considère une période temporelle, comme une journée ou bien une année pour refléter le sens des observations.  \\
-\noindent On peut alors déterminer la loi limite des maxima, en vertu du théorème de Fisher-Tippett c'est une distribution GEV classique de la forme :
+\noindent On peut alors déterminer la loi limite des maxima, en vertu du théorème de Fisher-Tippett-Gnedenko c'est une distribution GEV classique de la forme :
 \[
 G_{\mu,\sigma,\gamma}(x)
 \;=\;
 \exp\!\Bigl\{-\bigl[1 + \gamma\,u\bigr]^{-1/\gamma}\Bigr\}.
 \]
 
-\noindent De la même manière que ce que l'on avait sans les blocs, il faut alors déterminer les valeurs des paramètres en les approximant par des méthodes comme le maximum de vraisemblance. Des auteurs comme Ferreira et de Haan (2006 et 2015) ont alors démontré l'existence d'estimateurs pertinents pour cette méthode, nommés PWM (pour "probability weighted moment"). Pour les définir, on part de la statistique suivante. Soient $X_{1,k}, ..., X_{k,k}$ les observations ordonnées du bloc $X_1, ..., X_k$, on définit :
+\noindent De la même manière que ce que l'on avait sans les blocs, il faut alors déterminer les valeurs des paramètres en les approximant par des méthodes comme le maximum de vraisemblance. Des auteurs comme Ferreira et de Haan (2006 et 2015) ont alors démontré l'existence d'estimateurs pertinents pour cette méthode, nommés PWM (pour "probability weighted moment"). Pour les définir, on part de la statistique suivante, soient $X_{1,k}, ..., X_{k,k}$ les observations ordonnées du bloc $X_1, ..., X_k$, on définit :
 \[
 \beta_r = \frac{1}{k} \sum_{i=1}^{k} \frac{(i-1)...(i-r)}{(k-1)...(k-r)} X_{i,k} ~ \text{ pour $r = 1,2,3,...,k>r $}
 \] \\
-\noindent A partir de $\beta_r$, on peut ensuite définir des estimateurs pour $\gamma, a_n$ et $b_n$ qui possèdent de bonnes propriétés (normalité asymptotique) sous certaines conditions. \\
+\noindent A partir de $\beta_r$, on peut ensuite définir les trois estimateurs PVM suivants pour $\gamma, a_n$ et $b_n$ qui possèdent de bonnes propriétés asymptotiques sous certaines conditions ($\Gamma$ est la fonction gamma bien connue). \\
 
-\noindent Sous certaines conditions, on peut enfin démontrer que les quantiles élevés sont facilement estimables par cette méthode. \\
+\noindent Pour $\gamma$ : $\hat{\gamma}_{k,m}$ est solution de $\frac{3\hat{\gamma}_{k,m} - 1}{2\hat{\gamma}_{k,m} - 1} = \frac{3\beta_2 - \beta_0}{2\beta_1 - \beta_0} $ \\
+\noindent Pour $a_n$ : $\hat{a}_{k,m} = \frac{\hat{\gamma}_{k,m}}{2\hat{\gamma}_{k,m} - 1} \cdot \frac{2\beta_1 - \beta_0}{\Gamma(1 - \hat{\gamma}_{k,m})}$ \\
+\noindent Pour $b_n$ : $\hat{b}_{k,m} = \beta_0 + \hat{a}_{k,m} \cdot \frac{1 - \Gamma(1 - \hat{\gamma}_{k,m})}{\hat{\gamma}_{k,m}}$ \\
 
-\noindent Cette approche possède tout de même un défaut car lorsque l'on prend le maximum sur un bloc, on fait potentiellement disparaître des valeurs élevées, on perd des données intéressantes. 
+\noindent Sous certaines conditions, on peut enfin démontrer que les quantiles élevés sont facilement estimables par cette méthode. On a ainsi :
+\[
+\frac{\sqrt{k} \left( \hat{X}_{k,m} - X_n \right)}{a_n \, q_{\gamma}(c_n)}
+\xrightarrow{d}
+\Delta + (\gamma^-)^2 B - \gamma^- \Lambda - \lambda \frac{\gamma^-}{\gamma^- + \rho}
+\]
+où : \begin{itemize}
+	\item $\hat{X}_{k,m}$ est l’estimateur du quantile extrême
+	\item $X_n$ est le vrai quantile à estimer
+	\item $a_n$ est le paramètre d'échelle
+	\item $\Delta, \Lambda, \lambda$ sont des paramètres issus de la théorie asymptotique de Ferreira et de Haan (2015)
+	\item $B$ est un pont brownien
+	\item $q_{\gamma}(c_n)$ est une fonction définie par $q_{\gamma}(t) = \int_1^t s^{\gamma - 1} \log s \, ds$
+	\item $\gamma^- = \min(0, \gamma)$
+\end{itemize}
+\vspace{0.5cm}
+\noindent Cette approche possède tout de même un défaut car lorsque l'on prend le maximum sur un bloc, on fait potentiellement disparaître des valeurs élevées, on perd des données intéressantes.
 
 \section{Méthode des excès}
 
