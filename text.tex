@@ -899,7 +899,7 @@ Pour Hill marche pas ? Sans doute parce que avoir un gamma trop proche de 0
 est pas bon.
 
 
-\subsection{Autre méthode : Méthode des maxima en bloc}
+\subsection{Méthode des maxima en bloc}
 \subsubsection{Principe}
 
 La première étape consiste à subdiviser nos données en blocs de taille $k$ et de calculer le maximum sur chaque bloc. Le paramètre
@@ -927,13 +927,13 @@ L'estimation des paramètres sont calculées par l'algorithme de Nelder-Mead (vo
 Le graphique ci-dessus montre la distribution de Frechet en blue avec les paramètres estimés superposant l'histogramme des maximums par année.
 \\
 \\
-On suppose alors que $\gamma > 0$, donc il n’existe pas de valeur maximale finie : la probabilité de très gros maxima décroît lentement, selon un comportement polynomial plutôt que exponentiel ce qui est embettant dans le cas pratique.
-\\
-\\
-\\
+On suppose alors que $\gamma > 0$, donc il n’existe pas de valeur maximale finie : la probabilité de très gros maxima décroît lentement, selon un comportement polynomial plutôt que exponentiel ce qui est embettant dans le cas pratique surtout quand on cherche des seuils rarement atteints.
+
+\subsubsection{quantile de retour}
+
 On peut néamoins donner une valeur "seuil" qui nous assurerait que la probabilité de dépasser cette valeur est très faible.
 \\
-On introduit alors le \textbf{quantile de retour}. On pose $z_t$ la valeur que l’on dépasse en moyenne une fois tous les T ans.
+On introduit alors le \textbf{quantile de retour}. On pose $z_T$ la valeur que l’on dépasse en moyenne une fois tous les T ans.
 \\
 Dans notre cas, on a intérêt à prendre une grande valeur pour T pour être sûr de dépasser cette valeur que rarement. Prenons pour la suite T = 100.
 \\

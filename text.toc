@@ -42,10 +42,11 @@
 \contentsline {subsubsection}{\numberline {8.1.2}Application sur les données de Rain}{22}{}%
 \contentsline {subsubsection}{\numberline {8.1.3}Estimation de $\gamma $ plus approfondie}{23}{}%
 \contentsline {subsubsection}{\numberline {8.1.4}synthèse sur la méthode de dépassement de seuil}{24}{}%
-\contentsline {subsection}{\numberline {8.2}Autre méthode : Méthode des maxima en bloc}{24}{}%
+\contentsline {subsection}{\numberline {8.2}Méthode des maxima en bloc}{24}{}%
 \contentsline {subsubsection}{\numberline {8.2.1}Principe}{24}{}%
 \contentsline {subsubsection}{\numberline {8.2.2}Application sur les données de Rain}{24}{}%
-\contentsline {subsubsection}{\numberline {8.2.3}synthèse sur la méthode des maxima en bloc}{25}{}%
+\contentsline {subsubsection}{\numberline {8.2.3}quantile de retour}{25}{}%
+\contentsline {subsubsection}{\numberline {8.2.4}synthèse sur la méthode des maxima en bloc}{25}{}%
 \contentsline {section}{\numberline {9}Annexe}{26}{}%
 \contentsline {subsection}{\numberline {9.1}Méthode de Nelder-Mead}{26}{}%
 \contentsline {subsection}{\numberline {9.2}Codes R}{26}{}%
