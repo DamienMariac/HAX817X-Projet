@@ -2,9 +2,9 @@
 library(evd)
 library(ggplot2)
 
-# Génération d'une loi uniforme sur [0, 1]
+# Génération d'une loi uniforme, on prend [0,10] pour que ce soit moins resserré 
 n <- 10000
-x <- runif(n, min = 0, max = 1)
+x <- runif(n, min = 0, max = 10)
 
 # Taille des blocs
 taille_blocs <- 50
@@ -18,7 +18,7 @@ block_maxima <- sapply(1:nb_blocs, function(i) {
 })
 
 # Loi limite : Weibull
-fit_weibull <- fgev(block_maxima)
+fit_weibull <- fgev(block_maxima, std.err = FALSE) # std.err=FALSE pour que la fonction arrête de chercher des erreurs
 
 # Graphe
 ggplot(data.frame(block_maxima), aes(x = block_maxima)) +
@@ -30,7 +30,7 @@ ggplot(data.frame(block_maxima), aes(x = block_maxima)) +
                                        scale = fit_weibull$estimate["scale"],
                                        shape = fit_weibull$estimate["shape"]),
                 size = 1.2) +
-  coord_cartesian(xlim = c(0, 15)) +
+  coord_cartesian(xlim = c(7, 12)) +
   scale_fill_manual("", values = c("Simulation" = "skyblue")) +
   scale_color_manual("", values = c("Densité théorique" = "red")) +
   labs(title = "Méthode des maximas en bloc pour une loi uniforme",
