@@ -10,6 +10,22 @@
 \usepackage{xcolor} % pour coloriser le code R intégré
 \usepackage{comment}
 \usepackage{float}
+\usepackage{amsthm}
+
+
+\theoremstyle{plain}
+\newtheorem{definition}{Définition}[section]
+
+\theoremstyle{definition}
+\newtheorem{example}[definition]{Exemple}
+\newtheorem{remark}[definition]{Remarque}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Théorème}
+\newtheorem{lemma}[definition]{Lemme}
+\newtheorem{proposition}[definition]{Proposition}
+
+
 
 \lstset{
 	language=R,
@@ -80,53 +96,70 @@ En fournissant un cadre théorique rigoureux pour l’analyse des queues de dist
 
 \subsection{Quelques notations }
 
-On commence par faire une remarque sur la fonction de repartion de $M_n$ en utilisant le fait que les $X_i$ sont i.i.d :
+On commence par faire une remarque sur la fonction de repartion de $M_n$ en utilisant le fait que les $X_i$ sont i.i.d.
 \\
 En effet, si on note $F_{M_n}$ la fonction de repartition de $M_n$, et $F_{X_i}$ la fonction de repartition de $X_i$ on a :
 \[
-\forall t \in \mathbb{R} \quad F_{M_n}(t) = \mathbb{P}(M_n < t) = \mathbb{P}(X_1 < t,...,X_n <t)=\mathbb{P}(X_1<t)^n = F_{X_1}^n(t) 
+\forall t \in \mathbb{R} \quad F_{M_n}(t) = \mathbb{P}(M_n \le t) = \mathbb{P}(X_1 \le t,...,X_n \le t)=\mathbb{P}(X_1 \le t)^n = F_{X_1}^n(t) 
 \]
 \\
 Dans la suite, on notera $F(t)$, la fonction de repartition des $X_i$.
 \\
 \\
-Mais on rencontre un probleme ici, puisque si $n\to + \infty$, $F(t)^n$ converge vers 0 (ou 1 si t est la borne sup du support des $X_i$).
-\\
-\\
-\\
-L'idée est donc d'introduire 2 suites ($b_n$) et ($a_n$) (avec $a_n > $  0 pour tout n) afin de pouvoir contrôler $M_n$.
+On remarque que, pour tout $t$ strictement inférieur à la borne supérieure du support des $X_i$, on a $F(t)<1$ et donc
+\[
+F(t)^n \xrightarrow[n\to +\infty]{} 0
+\]
+et dans le cas ou t est égal à la borne supérieure du support des $X_i$, on a
+\[
+F(t)^n \xrightarrow[n\to +\infty]{} 1
+\]
+L'idée est donc d'introduire deux suites ($b_n$) et ($a_n$) (avec $a_n > $  0 pour tout $n$) afin de pouvoir contrôler $M_n$ et avoir une limite non dégénérée.
 
-Puis étudier la loi de la limite de $\frac{M_n - b_n}{a_n}$. Comme la fonction de repartition caracterise la loi, il nous suffit d'étudier la fonction $G$ définie pour tout t dans le support des $X_i$ comme :
+Puis étudier la loi de la limite de $\frac{M_n - b_n}{a_n}$. Comme la fonction de repartition caractérise la loi, il nous suffit d'étudier la fonction $G$ définie pour tout $t$ dans le support des $X_i$ comme :
 
 \[
-\mathbb{P} \left( \frac{M_n - b_n}{a_n} < t \right) \xrightarrow[n\to +\infty]{} G(t)
+\mathbb{P} \left( \frac{M_n - b_n}{a_n} \le t \right) \xrightarrow[n\to +\infty]{} G(t)
 \]
 \\
-Si il existe de tel suite $a_n$ et $b_n$ alors on dit que $F$ est dans le domaine d'attraction de $G$.
+Si il existe de telle suites $a_n$ et $b_n$, on dit que $F$ est dans le domaine d'attraction de $G$.
 \\
 \\
-à ce stade la, il nous faut donc trouver les distributions G qui peuvent apparaître comme limite dans l’équation ci-dessus.
+Il nous faut donc trouver les distributions $G$ qui peuvent apparaître comme limite dans l’équation ci-dessus.
 \\
 \\
 Pour ce faire, nous allons utiliser le théoreme suivant : 
 \\
 \\
-\underline{\textbf{Théorème (méthode de la fonction muette)}:}
+\begin{theorem}
+\textbf{(méthode de la fonction muette)}:
 Soit \( Y_n \) une variable aléatoire de fonction de répartition \( F_n \), et soit \( Y \) une variable aléatoire de fonction de répartition \( F \).  
 Alors $Y_n \xrightarrow{\mathcal{L} } Y$ si et seulement si pour toute fonction $z$ réelle, bornée et continue :
 \[
 \mathbb{E}[z(Y_n)] \to \mathbb{E}[z(Y)].
 \]
-
-En prenant ici $Y_n = \frac{M_n -b_n}{a_n}$, on obtient :
+\end{theorem}
+\noindent En prenant ici $Y_n = \frac{M_n -b_n}{a_n}$, on obtient :
 \[
 \mathbb{E}[z(\frac{M_n -b_n}{a_n})] = \int_{-\infty}^{\infty} z(\frac{x-b_n}{a_n}) \: n \:  F^{n-1} (x)dF(x)
 \]
-
-L'astuce ici va être de faire un changement de variable astucieux. On va poser : 
+\\
+\\
+L'astuce ici va être de faire un changement de variable. On introduit alors la fonction quantile que l'on définit ci-dessous :
+\begin{definition}
+La fonction quantile \(Q\) associée à une fonction de répartition \(F\) est définie par :
+\[
+Q(p) \;=\; F^{-1}(p)
+\;=\;
+\inf\bigl\{x\in\mathbb{R}\,\bigm|\,F(x)\ge p\bigr\},
+\quad p\in(0,1).
+\]
+\end{definition}
+\medskip 
+\noindent On pose alors comme changement de variable : 
 
 \[
-x = Q(1-\frac{1}{y}) = K(y) \; \; \; \; \; \; \text{avec Q la fonction quantile}
+x = Q(1-\frac{1}{y}) = K(y) \; \; \; \; \; \; \text{avec $Q$ la fonction quantile}
 \]
 
 \begin{equation}\label{eq:1.1}
@@ -136,46 +169,72 @@ x = Q(1-\frac{1}{y}) = K(y) \; \; \; \; \; \; \text{avec Q la fonction quantile}
 \end{equation}
 \\
 \\
-Or, on a $\lim_{n \to \infty} ( 1 - \frac{v}{n})^{n-1} = e^{-v}$ , et on a $\lim_{n \to \infty} \int_{0}^{n} = \int_{0}^{+ \infty}$.
+Or, on a $\lim_{n \to \infty} ( 1 - \frac{v}{n})^{n-1} = e^{-v}$ , et on a $\lim_{n \to \infty} \mathbf{1}_{[0;n]}(x) = \mathbb{R}_{+}$.
+\\
+\\
+Remarquons que, pour tout $t\in\mathbb R$, la probabilité
+\[
+\mathbb{P}  \Bigl(\frac{M_n - b_n}{a_n} \le t\Bigr)
+\;=\;
+\mathbb{P} \bigl(M_n \le a_n\,t + b_n\bigr)
+\;=\;
+F\bigl(a_n\,t + b_n\bigr)^{n}.
+\]
+Ainsi, la convergence en loi 
+\[
+\frac{M_n - b_n}{a_n}\;\overset{L}{\longrightarrow}\;Y
+\quad\Longleftrightarrow\quad
+\mathbb{P} \bigl(M_n \le a_n\,t + b_n\bigr)
+\;\longrightarrow\;
+G(t),
+\]
+se traduit exactement par
+\[
+F\bigl(a_n t + b_n\bigr)^{n}
+\;\xrightarrow[n\to\infty]{}\;
+G(t).
+\]
+On en déduit explicitement une forme pour $b_n$.
 
 \subsection{Paramètre $b_n$}
 
-On en déduit une bonne valeur pour $b_n$. En effet,
+En reprenant l'expression ci-dessus et en passant au logarithme, on a :
+
 \[
-\mathbb{P} \left( \frac{M_n - b_n}{a_n} < t \right) \xrightarrow[n\to +\infty]{} G(t) \in ]0:1[
+n \: log(F(a_n t + b_n)) \xrightarrow[n\to +\infty]{} log(G(t))
 \]
 \[
-\Longleftrightarrow F^n(a_n t + b_n) \xrightarrow[n\to +\infty]{} G(t)
+\Longleftrightarrow n(- F(a_n t + b_n) + 1) \xrightarrow[n\to +\infty]{} ln(G(t))
 \]
-\[
-\Longleftrightarrow n \: ln(F(a_n t + b_n)) \xrightarrow[n\to +\infty]{} ln(G(t))
-\]
-\[
-\Longleftrightarrow n(- F(a_n t + b_n) + 1) \xrightarrow[n\to +\infty]{} ln(G(t)) \quad \quad (\text{car} \quad \lim_{x \to 0} \frac{ln(1-x)}{x} = -1)
-\]
-\[
-\Longleftrightarrow n \: \mathbb{P}(X_1 > a_n t + b_n ) \xrightarrow[n\to +\infty]{} - ln(G(t))
-\]
-On obtient alors pour paramètre d'échelle :
-\[
-n \mathbb{P}(X_1 > b_n) =1  \Longleftrightarrow \mathbb{P}(X_1 < b_n) = 1 - \frac{1}{n}
-\]
-\[
-\Longleftrightarrow F(b_n) = 1 - \frac{1}{n}
-\]
-\[
-b_n = Q(1-\frac{1}{n}) = K(n)
-\]
-Dans la dernière équivalence, on a composé par la fonction quantile.
+On a utilisé un développement limité de la fonction logarithme. 
 \\
+En particulier, pour déterminer \(b_n\), on choisit \(t=0\).
+\\
+Cela donne :
+\[
+n\bigl(F(b_n)-1\bigr)\;\xrightarrow[n\to\infty]{}\;\ln G(0)
+\;=\;-\,\ln G(0)\quad(\text{puisque }G(0)\in(0,1)),
+\]
+Comme on souhaite une limite non-dégénérée, on impose
+\[
+n\bigl[1 - F(b_n)\bigr] \;=\; 1.
+\]
+Il vient alors
+\[
+F(b_n)=1-\frac1n
+\quad\Longleftrightarrow\quad
+b_n \;=\; Q\!\Bigl(1-\tfrac1n\Bigr)
+\;=\;K(n),
+\]
+
+
 \subsection{Paramètre $a_n$}
 Avec le parametre $b_n$ définie au dessus et en posant $u=\frac{1}{v}$ on obtient alors une condition, il faut qu'il existe une fonction $a$ tel que $\lim_{x \to \infty} \frac{K(xu) - K(x)}{a(x)}$ converge \textbf{vers une fonction $h(u)$}.
 \\
 \\
-\textbf{Proposition :}
-\\
-Les limites possibles sont données par :
+\begin{proposition}
 
+Les limites possibles sont données par :
 \begin{equation}\label{eq:1.2}
     c\,h_{\gamma}(u) 
     \;=\; 
@@ -185,14 +244,14 @@ Les limites possibles sont données par :
 \end{equation}
 
 Nous interprétons $h_{0}(u) = \log(u)$ lorsque $\gamma = 0$.
-\\
-\\
-\textbf{Remarque :} On ne veut pas que $c=0$, car il conduit à une limite dégénérée pour $\frac{M_{n} - b_n}{a_n}$. 
+\end{proposition}
+
+
+\noindent \textbf{Remarque :} On ne veut pas que $c=0$, car il conduit à une limite dégénérée pour $\frac{M_{n} - b_n}{a_n}$. 
 Ensuite, le cas $c>0$ peut être ramené au cas $c=1$ en incorporant $c$ dans la fonction $a$.   
 \\
 \\
-\textbf{Preuve de la Proposition}  
-\\
+\begin{proof} 
 Soient $u,v >0$. Alors :
 \[
 \frac{K(xuv) - K(x)}{a(x)} 
@@ -200,7 +259,7 @@ Soient $u,v >0$. Alors :
 \frac{K(xuv) - K(xu)}{a(xu)} \,\frac{a(xu)}{a(x)}
 \;+\;
 \frac{K(xu) - K(x)}{a(x)}.
-\tag{2.3}
+\tag{3}
 \]
 Si la limite dans $F$ est dans le domaine d'attraction de $G$ (\textit{ce qu'on suppose depuis le début}), alors le rapport $\frac{a(ux)}{a(x)}$ converge vers $g(u)$.
 \\
@@ -231,8 +290,7 @@ Ainsi, nous concluons que
 \[
 h_\gamma(u)=\frac{u^\gamma-1}{\gamma} \quad \text{(avec \(h_0(u)=\ln u\))},
 \]
-\hfill $\square$
-\\
+\end{proof}
 \subsection{Les lois limites}
 En reprenant $(2.3)$ et en utilisant ce qui précède, on obtient :
 \[
@@ -243,7 +301,7 @@ En reprenant $(2.3)$ et en utilisant ce qui précède, on obtient :
 \]
 \\
 \\
-On fait alors une disjonction de cas sur la valeur de gamma.
+On fait alors une disjonction de cas sur la valeur de $\gamma$.
 \\
 \subsubsection{Nature du support}
 
@@ -264,8 +322,11 @@ ce qui conduit à identifier la loi limite par
 G_\gamma(u)=\exp\Bigl\{-\left(1+\gamma u\right)^{-1/\gamma}\Bigr\}
 \]
 Il reste alors à étudier la nature du support \(S_\gamma\), mais celui-ci dépend du signe de \(\gamma\) :
-
-\subsubsection{Si \(\gamma>0\)}
+\\
+\\
+\textbf{\underline{Cas si \(\gamma>0 : \)}}
+\\
+\\
 L'inversion montre que \(v\in [0,1]\) correspond à \(u>-\frac{1}{\gamma}\).
 \\
 \\
@@ -284,15 +345,12 @@ S(x)\,\sim\, K\,x^{-1/\gamma}
 \quad (\text{pour } x\to\infty),
 \]
 ce qui caractérise une \textbf{queue lourde} : la probabilité d'observer des valeurs très grandes est plus élevée que dans un modèle à décroissance exponentielle.
-
-\subsubsection{Si \(\gamma<0\)}
-Pour \(\gamma < 0\), la loi est définie quand :
-\[
-1 + \gamma u > 0 \quad \Longrightarrow \quad u < - \frac{1}{\gamma}
-\]
-Cela signifie que la distribution a son support dans \(]-\infty, - \frac{1}{\gamma} [ \) 
 \\
-On pose alors \(x_{\max} = - \frac{1}{\gamma} \).
+\\
+\textbf{\underline{Cas si \(\gamma<0 : \)}}
+\\
+\\
+Pour \(\gamma < 0\), la loi est définie si $1 + \gamma u > 0$ c'est à dire $u < - \frac{1}{\gamma}$. Cela signifie que la distribution a son support dans \(]-\infty, - \frac{1}{\gamma} [ \), et on pose alors \(x_{\max} = - \frac{1}{\gamma} \).
 \\
 Par conséquent, la fonction de survie $S(x) = 1 - G(x)$ = 0 pour \(x \ge - \frac{1}{\gamma} \).
 \\
@@ -300,8 +358,9 @@ Par conséquent, la fonction de survie $S(x) = 1 - G(x)$ = 0 pour \(x \ge - \fra
 Autrement dit, il n'y a aucune probabilité d'observer une valeur au-delà de \(x_{\max}\). Dans ce cas, on dit que la distribution est à \textbf{queue bornée}.
 \\
 \\
-On dit alors que que queue de distribution est bornée.
-\subsubsection{2. Cas \(\gamma=0\)}
+\textbf{\underline{Cas si \(\gamma=0 : \)}}
+\\
+\\
 Lorsque \(\gamma = 0\), on a posé $h_0(u)=\ln u$.
 \\
 Donc, le changement de variable s'adapte : 
@@ -320,23 +379,24 @@ et la loi limite est alors donnée par
 \[
 G_0(u)=\exp\Bigl\{-e^{-u}\Bigr\},\qquad u\in\mathbb{R},
 \]
-On retrouve ici une queue à décroissance exponentielle, ce qui est caractéristique d'une \textbf{queue légère} : la probabilité d'observer des valeurs extrêmes est faible.
+On retrouve ici une queue à décroissance exponentielle, ce qui est caractéristique d'une \textbf{queue légère} : la probabilité d'observer des valeurs extrêmes est faible mais pas impropable.
+Il s'agit d'un cas intermédiaire entre les deux cas précédents.
 \\
 \subsection{Résumé}
 Les lois limites qui s'imposent dependent d'un parametre $\gamma$ et sont les suivantes :
 \\
 \begin{itemize}
-    \item \textbf{Si \(\gamma>0\)} (loi de Fréchet) :
+    \item Si \(\gamma>0\) (loi de Fréchet) :
     \[
     G_\gamma(u)=\exp\left\{-\left(1+\gamma u\right)^{-1/\gamma}\right\}, \quad u > -\frac{1}{\gamma}.
     \]
     
-    \item \textbf{Si \(\gamma=0\)} (loi de Gumbel) :
+    \item Si \(\gamma=0\) (loi de Gumbel) :
     \[
     G_0(u)=\exp\left\{-e^{-u}\right\}, \quad u\in\mathbb{R}.
     \]
     
-    \item \textbf{Si \(\gamma<0\)} (loi de Weibull) :
+    \item Si \(\gamma<0\) (loi de Weibull) :
     \[
     G_\gamma(u)=\exp\left\{-\left(1+\gamma u\right)^{-1/\gamma}\right\}, \quad u < -\frac{1}{\gamma}.
     \]
@@ -344,7 +404,7 @@ Les lois limites qui s'imposent dependent d'un parametre $\gamma$ et sont les su
 
 La loi se généralise pour toute valeur de gamma et on l'appelle GEV (Generalized Extreme Value), et donne :
 \[
-	G_{\mu,\sigma,\gamma}(x)
+	G_{\gamma}(x)
 	\;=\;
 	\exp\!\Bigl\{-\bigl[1 + \gamma\,u\bigr]^{-1/\gamma}\Bigr\}.
 \]
