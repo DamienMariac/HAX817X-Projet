@@ -292,7 +292,7 @@ h_\gamma(u)=\frac{u^\gamma-1}{\gamma} \quad \text{(avec \(h_0(u)=\ln u\))},
 \]
 \end{proof}
 \subsection{Les lois limites}
-En reprenant $(2.3)$ et en utilisant ce qui précède, on obtient :
+En reprenant $(3)$ et en utilisant ce qui précède, on obtient :
 \[
 \lim_{x\to \infty} \frac{K(xuv) - K(x)}{a(x)} = u^{\gamma} h(v) + h(u)
 \]
@@ -305,7 +305,7 @@ On fait alors une disjonction de cas sur la valeur de $\gamma$.
 \\
 \subsubsection{Nature du support}
 
-En reprenant l'équation \eqref{eq:1.2}, on obtient :
+En reprenant le résultat de la proposition 2.3 et ce qui précède \eqref{eq:1.2}, on obtient :
 \[
 h_\gamma\Bigl(\frac{1}{v}\Bigr)=\frac{(1/v)^\gamma-1}{\gamma}=\frac{v^{-\gamma}-1}{\gamma}
 \]
@@ -332,16 +332,16 @@ L'inversion montre que \(v\in [0,1]\) correspond à \(u>-\frac{1}{\gamma}\).
 \\
 De plus, pour de grandes valeurs \(x\) on a :
 \[
-S(x) \approx \exp\Bigl[-\bigl(1 + \gamma x\bigr)^{-1/\gamma}\Bigr]
+S_{\gamma} \approx \exp\Bigl[-\bigl(1 + \gamma x\bigr)^{-1/\gamma}\Bigr]
 \]
 Or, par un développement asymptotique,  \(\bigl(1 + \gamma x\bigr)^{-1/\gamma}\) est proportionnel à \(x^{-1/\gamma}\) pour \(x\) grand. On obtient alors
 \[
-S(x) \approx \exp\bigl[-C\,x^{-1/\gamma}\bigr] 
+S_{\gamma} \approx \exp\bigl[-C\,x^{-1/\gamma}\bigr] 
 \quad (\text{pour une constante } C>0).
 \]
 Par croissance comparé, comme \(x^{-1/\gamma}\) tend vers 0 moins vite que \(\exp(-\alpha x)\). On a alors : 
 \[
-S(x)\,\sim\, K\,x^{-1/\gamma} 
+S_{\gamma}\,\sim\, K\,x^{-1/\gamma} 
 \quad (\text{pour } x\to\infty),
 \]
 ce qui caractérise une \textbf{queue lourde} : la probabilité d'observer des valeurs très grandes est plus élevée que dans un modèle à décroissance exponentielle.
@@ -352,7 +352,7 @@ ce qui caractérise une \textbf{queue lourde} : la probabilité d'observer des v
 \\
 Pour \(\gamma < 0\), la loi est définie si $1 + \gamma u > 0$ c'est à dire $u < - \frac{1}{\gamma}$. Cela signifie que la distribution a son support dans \(]-\infty, - \frac{1}{\gamma} [ \), et on pose alors \(x_{\max} = - \frac{1}{\gamma} \).
 \\
-Par conséquent, la fonction de survie $S(x) = 1 - G(x)$ = 0 pour \(x \ge - \frac{1}{\gamma} \).
+Par conséquent, la fonction de survie $S_{\gamma} = 1 - G(x)$ = 0 pour \(x \ge - \frac{1}{\gamma} \).
 \\
 \\
 Autrement dit, il n'y a aucune probabilité d'observer une valeur au-delà de \(x_{\max}\). Dans ce cas, on dit que la distribution est à \textbf{queue bornée}.
@@ -697,6 +697,33 @@ Ainsi cette quantité converge en loi vers $2^{\gamma}$ quand $n$ tend vers l’
 Cet estimateur a été introduit par Hill en 1975 dans le but d’estimer, de manière non paramétrique, le paramètre de queue des lois appartenant au domaine d’attraction de Fréchet. Il offre une estimation de l’indice de queue généralement plus efficace que celle fournie par l’estimateur de Pickands. La construction de cet estimateur repose sur l’utilisation des $k_n$ plus grandes statistiques d’ordre de l’échantillon.
 
 
+\subsection{quantile de retour}
+
+En pratique, on cherche une valeur qui donnerait une certaine confiance quand à l'apparition
+de données la depassant. Dans le cas d'une distribution à queue bornée il suffit de prendre la bornes supérieure de la distribution.
+\\
+Or, dans le cas d'une distribution à queue lourde et exponentiel ce n'est pas possible. On introduit alors la notion de \textbf{quantile de retour} qui est une valeur que l'on dépasse en moyenne une fois tous les T ans.
+\\
+On pose $z_T$ cette quantité, et elle est solution de l'équation suivante :
+\[
+P\bigl(M \le z_T\bigr)
+\;=\;
+G_{\mu,\sigma,\gamma}(z_T)
+\;=\;
+1 - \frac{1}{T},
+\]
+où \(G_{\mu,\sigma,\gamma}\) est la fonction de répartition de la GEV. En résolvant cette équation que l'on admet, on obtient
+\[
+z_T =
+\begin{cases}
+\displaystyle
+\mu \;+\;\frac{\sigma}{\gamma}\Bigl[(-\ln(1 - 1/T))^{-\gamma} - 1\Bigr],
+&\gamma \neq 0,\\[1em]
+\displaystyle
+\mu \;-\;\sigma\,\ln\bigl(-\ln(1 - 1/T)\bigr),
+&\gamma = 0.
+\end{cases}
+\]
 \section{La construction de l’estimateur de Hill}
 
 Soient $\alpha_n$ et $\beta_n$ deux suites de nombres positifs, la construction de l’estimateur de Hill basée sur la relation suivante :
@@ -896,13 +923,65 @@ Cette propriété est essentielle en statistique des valeurs extrêmes, car elle
 
 \newpage
 \section{Application sur des données réelles}
+\subsection{Description des données}
 
 Afin d'illustrer les méthodes d'estimation de l'indice de valeurs extrêmes, nous allons appliquer ces techniques sur des données réelles.
-Nous allons utiliser les données du package $ismev$ de R. Plus précisément wooster et rain. Wooster contient les données de température minimale (en Fahrenheit) annuelle à Wooster de 1983 à 1988.
-Tandis que Rain contient les données de pluie journalière dans en Angleterre de 1914 à 1962.
+Nous allons utiliser les données du package $ismev$ de R. Plus précisément celui de rain. Il contient les données de pluie journalière dans en Angleterre de 1914 à 1962.
 \\
-Nous allons utiliser deux méthodes d'estimation sur les paramètres $a_n$, $b_n$ et $\gamma$ afin de d'estimer la valeur extrême.
+Nous allons utiliser deux méthodes d'estimation sur les paramètres $a_n$, $b_n$ et $\gamma$ afin de d'estimer un seuil de confiance.
+\\
+\\
+En effet, l'objectif sur ces données est de savoir s'il existe (et le cas échéant de le calculer) un seuil tel que les pluies ne puissent pas dépasser.
+Chercher cette valeur seuil serait utile en agriculture par exemple pour savoir si les pluies ne sont pas trop élevées pour les cultures.
 
+\begin{center}
+	\includegraphics[scale=0.8]{./images/rainhisto.png} 
+\end{center}
+
+On remarque dans un premier temps que les données sont concentrées autour de 0 mais qu'elles sont capables de prendre des valeurs très élevées jusqu'à 90.
+Il est alors raisonnable de penser qu'après estimation, on va obtenir une valeur de gamma positive ou nulle. En effet, il n'apparait pas de cassure dans la distribution des données.
+De plus, les données prennent des valeurs grandes mais perdent rapidement en densité pour celle-ci. Ce qui suggèrerait une valeur de gamma proche de 0 et positive.
+
+\subsection{Méthode des maxima par bloc}
+\subsubsection{Principe}
+
+La première étape consiste à subdiviser nos données en blocs de taille $k$ et de calculer le maximum sur chaque bloc. Le paramètre
+$k$ est choisit en fonction de l'interprétation des données. (par exemple, si on a des données journalières, on peut choisir $k=365$ pour avoir des maximums annuels).
+Ensuite, pour chaque bloc on calcule le maximum. Cela nous donne une suite de maximum.
+Une fois les maximums obtenus, on estime $a_n$,$b_n$ et $\gamma$ en utilisant la méthode du maximum de vraisemblance.
+\\
+Afin de comparer les deux méthodes et de se conforter aux valeurs estimmer, on va utiliser les mêmes données que précédemment.
+
+
+\subsubsection{Application sur les données de Rain}
+
+Les données étant journalières, on va choisir des blocs de taille 365, comme les données vont de 1914 à 1962, on se retrouve avec 48 blocs de 365 jours.
+\\
+\\
+Via le package \textbf{evd}, on obtient via une estimations par maximum de vraisemblance les paramètres suivants :
+\\
+$\mu = 40.8$, $\sigma = 9.73$ et $\gamma = 0.107$.
+\\
+L'estimation des paramètres sont calculées par l'algorithme de Nelder-Mead (voir annexe). On peut pousser l'estimation des paramètres notamment $\gamma$ via la méthode de Hill afin d'avoir une valeur plus précise. D'autant plus que dans le cas de la méthode par depassement de seuil, on a vu que la valeur de $\gamma$ était aussi positive. Cela nous conforte dans l'idée d'une valeur de gamma positive.
+\begin{center}
+	\includegraphics[scale=0.8]{./images/gevrainmaxbloc.png} 
+\end{center}
+
+Le graphique ci-dessus montre la distribution de Frechet en blue avec les paramètres estimés superposant l'histogramme des maximums par année.
+\\
+\\
+On suppose alors que $\gamma > 0$, donc il n’existe pas de valeur maximale finie : la probabilité de très gros maxima décroît lentement, selon un comportement polynomial plutôt que exponentiel ce qui est embettant dans le cas pratique surtout quand on cherche des seuils rarement atteints.
+
+\subsubsection{Valeur seuil}
+
+On peut néamoins donner une valeur "seuil" qui nous assurerait que la probabilité de dépasser cette valeur est très faible. 
+On calcule alors le quantile de retour pour $T=100$ afin d'avoir une valeur de pluie qui ne devrait pas être dépassée plus d'une fois tous les 100 ans.
+\\
+\\
+Dans notre cas, on obtient alors : $z_t = 98.636$. Autrement dit, une fois tous les 100 ans, on peut s'attendre à avoir une pluie de plus de 98.636 mm.
+\subsubsection{synthèse sur la méthode des maxima en bloc}
+
+Quand on dispose des données sur une longue période, la méthode des maxima en bloc est efficace. D'autant plus quand on a des données temporelles (journalières, mensuelles, annuelles). En revanche, elle est moins efficace que la méthode de dépassement de seuil car elle utilise moins de données. En effet, on ne garde que les maximums et on perd donc une partie des données qui peuvent etre consequents en fonction du choix de $k$.
 
 \subsection{Méthode de dépassement de seuil}
 
@@ -915,36 +994,15 @@ C'est alors qu'on ajuste les paramètres $\sigma$ et $\gamma$ par maximum de vra
 
 \subsubsection{Application sur les données de Rain}
 
-L'objectif sur ces données est de savoir s'il existe (et le cas échéant de le calculer) un seuil tel que les pluies ne puissent pas dépasser.
-Chercher cette valeur seuil serait utile en agriculture par exemple pour savoir si les pluies ne sont pas trop élevées pour les cultures.
+On va appliquer la méthode de dépassement de seuil sur les données de pluie. On a calculé la valeur de $\gamma$ par la méthode des maxima en bloc et obtenu une valeur de $\gamma $ positive mais proche de 0. On souhaite s'assurer du signe de $\gamma$
+en calculant sa valeur via l'estimateur de Pickands.
+\\
+On decide de prendre un seuil correspondant au quantile d’ordre 0,95.
+\\
+\\
+On obtient numériquement : 
+$\gamma  = -0.027$
 
-\begin{center}
-	\includegraphics[scale=0.8]{./images/rainhisto.png} 
-\end{center}
-
-On remarque dans un premier temps que les données sont concentrées autour de 0 mais qu'elles sont capables de prendre des valeurs très élevées jusqu'à 90.
-Il est alors raisonnable de penser qu'après estimation, on va obtenir une valeur de gamma positive ou nulle. En effet, il n'apparait pas de cassure dans la distribution des données.
-De plus, les données prennent des valeurs grandes mais perdent rapidement en densité pour celle-ci. Ce qui suggèrerait une valeur de gamma proche de 0.
-\\
-\\
-Après estimation numérique, on obtient : $\sigma = 7.94$ et $\gamma = 0.034$.
-\\
-\\ 
-Une valeur de gamma aussi proche de 0 doit nous conduire à une étude plus approfondie.
-Plusieurs méthodes s'offrent à nous pour améliorer l'estimation de gamma. 
-\\
-\\
-1) On peut faire varier le seuil $u$ et juger de l'impact sur l'estimation de gamma.
-\\
-\\
-2) On peut chercher les valeurs des paramêtres via une autre méthode (présentée plus bas).
-\\
-\\
-3) Ou alors de façon plus arbitraire, on peut considérer la valeur de gamma en fonction du type de donnée qu'on étudie et de la cohérence que cela apporte.
-\\
-\\
-\\
-Pour notre exemple, on considère que $\gamma > 0$.
 
 \subsubsection{Estimation de $\gamma$ plus approfondie}
 
@@ -976,71 +1034,6 @@ Pour $k=500$, on obtient $\hat{\gamma} = 0.388$.
 Pour Hill marche pas ? Sans doute parce que avoir un gamma trop proche de 0
 est pas bon.
 
-
-\subsection{Méthode des maxima en bloc}
-\subsubsection{Principe}
-
-La première étape consiste à subdiviser nos données en blocs de taille $k$ et de calculer le maximum sur chaque bloc. Le paramètre
-$k$ est choisit en fonction de l'interprétation des données. (par exemple, si on a des données journalières, on peut choisir $k=365$ pour avoir des maximums annuels).
-Ensuite, pour chaque bloc on calcule le maximum. Cela nous donne une suite de maximum.
-Une fois les maximums obtenus, on estime $a_n$,$b_n$ et $\gamma$ en utilisant la méthode du maximum de vraisemblance.
-\\
-Afin de comparer les deux méthodes et de se conforter aux valeurs estimmer, on va utiliser les mêmes données que précédemment.
-
-
-\subsubsection{Application sur les données de Rain}
-
-Les données étant journalières, on va choisir des blocs de taille 365, comme les données vont de 1914 à 1962, on se retrouve avec 48 blocs de 365 jours.
-\\
-\\
-Via le package \textbf{evd}, on obtient avec la fonction \textbf{fgev} les paramètres suivants :
-\\
-$\mu = 40.8$, $\sigma = 9.73$ et $\gamma = 0.107$.
-\\
-L'estimation des paramètres sont calculées par l'algorithme de Nelder-Mead (voir annexe). On peut pousser l'estimation des paramètres notamment $\gamma$ via la méthode de Hill afin d'avoir une valeur plus précise. D'autant plus que dans le cas de la méthode par depassement de seuil, on a vu que la valeur de $\gamma$ était aussi positive. Cela nous conforte dans l'idée d'une valeur de gamma positive.
-\begin{center}
-	\includegraphics[scale=0.8]{./images/gevrainmaxbloc.png} 
-\end{center}
-
-Le graphique ci-dessus montre la distribution de Frechet en blue avec les paramètres estimés superposant l'histogramme des maximums par année.
-\\
-\\
-On suppose alors que $\gamma > 0$, donc il n’existe pas de valeur maximale finie : la probabilité de très gros maxima décroît lentement, selon un comportement polynomial plutôt que exponentiel ce qui est embettant dans le cas pratique surtout quand on cherche des seuils rarement atteints.
-
-\subsubsection{quantile de retour}
-
-On peut néamoins donner une valeur "seuil" qui nous assurerait que la probabilité de dépasser cette valeur est très faible.
-\\
-On introduit alors le \textbf{quantile de retour}. On pose $z_T$ la valeur que l’on dépasse en moyenne une fois tous les T ans.
-\\
-Dans notre cas, on a intérêt à prendre une grande valeur pour T pour être sûr de dépasser cette valeur que rarement. Prenons pour la suite T = 100.
-\\
-En particulier, $z_t$ est solution de l'équation suivante :
-\[
-P\bigl(M \le z_T\bigr)
-\;=\;
-G_{\mu,\sigma,\gamma}(z_T)
-\;=\;
-1 - \frac{1}{T},
-\]
-où \(G_{\mu,\sigma,\gamma}\) est la fonction de répartition de la GEV. En résolvant cette équation que l'on admet, on obtient
-\[
-z_T =
-\begin{cases}
-\displaystyle
-\mu \;+\;\frac{\sigma}{\gamma}\Bigl[(-\ln(1 - 1/T))^{-\gamma} - 1\Bigr],
-&\gamma \neq 0,\\[1em]
-\displaystyle
-\mu \;-\;\sigma\,\ln\bigl(-\ln(1 - 1/T)\bigr),
-&\gamma = 0.
-\end{cases}
-\]
-Dans notre cas, on obtient alors : $z_t = 98.636$. C'est à dire que la probabilité de dépasser cette valeur est de 1/100.
-\\
-Autrement dit, une fois tous les 100 ans, on peut s'attendre à avoir une pluie de plus de 98.636 mm.
-\subsubsection{synthèse sur la méthode des maxima en bloc}
-
-Quand on dispose des données sur une longue période, la méthode des maxima en bloc est efficace. D'autant plus quand on a des données temporelles (journalières, mensuelles, annuelles). En revanche, elle est moins efficace que la méthode de dépassement de seuil car elle utilise moins de données. En effet, on ne garde que les maximums et on perd donc une partie des données qui peuvent etre consequents en fonction du choix de $k$.
 
 \newpage
 \section{Annexe}
