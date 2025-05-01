@@ -955,30 +955,21 @@ Les données étant journalières, on va choisir des blocs de taille 365, comme 
 \\
 Via le package \textbf{evd}, on obtient via une estimations par maximum de vraisemblance les paramètres suivants :
 \\
-$\mu = 40.8$, $\sigma = 9.73$ et $\gamma = 0.107$.
+$\mu = 40,8$, $\sigma = 9,73$ et $\gamma = 0,107$.
 \\
+L'estimation des paramètres sont calculées par l'algorithme de Nelder-Mead (voir annexe).
 \\
-L'estimation des paramètres sont calculées par l'algorithme de Nelder-Mead (voir annexe). On peut pousser l'estimation des paramètres notamment $\gamma$ via la méthode de Pickands afin de se convaincre du signe de $\gamma$.
-\begin{center}
-	\includegraphics[scale=0.8]{./images/gevrainmaxbloc.png} 
-\end{center}
-
-Le graphique ci-dessus montre la distribution de Frechet en blue avec les paramètres estimés superposant l'histogramme des maximums par année.
 \\
 On suppose alors que $\gamma \geq 0$, donc il n’existe pas de valeur maximale finie : la probabilité de très gros maxima décroît mais n'est pas finie, selon un comportement polynomial ou exponentiel ce qui est embettant dans le cas pratique surtout quand on cherche des seuils rarement atteints.
-\\
-\\
-\\
-\\
-On peut néamoins donner une valeur "seuil" qui nous assurerait que la probabilité de dépasser cette valeur est très faible. 
-On calcule alors le quantile de retour pour $T=100$ afin d'avoir une valeur de pluie qui ne devrait pas être dépassée plus d'une fois tous les 100 ans.
-\\
-\\
-Dans notre cas, on obtient alors : $z_t = 98.636$. Autrement dit, une fois tous les 100 ans, on peut s'attendre à avoir une pluie de plus de 98.636 mm.
-
 \subsubsection{Application sur les données danish}
-On applique la même méthode sur les données de sinistres. On choisit des blocs de taille 12, ce qui nous donne 10 blocs de 12 mois.
-
+On applique la même méthode sur les données de sinistres mais avec une approche légèrement différente puisque les données ne sont pas dans le même format. En effet, on ne dispose pas de données journalières mais l'ensemble des sinistres sur une période de 10 ans. C'est à dire qu'il existe des jours sans sinistres qui ne sont pas comptabilisés.
+On regroupe alors les sinistres par mois et on prend le sinistre le plus élevé. On se retrouve alors avec des blocs de taille irrégulière.
+\\
+\\
+Après analyse numérique par maximum de vraisemblance, on obtient les paramètres suivants : $\mu = 8,376$, $\sigma = 5,971$ et $\gamma = 0,623$.
+\\
+\\
+On possède une valeur de gamma positive ce qui renforce l'hypothèse d'une queue lourde pour la distribution du max.
 
 \subsubsection{synthèse sur la méthode des maxima en bloc}
 
@@ -992,7 +983,7 @@ Par ailleurs, le choix de $k$ est important car il faut choisir un nombre de blo
 \subsubsection{Application sur les données de Rain}
 
 On a calculé la valeur de $\gamma$ par la méthode des maxima en bloc et obtenu une valeur de $\gamma $ positive mais proche de 0. On souhaite s'assurer du signe de $\gamma$
-en calculant sa valeur via l'estimateur de Pickands.
+en procédant par la méthode de dépassement de seuil. On va deplus estimer la valeur de $\gamma$ avec l'estimateur de Pickands.
 \\
 On decide de prendre un seuil correspondant au quantile d’ordre 0,95.
 \\
@@ -1001,17 +992,43 @@ On obtient numériquement :
 $\gamma  = -0.027$
 \\
 \\
-On obtenut dand la méthode des maxima en bloc une valeur de $\gamma$ postive mais proche de 0,
+On a obtenu dans la méthode des maxima en bloc une valeur de $\gamma$ postive mais proche de 0,
 tandis qu'avec la méthode de dépassement de seuil, on obtient une valeur négative mais tout aussi proche de 0.
 \\
 Ce qui nous amène à conclure que la valeur de $\gamma$ est de 0.
 \\
 \\
 Autrement dit, la distribution du maximum de pluie suit une loi de Gumbel.
+\\
+On peut néamoins donner une valeur "seuil" qui nous assurerait que la probabilité de dépasser cette valeur est très faible. 
+On calcule alors le quantile de retour pour $T=100$ afin d'avoir une valeur de pluie qui ne devrait pas être dépassée plus d'une fois tous les 100 ans.
+\\
+\\
+Dans notre cas, on obtient alors : $z_t = 98,636$. Autrement dit, une fois tous les 100 ans, on peut s'attendre à avoir une pluie de plus de 98.636 mm.
 
 \subsubsection{Application sur les données danish}
 
+On prend un seuil correspondant au quantile d’ordre 0,95. Apres calcul numérique, on obtient $\sigma = 7.038$ et $\gamma = 0.492$.
+\\
+On a obtenue une valeur de $\gamma$ positive ce qui renforce l'hypothèse d'une queue lourde pour la distribution du max, ce qui est cohérent avec la méthode des maxima en bloc. On peut pousser l'analyse de gamma en calculant son estimation via l'estimateur de Hill afin d'avoir une valeur plus précise.
+\\
+\\
+On trace alors la courbe de l'estimateur de Hill en fonction de $k$.
+
+\begin{center}
+	\includegraphics[scale=0.70]{./images/danishsad.png} 
+\end{center}
+
+On observe alors un plateau pour k entre 30 et 45. On obtient alors apres estimation numérique une valeur de $\gamma = 0,66$.
+\\
+On peut alors calculer le quantile de retour pour $T=50$ afin d'avoir une valeur de sinistre qui ne devrait pas être dépassée plus d'une fois tous les 50 ans.
+\\
+On obtient alors : $z_t = 515,22$. Autrement dit, une fois tous les 50 ans, on peut s'attendre à avoir un sinistre depassant plus de $515,22$.
+
 \subsubsection{Synthèse sur la méthode de dépassement de seuil}
+Cette méthode à le bont goût d'exploiter toutes les valeurs supérieures à un seuil, pas seulement un maximum par bloc. Elle utilise donc plus de données.
+\\
+En revanche le choix du seuil est important car il faut choisir un seuil suffisamment élevé pour ne pas avoir trop peu de données mais pas trop élevé pour ne pas perdre d'informations sur les max. Il faut donc faire le compromis entre le biais et la variance.
 
 \newpage
 \section{Annexe}
