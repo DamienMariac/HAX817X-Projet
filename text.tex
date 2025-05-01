@@ -926,32 +926,27 @@ Cette propriété est essentielle en statistique des valeurs extrêmes, car elle
 \subsection{Description des données}
 
 Afin d'illustrer les méthodes d'estimation de l'indice de valeurs extrêmes, nous allons appliquer ces techniques sur des données réelles.
-Nous allons utiliser les données du package $ismev$ de R. Plus précisément celui de rain. Il contient les données de pluie journalière dans en Angleterre de 1914 à 1962.
+Nous allons utiliser les données du package $ismev$ de R. Plus précisément celui de rain et de danish. Ils contienent respectivement les données de pluie journalière en Angleterre de 1914 à 1962 et 
+les grands sinistres incendie survenus au Danemark entre 1980 et 1990.
 \\
-Nous allons utiliser deux méthodes d'estimation sur les paramètres $a_n$, $b_n$ et $\gamma$ afin de d'estimer un seuil de confiance.
 \\
-\\
-En effet, l'objectif sur ces données est de savoir s'il existe (et le cas échéant de le calculer) un seuil tel que les pluies ne puissent pas dépasser.
-Chercher cette valeur seuil serait utile en agriculture par exemple pour savoir si les pluies ne sont pas trop élevées pour les cultures.
+L'objectif sur ces données est de savoir s'il existe (et le cas échéant de le calculer) un seuil tel que à l'avenir on dépasse cette valeur rarement tout en restant raisonable.
 
 \begin{center}
-	\includegraphics[scale=0.8]{./images/rainhisto.png} 
+	\includegraphics[scale=0.70]{./images/rainhisto.png} 
 \end{center}
 
-On remarque dans un premier temps que les données sont concentrées autour de 0 mais qu'elles sont capables de prendre des valeurs très élevées jusqu'à 90.
+Dans le cas de rain, on remarque que les données sont concentrées autour de 0 mais qu'elles sont capables de prendre des valeurs très élevées jusqu'à 90.
 Il est alors raisonnable de penser qu'après estimation, on va obtenir une valeur de gamma positive ou nulle. En effet, il n'apparait pas de cassure dans la distribution des données.
-De plus, les données prennent des valeurs grandes mais perdent rapidement en densité pour celle-ci. Ce qui suggèrerait une valeur de gamma proche de 0 et positive.
+De plus, les données prennent des valeurs grandes mais perdent rapidement en densité pour celle-ci. Ce qui suggèrerait une valeur de gamma proche de $0$ et positive.
+
+\begin{center}
+	\includegraphics[scale=0.70]{./images/sinistres.png} 
+\end{center}
+
+De même, pour les sinistres, on remarque que la majorité des sinistres sont de faible intensité mais qu'il existe des sinistres de grande intensité. On peut donc s'attendre à une valeur de gamma positive ou nulle.
 
 \subsection{Méthode des maxima par bloc}
-\subsubsection{Principe}
-
-La première étape consiste à subdiviser nos données en blocs de taille $k$ et de calculer le maximum sur chaque bloc. Le paramètre
-$k$ est choisit en fonction de l'interprétation des données. (par exemple, si on a des données journalières, on peut choisir $k=365$ pour avoir des maximums annuels).
-Ensuite, pour chaque bloc on calcule le maximum. Cela nous donne une suite de maximum.
-Une fois les maximums obtenus, on estime $a_n$,$b_n$ et $\gamma$ en utilisant la méthode du maximum de vraisemblance.
-\\
-Afin de comparer les deux méthodes et de se conforter aux valeurs estimmer, on va utiliser les mêmes données que précédemment.
-
 
 \subsubsection{Application sur les données de Rain}
 
@@ -962,39 +957,41 @@ Via le package \textbf{evd}, on obtient via une estimations par maximum de vrais
 \\
 $\mu = 40.8$, $\sigma = 9.73$ et $\gamma = 0.107$.
 \\
-L'estimation des paramètres sont calculées par l'algorithme de Nelder-Mead (voir annexe). On peut pousser l'estimation des paramètres notamment $\gamma$ via la méthode de Hill afin d'avoir une valeur plus précise. D'autant plus que dans le cas de la méthode par depassement de seuil, on a vu que la valeur de $\gamma$ était aussi positive. Cela nous conforte dans l'idée d'une valeur de gamma positive.
+\\
+L'estimation des paramètres sont calculées par l'algorithme de Nelder-Mead (voir annexe). On peut pousser l'estimation des paramètres notamment $\gamma$ via la méthode de Pickands afin de se convaincre du signe de $\gamma$.
 \begin{center}
 	\includegraphics[scale=0.8]{./images/gevrainmaxbloc.png} 
 \end{center}
 
 Le graphique ci-dessus montre la distribution de Frechet en blue avec les paramètres estimés superposant l'histogramme des maximums par année.
 \\
+On suppose alors que $\gamma \geq 0$, donc il n’existe pas de valeur maximale finie : la probabilité de très gros maxima décroît mais n'est pas finie, selon un comportement polynomial ou exponentiel ce qui est embettant dans le cas pratique surtout quand on cherche des seuils rarement atteints.
 \\
-On suppose alors que $\gamma > 0$, donc il n’existe pas de valeur maximale finie : la probabilité de très gros maxima décroît lentement, selon un comportement polynomial plutôt que exponentiel ce qui est embettant dans le cas pratique surtout quand on cherche des seuils rarement atteints.
-
-\subsubsection{Valeur seuil}
-
+\\
+\\
+\\
 On peut néamoins donner une valeur "seuil" qui nous assurerait que la probabilité de dépasser cette valeur est très faible. 
 On calcule alors le quantile de retour pour $T=100$ afin d'avoir une valeur de pluie qui ne devrait pas être dépassée plus d'une fois tous les 100 ans.
 \\
 \\
 Dans notre cas, on obtient alors : $z_t = 98.636$. Autrement dit, une fois tous les 100 ans, on peut s'attendre à avoir une pluie de plus de 98.636 mm.
+
+\subsubsection{Application sur les données danish}
+On applique la même méthode sur les données de sinistres. On choisit des blocs de taille 12, ce qui nous donne 10 blocs de 12 mois.
+
+
 \subsubsection{synthèse sur la méthode des maxima en bloc}
 
-Quand on dispose des données sur une longue période, la méthode des maxima en bloc est efficace. D'autant plus quand on a des données temporelles (journalières, mensuelles, annuelles). En revanche, elle est moins efficace que la méthode de dépassement de seuil car elle utilise moins de données. En effet, on ne garde que les maximums et on perd donc une partie des données qui peuvent etre consequents en fonction du choix de $k$.
+Quand on dispose des données sur une longue période, la méthode des maxima en bloc est efficace. D'autant plus quand on a des données temporelles (journalières, mensuelles, annuelles).
+En revanche, elle utilise moins de données ce qui la rend plus difficile à utiliser en pratique. En effet, on ne garde que les maximums et on perd donc une partie des données qui peuvent etre consequents en fonction du choix de $k$.
+Par ailleurs, le choix de $k$ est important car il faut choisir un nombre de blocs suffisant pour avoir une estimation fiable mais pas trop grand pour ne pas perdre trop d'informations.
 
 \subsection{Méthode de dépassement de seuil}
 
-\subsubsection{Principe}
-
-Cette méthode consiste à fixer un seuil $u$ et de considérer les données qui dépassent ce seuil. C'est à dire $X_i$ tel que $X_i > u$.
-Ensuite, on stocke les excès $X_i - u$. Cela nous donne un jeu de données positifs.
-La clé de cette méthode est que pour un seuil $u$ bien choisi, les excès suivent une loi de Pareto de paramètres $\sigma$ (échelle) et $\gamma$ (le gamma qu'on estime dans toute la théorie).
-C'est alors qu'on ajuste les paramètres $\sigma$ et $\gamma$ par maximum de vraisemblance.
 
 \subsubsection{Application sur les données de Rain}
 
-On va appliquer la méthode de dépassement de seuil sur les données de pluie. On a calculé la valeur de $\gamma$ par la méthode des maxima en bloc et obtenu une valeur de $\gamma $ positive mais proche de 0. On souhaite s'assurer du signe de $\gamma$
+On a calculé la valeur de $\gamma$ par la méthode des maxima en bloc et obtenu une valeur de $\gamma $ positive mais proche de 0. On souhaite s'assurer du signe de $\gamma$
 en calculant sa valeur via l'estimateur de Pickands.
 \\
 On decide de prendre un seuil correspondant au quantile d’ordre 0,95.
@@ -1002,38 +999,19 @@ On decide de prendre un seuil correspondant au quantile d’ordre 0,95.
 \\
 On obtient numériquement : 
 $\gamma  = -0.027$
-
-
-\subsubsection{Estimation de $\gamma$ plus approfondie}
-
-On assume que $\gamma > 0$ et on va estimer la valeur de $\gamma$ via l'estimateur de Hill. En effet, comme on s'attend à avoir une valeur de $\gamma$ positive ou nul apres avoir fait une première estimation, on peut estimmer $\gamma$ avec l'estimateur de Hill.
-De plus, cela concorde avec la nature des données.
 \\
 \\
-En traçant le Hill-plot, on obtient :
-
-
-\begin{center}
-	\includegraphics[scale=0.8]{./images/hill-plotrain.png} 
-\end{center}
-
-Dans un tel graphique, on cherche un ou des plateaux, c’est-à-dire un intervalle sur lequel la courbe noire est horizontale et stable,
-et idéalement à l’intérieur des bandes de confiance rouges.
+On obtenut dand la méthode des maxima en bloc une valeur de $\gamma$ postive mais proche de 0,
+tandis qu'avec la méthode de dépassement de seuil, on obtient une valeur négative mais tout aussi proche de 0.
 \\
-On remarque notament que pour k entre 50 et 200 on a un plateau mais aussi pour k entre 400 et 600. On essaye de trouver 
-un juste milieu entre biais et variance.
-\begin{center}
-	\includegraphics[scale=0.8]{./images/hillplateaurain.png}
-\end{center}
-Ainsi, pour $k=125$, on obtient $\hat{\gamma} = 0.204$.
+Ce qui nous amène à conclure que la valeur de $\gamma$ est de 0.
 \\
-Pour $k=500$, on obtient $\hat{\gamma} = 0.388$.
+\\
+Autrement dit, la distribution du maximum de pluie suit une loi de Gumbel.
 
-\subsubsection{synthèse sur la méthode de dépassement de seuil}
+\subsubsection{Application sur les données danish}
 
-Pour Hill marche pas ? Sans doute parce que avoir un gamma trop proche de 0
-est pas bon.
-
+\subsubsection{Synthèse sur la méthode de dépassement de seuil}
 
 \newpage
 \section{Annexe}

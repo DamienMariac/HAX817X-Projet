@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1746051286.51953 "/home/damien/Documents/M1S2/projet/redaction/text.tex" "text.pdf" "text" 1746051287.69714 0
+["pdflatex"] 1746095401.75462 "/home/damien/Documents/M1S2/projet/redaction/text.tex" "text.pdf" "text" 1746095402.95058 0
   "/etc/texmf/web2c/texmf.cnf" 1738070165.10808 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/damien/Documents/M1S2/projet/redaction/text.tex" 1746051286.32826 58550 1077e3f76d88762aa3eb83af03d73c15 ""
+  "/home/damien/Documents/M1S2/projet/redaction/text.tex" 1746095400.30402 56827 80b612277edda786f94b6e5f549e8ee0 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tctt0800.tfm" 1136768653 1536 3d9caa7b59d4d3f96d272d1de68d8742 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -114,18 +114,17 @@
   "images/cauchy.png" 1745420030.34791 46843 6c2052ea91431cc219aa3fd993ad92f5 ""
   "images/exponentielle.png" 1745420030.34891 51367 95ea8626254ffe212fe4227ed0be474e ""
   "images/gevrainmaxbloc.png" 1745593476.06103 25744 47bff7643cbb5e0d329d183a273b6fc8 ""
-  "images/hill-plotrain.png" 1745937314.6923 31371 340e6c9fb5cccdbb624a7aa99f000dfd ""
   "images/hill_cauchy.png" 1745420030.34891 58855 96717111df87b0d973aa5e7963689e31 ""
   "images/hill_expo.png" 1745420030.34991 48285 2d403403b526b8b2bd806b0e8aab340c ""
   "images/hill_pareto.png" 1745420030.34991 48623 15ee50630ff287458dc83bce63310f84 ""
   "images/hill_uniforme.png" 1745420030.35091 44707 3a69ca4604c58e203a0ddd5a01fc62ba ""
-  "images/hillplateaurain.png" 1745938957.03021 32544 dd7eb139079c450ed90464cde98b6d01 ""
   "images/pareto.png" 1745420030.35091 51331 5a66557f13ec03536ae241a730904237 ""
   "images/rainhisto.png" 1742571394.93667 15391 fcc4701932f5090998a8bf7e0659151b ""
+  "images/sinistres.png" 1746095055.13366 15786 7d32ff9acf380f76114b8487f09a7edf ""
   "images/uniforme.png" 1745420030.35091 52523 43c66319cfcdf4b8532dbbb84b2e9750 ""
-  "text.aux" 1746051287.62427 7612 1fbd67b40b7372e6f0c1bf82183a99fa "pdflatex"
-  "text.tex" 1746051286.32826 58550 1077e3f76d88762aa3eb83af03d73c15 ""
-  "text.toc" 1746051287.62527 3853 3915ee8d68e27bab0e5158c174bb0f40 "pdflatex"
+  "text.aux" 1746095402.87402 7416 7bcf2c29f49146c965d14a02bb2c1c48 "pdflatex"
+  "text.tex" 1746095400.30402 56827 80b612277edda786f94b6e5f549e8ee0 ""
+  "text.toc" 1746095402.87502 3739 f067212c9b034c4ee2660c6ede4e337b "pdflatex"
   (generated)
   "text.aux"
   "text.log"
