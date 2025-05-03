@@ -817,7 +817,7 @@ En résumé, ces observations soulignent la pertinence de l’estimateur de Hill
 
 \section{Méthode des maxima par blocs}
 
-\noindent L'approche des maxima par blocs (en anglais Blocks Maxima) consiste à diviser les N observations en n blocs de taille k. Concrètement, la suite $X_1, ..., X_n$ est divisée en N blocs, le premier bloc est $X_1, ..., X_k$, le second $X_{k+1}, ..., X_{2k}$, etc. On obtient ainsi une suite de maxima $M_1, ..., M_n$ définis sur chacun des blocs.\\
+\noindent L'approche des maxima par blocs (en anglais Blocks Maxima) consiste à diviser les n observations en N blocs de taille k. Concrètement, la suite $X_1, ..., X_n$ est divisée en N blocs, le premier bloc est $X_1, ..., X_k$, le second $X_{k+1}, ..., X_{2k}$, etc. On obtient ainsi une suite de maxima $M_1, ..., M_n$ définis sur chacun des blocs.\\
 \noindent En général, on considère une période temporelle, comme une journée ou bien une année pour refléter le sens des observations.  \\
 \noindent On peut alors déterminer la loi limite des maxima, en vertu du théorème de Fisher-Tippett-Gnedenko c'est une distribution GEV classique de la forme :
 \[
@@ -830,13 +830,13 @@ G_{\mu,\sigma,\gamma}(x)
 \[
 \beta_r = \frac{1}{k} \sum_{i=1}^{k} \frac{(i-1)...(i-r)}{(k-1)...(k-r)} X_{i,k} ~ \text{ pour $r = 1,2,3,...,k>r $}
 \] \\
-\noindent A partir de $\beta_r$, on peut ensuite définir les trois estimateurs PVM suivants pour $\gamma, a_n$ et $b_n$ qui possèdent de bonnes propriétés asymptotiques sous certaines conditions ($\Gamma$ est la fonction gamma bien connue). \\
+\noindent A partir de $\beta_r$, on peut ensuite définir les trois estimateurs PVM suivants pour $\gamma, a_n$ et $b_n$ qui possèdent de bonnes propriétés asymptotiques sous certaines conditions ($\Gamma$ est la fonction gamma d'Euler). \\
 
 \noindent Pour $\gamma$ : $\hat{\gamma}_{k,m}$ est solution de $\frac{3\hat{\gamma}_{k,m} - 1}{2\hat{\gamma}_{k,m} - 1} = \frac{3\beta_2 - \beta_0}{2\beta_1 - \beta_0} $ \\
 \noindent Pour $a_n$ : $\hat{a}_{k,m} = \frac{\hat{\gamma}_{k,m}}{2\hat{\gamma}_{k,m} - 1} \cdot \frac{2\beta_1 - \beta_0}{\Gamma(1 - \hat{\gamma}_{k,m})}$ \\
 \noindent Pour $b_n$ : $\hat{b}_{k,m} = \beta_0 + \hat{a}_{k,m} \cdot \frac{1 - \Gamma(1 - \hat{\gamma}_{k,m})}{\hat{\gamma}_{k,m}}$ \\
 
-\noindent Sous certaines conditions, on peut enfin démontrer que les quantiles élevés sont facilement estimables par cette méthode. On a ainsi :
+\noindent Sous certaines conditions, on peut enfin démontrer que les quantiles élevés sont estimables par cette méthode. On a ainsi :
 \[
 \frac{\sqrt{k} \left( \hat{X}_{k,m} - X_n \right)}{a_n \, q_{\gamma}(c_n)}
 \xrightarrow{d}
@@ -858,7 +858,7 @@ où : \begin{itemize}
 
 La méthode des excès, également appelée approche par dépassement de seuil (en anglais \textit{Peaks Over Threshold}, ou POT), a été introduite par Pickands en 1975. Elle constitue une alternative à l’approche classique par blocs pour modéliser les phénomènes extrêmes.
 
-Le principe est de ne conserver que les observations excédant un seuil élevé \( u \). Si ce seuil est bien choisi (suffisamment grand), la distribution des excès définis par :
+Le principe est de ne conserver que les observations excédant un seuil élevé \( u \). Si ce seuil est bien choisi la distribution des excès définis par :
 \[
 Y_i = X_i - u \quad \text{pour} \quad X_i > u
 \]
@@ -997,8 +997,8 @@ tandis qu'avec la méthode de dépassement de seuil, on obtient une valeur néga
 \\
 Ce qui nous amène à conclure que la valeur de $\gamma$ est de 0.
 \\
-\\
 Autrement dit, la distribution du maximum de pluie suit une loi de Gumbel.
+\\
 \\
 On peut néamoins donner une valeur "seuil" qui nous assurerait que la probabilité de dépasser cette valeur est très faible. 
 On calcule alors le quantile de retour pour $T=100$ afin d'avoir une valeur de pluie qui ne devrait pas être dépassée plus d'une fois tous les 100 ans.
