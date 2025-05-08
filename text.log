@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.13)  8 MAY 2025 12:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.13)  8 MAY 2025 13:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -526,196 +526,191 @@ Underfull \hbox (badness 10000) in paragraph at lines 474--476
 
 
 [11]
-<./images/pareto.png, id=64, 646.21425pt x 513.117pt>
-File: ./images/pareto.png Graphic file (type png)
-<use ./images/pareto.png>
-Package pdftex.def Info: ./images/pareto.png  used on input line 549.
-(pdftex.def)             Requested size: 386.95897pt x 307.2697pt.
-<./images/exponentielle.png, id=66, 645.00975pt x 506.49225pt>
-File: ./images/exponentielle.png Graphic file (type png)
-<use ./images/exponentielle.png>
-Package pdftex.def Info: ./images/exponentielle.png  used on input line 560.
-(pdftex.def)             Requested size: 386.95897pt x 303.85905pt.
-
-
-[12 <./images/pareto.png>]
-<./images/uniforme.png, id=72, 643.203pt x 507.0945pt>
-File: ./images/uniforme.png Graphic file (type png)
-<use ./images/uniforme.png>
-Package pdftex.def Info: ./images/uniforme.png  used on input line 570.
-(pdftex.def)             Requested size: 386.95897pt x 305.07922pt.
-
-
-[13 <./images/exponentielle.png>]
-<./images/cauchy.png, id=78, 642.60075pt x 507.0945pt>
-File: ./images/cauchy.png Graphic file (type png)
-<use ./images/cauchy.png>
-Package pdftex.def Info: ./images/cauchy.png  used on input line 581.
-(pdftex.def)             Requested size: 386.95897pt x 305.35777pt.
-
-
-[14 <./images/uniforme.png>]
-
-[15 <./images/cauchy.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 618--620
+Underfull \hbox (badness 10000) in paragraph at lines 554--556
 
  []
 
 
 
-[16]
-
-[17]
-<./images/hill_pareto.png, id=93, 563.10374pt x 449.88075pt>
-File: ./images/hill_pareto.png Graphic file (type png)
-<use ./images/hill_pareto.png>
-Package pdftex.def Info: ./images/hill_pareto.png  used on input line 764.
-(pdftex.def)             Requested size: 290.22107pt x 231.86623pt.
-<./images/hill_expo.png, id=94, 561.297pt x 444.4605pt>
-File: ./images/hill_expo.png Graphic file (type png)
-<use ./images/hill_expo.png>
-Package pdftex.def Info: ./images/hill_expo.png  used on input line 772.
-(pdftex.def)             Requested size: 290.22107pt x 229.81187pt.
-
-
-[18 <./images/hill_pareto.png>]
-<./images/hill_uniforme.png, id=99, 558.28575pt x 443.256pt>
-File: ./images/hill_uniforme.png Graphic file (type png)
-<use ./images/hill_uniforme.png>
-Package pdftex.def Info: ./images/hill_uniforme.png  used on input line 780.
-(pdftex.def)             Requested size: 290.22107pt x 230.42004pt.
-<./images/hill_cauchy.png, id=100, 555.87675pt x 437.83575pt>
-File: ./images/hill_cauchy.png Graphic file (type png)
-<use ./images/hill_cauchy.png>
-Package pdftex.def Info: ./images/hill_cauchy.png  used on input line 788.
-(pdftex.def)             Requested size: 290.22107pt x 228.59117pt.
+[12]
+<./image_hill_pickands/pareto_pickands.png, id=67, 386.6445pt x 254.1495pt>
+File: ./image_hill_pickands/pareto_pickands.png Graphic file (type png)
+<use ./image_hill_pickands/pareto_pickands.png>
+Package pdftex.def Info: ./image_hill_pickands/pareto_pickands.png  used on input line 619.
+(pdftex.def)             Requested size: 290.22107pt x 190.77454pt.
+<./image_hill_pickands/exponentielle_pickands.png, id=69, 391.4625pt x 253.54726pt>
+File: ./image_hill_pickands/exponentielle_pickands.png Graphic file (type png)
+<use ./image_hill_pickands/exponentielle_pickands.png>
+Package pdftex.def Info: ./image_hill_pickands/exponentielle_pickands.png  used on input line 627.
+(pdftex.def)             Requested size: 290.22107pt x 187.98181pt.
+<./image_hill_pickands/uniforme_pickands.png, id=70, 388.45125pt x 245.11575pt>
+File: ./image_hill_pickands/uniforme_pickands.png Graphic file (type png)
+<use ./image_hill_pickands/uniforme_pickands.png>
+Package pdftex.def Info: ./image_hill_pickands/uniforme_pickands.png  used on input line 634.
+(pdftex.def)             Requested size: 290.22107pt x 183.13693pt.
 
 
-[19 <./images/hill_expo.png> <./images/hill_uniforme.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 811--813
+[13 <./image_hill_pickands/pareto_pickands.png> <./image_hill_pickands/exponentielle_pickands.png>]
+<./image_hill_pickands/cauchy_pickands.png, id=78, 389.65575pt x 244.5135pt>
+File: ./image_hill_pickands/cauchy_pickands.png Graphic file (type png)
+<use ./image_hill_pickands/cauchy_pickands.png>
+Package pdftex.def Info: ./image_hill_pickands/cauchy_pickands.png  used on input line 642.
+(pdftex.def)             Requested size: 290.22107pt x 182.12732pt.
+
+
+[14 <./image_hill_pickands/uniforme_pickands.png> <./image_hill_pickands/cauchy_pickands.png>]
+
+[15]
+<./image_hill_pickands/levy_hill.png, id=87, 317.988pt x 251.7405pt>
+File: ./image_hill_pickands/levy_hill.png Graphic file (type png)
+<use ./image_hill_pickands/levy_hill.png>
+Package pdftex.def Info: ./image_hill_pickands/levy_hill.png  used on input line 737.
+(pdftex.def)             Requested size: 290.22107pt x 229.76793pt.
+<./image_hill_pickands/exponentielle_hill.png, id=88, 335.45325pt x 254.1495pt>
+File: ./image_hill_pickands/exponentielle_hill.png Graphic file (type png)
+<use ./image_hill_pickands/exponentielle_hill.png>
+Package pdftex.def Info: ./image_hill_pickands/exponentielle_hill.png  used on input line 744.
+(pdftex.def)             Requested size: 290.22107pt x 219.8867pt.
+
+
+[16 <./image_hill_pickands/levy_hill.png>]
+<./image_hill_pickands/uniforme_hill.png, id=93, 316.18124pt x 266.1945pt>
+File: ./image_hill_pickands/uniforme_hill.png Graphic file (type png)
+<use ./image_hill_pickands/uniforme_hill.png>
+Package pdftex.def Info: ./image_hill_pickands/uniforme_hill.png  used on input line 751.
+(pdftex.def)             Requested size: 290.22107pt x 244.35356pt.
+<./image_hill_pickands/cauchy_hill.png, id=94, 336.0555pt x 269.20575pt>
+File: ./image_hill_pickands/cauchy_hill.png Graphic file (type png)
+<use ./image_hill_pickands/cauchy_hill.png>
+Package pdftex.def Info: ./image_hill_pickands/cauchy_hill.png  used on input line 758.
+(pdftex.def)             Requested size: 290.22107pt x 232.50238pt.
+
+
+[17 <./image_hill_pickands/exponentielle_hill.png> <./image_hill_pickands/uniforme_hill.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 782--784
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 814--817
+Underfull \hbox (badness 10000) in paragraph at lines 785--788
 
  []
 
 
 
-[20 <./images/hill_cauchy.png>]
+[18 <./image_hill_pickands/cauchy_hill.png>]
 
-[21]
+[19]
 
-[22]
-Underfull \hbox (badness 10000) in paragraph at lines 907--913
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 878--884
 
  []
 
-<./images/rainhisto.png, id=117, 515.526pt x 364.79143pt>
+<./images/rainhisto.png, id=111, 515.526pt x 364.79143pt>
 File: ./images/rainhisto.png Graphic file (type png)
 <use ./images/rainhisto.png>
-Package pdftex.def Info: ./images/rainhisto.png  used on input line 915.
+Package pdftex.def Info: ./images/rainhisto.png  used on input line 886.
 (pdftex.def)             Requested size: 360.86574pt x 255.35225pt.
-<./images/sinistres.png, id=118, 465.99094pt x 299.61937pt>
+<./images/sinistres.png, id=112, 465.99094pt x 299.61937pt>
 File: ./images/sinistres.png Graphic file (type png)
 <use ./images/sinistres.png>
-Package pdftex.def Info: ./images/sinistres.png  used on input line 923.
+Package pdftex.def Info: ./images/sinistres.png  used on input line 894.
 (pdftex.def)             Requested size: 326.19142pt x 209.73212pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 932--943
+Underfull \hbox (badness 10000) in paragraph at lines 903--914
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 932--943
-
- []
-
-
-
-[23 <./images/rainhisto.png (PNG copy)> <./images/sinistres.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 944--952
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 944--952
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 964--987
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 964--987
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 964--987
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 964--987
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 990--996
+Underfull \hbox (badness 10000) in paragraph at lines 903--914
 
  []
 
 
 
-[24]
-<./images/danishsad.png, id=125, 465.99094pt x 299.61937pt>
+[21 <./images/rainhisto.png (PNG copy)> <./images/sinistres.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 915--923
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 915--923
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 935--958
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 935--958
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 935--958
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 935--958
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 961--967
+
+ []
+
+
+
+[22]
+<./images/danishsad.png, id=119, 465.99094pt x 299.61937pt>
 File: ./images/danishsad.png Graphic file (type png)
 <use ./images/danishsad.png>
-Package pdftex.def Info: ./images/danishsad.png  used on input line 998.
+Package pdftex.def Info: ./images/danishsad.png  used on input line 969.
 (pdftex.def)             Requested size: 326.19142pt x 209.73212pt.
 
 
-[25 <./images/danishsad.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 1017--1018
+[23 <./images/danishsad.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 988--989
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1031--1032
+Underfull \hbox (badness 10000) in paragraph at lines 1002--1003
 
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 1072.
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 1043.
 (C:\Users\welma\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmtt.fd
 File: ts1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 
-[26]
+[24]
 
-[27]
+[25]
 
-[28] (text.aux)
+[26] (text.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 8386 strings out of 473899
- 129191 string characters out of 5726500
+ 8382 strings out of 473899
+ 130127 string characters out of 5726500
  1115414 words of memory out of 5000000
- 31160 multiletter control sequences out of 15000+600000
+ 31156 multiletter control sequences out of 15000+600000
  570058 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,13n,65p,628b,1829s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,13n,65p,806b,1829s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\welma\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt0800.pk><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/welma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on text.pdf (28 pages, 807200 bytes).
+Output written on text.pdf (26 pages, 666175 bytes).
 PDF statistics:
- 235 PDF objects out of 1000 (max. 8388607)
+ 229 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
