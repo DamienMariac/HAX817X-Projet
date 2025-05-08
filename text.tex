@@ -392,7 +392,7 @@ La loi se généralise pour toute valeur de gamma et on l'appelle GEV (Generaliz
 \newpage
 \section{Quelques exemples numériques}
 
-\noindent Voici maintenant quelques applications numériques sur des lois usuelles de ce que nous avons vu dans cette section. Pour chacune des représentations suivantes, nous avons simulé 1000 fois chaque loi puis ensuite effectué 10000 simulations pour le maximum afin d'avoir une précision correcte. 
+\noindent Voici maintenant quelques applications numériques sur des lois usuelles de ce que nous avons vu dans cette section. Pour chacune des représentations suivantes, nous avons simulé $n=1000$ fois chaque loi puis ensuite effectué $N=10000$ simulations pour le maximum afin d'avoir une précision correcte. 
 
 \subsubsection{Loi uniforme}
 
@@ -413,7 +413,7 @@ La loi se généralise pour toute valeur de gamma et on l'appelle GEV (Generaliz
 P(M_n \leq 1 - y/n) = (1 - y/n)^n.
 \]
 
-\noindent Pour $ n $ grand, on a: $(1 - y/n)^n \approx e^{-y} $. Donc, $ P(M_n \leq 1 - y/n) \approx e^{-y} $.
+\noindent De plus, on a: $(1 - y/n)^n \xrightarrow[n \to +\infty]{} e^{-y} $. Donc, $ P(M_n \leq 1 - y/n) \xrightarrow[n \to +\infty]{} e^{-y} $.
 
 
 \noindent Or, par définition, la loi exponentielle de paramètre 1 a pour fonction de répartition : $ P(Y \leq y) = 1 - e^{-y}, \quad y > 0. $
@@ -429,18 +429,39 @@ P(n(1 - M_n) \leq y) \to P(Y \leq y) = 1 - e^{-y},
 \[
 Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
 \] 
-\noindent Ainsi, on trouve que $a_n$ = $\frac{1}{n}$ et $b_n$ = 1.
+\noindent Ainsi, on prendra ici $a_n$ = $\frac{1}{n}$ et $b_n$ = 1.
 
-\noindent Avec notre machine, nous obtenons le graphe suivant :
+\noindent Une simulation sur Rstudio donne le graphe suivant :
 
 \begin{center}
 	\includegraphics[scale=0.8]{./images/Max_Uniforme.png} 
 \end{center}
 
-\noindent Remarquons que l'on obtient une loi de Gumbell, ce qui est assez logique au vu du fait que ce soit une loi à queue très légère (elle n'en a tout simplement pas car son support est borné).
+\noindent Remarquons que l'on obtient une loi de Gumbel, ce qui est assez logique au vu du fait que ce soit une loi à queue très légère (elle n'en a tout simplement pas car son support est borné).
 
 \subsubsection{Loi exponentielle}
-\noindent Pour une loi exponentielle de paramètre 1, la loi limite est une loi de Gumbel. Théoriquement, on trouve $a_n = 1 $ et $b_n = \log(n) $.
+\noindent Pour une loi exponentielle de paramètre 1, la loi limite est une loi de Gumbel. Théoriquement, on trouve $a_n = 1 $ et $b_n = \log(n) $. \\
+\noindent En effet, soient $X_1, \dots, X_n$ des variables aléatoires iid de loi $\mathcal{E}(1)$. On a pour $ x \geq 0 $ :
+
+\begin{align*}
+	P(M_n \leq x) &= P(X_1 \leq x, \dots, X_n \leq x) \\
+	&= P(X_1 \leq x)^n \\
+	&= (1-\exp(- x))^n
+\end{align*}
+
+\noindent Passons donc à la normalisation, posons $z=\frac{x-b_n}{a_n}$, on va utiliser le fait que $(1-\exp(- x))^n \xrightarrow[x \to +\infty]{} \exp(-n\exp(-x)) $. \\
+\noindent Ainsi on veut choisir $b_n$ de telle sorte que $n \exp(-b_n) \xrightarrow[n \to +\infty]{} 1 $. D'où $b_n = \log(n)$ \\
+\noindent On a donc $ x = a_n z + \log(n) $. On peut donc choisir $ a_n = 1$ afin d'avoir : 
+\begin{align*}
+	P(\frac{M_n - \log(n)}{1} \leq z) &= (1 - \exp(-(z+\log(n))))^n \\
+	&= (1 - \frac{\exp(-z)}{n})^n 
+\end{align*}
+
+\noindent Et donc : $ (1 - \frac{\exp(-z)}{n})^n \xrightarrow[n \to +\infty]{} \exp(\exp(-z))$ \\
+
+\noindent Ainsi, on a bien montré que $\frac{M_n - \log(n)}{1} \xrightarrow{\mathcal{L}} \text{Gumbel}(0,1) $ \\
+
+\noindent On obtient alors numériquement le graphe suivant :
 
 \begin{center}
 	\includegraphics[scale=0.8]{./images/Max_Expo.png} 
@@ -450,7 +471,8 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
 
 \subsubsection{Loi normale}
 
-\noindent Pour maintenant une loi normale centrée-réduite, on peut montrer que la loi limite est encore une fois une loi de Gumbel. On trouve les paramètres généralisés $a_n = \frac{1}{\sqrt{(2*\log(n)}} $ et $b_n = \frac{1}{a_n} - \frac{\log(\log(n)) + \log(4 * pi)}{2 * \sqrt{2 * \log(n)}} $.
+\noindent Pour maintenant une loi normale centrée-réduite, on peut montrer que la loi limite est encore une fois une loi de Gumbel. Théoriquement, on trouve les paramètres généralisés suivants : $a_n = \frac{\log\left(\frac{4\log^2(2)}{\log^2\left(\frac{4}{3}\right)}\right)}{2\sqrt{2\log(n)}} $ et $b_n = \sqrt{2\log(n)} - \frac{\log(\log(n)) + \log\left(4\pi \log^2(2)\right)}{2\sqrt{2\log(n)}} $. (Gnedenko, \textit{On The Limiting Distribution of the Maximum Term in a Random Series}). \\
+\noindent On obtient cette fois-ci le graphe suivant :
 
 \begin{center}
 	\includegraphics[scale=0.8]{./images/Max_Normale.png} 
@@ -460,7 +482,35 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
 
 \subsubsection{Loi de Cauchy}
 
-\noindent Enfin, pour une loi de Cauchy (de paramètres 0 et 1 ici), la loi limite est une loi de Fréchet. On a les coefficients suivants : $a_n = pi $ et $b_n = n $.
+\noindent Enfin, pour une loi de Cauchy (de paramètres 0 et 1 ici), la loi limite est une loi de Fréchet. On a les coefficients suivants : $a_n = \pi $ et $b_n = n $. \\
+
+\noindent On s'intéresse au comportement asymptotique du maximum $ M_n = \max(X_1, \dots, X_n) $. Pour la loi de Cauchy, on sait que la fonction de répartition est donnée par $ F(x) = \frac{1}{2} + \frac{1}{\pi} \arctan(x) $. Donc, la fonction de survie est $ \bar{F}(x) = 1 - F(x) = \frac{1}{2} - \frac{1}{\pi} \arctan(x) $. \\
+
+\noindent On va utiliser le développement asymptotique suivant, pour \( x \to +\infty \): $\arctan(x) = \frac{\pi}{2} - \frac{1}{x} + o\left(\frac{1}{x}\right) $. \\
+
+\noindent Ainsi, on a $\bar{F}(x) \sim \frac{1}{\pi x} \quad \text{lorsque } x \to +\infty$. \\
+\noindent Et donc la loi du maximum \( M_n \) s’écrit alors : $ \mathbb{P}(M_n \leq x) = F(x)^n \approx \left(1 - \frac{1}{\pi x}\right)^n $
+
+
+\noindent On cherche donc \( a_n > 0 \), \( b_n \) tels que : $ \mathbb{P}\left( \frac{M_n - b_n}{a_n} \leq z \right) \to G(z) = \exp(-1/z) $ où G est la fonction de répartition d'une loi de Fréchet de paramètre 1. \\
+
+\noindent Posons \( b_n = n \), \( a_n = \pi \). Alors :
+
+\[
+\mathbb{P}\left( \frac{M_n - n}{\pi} \leq z \right) = \mathbb{P}\left( M_n \leq \pi z + n \right) \approx \left(1 - \frac{1}{\pi(\pi z + n)}\right)^n
+\]
+
+\noindent En développant, on obtient : $\left(1 - \frac{1}{\pi(\pi z + n)}\right)^n \approx \exp\left(- \frac{n}{\pi(\pi z + n)} \right)$
+
+\noindent Et lorsque \( n \to \infty \), on a $ \frac{n}{\pi(\pi z + n)} \to \frac{1}{z} $
+
+\noindent Donc : $\mathbb{P}\left( \frac{M_n - n}{\pi} \leq z \right) \to \exp\left(-\frac{1}{z} \right)$ \\
+
+\noindent Ce qui montre que :
+\[
+\frac{M_n - n}{\pi} \xrightarrow{d} Z \sim \text{Fréchet}(1)
+\]
+
 
 \begin{center}
 	\includegraphics[scale=0.8]{./images/Max_Cauchy.png} 
