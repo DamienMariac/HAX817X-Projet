@@ -2,9 +2,9 @@
 \contentsline {section}{\numberline {1}Introduction}{3}{}%
 \contentsline {section}{\numberline {2}Les lois de $M_n$}{3}{}%
 \contentsline {subsection}{\numberline {2.1}Quelques notations }{3}{}%
-\contentsline {subsection}{\numberline {2.2}Paramètre $b_n$}{5}{}%
+\contentsline {subsection}{\numberline {2.2}Paramètre $b_n$}{4}{}%
 \contentsline {subsection}{\numberline {2.3}Paramètre $a_n$}{5}{}%
-\contentsline {subsection}{\numberline {2.4}Les lois limites}{6}{}%
+\contentsline {subsection}{\numberline {2.4}Les lois limites}{5}{}%
 \contentsline {subsubsection}{\numberline {2.4.1}Nature du support}{6}{}%
 \contentsline {subsection}{\numberline {2.5}Résumé}{7}{}%
 \contentsline {section}{\numberline {3}Quelques exemples numériques}{8}{}%

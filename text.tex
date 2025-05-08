@@ -59,39 +59,18 @@
 \tableofcontents 
 \newpage
 \section{Introduction}
+Les événements extrêmes, comme les crues majeures, les canicules intenses ou les krachs financiers, sont rares mais peuvent avoir des conséquences très importantes. Les étudier est devenu essentiel dans des domaines variés comme la climatologie, l’assurance, la finance ou encore l’ingénierie.
 
-Les événements extrêmes tels que les inondations, les crues, les canicules, les crises financières ou encore les krachs boursiers sont certes rares, mais peuvent avoir des conséquences considérables. Leur modélisation statistique constitue aujourd’hui un enjeu majeur dans des domaines aussi variés que la climatologie, l’assurance, la finance ou encore l’ingénierie.
+La théorie des valeurs extrêmes est un outil statistique qui permet de modéliser ces phénomènes rares, en se concentrant sur les valeurs situées aux extrémités d’un jeu de données : les plus grandes ou les plus petites. Contrairement aux méthodes classiques qui s'intéressent surtout à la moyenne ou à la variance, la théorie des valeurs extrêmes cherche à comprendre le comportement des valeurs extrêmes.
 
-Bien que de tels phénomènes ne puissent pas toujours être évités, la société peut mettre en œuvre des stratégies préventives afin d’en limiter les impacts. C’est dans cette optique que s’inscrit la théorie des valeurs extrêmes (TVE), un outil statistique essentiel dédié à l’analyse et à la prédiction des événements rares. Développée dès le début du XX\textsuperscript{e} siècle grâce aux travaux fondateurs de Fréchet (1927), Fisher et Tippett (1928), puis formalisée par Gnedenko (1943), cette théorie vise à modéliser les observations situées dans les queues des distributions de probabilité.
+Dans les statistiques classiques, beaucoup de résultats reposent sur le théorème central limite, qui explique que, sous certaines conditions, la moyenne d’un grand nombre de variables aléatoires suit une loi normale. C’est un fondement de nombreuses méthodes, mais il ne dit rien sur les valeurs les plus extrêmes d’un échantillon, qui sont pourtant cruciales dans l’analyse du risque.
 
-Dans la plupart des approches statistiques classiques, l’accent est mis sur le comportement global d’un échantillon, notamment par l’étude de ses moments (moyenne, variance, etc.). Ces méthodes reposent en grande partie sur le théorème central limite (TCL), énoncé par Pierre-Simon de Laplace en 1809, qui stipule que la somme (ou la moyenne) normalisée d’un grand nombre de variables aléatoires indépendantes et identiquement distribuées converge en loi vers une distribution normale.
-
-Toutefois, le TCL ne donne aucune information sur le comportement des valeurs extrêmes, les plus grandes ou les plus petites observations qui sont pourtant cruciales dans les situations de risque. Il est donc naturel de se demander s’il existe un résultat asymptotique analogue au TCL pour les extrêmes d’un échantillon.
-
-Pour cela, on considère un échantillon de variables aléatoires i.i.d. $(X_1, X_2, \dots, X_n)$, et l’on s’intéresse au comportement du maximum :
+La théorie des valeurs extrêmes s’intéresse donc à des grandeurs comme le maximum d’un échantillon $(X_1, X_2, \dots, X_n)$ :
 \[
 M_n = \max\{X_1, X_2, \dots, X_n\}.
 \]
-
-La théorie des valeurs extrêmes cherche à étudier la convergence en loi de $M_n$ (après normalisation éventuelle), ainsi que les conditions sous lesquelles cette convergence a lieu. Elle permet d’identifier les lois limites possibles pour les maxima (ou minima), qui sont : la loi de \textit{Fréchet}, la loi de \textit{Gumbel} et la loi de \textit{Weibull}, chacune correspondant à un type de comportement de la queue de distribution.
-
-\medskip
-\noindent
-\textbf{Remarque :} L’étude du minimum est entièrement analogue, il suffit d’examiner $-\min(X_1, \dots, X_n)$.
-
-\medskip
-\noindent
-La théorie des valeurs extrêmes trouve des applications concrètes dans de nombreux domaines. Elle est utilisée en :
-\begin{itemize}
-    \item \textbf{Hydrologie}, pour prévoir les crues et protéger les zones inondables ;
-    \item \textbf{Climatologie}, pour modéliser les épisodes météorologiques extrêmes ;
-    \item \textbf{Assurance}, pour estimer la probabilité de sinistres rares et coûteux ;
-    \item \textbf{Finance}, pour évaluer les risques extrêmes liés aux variations de marché ;
-    \item \textbf{Ingénierie}, pour garantir la fiabilité des structures face à des sollicitations exceptionnelles.
-\end{itemize}
-
-En fournissant un cadre théorique rigoureux pour l’analyse des queues de distribution, la TVE permet d’anticiper la fréquence et l’intensité des événements rares, et ainsi d’aider à la prise de décision dans des contextes à fort enjeu.
-
+On cherche à savoir si, en normalisant ce maximum, il converge vers une loi limite. Les travaux de Fréchet, Fisher, Tippett et Gnedenko ont montré que cette convergence est possible, et qu’il n’existe que trois lois limites possibles : la loi de Fréchet, la loi de Gumbel et la loi de Weibull, qui correspondent à différents types de comportements des queues de distribution.
+En s’intéressant aux comportements les plus rares, la théorie des valeurs extrêmes fournit un cadre rigoureux pour mieux anticiper l’intensité et la fréquence des événements extrêmes, et ainsi mieux s’y préparer.
 \section{Les lois de $M_n$}
 
 \subsection{Quelques notations }
