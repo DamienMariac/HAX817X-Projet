@@ -729,39 +729,41 @@ z_T =
 \end{cases}
 \]
 \subsection{La construction de l’estimateur de Hill}
+Dans le cadre de l'analyse des valeurs extrêmes, l'estimation de l'indice de queue \(\gamma\) est cruciale pour comprendre le comportement des queues de distribution. L'estimateur de Hill est une méthode largement utilisée pour estimer cet indice de queue.
 
-Soient $\alpha_n$ et $\beta_n$ deux suites de nombres positifs, la construction de l’estimateur de Hill basée sur la relation suivante :
+Soient \(\alpha_n\) et \(\beta_n\) deux suites de nombres positifs. La construction de l'estimateur de Hill repose sur une relation fondamentale entre les quantiles d’une distribution à queue lourde appartenant au domaine d’attraction de Fréchet. Cette relation est donnée par :
 
-\begin{equation}
+\[
     q_{\beta_n} \simeq q_{\alpha_n} \left( \frac{\alpha_n}{\beta_n} \right)^{\gamma}.
-    \tag{1.6}
-\end{equation}
+\]
 
-Passons au logarithme dans l’équation (1.6), ce qui donne :
+Ici, \(q_{\alpha}\) représente le quantile d'ordre \(\alpha\) de la distribution, et \(\gamma\) est l'indice de queue que nous cherchons à estimer. Cette relation exprime que le quantile d'ordre \(\beta_n\) peut être approximé par le quantile d'ordre \(\alpha_n\) multiplié par un facteur dépendant de \(\gamma\).
+
+Pour déterminer l'estimateur de Hill, nous commençons par prendre le logarithme des deux côtés de l'équation du dessus. Nous obtenons :
 
 \[
 \log(q_{\beta_n}) - \log(q_{\alpha_n}) \simeq \gamma \log\left( \frac{\alpha_n}{\beta_n} \right).
 \]
 
-On choisit $\alpha_n = k_n/n$ et on considère plusieurs valeurs pour $\beta_n$, $\beta_n = i/n$ avec $i = 1, \ldots, k_n - 1$ tout en ayant $\beta_n < \alpha_n$. On obtient alors :
+En posant $\alpha_n = k_n/n$, où \(k_n\) est un nombre d'observations extrêmes que nous considérons, et en prenant plusieurs valeurs pour \(\beta_n\), avec \(\beta_n = i/n\) pour \(i = 1, \ldots, k_n - 1\) et \(\beta_n < \alpha_n\), nous obtenons :
 
 \[
 \log(q_{i/n}) - \log(q_{k_n/n}) \simeq \gamma \log(k_n/i).
 \]
 
-Ainsi, en estimant les quantiles par leurs équivalents empiriques, on obtient :
+Ensuite, nous estimons les quantiles par leurs équivalents empiriques, c'est-à-dire les statistiques d'ordre de l'échantillon. Cela conduit à :
 
 \[
 \log(X_{n - i + 1, n}) - \log(X_{n - k_n + 1, n}) \simeq \gamma \log(k_n / i).
 \]
 
-En sommant de part et d’autre sur $i = 1, \ldots, k_n - 1$, on obtient :
+En sommant sur \(i = 1, \ldots, k_n - 1\), nous obtenons :
 
 \[
-\gamma = \frac{\displaystyle \sum_{i=1}^{k_n - 1} \log(X_{n - i + 1, n}) - \log(X_{n - k_n + 1, n})}{\displaystyle \sum_{i=1}^{k_n - 1} \log(k_n / i)}.
+\gamma = \frac{\sum_{i=1}^{k_n - 1} \log(X_{n - i + 1, n}) - \log(X_{n - k_n + 1, n})}{\sum_{i=1}^{k_n - 1} \log(k_n / i)}.
 \]
 
-Le dénominateur se réécrit $\log(k_n^{k_n - 1}/(k_n - 1)!)$. En utilisant la formule de Stirling, il est équivalent à $k_n$ au voisinage de l’infini. On obtient alors l’estimateur de Hill.
+Le dénominateur peut être réécrit comme \(\log(k_n^{k_n - 1}/(k_n - 1)!)\). En utilisant la formule de Stirling, nous trouvons que ce dénominateur est équivalent à \(k_n\) au voisinage de l'infini. Cela nous permet d'obtenir l'estimateur de Hill. \newpage
 
 Soit $(k_n)_{n \geq 1}$ une suite d'entiers avec $1 \leq k_n \leq n$, l’estimateur de Hill est défini par :
 
