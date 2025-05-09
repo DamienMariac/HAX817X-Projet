@@ -36,4 +36,7 @@
 \contentsline {subsubsection}{\numberline {7.3.3}Synthèse sur la méthode de dépassement de seuil}{24}{}%
 \contentsline {section}{\numberline {8}Annexe}{25}{}%
 \contentsline {subsection}{\numberline {8.1}Méthode de Nelder-Mead}{25}{}%
-\contentsline {subsection}{\numberline {8.2}Codes R}{25}{}%
+\contentsline {subsection}{\numberline {8.2}Quelques simulations pour les méthodes de maxima par blocs et dépassement de seuil}{25}{}%
+\contentsline {subsubsection}{\numberline {8.2.1}Maxima par blocs}{26}{}%
+\contentsline {subsubsection}{\numberline {8.2.2}Dépassements de seuil}{27}{}%
+\contentsline {subsection}{\numberline {8.3}Codes R}{29}{}%

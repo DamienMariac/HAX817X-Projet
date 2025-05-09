@@ -489,7 +489,7 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
 \noindent On va utiliser le développement asymptotique suivant, pour \( x \to +\infty \): $\arctan(x) = \frac{\pi}{2} - \frac{1}{x} + o\left(\frac{1}{x}\right) $. \\
 
 \noindent Ainsi, on a $\bar{F}(x) \sim \frac{1}{\pi x} \quad \text{lorsque } x \to +\infty$. \\
-\noindent Et donc la loi du maximum \( M_n \) s’écrit alors : $ \mathbb{P}(M_n \leq x) = F(x)^n \approx \left(1 - \frac{1}{\pi x}\right)^n $
+\noindent Et donc la loi du maximum \( M_n \) s’écrit alors : $ \mathbb{P}(M_n \leq x) = F(x)^n \xrightarrow[n \to +\infty]{} \left(1 - \frac{1}{\pi x}\right)^n $
 
 
 \noindent On cherche donc \( a_n > 0 \), \( b_n \) tels que : $ \mathbb{P}\left( \frac{M_n - b_n}{a_n} \leq z \right) \to G(z) = \exp(-1/z) $ où G est la fonction de répartition d'une loi de Fréchet de paramètre 1. \\
@@ -497,10 +497,10 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
 \noindent Posons \( b_n = n \), \( a_n = \pi \). Alors :
 
 \[
-\mathbb{P}\left( \frac{M_n - n}{\pi} \leq z \right) = \mathbb{P}\left( M_n \leq \pi z + n \right) \approx \left(1 - \frac{1}{\pi(\pi z + n)}\right)^n
+\mathbb{P}\left( \frac{M_n - n}{\pi} \leq z \right) = \mathbb{P}\left( M_n \leq \pi z + n \right) \xrightarrow[n \to +\infty]{} \left(1 - \frac{1}{\pi(\pi z + n)}\right)^n
 \]
 
-\noindent En développant, on obtient : $\left(1 - \frac{1}{\pi(\pi z + n)}\right)^n \approx \exp\left(- \frac{n}{\pi(\pi z + n)} \right)$
+\noindent En développant, on obtient : $\left(1 - \frac{1}{\pi(\pi z + n)}\right)^n \xrightarrow[n \to +\infty]{} \exp\left(- \frac{n}{\pi(\pi z + n)} \right)$
 
 \noindent Et lorsque \( n \to \infty \), on a $ \frac{n}{\pi(\pi z + n)} \to \frac{1}{z} $
 
@@ -1042,7 +1042,7 @@ En revanche le choix du seuil est important car il faut choisir un seuil suffisa
 \noindent Nelder-Mead est un algorithme d'optimisation non linéaire, il consiste en la chose suivante dans le cadre des valeurs extrêmes : 
 \begin{itemize}
 	\item \textbf{Etape 1} : on commence par choisir 3 premiers points $x_1, x_2, x_3$ par une rapide estimation des paramètres $\sigma$, $\mu$ et $\gamma$ de nos données. Ce seront nos points de départs de l'algorithme et ils définissent notre premier simplexe (triangle ici) dans $R^2$.
-	\item \textbf{Etape 2} : on calcule ensuite la valeur de la fonction en ces 3 points : f est la fonction GEV généralisée (à définir plus précisément) et on les trie par valeurs décroissantes.
+	\item \textbf{Etape 2} : on calcule ensuite la valeur de la fonction en ces 3 points : f est la fonction GEV généralisée et on les trie par valeurs décroissantes.
 	\item \textbf{Etape 3} : on cherche le centre de gravité $x_0$ de nos premiers points : $x_0 = \frac{x_1 + x_2 + x_3}{3}$.
 	\item \textbf{Etape 4} : on fait ensuite une réflexion en calculant $x_r = x_0 + \alpha (x_0 - x_3)$ où $\alpha > 0$ est appelé le coefficient de réflexion
 	\item \textbf{Etape 5} : si $f(x_1) \le  f(x_r) \le  f(x_3)$ : on remplace $x_3$ par $x_r$ et on retourne à l'étape 2.
@@ -1053,6 +1053,37 @@ En revanche le choix du seuil est important car il faut choisir un seuil suffisa
 
 \noindent On répète cela jusqu'à atteinte du critère d'arrêt, en général : $ \sqrt{\sum_{i=1}^{n+1}  \frac{(f_i - \bar{f})^2}{n}} < \epsilon $ où $\bar{f} =\frac{1}{n+1} \sum_{i=1}^{n+1} f_i $ et $ \epsilon $ est un réel proche de 0. \\
 
+\subsection{Quelques simulations pour les méthodes de maxima par blocs et dépassement de seuil}
+
+\noindent Quelques illustrations simulées des méthodes vues dans le texte pour les lois uniforme, normale et de Cauchy. \\
+
+\subsubsection{Maxima par blocs}
+
+\begin{center}
+	\includegraphics[scale=0.60]{./images/MB_Uniforme} 
+\end{center}
+
+\begin{center}
+	\includegraphics[scale=0.70]{./images/MB_Normale} 
+\end{center}
+
+\begin{center}
+	\includegraphics[scale=0.70]{./images/MB_Cauchy} 
+\end{center}
+
+\subsubsection{Dépassements de seuil}
+
+\begin{center}
+	\includegraphics[scale=0.70]{./images/DS_Uniforme} 
+\end{center}
+
+\begin{center}
+	\includegraphics[scale=0.70]{./images/DS_Normale} 
+\end{center}
+
+\begin{center}
+	\includegraphics[scale=0.70]{./images/DS_Cauchy} 
+\end{center}
 
 \subsection{Codes R}
 
@@ -1183,4 +1214,89 @@ En revanche le choix du seuil est important car il faut choisir un seuil suffisa
 	gpd.diag(gpd_result)
 
 \end{lstlisting}
+
+\noindent Un exemple de code pour les simulations de maxima par blocs : 
+
+\begin{lstlisting}
+	# Chargement des packages
+	library(evd)
+	library(ggplot2)
+	
+	# Génération d'une loi uniforme, on prend [0,10] pour que ce soit moins resserré 
+	n <- 10000
+	x <- runif(n, min = 0, max = 10)
+	
+	# Taille des blocs
+	taille_blocs <- 50
+	nb_blocs <- floor(n / taille_blocs)
+	
+	# Maxima par bloc
+	block_maxima <- sapply(1:nb_blocs, function(i) {
+		start <- (i - 1) * taille_blocs + 1
+		end <- i * taille_blocs
+		max(x[start:end])
+	})
+	
+	# Loi limite : Weibull
+	fit_weibull <- fgev(block_maxima, std.err = FALSE) # std.err=FALSE pour que la fonction arrête de chercher des erreurs
+	
+	# Graphe
+	ggplot(data.frame(block_maxima), aes(x = block_maxima)) +
+	geom_histogram(aes(y = ..density.., fill = "Simulation"), bins = 10,
+	color = "black") +
+	stat_function(aes(color = "Densité théorique"),
+	fun = function(x) dgev(x,
+	loc = fit_weibull$estimate["loc"],
+	scale = fit_weibull$estimate["scale"],
+	shape = fit_weibull$estimate["shape"]),
+	size = 1.2) +
+	coord_cartesian(xlim = c(7, 12)) +
+	scale_fill_manual("", values = c("Simulation" = "skyblue")) +
+	scale_color_manual("", values = c("Densité théorique" = "red")) +
+	labs(title = "Méthode des maximas par blocs pour une loi uniforme",
+	x = "Maxima par blocs",
+	y = "Densité") +
+	theme_minimal() +
+	theme(legend.position = "top")
+\end{lstlisting}
+
+\noindent Idem pour les dépassements de seuil : 
+
+\begin{lstlisting}
+	# Packages nécessaires
+	library(evd)
+	library(ggplot2)
+	
+	# Génération de données : loi uniforme sur [0, 1]
+	n <- 10000
+	x <- runif(n, min = 0, max = 100)
+	
+	# Choix du seuil élevé (par exemple 95e percentile)
+	u <- quantile(x, 0.95)
+	
+	# Excès au-dessus du seuil
+	exces <- x[x > u] - u
+	
+	# Ajustement GPD sur les excès
+	fit_gpd <- fpot(x, threshold = u, model = "gpd")
+	
+	# Visualisation : histogramme des excès + densité théorique GPD
+	ggplot(data.frame(exces), aes(x = exces)) +
+	geom_histogram(aes(y = ..density.., fill = "Simulation"),
+	bins = 40, color = "black", alpha = 0.6) +
+	stat_function(aes(color = "Densité théorique"),
+	fun = function(x) dgpd(x,
+	loc = 0,
+	scale = fit_gpd$estimate["scale"],
+	shape = fit_gpd$estimate["shape"]),
+	size = 1.2) + xlim(c(-5,10)) +
+	scale_fill_manual("", values = c("Simulation" = "skyblue")) +
+	scale_color_manual("", values = c("Densité théorique" = "red")) +
+	labs(title = "Méthode du dépassement de seuil pour une loi uniforme",
+	x = "Excès au-dessus du seuil",
+	y = "Densité") +
+	theme_minimal() +
+	theme(legend.position = "top")
+\end{lstlisting}
+
 \end{document}
