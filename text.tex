@@ -138,12 +138,12 @@ Q(p) \;=\; F^{-1}(p)
 \noindent On pose alors comme changement de variable : 
 
 \[
-x = Q(1-\frac{1}{y}) = K(y) \; \; \; \; \; \; \text{avec $Q$ la fonction quantile}
+x = Q(1-\frac{1}{y}) = U(y) \; \; \; \; \; \; \text{avec $Q$ la fonction quantile}
 \]
 
 \begin{equation}\label{eq:1.1}
     \text{Donc,} \; \; \int_{-\infty}^{\infty} z\Bigl(\frac{x-b_n}{a_n}\Bigr) \, n \, F^{n-1}(x)\,dF(x)
-    =\int_{0}^{n} z\Bigl(\frac{K\Bigl(\frac{n}{v}\Bigr)-b_n}{a_n}\Bigr)
+    =\int_{0}^{n} z\Bigl(\frac{U\Bigl(\frac{n}{v}\Bigr)-b_n}{a_n}\Bigr)
     \Bigl(1-\frac{v}{n}\Bigr)^{n-1}dv.
 \end{equation}
 \\
@@ -203,12 +203,12 @@ Il vient alors
 F(b_n)=1-\frac1n
 \quad\Longleftrightarrow\quad
 b_n \;=\; Q\!\Bigl(1-\tfrac1n\Bigr)
-\;=\;K(n),
+\;=\;U(n),
 \]
 
 
 \subsection{Paramètre $a_n$}
-Avec le parametre $b_n$ définie au dessus et en posant $u=\frac{1}{v}$ on obtient alors une condition, il faut qu'il existe une fonction $a$ tel que $\lim_{x \to \infty} \frac{K(xu) - K(x)}{a(x)}$ converge \textbf{vers une fonction $h(u)$}.
+Avec le parametre $b_n$ définie au dessus et en posant $u=\frac{1}{v}$ on obtient alors une condition, il faut qu'il existe une fonction $a$ tel que $\lim_{x \to \infty} \frac{U(xu) - U(x)}{a(x)}$ converge \textbf{vers une fonction $h(u)$}.
 \\
 \\
 \begin{proposition}
@@ -233,11 +233,11 @@ Ensuite, le cas $c>0$ peut être ramené au cas $c=1$ en incorporant $c$ dans la
 \begin{proof} 
 Soient $u,v >0$. Alors :
 \[
-\frac{K(xuv) - K(x)}{a(x)} 
+\frac{U(xuv) - U(x)}{a(x)} 
 \;=\; 
-\frac{K(xuv) - K(xu)}{a(xu)} \,\frac{a(xu)}{a(x)}
+\frac{U(xuv) - U(xu)}{a(xu)} \,\frac{a(xu)}{a(x)}
 \;+\;
-\frac{K(xu) - K(x)}{a(x)}.
+\frac{U(xu) - U(x)}{a(x)}.
 \tag{3}
 \]
 Si la limite dans $F$ est dans le domaine d'attraction de $G$ (\textit{ce qu'on suppose depuis le début}), alors le rapport $\frac{a(ux)}{a(x)}$ converge vers $g(u)$.
@@ -273,7 +273,7 @@ h_\gamma(u)=\frac{u^\gamma-1}{\gamma} \quad \text{(avec \(h_0(u)=\ln u\))},
 \subsection{Les lois limites}
 En reprenant $(3)$ et en utilisant ce qui précède, on obtient :
 \[
-\lim_{x\to \infty} \frac{K(xuv) - K(x)}{a(x)} = u^{\gamma} h(v) + h(u)
+\lim_{x\to \infty} \frac{U(xuv) - U(x)}{a(x)} = u^{\gamma} h(v) + h(u)
 \]
 \[
 \text{autrement dit :} \; \; h_{\gamma}(uv)= u^{\gamma} h_{\gamma}(v) + h_{\gamma}(u)
@@ -549,12 +549,13 @@ L’estimateur de Pickands est construit à partir de trois statistiques d’ord
 Néanmoins, cet estimateur est connu pour être assez sensible à la taille de l’échantillon, et en particulier au choix du paramètre intermédiaire \(k\), ce qui peut entraîner une certaine instabilité dans les estimations. Cela limite parfois sa robustesse, en particulier pour des tailles d’échantillon modestes.
 
 En 1975, Pickands a démontré la consistance faible de son estimateur, c’est-à-dire la convergence en probabilité vers le vrai paramètre lorsque la taille de l’échantillon tend vers l’infini. Plus tard en 1989, Dekkers et de Haan ont établi la convergence forte ainsi que la normalité asymptotique de cet estimateur sous des conditions plus générales.
-
+\\
+\\
 \medskip
 \textbf{Définition.} Soit \(X_1, \dots, X_n\) une suite de variables aléatoires i.i.d. de loi \(F\), appartenant à l’un des domaines d’attraction des lois de valeurs extrêmes. On note \(X_{1,n} \leq \dots \leq X_{n,n}\) les statistiques d’ordre croissantes. Soit \((k_n)_{n \geq 1}\) une suite intermédiaire telle que \(k_n \to \infty\) et \(k_n / n \to 0\), l’estimateur de Pickands est défini par :
 
 \[
-\hat{\gamma}_{k,n} = \frac{1}{\ln(2)} \ln\left( \frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-2k+1,n} - X_{n-4k+1,n}} \right)
+\hat{\gamma}_{k_n,n} = \frac{1}{\ln(2)} \ln\left( \frac{X_{n-k_n +1,n} - X_{n-2k_n +1,n}}{X_{n-2k_n +1,n} - X_{n-4k_n +1,n}} \right)
 \]
 
 \medskip
@@ -563,13 +564,13 @@ L’estimateur de Pickands repose sur l’idée que, dans les queues d’une dis
 \medskip
 \textbf{Propriété de consistance.} Si \((k_n)\) est une suite intermédiaire, alors :
 \[
-\hat{\gamma}_{k,n} \xrightarrow{\mathbb{P}} \gamma
+\hat{\gamma}_{k_n,n} \xrightarrow{\mathbb{P}} \gamma
 \quad \text{lorsque } n \to \infty.
 \]
 
 De plus, sous hypothèses régulières, l’estimateur est asymptotiquement normal :
 \[
-\sqrt{k} \left( \hat{\gamma}_{k,n} - \gamma \right) \xrightarrow{\mathcal{L}} \mathcal{N}(0, \sigma^2(\gamma))
+\sqrt{k_n} \left( \hat{\gamma}_{k_n,n} - \gamma \right) \xrightarrow{\mathcal{L}} \mathcal{N}(0, \sigma^2(\gamma))
 \]
 où la variance asymptotique est donnée par :
 \[
@@ -579,22 +580,9 @@ où la variance asymptotique est donnée par :
 \medskip
 Cette formule théorique permet de construire des intervalles de confiance pour l’estimation de \(\gamma\), bien qu’en pratique la variance soit souvent estimée par simulation.
 
-\subsection{Construction de l'estimateur de Pickands}
-\textbf{Proposition :} (Caractérisations de \( D(H_{\gamma}) \))
+\subsubsection{Construction de l'estimateur de Pickands}
 
-Pour \( \gamma \in \mathbb{R} \), les affirmations suivantes sont équivalentes. \newline
-\( (a) \quad F \in D(H_{\gamma}) \) \newline
-\( (b) \) Pour une certaine fonction positive \( c(t) = a\left( \frac{1}{t} \right) \) :
-
-\[
-\lim_{t \to 0} \frac{U(tx) - U(t)}{c(t)} = 
-\begin{cases} 
-\frac{x^\gamma - 1}{\gamma} & \text{si } \gamma \neq 0, \\
-\log(x) & \text{si } \gamma = 0, 
-\end{cases}
-\quad \text{pour } x > 0.
-\]
-La dernière affirmation est équivalente à :
+Afin de construire l'estimateur de Pickands, nous allons reprendre la proposition (2.3). Pour \(x,y > 0\) et \(y \neq 1\), la proposition est équivalente à :
 \[
 \lim_{s \to 0} \frac{U(sx) - U(s)}{U(sy) - U(s)} = 
 \begin{cases} 
@@ -602,42 +590,52 @@ La dernière affirmation est équivalente à :
 \frac{\log(x)}{\log(y)} & \text{si } \gamma = 0.
 \end{cases}
 \]
-pour \(x,y > 0\) et \(y \neq 1\). \newline
+\newline
 
-\textbf{Lemme A:}
+\begin{lemma}
 Soit \(X_1, \dots, X_n\) des variables aléatoires indépendantes et de fonction de répartition \(F\).
-Soit \(U_1, \dots, U_n\) des variables aléatoires indépendantes de loi uniforme \(\left[0,1\right]\). Alors \(F^{-1}(U_{1,n}), \dots, F^{-1}(U_{n,n})\) a même loi que \((X_{1,n}, \dots, X_{n,n})\)\newline
-\textbf{Preuve de la construction de l'estimateur de Pickands :}
+Soit \(U_1, \dots, U_n\) des variables aléatoires indépendantes de loi uniforme \(\left[0,1\right]\). Alors \(F^{-1}(U_{1,n}), \dots, F^{-1}(U_{n,n})\) a même loi que \((X_{1,n}, \dots, X_{n,n})\).
+\end{lemma}
 
-On déduit de la proposition précédente que pour $\gamma \in \mathbb{R}$ et $\alpha$ on a avec le choix $t = 2s$, $x = 2$ et $y = \frac{1}{2}$,
+\begin{proof}
+admis
+\end{proof}
+\noindent On en déduit la construction de l'estimateur de Pickands.
+\\
+\\
+\noindent \textbf{Construction de l'estimateur de Pickands :}
+
+Par la proposition précédente, pour $\gamma \in \mathbb{R}$ et $\alpha$ on a avec le choix $t = 2s$, $x = 2$ et $y = \frac{1}{2}$,
 \[
 \lim_{t \to \infty} \frac{U(t) - U(t/2)}{U(t/2) - U(t/4)} = 2^{\gamma}.
 \]
 
-En fait, en utilisant la croissance de $U$ qui se déduit de la croissance de $F$, on obtient
+\noindent En utilisant la croissance de $U$ qui se déduit de la croissance de $F$, on obtient
 \[
 \lim_{t \to \infty} \frac{U(t) - U(t_{c_1}(t))}{U(t_{c_1}(t)) - U(t_{c_2}(t))} = 2^{\gamma}
 \]
 dès que $\lim_{t \to \infty} c_1(t) = \frac{1}{2}$ et $\lim_{t \to \infty} c_2(t) = \frac{1}{4}$. Il reste donc à trouver des estimateurs pour $U(t)$.
-
-Soit $k(n), n \geq 1$ une suite d’entiers telle que $1 \leq k(n) \leq \frac{n}{4}$ et $\lim_{n \to \infty} \frac{k(n)}{n} = 0$ et $\lim_{n \to \infty} k(n) = \infty$.
-
+\\
+\\
+Soit $k_n,$ pour $ n \geq 1$ une suite d’entiers telle que $1 \leq k_n \leq \frac{n}{4}$ et $\lim_{n \to \infty} \frac{k_n}{n} = 0$ et $\lim_{n \to \infty} k_n = \infty$.
+\\
 Soit $(V_{1,n},\dots,V_{n,n})$ la statistique d’ordre d’un échantillon de variables aléatoires indépendantes de loi de Pareto. On note $F_V(x) = 1 - x^{-1}, x \geq 1$.
-
+\\
+\\
 On déduit avec certains résultats de bases liés à $(V_{1,n},\dots,V_{n,n})$ que les suites
 \[
-\frac{k}{n} V_{n-k+1,n}, \quad \frac{2k}{n} V_{n-2k+1,n}, \quad \frac{4k}{n} V_{n-4k+1,n}
+\frac{k_n}{n} V_{n-k_n+1,n}, \quad \frac{2k_n}{n} V_{n-2k_n+1,n}, \quad \frac{4k_n}{n} V_{n-4k_n+1,n}
 \]
 pour \(n \geq 1\) convergent en probabilité vers 1.
 
 On en déduit en particulier, les convergences en probabilité suivantes :
 \[
-V_{n-k+1,n}  \to \infty, \quad \frac{V_{n-2k+1,n}}{V_{n-k+1,n}} \to \frac{1}{2}, \quad \frac{V_{n-4k+1,n}}{V_{n-k+1,n}} \to \frac{1}{4}.
+V_{n-k_n+1,n}  \to \infty, \quad \frac{V_{n-2k_n+1,n}}{V_{n-k_n+1,n}} \to \frac{1}{2}, \quad \frac{V_{n-4k_n+1,n}}{V_{n-k_n+1,n}} \to \frac{1}{4}.
 \]
 
 Donc la convergence suivante a lieu en probabilité :
 \[
-\frac{U(V_{n-k+1,n}) - U(V_{n-2k+1,n})}{U(V_{n-2k+1,n}) - U(V_{n-4k+1,n})} \to 2^{\gamma}.
+\frac{U(V_{n-k_n+1,n}) - U(V_{n-2k_n+1,n})}{U(V_{n-2k_n+1,n}) - U(V_{n-4k_n+1,n})} \to 2^{\gamma}.
 \]
 
 Remarquons que si $x \geq 1$, alors $U(x) = F^{-1}(F_V(x))$. On a donc
@@ -650,17 +648,17 @@ On déduit de la croissance de $F_V$ que $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_
 
 On déduit du lemme A que le vecteur aléatoire $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_V(V_{n,n})))$ a la même loi que $(X_1,\dots,X_n)$. 
 
-Donc la variable aléatoire \(\frac{U(V_{n-k+1,n}) - U(V_{n-2k+1,n})}{U(V_{n-k+1,n}) - U(V_{n-4k+1,n})}\) a la même loi que :
+Donc la variable aléatoire \(\frac{U(V_{n-k_n+1,n}) - U(V_{n-2k_n+1,n})}{U(V_{n-k_n+1,n}) - U(V_{n-4k_n+1,n})}\) a la même loi que :
 
 \[
-\frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-k+1,n} - X_{n-4k+1,n}}
+\frac{X_{n-k_n+1,n} - X_{n-2k_n+1,n}}{X_{n-k_n+1,n} - X_{n-4k_n+1,n}}
 \]
 
 Ainsi cette quantité converge en loi vers $2^{\gamma}$ quand $n$ tend vers l’infini.
 
-\subsection{Représentation graphique de l’estimateur de Pickands}
+\subsubsection{Représentation graphique de l’estimateur de Pickands}
 
-Pour mieux comprendre le comportement de l’estimateur de Pickands dans différents contextes, nous l’appliquons à des données simulées provenant de quatre distributions : Pareto, Exponentielle, Uniforme et Cauchy. Ces lois sont choisies pour représenter les trois domaines d’attraction des lois de valeurs extrêmes :
+Pour mieux comprendre le comportement de l’estimateur de Pickands dans différents contextes, nous l’appliquons à des données simulées qui sont les mêmes que dans la partie 3, c'est à dire : Pareto, Exponentielle, Uniforme et Cauchy. Ces lois sont choisies pour représenter les trois domaines d’attraction des lois de valeurs extrêmes :
 
 Chaque échantillon comporte $n = 100000$ observations, et l’estimation est faite en fonction de $k$, où \(k\) représente le nombre de plus grandes valeurs utilisées pour estimer l’indice de queue \(\gamma\).
 
@@ -701,34 +699,8 @@ Ainsi, ces résultats illustrent bien les limites de l’estimateur de Pickands 
 Cet estimateur a été introduit par Hill en 1975 dans le but d’estimer, de manière non paramétrique, le paramètre de queue des lois appartenant au domaine d’attraction de Fréchet. Il offre une estimation de l’indice de queue généralement plus efficace que celle fournie par l’estimateur de Pickands. La construction de cet estimateur repose sur l’utilisation des $k_n$ plus grandes statistiques d’ordre de l’échantillon.
 
 
-\subsection{quantile de retour}
 
-En pratique, on cherche une valeur qui donnerait une certaine confiance quand à l'apparition
-de données la depassant. Dans le cas d'une distribution à queue bornée il suffit de prendre la bornes supérieure de la distribution.
-\\
-Or, dans le cas d'une distribution à queue lourde et exponentiel ce n'est pas possible. On introduit alors la notion de \textbf{quantile de retour} qui est une valeur que l'on dépasse en moyenne une fois tous les T ans.
-\\
-On pose $z_T$ cette quantité, et elle est solution de l'équation suivante :
-\[
-P\bigl(M \le z_T\bigr)
-\;=\;
-G_{\mu,\sigma,\gamma}(z_T)
-\;=\;
-1 - \frac{1}{T},
-\]
-où \(G_{\mu,\sigma,\gamma}\) est la fonction de répartition de la GEV. En résolvant cette équation que l'on admet, on obtient
-\[
-z_T =
-\begin{cases}
-\displaystyle
-\mu \;+\;\frac{\sigma}{\gamma}\Bigl[(-\ln(1 - 1/T))^{-\gamma} - 1\Bigr],
-&\gamma \neq 0,\\[1em]
-\displaystyle
-\mu \;-\;\sigma\,\ln\bigl(-\ln(1 - 1/T)\bigr),
-&\gamma = 0.
-\end{cases}
-\]
-\subsection{La construction de l’estimateur de Hill}
+\subsubsection{La construction de l’estimateur de Hill}
 Dans le cadre de l'analyse des valeurs extrêmes, l'estimation de l'indice de queue \(\gamma\) est cruciale pour comprendre le comportement des queues de distribution. L'estimateur de Hill est une méthode largement utilisée pour estimer cet indice de queue.
 
 Soient \(\alpha_n\) et \(\beta_n\) deux suites de nombres positifs. La construction de l'estimateur de Hill repose sur une relation fondamentale entre les quantiles d’une distribution à queue lourde appartenant au domaine d’attraction de Fréchet. Cette relation est donnée par :
@@ -763,7 +735,7 @@ En sommant sur \(i = 1, \ldots, k_n - 1\), nous obtenons :
 \gamma = \frac{\sum_{i=1}^{k_n - 1} \log(X_{n - i + 1, n}) - \log(X_{n - k_n + 1, n})}{\sum_{i=1}^{k_n - 1} \log(k_n / i)}.
 \]
 
-Le dénominateur peut être réécrit comme \(\log(k_n^{k_n - 1}/(k_n - 1)!)\). En utilisant la formule de Stirling, nous trouvons que ce dénominateur est équivalent à \(k_n\) au voisinage de l'infini. Cela nous permet d'obtenir l'estimateur de Hill. \newpage
+Le dénominateur peut être réécrit comme \(\log(k_n^{k_n - 1}/(k_n - 1)!)\). En utilisant la formule de Stirling, nous trouvons que ce dénominateur est équivalent à \(k_n\) au voisinage de l'infini. Cela nous permet d'obtenir l'estimateur de Hill.
 
 Soit $(k_n)_{n \geq 1}$ une suite d'entiers avec $1 \leq k_n \leq n$, l’estimateur de Hill est défini par :
 
@@ -776,38 +748,37 @@ L’estimateur de Hill satisfait la propriété de consistance faible. Plus pré
 \hat{\gamma}^{H}_{k_n} \xrightarrow{\mathbb{P}} \gamma.
 \]
 
+\begin{remark}
+	Dans la pratique, déterminer une valeur appropriée pour le paramètre $k_n$, c’est-à-dire le nombre de plus grandes observations à retenir, constitue une étape délicate. Il faut en effet trouver un compromis entre la variance et le biais : utiliser suffisamment de données pour obtenir une estimation fiable, tout en s’assurant que ces données proviennent bien de la queue de la distribution. Diverses approches ont été développées dans la littérature pour guider ce choix.
+\end{remark}
 
-\subsection{Le choix du nombre de statistiques d’ordre}
-
-Dans la pratique, déterminer une valeur appropriée pour le paramètre $k_n$, c’est-à-dire le nombre de plus grandes observations à retenir, constitue une étape délicate. Il faut en effet trouver un compromis entre la variance et le biais : utiliser suffisamment de données pour obtenir une estimation fiable, tout en s’assurant que ces données proviennent bien de la queue de la distribution. Diverses approches ont été développées dans la littérature pour guider ce choix.
-
-\subsection{Comportement empirique de l’estimateur de Hill}
+\subsubsection{Comportement empirique de l’estimateur de Hill}
 Pour analyser le comportement de l’estimateur de Hill, nous l’appliquons à des échantillons simulés de taille $n = 40000$, issus de plusieurs distributions : la loi de Lévy, la loi exponentielle, la loi uniforme sur \([0,1]\), et la loi de Cauchy. Ces distributions couvrent les trois domaines d’attraction des lois de valeurs extrêmes.
 Les figures suivantes présentent l’évolution de l’estimateur de Hill en fonction de $k$, le nombre de plus grandes valeurs utilisées. La ligne rouge indique la valeur théorique de $\gamma$, tandis que la courbe noire représente l’estimation, accompagnée d’une bande de confiance à 95\%.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{./image_hill_pickands/levy_hill.png}
+    \includegraphics[width=0.55\textwidth]{./image_hill_pickands/levy_hill.png}
     \caption{Estimateur de Hill appliqué à la loi de Lévy ($\gamma = 0.5$)}
 \end{figure}
 Pour la loi de Lévy, à queue lourde, l’estimateur de Hill converge de manière assez stable vers \(\gamma = 0.5\). Au-delà d’un certain seuil de \(k\), on note cependant une dégradation due à l’inclusion d’observations moins extrêmes.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{./image_hill_pickands/exponentielle_hill.png}
+    \includegraphics[width=0.55\textwidth]{./image_hill_pickands/exponentielle_hill.png}
     \caption{Estimateur de Hill appliqué à la loi exponentielle ($\gamma = 0$)}
 \end{figure}
 La loi exponentielle appartient au domaine de Gumbel, avec un indice de queue nul. L’estimateur de Hill n’est pas conçu pour ce cas, ce que montre bien le graphique : les valeurs estimées sont nettement surestimées et décroissent lentement sans atteindre la valeur théorique. Ce comportement traduit l’inadéquation de Hill pour ce type de loi.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{./image_hill_pickands/uniforme_hill.png}
+    \includegraphics[width=0.55\textwidth]{./image_hill_pickands/uniforme_hill.png}
     \caption{Estimateur de Hill appliqué à la loi uniforme ($\gamma = -1$)}
 \end{figure}
 La loi uniforme a un support borné et un indice théorique de \(\gamma = -1\), ce qui sort du domaine d’application de Hill, qui suppose \(\gamma > 0\). L’estimateur produit ici des résultats très instables et incohérents, confirmant qu’il ne doit pas être utilisé sur ce type de distribution.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{./image_hill_pickands/cauchy_hill.png}
+    \includegraphics[width=0.55\textwidth]{./image_hill_pickands/cauchy_hill.png}
     \caption{Estimateur de Hill appliqué à la loi de Cauchy ($\gamma = 1$)}
 \end{figure}
 La loi de Cauchy, avec un indice \(\gamma = 1\), appartient au domaine de Fréchet. L’estimateur fonctionne bien pour de faibles valeurs de \(k\), avec une estimation proche de la valeur théorique. Mais dès que \(k\) devient trop grand, la courbe chute, signe d’un biais induit par les valeurs non extrêmes. Cela illustre la sensibilité de l’estimateur au choix du seuil.
@@ -817,6 +788,7 @@ La loi de Cauchy, avec un indice \(\gamma = 1\), appartient au domaine de Fréch
 Ainsi, ces résultats montrent que l’estimateur de Hill est très dépendant du choix du paramètre \(k\), et de la nature de la distribution. Un compromis est nécessaire entre biais (si \(k\) est trop grand) et variance (si \(k\) est trop petit), pour garantir une estimation fiable.
 
 
+\newpage 
 \section{Méthode des maxima par blocs}
 
 \noindent L'approche des maxima par blocs (en anglais Blocks Maxima) consiste à diviser les n observations en N blocs de taille k. Concrètement, la suite $X_1, ..., X_n$ est divisée en N blocs, le premier bloc est $X_1, ..., X_k$, le second $X_{k+1}, ..., X_{2k}$, etc. On obtient ainsi une suite de maxima $M_1, ..., M_n$ définis sur chacun des blocs.\\
@@ -856,6 +828,7 @@ où : \begin{itemize}
 \vspace{0.5cm}
 \noindent Cette approche possède tout de même un défaut car lorsque l'on prend le maximum sur un bloc, on fait potentiellement disparaître des valeurs élevées, on perd des données intéressantes.
 
+\newpage
 \section{Méthode des excès}
 
 La méthode des excès, également appelée approche par dépassement de seuil (en anglais \textit{Peaks Over Threshold}, ou POT), a été introduite par Pickands en 1975. Elle constitue une alternative à l’approche classique par blocs pour modéliser les phénomènes extrêmes.
@@ -923,6 +896,33 @@ Autrement dit, plus le seuil \(u\) est élevé, plus la loi des excès au-dessus
 \medskip
 Cette propriété est essentielle en statistique des valeurs extrêmes, car elle permet d’exploiter pleinement les données situées dans les queues de distribution, sans se limiter au maximum d’un bloc.
 
+\subsection{quantile de retour}
+
+En pratique, on cherche une valeur qui donnerait une certaine confiance quand à l'apparition
+de données la depassant. Dans le cas d'une distribution à queue bornée il suffit de prendre la bornes supérieure de la distribution.
+\\
+Or, dans le cas d'une distribution à queue lourde et exponentiel ce n'est pas possible. On introduit alors la notion de \textbf{quantile de retour} qui est une valeur que l'on dépasse en moyenne une fois tous les T ans.
+\\
+On pose $z_T$ cette quantité, et elle est solution de l'équation suivante :
+\[
+P\bigl(M \le z_T\bigr)
+\;=\;
+G_{\mu,\sigma,\gamma}(z_T)
+\;=\;
+1 - \frac{1}{T},
+\]
+où \(G_{\mu,\sigma,\gamma}\) est la fonction de répartition de la GEV. En résolvant cette équation que l'on admet, on obtient
+\[
+z_T =
+\begin{cases}
+\displaystyle
+\mu \;+\;\frac{\sigma}{\gamma}\Bigl[(-\ln(1 - 1/T))^{-\gamma} - 1\Bigr],
+&\gamma \neq 0,\\[1em]
+\displaystyle
+\mu \;-\;\sigma\,\ln\bigl(-\ln(1 - 1/T)\bigr),
+&\gamma = 0.
+\end{cases}
+\]
 \newpage
 \section{Application sur des données réelles}
 \subsection{Description des données}

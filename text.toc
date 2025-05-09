@@ -14,17 +14,16 @@
 \contentsline {subsubsection}{\numberline {3.0.4}Loi de Cauchy}{10}{}%
 \contentsline {section}{\numberline {4}Méthodes d'estimation de l'indice de valeurs extrêmes}{12}{}%
 \contentsline {subsection}{\numberline {4.1}Estimateur de Pickands}{12}{}%
-\contentsline {subsection}{\numberline {4.2}Construction de l'estimateur de Pickands}{13}{}%
-\contentsline {subsection}{\numberline {4.3}Représentation graphique de l’estimateur de Pickands}{14}{}%
-\contentsline {subsection}{\numberline {4.4}Estimateur de Hill}{15}{}%
-\contentsline {subsection}{\numberline {4.5}quantile de retour}{16}{}%
-\contentsline {subsection}{\numberline {4.6}La construction de l’estimateur de Hill}{16}{}%
-\contentsline {subsection}{\numberline {4.7}Le choix du nombre de statistiques d’ordre}{17}{}%
-\contentsline {subsection}{\numberline {4.8}Comportement empirique de l’estimateur de Hill}{17}{}%
+\contentsline {subsubsection}{\numberline {4.1.1}Construction de l'estimateur de Pickands}{13}{}%
+\contentsline {subsubsection}{\numberline {4.1.2}Représentation graphique de l’estimateur de Pickands}{14}{}%
+\contentsline {subsection}{\numberline {4.2}Estimateur de Hill}{15}{}%
+\contentsline {subsubsection}{\numberline {4.2.1}La construction de l’estimateur de Hill}{16}{}%
+\contentsline {subsubsection}{\numberline {4.2.2}Comportement empirique de l’estimateur de Hill}{16}{}%
 \contentsline {section}{\numberline {5}Méthode des maxima par blocs}{19}{}%
 \contentsline {section}{\numberline {6}Méthode des excès}{20}{}%
 \contentsline {subsection}{\numberline {6.1}Loi de Pareto généralisée (GPD)}{20}{}%
-\contentsline {subsection}{\numberline {6.2}Théorème de Balkema–de Haan–Pickands}{21}{}%
+\contentsline {subsection}{\numberline {6.2}Théorème de Balkema–de Haan–Pickands}{20}{}%
+\contentsline {subsection}{\numberline {6.3}quantile de retour}{21}{}%
 \contentsline {section}{\numberline {7}Application sur des données réelles}{22}{}%
 \contentsline {subsection}{\numberline {7.1}Description des données}{22}{}%
 \contentsline {subsection}{\numberline {7.2}Méthode des maxima par bloc}{23}{}%
