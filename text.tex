@@ -65,8 +65,7 @@ Les événements extrêmes, comme les crues majeures, les canicules intenses ou 
 
 \noindent Dans les statistiques classiques, beaucoup de résultats reposent sur le théorème central limite, qui explique que, sous certaines conditions, la moyenne d’un grand nombre de variables aléatoires suit une loi normale. C’est un fondement de nombreuses méthodes, mais il ne dit rien sur les valeurs les plus extrêmes d’un échantillon, qui sont pourtant cruciales dans l’analyse du risque.
 
-\noindent La théorie des valeurs extrêmes s’intéresse donc à des grandeurs 
-comme le maximum d’un échantillon $(X_1, X_2, \dots, X_n)$~:
+\noindent Cette théorie s’intéresse donc à des grandeurs comme le maximum d’un échantillon $(X_1, X_2, \dots, X_n)$~:
 \[
 M_n = \max\{X_1, X_2, \dots, X_n\}.
 \]
@@ -107,7 +106,7 @@ Pour ce faire, nous utilisons cette définition de la convergence en loi :
 \\
 \\
 \begin{definition}
-\textbf{(méthode de la fonction muette)}:
+\textbf{(Convergence en loi)}:
 Soit \( Y_n \) une variable aléatoire de fonction de répartition \( F_n \), et soit \( Y \) une variable aléatoire de fonction de répartition \( F \).  
 Alors $Y_n \xrightarrow{\mathcal{L} } Y$ si et seulement si pour toute fonction $z$ réelle, bornée et continue :
 \[
@@ -972,7 +971,7 @@ L'estimation des paramètres sont calculées par l'algorithme de Nelder-Mead (vo
 On suppose alors que $\gamma \geq 0$, donc il n’existe pas de valeur maximale finie : la probabilité de très gros maxima décroît mais n'est pas finie, selon un comportement polynomial ou exponentiel ce qui est embettant dans le cas pratique surtout quand on cherche des seuils rarement atteints.
 \subsubsection{Application sur les données danish}
 On applique la même méthode sur les données de sinistres mais avec une approche légèrement différente puisque les données ne sont pas dans le même format. En effet, on ne dispose pas de données journalières mais l'ensemble des sinistres sur une période de 10 ans. C'est à dire qu'il existe des jours sans sinistres qui ne sont pas comptabilisés.
-On regroupe alors les sinistres par mois et on prend le sinistre le plus élevé. On se retrouve alors avec des blocs de taille irrégulière.
+On regroupe alors les sinistres par mois et on prend le montant de sinistre le plus élevé. On se retrouve alors avec des blocs de taille irrégulière.
 \\
 \\
 Après analyse numérique par maximum de vraisemblance, on obtient les paramètres suivants : $\mu = 8,376$, $\sigma = 5,971$ et $\gamma = 0,623$.
@@ -980,7 +979,7 @@ Après analyse numérique par maximum de vraisemblance, on obtient les paramètr
 \\
 On possède une valeur de gamma positive ce qui renforce l'hypothèse d'une queue lourde pour la distribution du max.
 
-\subsubsection{synthèse sur la méthode des maxima en bloc}
+\subsubsection{Synthèse sur la méthode des maxima en bloc}
 
 Quand on dispose des données sur une longue période, la méthode des maxima en bloc est efficace. D'autant plus quand on a des données temporelles (journalières, mensuelles, annuelles).
 En revanche, elle utilise moins de données ce qui la rend plus difficile à utiliser en pratique. En effet, on ne garde que les maximums et on perd donc une partie des données qui peuvent etre consequents en fonction du choix de $k$.
@@ -991,8 +990,8 @@ Par ailleurs, le choix de $k$ est important car il faut choisir un nombre de blo
 
 \subsubsection{Application sur les données de Rain}
 
-On a calculé la valeur de $\gamma$ par la méthode des maxima en bloc et obtenu une valeur de $\gamma $ positive mais proche de 0. On souhaite s'assurer du signe de $\gamma$
-en procédant par la méthode de dépassement de seuil. On va deplus estimer la valeur de $\gamma$ avec l'estimateur de Pickands.
+On a calculé la valeur de $\gamma$ par la méthode des maxima en bloc et obtenu une valeur de $\gamma > 0 $ mais proche de 0. On souhaite s'assurer du signe de $\gamma$
+en procédant par la méthode de dépassement de seuil.
 \\
 On decide de prendre un seuil correspondant au quantile d’ordre 0,95.
 \\
@@ -1019,7 +1018,7 @@ Dans notre cas, on obtient alors : $z_t = 98,636$. Autrement dit, une fois tous 
 
 On prend un seuil correspondant au quantile d’ordre 0,95. Apres calcul numérique, on obtient $\sigma = 7.038$ et $\gamma = 0.492$.
 \\
-On a obtenue une valeur de $\gamma$ positive ce qui renforce l'hypothèse d'une queue lourde pour la distribution du max, ce qui est cohérent avec la méthode des maxima en bloc. On peut pousser l'analyse de gamma en calculant son estimation via l'estimateur de Hill afin d'avoir une valeur plus précise.
+On a obtenue une valeur de $\gamma$ positive ce qui renforce l'hypothèse d'une queue lourde pour la distribution du max, ce qui est cohérent avec la méthode des maxima en bloc. On peut pousser l'analyse de $\gamma$ en calculant son estimation via l'estimateur de Hill afin d'avoir une valeur plus précise.
 \\
 \\
 On trace alors la courbe de l'estimateur de Hill en fonction de $k$.
@@ -1079,5 +1078,12 @@ En revanche le choix du seuil est important car il faut choisir un seuil suffisa
 
 \newpage
 \section{Bibliographie}
+
+\begin{itemize}
+	\item An Introduction to Statistical Modeling of Extreme Values, Stuart Coles 2001
+	\item Modelling Extremal Events  Paul Embrechts , Claudia Klüppelberg , Thomas Mikosch
+	\item Statistics of Extremes Theory and Applications, Jan Beirlant, Yuri Goegebeur, Johan Segers, Jozef Teugels
+	\item Bibm@th.net
+\end{itemize}
 
 \end{document}
