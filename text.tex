@@ -73,78 +73,70 @@ M_n = \max\{X_1, X_2, \dots, X_n\}.
 
 On cherche à savoir si, en normalisant ce maximum, il converge vers une loi limite. Les travaux de Fréchet, Fisher, Tippett et Gnedenko ont montré que cette convergence est possible, et qu’il n’existe que trois lois limites possibles : la loi de Fréchet, la loi de Gumbel et la loi de Weibull, qui correspondent à différents types de comportements des queues de distribution.
 En s’intéressant aux comportements les plus rares, la théorie des valeurs extrêmes fournit un cadre rigoureux pour mieux anticiper l’intensité et la fréquence des événements extrêmes, et ainsi mieux s’y préparer.
-\section{Les lois de $M_n$}
+\section{Comportement asymptotique de $M_n$}
 
-\subsection{Quelques notations }
+\subsection{Caractérisation avec la fonction de répartition}
 
 On commence par faire une remarque sur la fonction de repartion de $M_n$ en utilisant le fait que les $X_i$ sont i.i.d.
-\\
-En effet, si on note $F_{M_n}$ la fonction de repartition de $M_n$, et $F_{X_i}$ la fonction de repartition de $X_i$ on a :
+En effet, si on note $F_{M_n}$ la fonction de repartition de $M_n$, et $F$ la fonction de repartition de $X_i$ on a :
 \[
-\forall t \in \mathbb{R} \quad F_{M_n}(t) = \mathbb{P}(M_n \le t) = \mathbb{P}(X_1 \le t,...,X_n \le t)=\mathbb{P}(X_1 \le t)^n = F_{X_1}^n(t) 
+\forall t \in \mathbb{R} , \quad F_{M_n}(t) = \mathbb{P}(M_n \le t) = \mathbb{P}(X_1 \le t,...,X_n \le t)=\mathbb{P}(X_1 \le t)^n = F_{X_1}^n(t) 
 \]
 \\
-Dans la suite, on notera $F(t)$, la fonction de repartition des $X_i$.
-\\
-\\
-On remarque que, pour tout $t$ strictement inférieur à la borne supérieure du support des $X_i$, on a $F(t)<1$ et donc
+On remarque que, pour tout $t$ strictement inférieur à $t^*$ la borne supérieure du support des $X_i$, on a $F(t)<1$ et donc
 \[
-F(t)^n \xrightarrow[n\to +\infty]{} 0
+F(t)^n \xrightarrow[n\to +\infty]{} 0,
 \]
-et dans le cas ou t est égal à la borne supérieure du support des $X_i$, on a
+et dans le cas ou t est supérieur ou égal à $t^*$, on a
 \[
-F(t)^n \xrightarrow[n\to +\infty]{} 1
+F(t)^n \xrightarrow[n\to +\infty]{} 1.
 \]
-L'idée est donc d'introduire deux suites ($b_n$) et ($a_n$) (avec $a_n > $  0 pour tout $n$) afin de pouvoir contrôler $M_n$ et avoir une limite non dégénérée.
-
-Puis étudier la loi de la limite de $\frac{M_n - b_n}{a_n}$. Comme la fonction de repartition caractérise la loi, il nous suffit d'étudier la fonction $G$ définie pour tout $t$ dans le support des $X_i$ comme :
+L'idée est donc d'introduire deux suites ($b_n$) et ($a_n$) (avec $a_n > $  0 pour tout $n$) afin d'avoir une limite non dégénérée pour $\frac{M_n - b_n}{a_n}$. Comme la fonction de répartition caractérise la loi, il nous suffit d'étudier la fonction $G$ définie pour tout $t$ dans le support des $X_i$ comme :
 
 \[
 \mathbb{P} \left( \frac{M_n - b_n}{a_n} \le t \right) \xrightarrow[n\to +\infty]{} G(t)
 \]
 \\
-Si il existe de telle suites $a_n$ et $b_n$, on dit que $F$ est dans le domaine d'attraction de $G$.
+S'il existe de telle suites $a_n$ et $b_n$, on dit que $F$ est dans le domaine d'attraction de $G$.
 \\
 \\
 Il nous faut donc trouver les distributions $G$ qui peuvent apparaître comme limite dans l’équation ci-dessus.
 \\
 \\
-Pour ce faire, nous allons utiliser le théoreme suivant : 
+Pour ce faire, nous utilisons cette définition de la convergence en loi :
 \\
 \\
-\begin{theorem}
+\begin{definition}
 \textbf{(méthode de la fonction muette)}:
 Soit \( Y_n \) une variable aléatoire de fonction de répartition \( F_n \), et soit \( Y \) une variable aléatoire de fonction de répartition \( F \).  
 Alors $Y_n \xrightarrow{\mathcal{L} } Y$ si et seulement si pour toute fonction $z$ réelle, bornée et continue :
 \[
-\mathbb{E}[z(Y_n)] \to \mathbb{E}[z(Y)].
+\mathbb{E}[z(Y_n)] \xrightarrow[n\to +\infty]{} \mathbb{E}[z(Y)].
 \]
-\end{theorem}
+\end{definition}
 \noindent En prenant ici $Y_n = \frac{M_n -b_n}{a_n}$, on obtient :
 \[
 \mathbb{E}[z(\frac{M_n -b_n}{a_n})] = \int_{-\infty}^{\infty} z(\frac{x-b_n}{a_n}) \: n \:  F^{n-1} (x)dF(x)
 \]
 \\
 \\
-L'astuce ici va être de faire un changement de variable. On introduit alors la fonction quantile que l'on définit ci-dessous :
-\begin{definition}
-La fonction quantile \(Q\) associée à une fonction de répartition \(F\) est définie par :
+L'astuce ici va être de faire un changement de variable. On introduit alors la fonction quantile qui est définie par :
+\\
 \[
 Q(p) \;=\; F^{-1}(p)
 \;=\;
 \inf\bigl\{x\in\mathbb{R}\,\bigm|\,F(x)\ge p\bigr\},
-\quad p\in(0,1).
+\quad p\in[0,1].
 \]
-\end{definition}
 \medskip 
-\noindent On pose alors comme changement de variable : 
+\noindent On pose alors le changement de variable : 
 
 \[
-x = Q(1-\frac{1}{y}) = U(y) \; \; \; \; \; \; \text{avec $Q$ la fonction quantile}
+x = Q(1-\frac{1}{y}) = U(y) \; \; \; \; \; \; \text{et on obtient}
 \]
 
 \begin{equation}\label{eq:1.1}
-    \text{Donc,} \; \; \int_{-\infty}^{\infty} z\Bigl(\frac{x-b_n}{a_n}\Bigr) \, n \, F^{n-1}(x)\,dF(x)
+    \int_{-\infty}^{\infty} z\Bigl(\frac{x-b_n}{a_n}\Bigr) \, n \, F^{n-1}(x)\,dF(x)
     =\int_{0}^{n} z\Bigl(\frac{U\Bigl(\frac{n}{v}\Bigr)-b_n}{a_n}\Bigr)
     \Bigl(1-\frac{v}{n}\Bigr)^{n-1}dv.
 \end{equation}
@@ -163,10 +155,10 @@ F\bigl(a_n\,t + b_n\bigr)^{n}.
 \]
 Ainsi, la convergence en loi 
 \[
-\frac{M_n - b_n}{a_n}\;\overset{L}{\longrightarrow}\;Y
+\frac{M_n - b_n}{a_n}\;\overset{\mathcal{L}}{\xrightarrow[n\to +\infty]{}}\;Y
 \quad\Longleftrightarrow\quad
 \mathbb{P} \bigl(M_n \le a_n\,t + b_n\bigr)
-\;\longrightarrow\;
+\;\xrightarrow[n\to +\infty]{};
 G(t),
 \]
 se traduit exactement par
@@ -175,23 +167,21 @@ F\bigl(a_n t + b_n\bigr)^{n}
 \;\xrightarrow[n\to\infty]{}\;
 G(t).
 \]
-On en déduit explicitement une forme pour $b_n$.
+L'objectif est alors de trouver des expressions explicites pour les suites \(a_n\) et \(b_n\).
 
-\subsection{Paramètre $b_n$}
+\subsection{Le paramètre $b_n$}
 
-\noindent En reprenant l'expression ci-dessus et en passant au logarithme, on a :
+\noindent En reprenant l'expression ci-dessus et en passant au logarithme, on obtient :
 
 \[
-n \: log(F(a_n t + b_n)) \xrightarrow[n\to +\infty]{} log(G(t))
+n \: \ln (F(a_n t + b_n)) \xrightarrow[n\to +\infty]{} \ln (G(t))
 \]
 \[
-\Longleftrightarrow n(- F(a_n t + b_n) + 1) \xrightarrow[n\to +\infty]{} ln(G(t))
+\text{Ce qui donne} \; \; n(- F(a_n t + b_n) + 1) \xrightarrow[n\to +\infty]{} \ln (G(t))
 \]
-On a utilisé un développement limité de la fonction logarithme. 
+En utilisant le développement limité de la fonction logarithme. 
 \\
-En particulier, pour déterminer \(b_n\), on choisit \(t=0\).
-\\
-Cela donne :
+Le cas particulier de cette convergence pour $t=0$ donne :
 \[
 n\bigl(F(b_n)-1\bigr)\;\xrightarrow[n\to\infty]{}\;\ln G(0)
 \;=\;-\,\ln G(0)\quad(\text{puisque }G(0)\in(0,1)),
@@ -209,28 +199,38 @@ b_n \;=\; Q\!\Bigl(1-\tfrac1n\Bigr)
 \]
 
 
-\subsection{Paramètre $a_n$}
-Avec le parametre $b_n$ définie au dessus et en posant $u=\frac{1}{v}$ on obtient alors une condition, il faut qu'il existe une fonction $a$ tel que $\lim_{x \to \infty} \frac{U(xu) - U(x)}{a(x)}$ converge \textbf{vers une fonction $h(u)$}.
+\subsection{Le paramètre $a_n$}
+Une fois la suite $(b_n)$ fixée comme précédemment, nous devons maintenant déterminer la suite $(a_n)$. L’objectif est de trouver des
+ conditions suffisantes sur la fonction de répartition $F$ pour garantir l’existence d’une loi limite non dégénérée de $\frac{M_n - b_n}{a_n}$.
 \\
 \\
-\begin{proposition}
+La convergence de $F^n(a_n t + b_n)$ vers une loi limite $G(t)$ est équivalente, par passage aux fonctions réciproques, à l’étude de la convergence de l’expression suivante :
 
-Les limites possibles sont données par :
-\begin{equation}\label{eq:1.2}
-    c\,h_{\gamma}(u) 
-    \;=\; 
-    c \int_{1}^{u} v^{-\gamma - 1}\,dv 
-    \;=\; 
-    c\,\frac{u^{\gamma} - 1}{\gamma}.
-\end{equation}
+\[
+\lim_{x \to \infty} \frac{U(x/u) - U(x)}{a(x)} = h(u),
+\]
 
-Nous interprétons $h_{0}(u) = \log(u)$ lorsque $\gamma = 0$.
+Cette condition traduit, en quelque sorte, une régularité asymptotique de la queue de distribution.
+
+\vspace{0.3cm}
+\noindent
+Nous avons alors la proposition suivante :
+
+\begin{proposition}[Limites possibles de la fonction $h$]
+Les fonctions limites possibles sont données, pour une certaine constante $c > 0$, par :
+\[
+c \cdot h_\gamma(u) = c \int_1^u v^{-\gamma - 1} \, dv = \frac{c(u^\gamma - 1)}{\gamma}.
+\tag{2}
+\]
+
+Nous interprétons la fonction limite dans le cas $\gamma = 0$ par passage à la limite :
+\[
+h_0(u) = \log(u).
+\]
 \end{proposition}
 
-
-\noindent \textbf{Remarque :} On ne veut pas que $c=0$, car il conduit à une limite dégénérée pour $\frac{M_{n} - b_n}{a_n}$. 
-Ensuite, le cas $c>0$ peut être ramené au cas $c=1$ en incorporant $c$ dans la fonction $a$.   
-\\
+\noindent
+\textbf{Remarque.} La constante $c$ ne peut pas être nulle, car cela conduirait à une limite dégénérée pour la variable normalisée $\frac{M_n - b_n}{a_n}$. En pratique, on peut toujours ramener le cas $c > 0$ au cas $c = 1$ en absorbant $c$ dans la définition de la fonction $a$.
 \\
 \begin{proof} 
 Soient $u,v >0$. Alors :
@@ -242,7 +242,7 @@ Soient $u,v >0$. Alors :
 \frac{U(xu) - U(x)}{a(x)}.
 \tag{3}
 \]
-Si la limite dans $F$ est dans le domaine d'attraction de $G$ (\textit{ce qu'on suppose depuis le début}), alors le rapport $\frac{a(ux)}{a(x)}$ converge vers $g(u)$.
+Si la limite dans $F$ est dans le domaine d'attraction de $G$ (\textit{ce qu'on suppose depuis le début}), alors le rapport $\frac{a(ux)}{a(x)}$ converge vers une fonction notée $g(u)$.
 \\
 \\
 De plus,
@@ -280,13 +280,7 @@ En reprenant $(3)$ et en utilisant ce qui précède, on obtient :
 \[
 \text{autrement dit :} \; \; h_{\gamma}(uv)= u^{\gamma} h_{\gamma}(v) + h_{\gamma}(u)
 \]
-\\
-\\
-On fait alors une disjonction de cas sur la valeur de $\gamma$.
-\\
-\subsubsection{Nature du support}
-
-En reprenant le résultat de la proposition 2.3 et ce qui précède \eqref{eq:1.2}, on obtient :
+En reprenant le résultat de la proposition 2.2 et ce qui précède  $(2)$, on obtient :
 \[
 h_\gamma\Bigl(\frac{1}{v}\Bigr)=\frac{(1/v)^\gamma-1}{\gamma}=\frac{v^{-\gamma}-1}{\gamma}
 \]
@@ -302,7 +296,9 @@ ce qui conduit à identifier la loi limite par
 \[
 G_\gamma(u)=\exp\Bigl\{-\left(1+\gamma u\right)^{-1/\gamma}\Bigr\}
 \]
-Il reste alors à étudier la nature du support \(S_\gamma\), mais celui-ci dépend du signe de \(\gamma\) :
+Il reste alors à étudier la nature du support \(S_\gamma\), mais celui-ci dépend du signe de \(\gamma\).
+\\
+On fait alors une disjonction de cas sur la valeur de $\gamma$.
 \\
 \\
 \textbf{\underline{Cas si \(\gamma>0 : \)}}
@@ -364,7 +360,7 @@ On retrouve ici une queue à décroissance exponentielle, ce qui est caractéris
 Il s'agit d'un cas intermédiaire entre les deux cas précédents.
 \\
 \subsection{Résumé}
-Les lois limites qui s'imposent dependent d'un parametre $\gamma$ et sont les suivantes :
+Les lois limites sont les suivantes :
 \\
 \begin{itemize}
     \item Si \(\gamma>0\) (loi de Fréchet) :
@@ -382,13 +378,22 @@ Les lois limites qui s'imposent dependent d'un parametre $\gamma$ et sont les su
     G_\gamma(u)=\exp\left\{-\left(1+\gamma u\right)^{-1/\gamma}\right\}, \quad u < -\frac{1}{\gamma}.
     \]
 \end{itemize}
+On observe alors qu’apparaît un \textbf{modèle paramétrique} : la loi limite des maxima s’exprime selon une famille de lois qu’on appelle \emph{GEV} (Generalized Extreme Value), paramétrée par trois paramètres :
 
-La loi se généralise pour toute valeur de gamma et on l'appelle GEV (Generalized Extreme Value), et donne :
+\begin{itemize}
+  \item un paramètre de position $\mu$,
+  \item un paramètre d’échelle $\sigma > 0$,
+  \item un paramètre de forme $\gamma$.
+\end{itemize}
+
+Ils proviennent des suites de normalisation $a_n > 0$ et $b_n$ introduites dans l’étude de la variable normalisée \(\frac{M_n - b_n}{a_n}\). 
+
+On pose alors $\mu = b_n \; \text{et} \; \sigma = a_n$, ce qui permet de réécrire la variable réduite \(u = \frac{x - \mu}{\sigma}\). Ainsi, la forme générale de la fonction de répartition limite devient :
 \[
-	G_{\gamma}(x)
-	\;=\;
-	\exp\!\Bigl\{-\bigl[1 + \gamma\,u\bigr]^{-1/\gamma}\Bigr\}.
+G_{\mu, \sigma, \gamma}(x) = \exp\left\{-\left[1 + \gamma \left(\frac{x - \mu}{\sigma} \right)\right]^{-1/\gamma} \right\}.
 \]
+
+Ce modèle permet donc d’ajuster statistiquement la loi des maxima à partir des données, en estimant directement ces trois paramètres.
 
 
 \newpage
@@ -830,7 +835,35 @@ où : \begin{itemize}
 \vspace{0.5cm}
 \noindent Cette approche possède tout de même un défaut car lorsque l'on prend le maximum sur un bloc, on fait potentiellement disparaître des valeurs élevées, on perd des données intéressantes.
 
-\newpage
+\subsection{quantile de retour}
+
+En pratique, on cherche une valeur qui donnerait une certaine confiance quand à l'apparition
+de données la depassant. Dans le cas d'une distribution à queue bornée il suffit de prendre la bornes supérieure de la distribution.
+\\
+Or, dans le cas d'une distribution à queue lourde et exponentiel ce n'est pas possible. On introduit alors la notion de \textbf{quantile de retour} qui est une valeur que l'on dépasse en moyenne une fois tous les T ans.
+\\
+On pose $z_T$ cette quantité, et elle est solution de l'équation suivante :
+\[
+P\bigl(M \le z_T\bigr)
+\;=\;
+G_{\mu,\sigma,\gamma}(z_T)
+\;=\;
+1 - \frac{1}{T},
+\]
+où \(G_{\mu,\sigma,\gamma}\) est la fonction de répartition de la GEV. En résolvant cette équation que l'on admet, on obtient
+\[
+z_T =
+\begin{cases}
+\displaystyle
+\mu \;+\;\frac{\sigma}{\gamma}\Bigl[(-\ln(1 - 1/T))^{-\gamma} - 1\Bigr],
+&\gamma \neq 0,\\[1em]
+\displaystyle
+\mu \;-\;\sigma\,\ln\bigl(-\ln(1 - 1/T)\bigr),
+&\gamma = 0.
+\end{cases}
+\]
+\\
+\\
 \section{Méthode des excès}
 
 La méthode des excès, également appelée approche par dépassement de seuil (en anglais \textit{Peaks Over Threshold}, ou POT), a été introduite par Pickands en 1975. Elle constitue une alternative à l’approche classique par blocs pour modéliser les phénomènes extrêmes.
@@ -897,34 +930,6 @@ Autrement dit, plus le seuil \(u\) est élevé, plus la loi des excès au-dessus
 
 \medskip
 Cette propriété est essentielle en statistique des valeurs extrêmes, car elle permet d’exploiter pleinement les données situées dans les queues de distribution, sans se limiter au maximum d’un bloc.
-
-\subsection{quantile de retour}
-
-En pratique, on cherche une valeur qui donnerait une certaine confiance quand à l'apparition
-de données la depassant. Dans le cas d'une distribution à queue bornée il suffit de prendre la bornes supérieure de la distribution.
-\\
-Or, dans le cas d'une distribution à queue lourde et exponentiel ce n'est pas possible. On introduit alors la notion de \textbf{quantile de retour} qui est une valeur que l'on dépasse en moyenne une fois tous les T ans.
-\\
-On pose $z_T$ cette quantité, et elle est solution de l'équation suivante :
-\[
-P\bigl(M \le z_T\bigr)
-\;=\;
-G_{\mu,\sigma,\gamma}(z_T)
-\;=\;
-1 - \frac{1}{T},
-\]
-où \(G_{\mu,\sigma,\gamma}\) est la fonction de répartition de la GEV. En résolvant cette équation que l'on admet, on obtient
-\[
-z_T =
-\begin{cases}
-\displaystyle
-\mu \;+\;\frac{\sigma}{\gamma}\Bigl[(-\ln(1 - 1/T))^{-\gamma} - 1\Bigr],
-&\gamma \neq 0,\\[1em]
-\displaystyle
-\mu \;-\;\sigma\,\ln\bigl(-\ln(1 - 1/T)\bigr),
-&\gamma = 0.
-\end{cases}
-\]
 \newpage
 \section{Application sur des données réelles}
 \subsection{Description des données}
@@ -1036,25 +1041,6 @@ En revanche le choix du seuil est important car il faut choisir un seuil suffisa
 
 \newpage
 \section{Annexe}
-
-\subsection{Méthode de Nelder-Mead}
-
-\noindent Le package "evd", que nous avons utilisé pour réaliser les méthodes de dépassement de seuil et des maxima en bloc, utilise l'algorithme de Nelder-Mead pour calculer les paramètres de la fonction limite et ainsi savoir dans quel cas où se trouve : Fréchet, Gumbel ou Weibull. \\
-
-\noindent Nelder-Mead est un algorithme d'optimisation non linéaire, il consiste en la chose suivante dans le cadre des valeurs extrêmes : 
-\begin{itemize}
-	\item \textbf{Etape 1} : on commence par choisir 3 premiers points $x_1, x_2, x_3$ par une rapide estimation des paramètres $\sigma$, $\mu$ et $\gamma$ de nos données. Ce seront nos points de départs de l'algorithme et ils définissent notre premier simplexe (triangle ici) dans $R^2$.
-	\item \textbf{Etape 2} : on calcule ensuite la valeur de la fonction en ces 3 points : f est la fonction GEV généralisée et on les trie par valeurs décroissantes.
-	\item \textbf{Etape 3} : on cherche le centre de gravité $x_0$ de nos premiers points : $x_0 = \frac{x_1 + x_2 + x_3}{3}$.
-	\item \textbf{Etape 4} : on fait ensuite une réflexion en calculant $x_r = x_0 + \alpha (x_0 - x_3)$ où $\alpha > 0$ est appelé le coefficient de réflexion
-	\item \textbf{Etape 5} : si $f(x_1) \le  f(x_r) \le  f(x_3)$ : on remplace $x_3$ par $x_r$ et on retourne à l'étape 2.
-	\item \textbf{Etape 6} : si $f(x_r) \le  f(x_1)$ : on procède à une expansion du simplexe, on calcule $x_3 = x_0 + \gamma(x_r - x_0)$ où $\gamma > 1$. Si $f(x_e) \le  f(x_r) $, on remplace $x_3$ par $x_e$ sinon on remplace $x_3$ par $x_r$ et on retourne à l'étape 2
-	\item \textbf{Etape 7} : si $f(x_r) \geq f(x_3)$ : on procède à une contraction du simplexe, on cherche $x_c = x_0 + \rho(x_3 - x_0)$ où $0 < \rho < 0.5 $ . Si $f(x_c) \le  f(x_3)$, on remplace $x_3$ par $x_c$ et on retourne à l'étape 2, sinon on continue jusqu'à l'étape 8.
-	\item \textbf{Etape 8} : on effectue une homothétie de rapport $\omega$ et de centre $x_1$ : on remplace ainsi $x_i$ par $x_1 + \omega(x_i - x_1)$ où $0 < \omega < 1$et on retourne à l'étape 2
-\end{itemize}
-
-\noindent On répète cela jusqu'à atteinte du critère d'arrêt, en général : $ \sqrt{\sum_{i=1}^{n+1}  \frac{(f_i - \bar{f})^2}{n}} < \epsilon $ où $\bar{f} =\frac{1}{n+1} \sum_{i=1}^{n+1} f_i $ et $ \epsilon $ est un réel proche de 0. \\
-
 \subsection{Quelques simulations pour les méthodes de maxima par blocs et dépassement de seuil}
 
 \noindent Quelques illustrations simulées des méthodes vues dans le texte pour les lois uniforme, normale et de Cauchy. \\
@@ -1089,216 +1075,9 @@ En revanche le choix du seuil est important car il faut choisir un seuil suffisa
 
 \subsection{Codes R}
 
-\noindent Voici un exemple de code R utilisé dans la première section :
+\noindent Le code pour pour les sorties graphiques et les calculs des estimateurs sont disponible sur le github du projet : https://github.com/DamienMariac/HAX817X-Projet.
 
-\begin{lstlisting}
-	# Paramètres
-	n <- 1000        # Taille de l'échantillon pour la simulation des lois uniformes
-	N <- 10000       # Nombre de simulations pour le maximum
-	
-	# Simulation des maxima de lois uniformes(0,1)
-	set.seed(123)    # fixation de l'aléa
-	M_n <- replicate(N, max(runif(n))) # M_n = max / X_n = runif
-	
-	# Normalisation pour observer la convergence
-	Y_n <- n * (1 - M_n)
-	
-	# Histogramme des valeurs transformées
-	hist(Y_n, breaks = 50, probability = TRUE, 
-	col = "lightblue", border = "white", ylab = "Densité",
-	xlab = expression(Y_n), main = "Max de 1000 lois uniformes")
-	
-	# Densité théorique de la loi exponentielle (paramètre = 1)
-	curve(dexp(x, rate = 1), col = "red", lwd = 2, add = TRUE)
-	
-	# Légende
-	legend("topright", legend = c("Simulation", "Densité théorique : exp(1)"),
-	fill = c("lightblue", NA), border = c("white", NA), 
-	lty = c(NA, 1), col = c(NA, "red"), lwd = c(NA, 2))
-\end{lstlisting}
-
-\begin{lstlisting}
-	#################### CODE POUR WOOSTER ####################
-	library(ismev)
-	library(evd)
-	data("wooster")
-	
-	gev_fit <- fgev(wooster)
-	
-	mu <- as.numeric(gev_fit$param[1])
-	sigma <- as.numeric(gev_fit$param[2])
-	gamma <- as.numeric(gev_fit$param[3])
-	
-	# estimation de gamma avec pickands (juste pour comparer)
-	
-	x <- sort(wooster)
-	n <- length(x)
-	k <- floor(0.1 * length(wooster))
-	X1 <- x[n - k + 1]
-	X2 <- x[n - 2*k + 1]
-	X3 <- x[n - 4*k + 1]
-	pickands_est <- (1 / log(2)) * log((X1 - X2) / (X2 - X3))
-	print(pickands_est)
-	
-	
-	# gamma est < 0 donc on calcule la borne max
-	x_max <- mu - sigma / gamma
-	
-	# Définir la densité de la loi (pour gamma < 0)
-	dgev <- function(x, mu, sigma, gamma) {
-	  t <- 1 + gamma * ((x - mu) / sigma)
-	  dens <- ifelse(t > 0, 
-					 (1/sigma) * t^(-1/gamma - 1) * exp(-t^(-1/gamma)), 
-					 0)
-	  return(dens)
-	}
-	
-	xseq <- seq(min(wooster), max(wooster), length.out = 200)
-	
-	# PLOT   
-	
-	hist(wooster,main = "Histogram de wooster" ,breaks = 60, probability = TRUE, col = "lightgray")
-	
-	lines(xseq, dgev(xseq, mu, sigma, gamma), col = "blue", lwd = 2)
-	
-	
-	abline(v = x_max, col = "red", lwd = 2, lty = 2)
-	legend("topright", legend = paste("x_max =", round(x_max, 2)), col = "red", lwd = 2, lty = 2)
-	
-	# plot plus détaillé
-	plot(gev_fit)
-
-
-
-	
-\end{lstlisting}
-
-\begin{lstlisting}
-	#################### CODE POUR RAIN ####################
-	library(ismev)
-	library(evd)
-	data(rain)
-	rain_data <- rain
-
-	# seuil	
-	threshold <- quantile(rain_data, probs = 0.95)
-	gpd_result <- gpd.fit(rain_data, threshold)
-
-	# on stocke la parametre d'échelle et de forme
-	sigma <- gpd_result$mle[1]
-	gamma <- gpd_result$mle[2]
-	SE <- gpd_result$se[2]
-	IC <- c(gamma - 1.96 * SE, gamma + 1.96 * SE)    # contient 0 (oups)
-
-
-	# On code la fonction de pareto généralisée parametre echel sigma et de forme gamma
-	pareto <- function(x, gamma, sigma) {
-	  if (gamma == 0) {
-		return(1/sigma * exp(-x/sigma))
-	  } else {
-		return(1/sigma * (1 + gamma * x/sigma)^(-1/gamma - 1))
-	  }
-	}
-
-	# on trace l'histogramme des données
-	hist(rain_data, breaks = 50, freq = FALSE, main = "Rain")
-
-	# on trace l'histogramme des données en excés par rapport au seuil et la loi de pareto
-	hist(rain_data[rain_data > threshold] - threshold, breaks = 50, freq = FALSE, main = "Rain Excesses et densité de Pareto")
-
-	# on trace la loi de gpd avec les paramètres estimés
-	xseq <- seq(min(rain), max(rain), length.out = 200)
-	lines(xseq, pareto(xseq, gamma, sigma),col='red', lwd=2)
-
-
-
-	# pour le qq-plot et residus
-	gpd.diag(gpd_result)
-
-\end{lstlisting}
-
-\noindent Un exemple de code pour les simulations de maxima par blocs : 
-
-\begin{lstlisting}
-	# Chargement des packages
-	library(evd)
-	library(ggplot2)
-	
-	# Génération d'une loi uniforme, on prend [0,10] pour que ce soit moins resserré 
-	n <- 10000
-	x <- runif(n, min = 0, max = 10)
-	
-	# Taille des blocs
-	taille_blocs <- 50
-	nb_blocs <- floor(n / taille_blocs)
-	
-	# Maxima par bloc
-	block_maxima <- sapply(1:nb_blocs, function(i) {
-		start <- (i - 1) * taille_blocs + 1
-		end <- i * taille_blocs
-		max(x[start:end])
-	})
-	
-	# Loi limite : Weibull
-	fit_weibull <- fgev(block_maxima, std.err = FALSE) # std.err=FALSE pour que la fonction arrête de chercher des erreurs
-	
-	# Graphe
-	ggplot(data.frame(block_maxima), aes(x = block_maxima)) +
-	geom_histogram(aes(y = ..density.., fill = "Simulation"), bins = 10,
-	color = "black") +
-	stat_function(aes(color = "Densité théorique"),
-	fun = function(x) dgev(x,
-	loc = fit_weibull$estimate["loc"],
-	scale = fit_weibull$estimate["scale"],
-	shape = fit_weibull$estimate["shape"]),
-	size = 1.2) +
-	coord_cartesian(xlim = c(7, 12)) +
-	scale_fill_manual("", values = c("Simulation" = "skyblue")) +
-	scale_color_manual("", values = c("Densité théorique" = "red")) +
-	labs(title = "Méthode des maximas par blocs pour une loi uniforme",
-	x = "Maxima par blocs",
-	y = "Densité") +
-	theme_minimal() +
-	theme(legend.position = "top")
-\end{lstlisting}
-
-\noindent Idem pour les dépassements de seuil : 
-
-\begin{lstlisting}
-	# Packages nécessaires
-	library(evd)
-	library(ggplot2)
-	
-	# Génération de données : loi uniforme sur [0, 1]
-	n <- 10000
-	x <- runif(n, min = 0, max = 100)
-	
-	# Choix du seuil élevé (par exemple 95e percentile)
-	u <- quantile(x, 0.95)
-	
-	# Excès au-dessus du seuil
-	exces <- x[x > u] - u
-	
-	# Ajustement GPD sur les excès
-	fit_gpd <- fpot(x, threshold = u, model = "gpd")
-	
-	# Visualisation : histogramme des excès + densité théorique GPD
-	ggplot(data.frame(exces), aes(x = exces)) +
-	geom_histogram(aes(y = ..density.., fill = "Simulation"),
-	bins = 40, color = "black", alpha = 0.6) +
-	stat_function(aes(color = "Densité théorique"),
-	fun = function(x) dgpd(x,
-	loc = 0,
-	scale = fit_gpd$estimate["scale"],
-	shape = fit_gpd$estimate["shape"]),
-	size = 1.2) + xlim(c(-5,10)) +
-	scale_fill_manual("", values = c("Simulation" = "skyblue")) +
-	scale_color_manual("", values = c("Densité théorique" = "red")) +
-	labs(title = "Méthode du dépassement de seuil pour une loi uniforme",
-	x = "Excès au-dessus du seuil",
-	y = "Densité") +
-	theme_minimal() +
-	theme(legend.position = "top")
-\end{lstlisting}
+\newpage
+\section{Bibliographie}
 
 \end{document}

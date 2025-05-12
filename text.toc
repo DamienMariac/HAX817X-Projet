@@ -1,11 +1,10 @@
 \babel@toc {french}{}\relax 
 \contentsline {section}{\numberline {1}Introduction}{3}{}%
-\contentsline {section}{\numberline {2}Les lois de $M_n$}{3}{}%
-\contentsline {subsection}{\numberline {2.1}Quelques notations }{3}{}%
-\contentsline {subsection}{\numberline {2.2}Paramètre $b_n$}{4}{}%
-\contentsline {subsection}{\numberline {2.3}Paramètre $a_n$}{5}{}%
-\contentsline {subsection}{\numberline {2.4}Les lois limites}{5}{}%
-\contentsline {subsubsection}{\numberline {2.4.1}Nature du support}{6}{}%
+\contentsline {section}{\numberline {2}Comportement asymptotique de $M_n$}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Caractérisation avec la fonction de répartition}{3}{}%
+\contentsline {subsection}{\numberline {2.2}Le paramètre $b_n$}{4}{}%
+\contentsline {subsection}{\numberline {2.3}Le paramètre $a_n$}{5}{}%
+\contentsline {subsection}{\numberline {2.4}Les lois limites}{6}{}%
 \contentsline {subsection}{\numberline {2.5}Résumé}{7}{}%
 \contentsline {section}{\numberline {3}Quelques exemples numériques}{8}{}%
 \contentsline {subsubsection}{\numberline {3.0.1}Loi uniforme}{8}{}%
@@ -20,10 +19,10 @@
 \contentsline {subsubsection}{\numberline {4.2.1}La construction de l’estimateur de Hill}{16}{}%
 \contentsline {subsubsection}{\numberline {4.2.2}Comportement empirique de l’estimateur de Hill}{16}{}%
 \contentsline {section}{\numberline {5}Méthode des maxima par blocs}{19}{}%
+\contentsline {subsection}{\numberline {5.1}quantile de retour}{19}{}%
 \contentsline {section}{\numberline {6}Méthode des excès}{20}{}%
 \contentsline {subsection}{\numberline {6.1}Loi de Pareto généralisée (GPD)}{20}{}%
-\contentsline {subsection}{\numberline {6.2}Théorème de Balkema–de Haan–Pickands}{20}{}%
-\contentsline {subsection}{\numberline {6.3}quantile de retour}{21}{}%
+\contentsline {subsection}{\numberline {6.2}Théorème de Balkema–de Haan–Pickands}{21}{}%
 \contentsline {section}{\numberline {7}Application sur des données réelles}{22}{}%
 \contentsline {subsection}{\numberline {7.1}Description des données}{22}{}%
 \contentsline {subsection}{\numberline {7.2}Méthode des maxima par bloc}{23}{}%
@@ -35,8 +34,8 @@
 \contentsline {subsubsection}{\numberline {7.3.2}Application sur les données danish}{24}{}%
 \contentsline {subsubsection}{\numberline {7.3.3}Synthèse sur la méthode de dépassement de seuil}{24}{}%
 \contentsline {section}{\numberline {8}Annexe}{25}{}%
-\contentsline {subsection}{\numberline {8.1}Méthode de Nelder-Mead}{25}{}%
-\contentsline {subsection}{\numberline {8.2}Quelques simulations pour les méthodes de maxima par blocs et dépassement de seuil}{25}{}%
-\contentsline {subsubsection}{\numberline {8.2.1}Maxima par blocs}{26}{}%
-\contentsline {subsubsection}{\numberline {8.2.2}Dépassements de seuil}{27}{}%
-\contentsline {subsection}{\numberline {8.3}Codes R}{29}{}%
+\contentsline {subsection}{\numberline {8.1}Quelques simulations pour les méthodes de maxima par blocs et dépassement de seuil}{25}{}%
+\contentsline {subsubsection}{\numberline {8.1.1}Maxima par blocs}{25}{}%
+\contentsline {subsubsection}{\numberline {8.1.2}Dépassements de seuil}{27}{}%
+\contentsline {subsection}{\numberline {8.2}Codes R}{28}{}%
+\contentsline {section}{\numberline {9}Bibliographie}{29}{}%
