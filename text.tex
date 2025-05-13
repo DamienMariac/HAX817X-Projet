@@ -524,8 +524,6 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
 
 \noindent Enfin ici, on avait une loi à queue lourde, et on obtient bien la loi de Fréchet attendue.
 
-\newpage
-
 \section{Méthodes d'estimation de l'indice de valeurs extrêmes}
 Dans cette section, nous cherchons à estimer le paramètre \(\gamma\) directement à partir des observations \(X_i\), sans nous limiter aux maxima \(M_n\), afin de tirer parti de l’ensemble des données.  
 Nous nous concentrons sur deux approches non paramétriques classiques : les estimateurs de Hill et de Pickands. Ces méthodes reposent uniquement sur les statistiques d’ordre et sont particulièrement utilisées en pratique. D'autres estimateurs existent, notamment des versions généralisées ou des approches paramétriques basées sur la vraisemblance ou les moments, mais ils ne seront pas abordés ici. \\
@@ -794,7 +792,6 @@ La loi de Cauchy, avec un indice \(\gamma = 1\), appartient au domaine de Fréch
 Ainsi, ces résultats montrent que l’estimateur de Hill est très dépendant du choix du paramètre \(k\), et de la nature de la distribution. Un compromis est nécessaire entre biais (si \(k\) est trop grand) et variance (si \(k\) est trop petit), pour garantir une estimation fiable.
 
 
-\newpage 
 \section{Méthode des maxima par blocs}
 
 \noindent L'approche des maxima par blocs (en anglais Blocks Maxima) consiste à diviser les n observations en N blocs de taille k. Concrètement, la suite $X_1, ..., X_n$ est divisée en N blocs, le premier bloc est $X_1, ..., X_k$, le second $X_{k+1}, ..., X_{2k}$, etc. On obtient ainsi une suite de maxima $M_1, ..., M_n$ définis sur chacun des blocs.\\
@@ -938,21 +935,25 @@ Nous allons utiliser les données du package $ismev$ de R. Plus précisément ce
 les grands sinistres incendie survenus au Danemark entre 1980 et 1990.
 \\
 \\
-L'objectif sur ces données est de savoir s'il existe (et le cas échéant de le calculer) un seuil tel que à l'avenir on dépasse cette valeur rarement tout en restant raisonable.
+L'objectif sur ces données est de savoir s'il existe (et le cas échéant de le calculer) un seuil tel qu'à l'avenir on dépasse cette valeur rarement tout en restant raisonable.
+\\
+\\
+Concernant les données de pluie, on dispose de 17531 données qui prennent des valeurs entre $0$ et $86,6$. On observe un moyenne de $3,476$ et une médiane de $0,5$.
 
-\begin{center}
-	\includegraphics[scale=0.70]{./images/rainhisto.png} 
-\end{center}
 
-Dans le cas de rain, on remarque que les données sont concentrées autour de 0 mais qu'elles sont capables de prendre des valeurs très élevées jusqu'à 90.
+On remarque de plus que les données sont fortement concentrées autour de 0.
 Il est alors raisonnable de penser qu'après estimation, on va obtenir une valeur de gamma positive ou nulle. En effet, il n'apparait pas de cassure dans la distribution des données.
 De plus, les données prennent des valeurs grandes mais perdent rapidement en densité pour celle-ci. Ce qui suggèrerait une valeur de gamma proche de $0$ et positive.
 
 \begin{center}
-	\includegraphics[scale=0.70]{./images/sinistres.png} 
+	\includegraphics[scale=0.62]{./images/rainhisto.png} 
 \end{center}
 
-De même, pour les sinistres, on remarque que la majorité des sinistres sont de faible intensité mais qu'il existe des sinistres de grande intensité. On peut donc s'attendre à une valeur de gamma positive ou nulle.
+
+Pour les sinistres, on remarque que la majorité des montants sont de faible intensité mais qu'il existe des sinistres avec des valeurs élevé. Les données se répartissent de $1$ à $263.500$ avec une moyenne de $3,385$ et une médiane de $1,778$. Dans le même cas que dans les données de rain, on peut donc s'attendre à une valeur de gamma positive ou nulle.
+\begin{center}
+	\includegraphics[scale=0.62]{./images/sinistres.png} 
+\end{center}
 
 \subsection{Méthode des maxima par bloc}
 
@@ -960,22 +961,19 @@ De même, pour les sinistres, on remarque que la majorité des sinistres sont de
 
 Les données étant journalières, on va choisir des blocs de taille 365, comme les données vont de 1914 à 1962, on se retrouve avec 48 blocs de 365 jours.
 \\
-\\
 Via le package \textbf{evd}, on obtient via une estimations par maximum de vraisemblance les paramètres suivants :
 \\
 $\mu = 40,8$, $\sigma = 9,73$ et $\gamma = 0,107$.
 \\
-L'estimation des paramètres sont calculées par l'algorithme de Nelder-Mead (voir annexe).
+L'estimation des paramètres sont calculées par maximum de vraisemblance via l'algorithme de Nelder-Mead.
 \\
 \\
 On suppose alors que $\gamma \geq 0$, donc il n’existe pas de valeur maximale finie : la probabilité de très gros maxima décroît mais n'est pas finie, selon un comportement polynomial ou exponentiel ce qui est embettant dans le cas pratique surtout quand on cherche des seuils rarement atteints.
 \subsubsection{Application sur les données danish}
-On applique la même méthode sur les données de sinistres mais avec une approche légèrement différente puisque les données ne sont pas dans le même format. En effet, on ne dispose pas de données journalières mais l'ensemble des sinistres sur une période de 10 ans. C'est à dire qu'il existe des jours sans sinistres qui ne sont pas comptabilisés.
+On applique la même méthode sur les données de sinistres mais avec une approche légèrement différente puisque les données ne sont pas dans le même format. En effet, on ne dispose pas de données journalières mais des sinistres enregistré sur une période de 10 ans. C'est à dire qu'il existe des jours sans sinistres qui ne sont pas comptabilisés.
 On regroupe alors les sinistres par mois et on prend le montant de sinistre le plus élevé. On se retrouve alors avec des blocs de taille irrégulière.
 \\
-\\
 Après analyse numérique par maximum de vraisemblance, on obtient les paramètres suivants : $\mu = 8,376$, $\sigma = 5,971$ et $\gamma = 0,623$.
-\\
 \\
 On possède une valeur de gamma positive ce qui renforce l'hypothèse d'une queue lourde pour la distribution du max.
 
@@ -993,20 +991,24 @@ Par ailleurs, le choix de $k$ est important car il faut choisir un nombre de blo
 On a calculé la valeur de $\gamma$ par la méthode des maxima en bloc et obtenu une valeur de $\gamma > 0 $ mais proche de 0. On souhaite s'assurer du signe de $\gamma$
 en procédant par la méthode de dépassement de seuil.
 \\
-On decide de prendre un seuil correspondant au quantile d’ordre 0,95.
-\\
+On décide de prendre un seuil correspondant au quantile d’ordre 0,95.
 \\
 On obtient numériquement : 
-$\gamma  = -0.027$
-\\
+$\gamma  = -0.027$.
 \\
 On a obtenu dans la méthode des maxima en bloc une valeur de $\gamma$ postive mais proche de 0,
 tandis qu'avec la méthode de dépassement de seuil, on obtient une valeur négative mais tout aussi proche de 0.
 \\
-Ce qui nous amène à conclure que la valeur de $\gamma$ est de 0.
+On peut poursuivre l'étude en calculant la valeur de $\gamma$ via l'estimateur de Pickands.
+
+\begin{center}
+	\includegraphics[scale=0.57]{./images/pickandsrain.png} 
+\end{center}
+
+On observe qu'il y'a une stabilisation de l'estimateur de Pickands pour $k$ entre 80 et 135. On obtient alors apres estimation numérique une valeur de $\gamma = -0,079$.
 \\
-Autrement dit, la distribution du maximum de pluie suit une loi de Gumbel.
 \\
+Étant donnée qu'on a obtenu plusieurs valeurs de $\gamma$ positives et négatives, on pourrait procéder à un test de significativité pour savoir si la valeur de $\gamma$ est différente de 0. Nous omettons cette partie et supposons que $\gamma$ est égal à 0. C'est à dire que le maximum de pluie suit une loi de Gumbel.
 \\
 On peut néamoins donner une valeur "seuil" qui nous assurerait que la probabilité de dépasser cette valeur est très faible. 
 On calcule alors le quantile de retour pour $T=100$ afin d'avoir une valeur de pluie qui ne devrait pas être dépassée plus d'une fois tous les 100 ans.
@@ -1016,15 +1018,26 @@ Dans notre cas, on obtient alors : $z_t = 98,636$. Autrement dit, une fois tous 
 
 \subsubsection{Application sur les données danish}
 
-On prend un seuil correspondant au quantile d’ordre 0,95. Apres calcul numérique, on obtient $\sigma = 7.038$ et $\gamma = 0.492$.
+On prend un seuil correspondant au quantile d’ordre 0,95. Apres calcul numérique, on obtient $\gamma = 0.492$.
 \\
-On a obtenue une valeur de $\gamma$ positive ce qui renforce l'hypothèse d'une queue lourde pour la distribution du max, ce qui est cohérent avec la méthode des maxima en bloc. On peut pousser l'analyse de $\gamma$ en calculant son estimation via l'estimateur de Hill afin d'avoir une valeur plus précise.
+On a obtenue une valeur de $\gamma$ positive ce qui renforce l'hypothèse d'une queue lourde pour la distribution du max, ce qui est cohérent avec la méthode des maxima en bloc. 
+\\
+Avec l'estimateur de Pickands, on observe une stabilisation de l'estimateur pour $k$ entre 70 et 110. On obtient alors apres estimation numérique une valeur de $\gamma = 0.938$.
+
+\begin{center}
+	\includegraphics[scale=0.65]{./images/pickandsdansih.png} 
+\end{center}
+
+
+
+
+Ayant plusieurs fois obtenue un valeur de $\gamma > 0$, on peut pousser son analyse en calculant son estimation via l'estimateur de Hill pour obtenir une valeur plus précise.
 \\
 \\
 On trace alors la courbe de l'estimateur de Hill en fonction de $k$.
 
 \begin{center}
-	\includegraphics[scale=0.70]{./images/danishsad.png} 
+	\includegraphics[scale=0.65]{./images/danishsad.png} 
 \end{center}
 
 On observe alors un plateau pour k entre 30 et 45. On obtient alors apres estimation numérique une valeur de $\gamma = 0,66$.
@@ -1037,6 +1050,31 @@ On obtient alors : $z_t = 515,22$. Autrement dit, une fois tous les 50 ans, on p
 Cette méthode à le bont goût d'exploiter toutes les valeurs supérieures à un seuil, pas seulement un maximum par bloc. Elle utilise donc plus de données.
 \\
 En revanche le choix du seuil est important car il faut choisir un seuil suffisamment élevé pour ne pas avoir trop peu de données mais pas trop élevé pour ne pas perdre d'informations sur les max. Il faut donc faire le compromis entre le biais et la variance.
+
+\section{Conclusion}
+
+Dans ce projet, nous avons exploré la \textbf{théorie des valeurs extrêmes}, un cadre probabiliste permettant de modéliser les événements rares et extrêmes. 
+La démonstration de la convergence des maxima d’échantillons vers une loi de valeurs extrêmes a été au cœur de notre étude. Cette loi dépend de trois paramètres : un paramètre de localisation $\mu$, un paramètre d’échelle $\sigma > 0$, et un paramètre de forme $\gamma$, qui gouverne le comportement de la queue.
+\\
+Ce paramètre de forme $\gamma$ est le plus important à estimer en pratique. En effet, il permet de connaître le comportement de la queue de la distribution.
+L'estimation de ce paramètre à prit une bonne partie de notre projet. Nous avons utilisé :
+\begin{itemize}
+    \item des méthodes \textbf{non paramétriques} : les estimateurs de \textbf{Hill} (adapté aux queues lourdes, $\gamma > 0$) et de \textbf{Pickands}, permettant une estimation robuste de $\gamma$ à partir des ordres statistiques des excès,
+    \item et des méthodes \textbf{paramétriques} via le maximum de vraisemblance, en ajustant les lois GEV et GPD avec les fonctions \texttt{fgev()} et \texttt{gpd.fit()} sous \textsf{R}.
+\end{itemize}
+
+\medskip
+
+Nous avons appliqué ces méthodes à plusieurs jeux de données réelles, comme les hauteurs de pluie (\texttt{rain}) ou les sinistres danois (\texttt{danish}). Ces analyses nous ont permis d'estimer les paramètres extrêmes, d'évaluer le risque de valeurs rares et de calculer des \textbf{quantiles de retour} (niveaux censés être dépassés tous les $T$ ans).
+
+\medskip
+
+Nous aurions pu approfondir notre étude en réalisant des tests de significativité pour déterminer le signe de $\gamma$, mais nous avons choisi de nous concentrer sur l'estimation et l'interprétation des résultats par souci de temps.
+
+\medskip
+
+Ainsi, la théorie des valeurs extrêmes s’avère être un outil indispensable pour la modélisation des événements rares dans de nombreux domaines appliqués (hydrologie, finance, assurance, climatologie, etc.). Une bonne estimation du paramètre de forme $\gamma$ est essentielle pour la prise de décision en conditions extrêmes.
+
 
 \newpage
 \section{Annexe}
@@ -1077,7 +1115,7 @@ En revanche le choix du seuil est important car il faut choisir un seuil suffisa
 \noindent Le code pour pour les sorties graphiques et les calculs des estimateurs sont disponible sur le github du projet : https://github.com/DamienMariac/HAX817X-Projet.
 
 \newpage
-\section{Bibliographie}
+\section*{Bibliographie}
 
 \begin{itemize}
 	\item An Introduction to Statistical Modeling of Extreme Values, Stuart Coles 2001

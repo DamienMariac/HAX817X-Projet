@@ -11,31 +11,31 @@
 \contentsline {subsubsection}{\numberline {3.0.2}Loi exponentielle}{9}{}%
 \contentsline {subsubsection}{\numberline {3.0.3}Loi normale}{9}{}%
 \contentsline {subsubsection}{\numberline {3.0.4}Loi de Cauchy}{10}{}%
-\contentsline {section}{\numberline {4}Méthodes d'estimation de l'indice de valeurs extrêmes}{12}{}%
-\contentsline {subsection}{\numberline {4.1}Estimateur de Pickands}{12}{}%
-\contentsline {subsubsection}{\numberline {4.1.1}Construction de l'estimateur de Pickands}{13}{}%
-\contentsline {subsubsection}{\numberline {4.1.2}Représentation graphique de l’estimateur de Pickands}{14}{}%
+\contentsline {section}{\numberline {4}Méthodes d'estimation de l'indice de valeurs extrêmes}{11}{}%
+\contentsline {subsection}{\numberline {4.1}Estimateur de Pickands}{11}{}%
+\contentsline {subsubsection}{\numberline {4.1.1}Construction de l'estimateur de Pickands}{12}{}%
+\contentsline {subsubsection}{\numberline {4.1.2}Représentation graphique de l’estimateur de Pickands}{13}{}%
 \contentsline {subsection}{\numberline {4.2}Estimateur de Hill}{15}{}%
-\contentsline {subsubsection}{\numberline {4.2.1}La construction de l’estimateur de Hill}{16}{}%
+\contentsline {subsubsection}{\numberline {4.2.1}La construction de l’estimateur de Hill}{15}{}%
 \contentsline {subsubsection}{\numberline {4.2.2}Comportement empirique de l’estimateur de Hill}{16}{}%
-\contentsline {section}{\numberline {5}Méthode des maxima par blocs}{19}{}%
+\contentsline {section}{\numberline {5}Méthode des maxima par blocs}{18}{}%
 \contentsline {subsection}{\numberline {5.1}quantile de retour}{19}{}%
-\contentsline {section}{\numberline {6}Méthode des excès}{20}{}%
+\contentsline {section}{\numberline {6}Méthode des excès}{19}{}%
 \contentsline {subsection}{\numberline {6.1}Loi de Pareto généralisée (GPD)}{20}{}%
-\contentsline {subsection}{\numberline {6.2}Théorème de Balkema–de Haan–Pickands}{21}{}%
-\contentsline {section}{\numberline {7}Application sur des données réelles}{22}{}%
-\contentsline {subsection}{\numberline {7.1}Description des données}{22}{}%
-\contentsline {subsection}{\numberline {7.2}Méthode des maxima par bloc}{23}{}%
-\contentsline {subsubsection}{\numberline {7.2.1}Application sur les données de Rain}{23}{}%
-\contentsline {subsubsection}{\numberline {7.2.2}Application sur les données danish}{23}{}%
-\contentsline {subsubsection}{\numberline {7.2.3}Synthèse sur la méthode des maxima en bloc}{23}{}%
-\contentsline {subsection}{\numberline {7.3}Méthode de dépassement de seuil}{23}{}%
-\contentsline {subsubsection}{\numberline {7.3.1}Application sur les données de Rain}{23}{}%
-\contentsline {subsubsection}{\numberline {7.3.2}Application sur les données danish}{24}{}%
+\contentsline {subsection}{\numberline {6.2}Théorème de Balkema–de Haan–Pickands}{20}{}%
+\contentsline {section}{\numberline {7}Application sur des données réelles}{21}{}%
+\contentsline {subsection}{\numberline {7.1}Description des données}{21}{}%
+\contentsline {subsection}{\numberline {7.2}Méthode des maxima par bloc}{22}{}%
+\contentsline {subsubsection}{\numberline {7.2.1}Application sur les données de Rain}{22}{}%
+\contentsline {subsubsection}{\numberline {7.2.2}Application sur les données danish}{22}{}%
+\contentsline {subsubsection}{\numberline {7.2.3}Synthèse sur la méthode des maxima en bloc}{22}{}%
+\contentsline {subsection}{\numberline {7.3}Méthode de dépassement de seuil}{22}{}%
+\contentsline {subsubsection}{\numberline {7.3.1}Application sur les données de Rain}{22}{}%
+\contentsline {subsubsection}{\numberline {7.3.2}Application sur les données danish}{23}{}%
 \contentsline {subsubsection}{\numberline {7.3.3}Synthèse sur la méthode de dépassement de seuil}{24}{}%
-\contentsline {section}{\numberline {8}Annexe}{25}{}%
-\contentsline {subsection}{\numberline {8.1}Quelques simulations pour les méthodes de maxima par blocs et dépassement de seuil}{25}{}%
-\contentsline {subsubsection}{\numberline {8.1.1}Maxima par blocs}{25}{}%
-\contentsline {subsubsection}{\numberline {8.1.2}Dépassements de seuil}{27}{}%
-\contentsline {subsection}{\numberline {8.2}Codes R}{28}{}%
-\contentsline {section}{\numberline {9}Bibliographie}{29}{}%
+\contentsline {section}{\numberline {8}Conclusion}{24}{}%
+\contentsline {section}{\numberline {9}Annexe}{25}{}%
+\contentsline {subsection}{\numberline {9.1}Quelques simulations pour les méthodes de maxima par blocs et dépassement de seuil}{25}{}%
+\contentsline {subsubsection}{\numberline {9.1.1}Maxima par blocs}{25}{}%
+\contentsline {subsubsection}{\numberline {9.1.2}Dépassements de seuil}{27}{}%
+\contentsline {subsection}{\numberline {9.2}Codes R}{28}{}%
