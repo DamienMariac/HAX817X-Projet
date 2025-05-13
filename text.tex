@@ -61,7 +61,7 @@
 \section{Introduction}
 Les événements extrêmes, comme les crues majeures, les canicules intenses ou les krachs financiers, sont rares mais peuvent avoir des conséquences très importantes. Les étudier est devenu essentiel dans des domaines variés comme la climatologie, l’assurance, la finance ou encore l’ingénierie.
 
-\noindent La théorie des valeurs extrêmes est un outil statistique qui permet de modéliser ces phénomènes rares, en se concentrant sur les valeurs situées aux extrémités d’un jeu de données : les plus grandes ou les plus petites. Contrairement aux méthodes classiques qui s'intéressent surtout à la moyenne ou à la variance, la théorie des valeurs extrêmes cherche à comprendre le comportement des valeurs extrêmes.
+\noindent La théorie des valeurs extrêmes est un outil statistique qui permet de modéliser ces phénomènes rares, en se concentrant sur les valeurs situées aux extrémités d’un jeu de données : les plus grandes ou les plus petites (Stuart Coles 2001). Contrairement aux méthodes classiques qui s'intéressent surtout à la moyenne ou à la variance, la théorie des valeurs extrêmes cherche à comprendre le comportement des valeurs extrêmes.
 
 \noindent Dans les statistiques classiques, beaucoup de résultats reposent sur le théorème central limite, qui explique que, sous certaines conditions, la moyenne d’un grand nombre de variables aléatoires suit une loi normale. C’est un fondement de nombreuses méthodes, mais il ne dit rien sur les valeurs les plus extrêmes d’un échantillon, qui sont pourtant cruciales dans l’analyse du risque.
 
@@ -76,10 +76,10 @@ En s’intéressant aux comportements les plus rares, la théorie des valeurs ex
 
 \subsection{Caractérisation avec la fonction de répartition}
 
-On commence par faire une remarque sur la fonction de repartion de $M_n$ en utilisant le fait que les $X_i$ sont i.i.d.
+On commence par faire une remarque (\textit{Stochastic Modelling 1988}) sur la fonction de repartion de $M_n$ en utilisant le fait que les $X_i$ sont i.i.d.
 En effet, si on note $F_{M_n}$ la fonction de repartition de $M_n$, et $F$ la fonction de repartition de $X_i$ on a :
 \[
-\forall t \in \mathbb{R} , \quad F_{M_n}(t) = \mathbb{P}(M_n \le t) = \mathbb{P}(X_1 \le t,...,X_n \le t)=\mathbb{P}(X_1 \le t)^n = F_{X_1}^n(t) 
+\forall t \in \mathbb{R} , \quad F_{M_n}(t) = \mathbb{P}(M_n \le t) = \mathbb{P}(X_1 \le t,...,X_n \le t)=\mathbb{P}(X_1 \le t)^n = F^n(t) 
 \]
 \\
 On remarque que, pour tout $t$ strictement inférieur à $t^*$ la borne supérieure du support des $X_i$, on a $F(t)<1$ et donc
@@ -99,10 +99,7 @@ L'idée est donc d'introduire deux suites ($b_n$) et ($a_n$) (avec $a_n > $  0 p
 S'il existe de telle suites $a_n$ et $b_n$, on dit que $F$ est dans le domaine d'attraction de $G$.
 \\
 \\
-Il nous faut donc trouver les distributions $G$ qui peuvent apparaître comme limite dans l’équation ci-dessus.
-\\
-\\
-Pour ce faire, nous utilisons cette définition de la convergence en loi :
+Nous utilisons cette définition de la convergence en loi (\textit{Statistics of Extremes, Jan Beirlant 2004}) :
 \\
 \\
 \begin{definition}
@@ -115,7 +112,7 @@ Alors $Y_n \xrightarrow{\mathcal{L} } Y$ si et seulement si pour toute fonction 
 \end{definition}
 \noindent En prenant ici $Y_n = \frac{M_n -b_n}{a_n}$, on obtient :
 \[
-\mathbb{E}[z(\frac{M_n -b_n}{a_n})] = \int_{-\infty}^{\infty} z(\frac{x-b_n}{a_n}) \: n \:  F^{n-1} (x)dF(x)
+\mathbb{E} \left[ z \left( \frac{M_n -b_n}{a_n} \right) \right] = \int_{-\infty}^{\infty} z \left( \frac{x-b_n}{a_n} \right) \: n \:  F^{n-1} (x)dF(x)
 \]
 \\
 \\
@@ -141,7 +138,7 @@ x = Q(1-\frac{1}{y}) = U(y) \; \; \; \; \; \; \text{et on obtient}
 \end{equation}
 \\
 \\
-Or, on a $\lim_{n \to \infty} ( 1 - \frac{v}{n})^{n-1} = e^{-v}$ , et on a $\lim_{n \to \infty} \mathbf{1}_{[0;n]}(x) = \mathbb{R}_{+}$.
+Or, on a $\lim_{n \to \infty} ( 1 - \frac{v}{n})^{n-1} = e^{-v}$ , et on a pour la borne de l'intégrale $\lim_{n \to \infty} \mathbf{1}_{[0;n]}(x) = \mathbb{R}_{+}$.
 \\
 \\
 Remarquons que, pour tout $t\in\mathbb R$, la probabilité
@@ -157,8 +154,7 @@ Ainsi, la convergence en loi
 \frac{M_n - b_n}{a_n}\;\overset{\mathcal{L}}{\xrightarrow[n\to +\infty]{}}\;Y
 \quad\Longleftrightarrow\quad
 \mathbb{P} \bigl(M_n \le a_n\,t + b_n\bigr)
-\;\xrightarrow[n\to +\infty]{};
-G(t),
+\;\xrightarrow[n\to +\infty]{} \; G(t),
 \]
 se traduit exactement par
 \[
@@ -176,16 +172,17 @@ L'objectif est alors de trouver des expressions explicites pour les suites \(a_n
 n \: \ln (F(a_n t + b_n)) \xrightarrow[n\to +\infty]{} \ln (G(t))
 \]
 \[
-\text{Ce qui donne} \; \; n(- F(a_n t + b_n) + 1) \xrightarrow[n\to +\infty]{} \ln (G(t))
+\text{Ce qui donne,} \; \; n(1 - F(a_n t + b_n)) \xrightarrow[n\to +\infty]{} - \ln (G(t))
 \]
-En utilisant le développement limité de la fonction logarithme. 
+Où on a utilisé le développement limité de la fonction logarithme. 
 \\
-Le cas particulier de cette convergence pour $t=0$ donne :
+\\
+Le cas particulier de cette convergence pour $t=0$ et en passant à l'opposé donne :
 \[
-n\bigl(F(b_n)-1\bigr)\;\xrightarrow[n\to\infty]{}\;\ln G(0)
-\;=\;-\,\ln G(0)\quad(\text{puisque }G(0)\in(0,1)),
+n\bigl(F(b_n)-1\bigr)\;\xrightarrow[n\to\infty]{}\; \ln G(0) < 0
+\quad(\text{puisque }G(0)\in[0,1]).
 \]
-Comme on souhaite une limite non-dégénérée, on impose
+Comme on souhaite une limite non-dégénérée et non nulle, on impose
 \[
 n\bigl[1 - F(b_n)\bigr] \;=\; 1.
 \]
@@ -213,7 +210,7 @@ Cette condition traduit, en quelque sorte, une régularité asymptotique de la q
 
 \vspace{0.3cm}
 \noindent
-Nous avons alors la proposition suivante :
+Nous avons alors la proposition suivante (\textit{Statistics of Extremes, Jan Beirlant 2004}) :
 
 \begin{proposition}[Limites possibles de la fonction $h$]
 Les fonctions limites possibles sont données, pour une certaine constante $c > 0$, par :
@@ -836,7 +833,7 @@ où : \begin{itemize}
 En pratique, on cherche une valeur qui donnerait une certaine confiance quand à l'apparition
 de données la depassant. Dans le cas d'une distribution à queue bornée il suffit de prendre la bornes supérieure de la distribution.
 \\
-Or, dans le cas d'une distribution à queue lourde et exponentiel ce n'est pas possible. On introduit alors la notion de \textbf{quantile de retour} qui est une valeur que l'on dépasse en moyenne une fois tous les T ans.
+Or, dans le cas d'une distribution à queue lourde et exponentiel ce n'est pas possible. On introduit alors la notion de \textbf{quantile de retour} qui est une valeur que l'on dépasse en moyenne une fois tous les T ans (\textit{Séminaire CNAM 2019}).
 \\
 On pose $z_T$ cette quantité, et elle est solution de l'équation suivante :
 \[
@@ -932,13 +929,13 @@ Cette propriété est essentielle en statistique des valeurs extrêmes, car elle
 
 Afin d'illustrer les méthodes d'estimation de l'indice de valeurs extrêmes, nous allons appliquer ces techniques sur des données réelles.
 Nous allons utiliser les données du package $ismev$ de R. Plus précisément celui de rain et de danish. Ils contienent respectivement les données de pluie journalière en Angleterre de 1914 à 1962 et 
-les grands sinistres incendie survenus au Danemark entre 1980 et 1990.
+les grands sinistres incendie survenus au Danemark entre 1980 et 1990 (Données issue du package \textbf{ismev} de R).
 \\
 \\
-L'objectif sur ces données est de savoir s'il existe (et le cas échéant de le calculer) un seuil tel qu'à l'avenir on dépasse cette valeur rarement tout en restant raisonable.
+L'objectif sur ces données est de savoir s'il existe (et le cas échéant de le calculer) une valeur tel qu'à l'avenir on la dépasse rarement tout en restant raisonable. C'est exactement ce que fait le quantile de retour.
 \\
 \\
-Concernant les données de pluie, on dispose de 17531 données qui prennent des valeurs entre $0$ et $86,6$. On observe un moyenne de $3,476$ et une médiane de $0,5$.
+Concernant les données de pluie, on dispose de $17531$ données qui prennent des valeurs entre $0$ et $86,6$. On observe un moyenne de $3,476$ et une médiane de $0,5$.
 
 
 On remarque de plus que les données sont fortement concentrées autour de 0.
@@ -1122,6 +1119,7 @@ Ainsi, la théorie des valeurs extrêmes s’avère être un outil indispensable
 	\item Modelling Extremal Events  Paul Embrechts , Claudia Klüppelberg , Thomas Mikosch
 	\item Statistics of Extremes Theory and Applications, Jan Beirlant, Yuri Goegebeur, Johan Segers, Jozef Teugels
 	\item Bibm@th.net
+	\item Théorie des valeurs extrêmes et estimation de mesures de risque, Jonathan EL METHNI, Gilles STUPFLER
 \end{itemize}
 
 \end{document}
