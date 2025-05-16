@@ -82,21 +82,23 @@ En effet, si on note $F_{M_n}$ la fonction de repartition de $M_n$, et $F$ la fo
 \forall t \in \mathbb{R} , \quad F_{M_n}(t) = \mathbb{P}(M_n \le t) = \mathbb{P}(X_1 \le t,...,X_n \le t)=\mathbb{P}(X_1 \le t)^n = F^n(t) 
 \]
 \\
-On remarque que, pour tout $t$ strictement inférieur à $t^*$ la borne supérieure du support des $X_i$, on a $F(t)<1$ et donc
+On remarque que, pour tout $t<t^*$ où $t^*$ est la borne supérieure du support des $X_i$, on a $F(t)<1$, 
 \[
-F(t)^n \xrightarrow[n\to +\infty]{} 0,
+\text{et donc} \; \; F^n(t) \xrightarrow[n\to +\infty]{} 0,
 \]
-et dans le cas ou t est supérieur ou égal à $t^*$, on a
+et dans le cas ou t est supérieur ou égal à $t^*$,
 \[
-F(t)^n \xrightarrow[n\to +\infty]{} 1.
+\text{, on a} \; \; F^n(t) \xrightarrow[n\to +\infty]{} 1.
 \]
-L'idée est donc d'introduire deux suites ($b_n$) et ($a_n$) (avec $a_n > $  0 pour tout $n$) afin d'avoir une limite non dégénérée pour $\frac{M_n - b_n}{a_n}$. Comme la fonction de répartition caractérise la loi, il nous suffit d'étudier la fonction $G$ définie pour tout $t$ dans le support des $X_i$ comme :
+L'idée derrière la théorie des valeurs extremes est d'introduire deux suites ($b_n$) et ($a_n$) (avec $a_n > $  0 pour tout $n$) afin d'avoir une limite non dégénérée pour le maximum d'un échatillon en posant $\frac{M_n - b_n}{a_n}$. 
+\\
+On sait que la fonction de répartition caractérise la loi, donc il nous suffit d'étudier la fonction $G$ définie pour tout $t$ dans le support des $X_i$ comme :
 
 \[
 \mathbb{P} \left( \frac{M_n - b_n}{a_n} \le t \right) \xrightarrow[n\to +\infty]{} G(t)
 \]
 \\
-S'il existe de telle suites $a_n$ et $b_n$, on dit que $F$ est dans le domaine d'attraction de $G$.
+S'il existe de telle suites $a_n$ et $b_n$, on dit que $F$ est dans \textbf{le domaine d'attraction} de $G$.
 \\
 \\
 Nous utilisons cette définition de la convergence en loi (\textit{Statistics of Extremes, Jan Beirlant 2004}) :
@@ -110,13 +112,17 @@ Alors $Y_n \xrightarrow{\mathcal{L} } Y$ si et seulement si pour toute fonction 
 \mathbb{E}[z(Y_n)] \xrightarrow[n\to +\infty]{} \mathbb{E}[z(Y)].
 \]
 \end{definition}
-\noindent En prenant ici $Y_n = \frac{M_n -b_n}{a_n}$, on obtient :
+\noindent On note alors $Y_n = \frac{M_n -b_n}{a_n}$ et sont ésperance devient : 
 \[
 \mathbb{E} \left[ z \left( \frac{M_n -b_n}{a_n} \right) \right] = \int_{-\infty}^{\infty} z \left( \frac{x-b_n}{a_n} \right) \: n \:  F^{n-1} (x)dF(x)
 \]
 \\
 \\
-L'astuce ici va être de faire un changement de variable. On introduit alors la fonction quantile qui est définie par :
+Afin de pouvoir identifier la loi limite, on voudrait ramener l'intégrale sous la forme :
+\[
+\int_{-\infty}^{\infty} z(u) \, dG(u)
+\]
+On va alors procéder par un changement de variable. Mais avant on introduit la fonction quantile qui va nous être utilise à ses fin. Elle est définie par :
 \\
 \[
 Q(p) \;=\; F^{-1}(p)
@@ -124,15 +130,16 @@ Q(p) \;=\; F^{-1}(p)
 \inf\bigl\{x\in\mathbb{R}\,\bigm|\,F(x)\ge p\bigr\},
 \quad p\in[0,1].
 \]
-\medskip 
-\noindent On pose alors le changement de variable : 
+
+\noindent Afin de faciliter l’analyse asymptotique et de réécrire l’intégrale sous une forme plus exploitable, nous introduisons la fonction quantile $Q$.
+(\textit{Statistics of Extremes, Jan Beirlant 2004}): 
 
 \[
-x = Q(1-\frac{1}{y}) = U(y) \; \; \; \; \; \; \text{et on obtient}
+x = Q(1-\frac{1}{y}) = U(y) \; \; \; \; \; \; 
 \]
 
 \begin{equation}\label{eq:1.1}
-    \int_{-\infty}^{\infty} z\Bigl(\frac{x-b_n}{a_n}\Bigr) \, n \, F^{n-1}(x)\,dF(x)
+    \text{et on obtient} \; \; \int_{-\infty}^{\infty} z\Bigl(\frac{x-b_n}{a_n}\Bigr) \, n \, F^{n-1}(x)\,dF(x)
     =\int_{0}^{n} z\Bigl(\frac{U\Bigl(\frac{n}{v}\Bigr)-b_n}{a_n}\Bigr)
     \Bigl(1-\frac{v}{n}\Bigr)^{n-1}dv.
 \end{equation}
@@ -141,40 +148,42 @@ x = Q(1-\frac{1}{y}) = U(y) \; \; \; \; \; \; \text{et on obtient}
 Or, on a $\lim_{n \to \infty} ( 1 - \frac{v}{n})^{n-1} = e^{-v}$ , et on a pour la borne de l'intégrale $\lim_{n \to \infty} \mathbf{1}_{[0;n]}(x) = \mathbb{R}_{+}$.
 \\
 \\
-Remarquons que, pour tout $t\in\mathbb R$, la probabilité
+Ce changement de variable nous conduit à exprimer l’espérance sous une nouvelle forme, dans laquelle les suites $(a_n)$ et $(b_n)$ sont choisies de manière à assurer la convergence vers une intégrale limite de type $\int_{-\infty}^{\infty} z(u)\, dG(u)$.
+
+
+\subsection{Le paramètre $b_n$}
+
+En reprenant les hypothèse de base, on remarque que pour tout $t\in\mathbb R$,
 \[
 \mathbb{P}  \Bigl(\frac{M_n - b_n}{a_n} \le t\Bigr)
 \;=\;
 \mathbb{P} \bigl(M_n \le a_n\,t + b_n\bigr)
 \;=\;
-F\bigl(a_n\,t + b_n\bigr)^{n}.
+F^{n}\bigl(a_n\,t + b_n\bigr).
 \]
-Ainsi, la convergence en loi 
+Ce qui donne avec la convergence en loi :
 \[
 \frac{M_n - b_n}{a_n}\;\overset{\mathcal{L}}{\xrightarrow[n\to +\infty]{}}\;Y
 \quad\Longleftrightarrow\quad
 \mathbb{P} \bigl(M_n \le a_n\,t + b_n\bigr)
 \;\xrightarrow[n\to +\infty]{} \; G(t),
 \]
-se traduit exactement par
+qui se traduit exactement par :
 \[
-F\bigl(a_n t + b_n\bigr)^{n}
+F^{n} \bigl(a_n t + b_n\bigr)
 \;\xrightarrow[n\to\infty]{}\;
 G(t).
 \]
-L'objectif est alors de trouver des expressions explicites pour les suites \(a_n\) et \(b_n\).
 
-\subsection{Le paramètre $b_n$}
-
-\noindent En reprenant l'expression ci-dessus et en passant au logarithme, on obtient :
+\noindent En passant au logarithme, on obtient :
 
 \[
 n \: \ln (F(a_n t + b_n)) \xrightarrow[n\to +\infty]{} \ln (G(t))
 \]
+En faisant un développement limité du logarithme :
 \[
-\text{Ce qui donne,} \; \; n(1 - F(a_n t + b_n)) \xrightarrow[n\to +\infty]{} - \ln (G(t))
+n(1 - F(a_n t + b_n)) \xrightarrow[n\to +\infty]{} - \ln (G(t))
 \]
-Où on a utilisé le développement limité de la fonction logarithme. 
 \\
 \\
 Le cas particulier de cette convergence pour $t=0$ et en passant à l'opposé donne :
@@ -186,32 +195,43 @@ Comme on souhaite une limite non-dégénérée et non nulle, on impose
 \[
 n\bigl[1 - F(b_n)\bigr] \;=\; 1.
 \]
-Il vient alors
+Il vient alors en composant par la fonction quantile,
 \[
 F(b_n)=1-\frac1n
 \quad\Longleftrightarrow\quad
 b_n \;=\; Q\!\Bigl(1-\tfrac1n\Bigr)
 \;=\;U(n),
 \]
-
+ On obtient alors une forme explicite pour la suite $(b_n)$ qui est $U(n)$.
 
 \subsection{Le paramètre $a_n$}
 Une fois la suite $(b_n)$ fixée comme précédemment, nous devons maintenant déterminer la suite $(a_n)$. L’objectif est de trouver des
  conditions suffisantes sur la fonction de répartition $F$ pour garantir l’existence d’une loi limite non dégénérée de $\frac{M_n - b_n}{a_n}$.
 \\
-\\
-La convergence de $F^n(a_n t + b_n)$ vers une loi limite $G(t)$ est équivalente, par passage aux fonctions réciproques, à l’étude de la convergence de l’expression suivante :
 
+\noindent
+
+En reprenant la convergence  $F^n(a_n t + b_n) \longrightarrow G(t)$, cela implique, en inversant \( G \) :
 \[
-\lim_{x \to \infty} \frac{U(x/u) - U(x)}{a(x)} = h(u),
+a_n t + b_n = G^{-1}(F^n(a_n t + b_n)) \longrightarrow G^{-1}(G(t)) = t.
 \]
+
+En posant \( U(y) = Q\left(1 - \frac{1}{y}\right) \), on en déduit, pour de grandes valeurs de \( x \), que la convergence en loi est équivalente à la convergence des quantiles :
+\[
+\frac{U(xu) - U(x)}{a(x)} \longrightarrow h(u),
+\]
+où \( h(u) \) dépend du domaine d’attraction de \( F \).
 
 Cette condition traduit, en quelque sorte, une régularité asymptotique de la queue de distribution.
 
-\vspace{0.3cm}
-\noindent
-Nous avons alors la proposition suivante (\textit{Statistics of Extremes, Jan Beirlant 2004}) :
 
+\begin{remark}
+	L'inversion de $G$ est bien définie via la fonction quantile que l'on a définie. On a posé $G^{-1}$ la fonction quantile associé à $G$.
+\end{remark}
+
+\vspace{0.3cm}
+Il reste à étudier las limites possible, pour cela nous avons la proposition suivante (\textit{Statistics of Extremes, Jan Beirlant 2004}) :
+\vspace{0.3cm}
 \begin{proposition}[Limites possibles de la fonction $h$]
 Les fonctions limites possibles sont données, pour une certaine constante $c > 0$, par :
 \[
@@ -220,54 +240,99 @@ c \cdot h_\gamma(u) = c \int_1^u v^{-\gamma - 1} \, dv = \frac{c(u^\gamma - 1)}{
 \]
 
 Nous interprétons la fonction limite dans le cas $\gamma = 0$ par passage à la limite :
+
 \[
 h_0(u) = \log(u).
 \]
 \end{proposition}
 
 \noindent
-\textbf{Remarque.} La constante $c$ ne peut pas être nulle, car cela conduirait à une limite dégénérée pour la variable normalisée $\frac{M_n - b_n}{a_n}$. En pratique, on peut toujours ramener le cas $c > 0$ au cas $c = 1$ en absorbant $c$ dans la définition de la fonction $a$.
-\\
+\begin{remark}
+	La constante $c$ ne peut pas être nulle, car cela conduirait à une limite dégénérée pour la variable normalisée $\frac{M_n - b_n}{a_n}$. En pratique, on peut toujours ramener le cas $c > 0$ au cas $c = 1$ en absorbant $c$ dans la définition de la fonction $a$.
+\end{remark}
+
+\vspace{0.5cm}
+
 \begin{proof} 
-Soient $u,v >0$. Alors :
+Soient $u, v > 0$. Pour étudier la limite
 \[
-\frac{U(xuv) - U(x)}{a(x)} 
-\;=\; 
-\frac{U(xuv) - U(xu)}{a(xu)} \,\frac{a(xu)}{a(x)}
-\;+\;
+\lim_{x \to \infty} \frac{U(xu) - U(x)}{a(x)} = h(u),
+\]
+nous cherchons à établir une structure fonctionnelle sur la fonction limite $h(u)$.
+
+Pour cela, nous considérons l’expression étendue :
+\[
+\frac{U(xuv) - U(x)}{a(x)},
+\]
+qui, par hypothèse, converge vers $h(uv)$ lorsque $x \to \infty$. Cette forme généralisée permet de relier $h(uv)$ à $h(u)$ et $h(v)$ en introduisant un point intermédiaire $xu$.
+
+Nous décomposons alors l’expression :
+\[
+\frac{U(xuv) - U(x)}{a(x)} =
+\frac{U(xuv) - U(xu)}{a(xu)} \cdot \frac{a(xu)}{a(x)} +
 \frac{U(xu) - U(x)}{a(x)}.
 \tag{3}
 \]
-Si la limite dans $F$ est dans le domaine d'attraction de $G$ (\textit{ce qu'on suppose depuis le début}), alors le rapport $\frac{a(ux)}{a(x)}$ converge vers une fonction notée $g(u)$.
-\\
-\\
-De plus,
+
+Par hypothèse de convergence, on sait que :
 \[
-\frac{a(xuv)}{a(x)} 
-\;=\;
-\frac{a(xuv)}{a(xv)} \,\frac{a(xv)}{a(x)}.
+\lim_{x \to \infty} \frac{U(xu) - U(x)}{a(x)} = h(u),
+\quad \text{et} \quad
+\lim_{x \to \infty} \frac{U(xuv) - U(xu)}{a(xu)} = h(v).
 \]
-Par passage à la limite pour $x$, la fonction $g$ satisfait l'\textit{équation fonctionnelle de Cauchy} :
+
+On suppose également que la fonction $a(x)$ satisfait la propriété de régularité suivante :
 \[
-g(uv) = g(u)\,g(v).
+\lim_{x \to \infty} \frac{a(xu)}{a(x)} = g(u),
 \]
-\\
-Les solutions de cette équation sont de la forme $g(u)= u^{\gamma}$ avec $\gamma$ un réel.
-\\
-Donc, on a $\lim_{x\to \infty} \frac{a(ux)}{a(x)} \;=\; x^{\gamma} l(x)$, on dit dans ce cas que $a$ est une fonction à variation régulière.
-\\
-\\
-En réécrivant l'expression (2.3) avec cette convergence, on en déduit que la fonction limite est de la forme
+pour une certaine fonction positive $g(u)$.
+
+En reportant ces limites dans l'équation (3), on obtient :
 \[
-h_\gamma(u)= c\,\frac{u^\gamma-1}{\gamma},
+\lim_{x \to \infty} \frac{U(xuv) - U(x)}{a(x)} = h(v) \cdot g(u) + h(u),
 \]
-avec la convention \(h_0(u)=\ln u\).
-\\
-Ainsi, nous concluons que
+ce qui donne :
 \[
-h_\gamma(u)=\frac{u^\gamma-1}{\gamma} \quad \text{(avec \(h_0(u)=\ln u\))},
+h(uv) = h(v) \cdot g(u) + h(u).
+\tag{4}
 \]
-\end{proof}
+
+Cette relation impose une structure fonctionnelle entre $h$ et $g$. Pour que l'équation (4) soit cohérente pour tout $u, v > 0$, la fonction $g$ doit satisfaire l'équation fonctionnelle multiplicative :
+\[
+g(uv) = g(u) g(v),
+\]
+connue sous le nom d’équation de Cauchy multiplicative.
+
+Les solutions mesurables et positives de cette équation sont les fonctions puissance, soit :
+\[
+g(u) = u^{\gamma} \quad \text{pour un certain } \gamma \in \mathbb{R}.
+\]
+
+On en déduit que $a(x)$ est une fonction à \textit{variation régulière} d’indice $\gamma$, ce qui signifie :
+\[
+\frac{a(xu)}{a(x)} \longrightarrow u^\gamma \quad \text{quand } x \to \infty.
+\]
+
+En remplaçant cette forme de $g(u)$ dans l’équation (4), on obtient :
+\[
+h(uv) = h(v) \cdot u^\gamma + h(u).
+\]
+
+Cette équation admet comme solution (admis) (à une constante multiplicative près) :
+\[
+h(u) = c \cdot \frac{u^\gamma - 1}{\gamma}, \quad \text{pour } \gamma \neq 0.
+\]
+Dans le cas limite $\gamma = 0$, par passage à la limite, on retrouve :
+\[
+h_0(u) = c \cdot \log u.
+\]
+
+On adopte la convention $h_0(u) = \log u$ en fixant $c = 1$, ce qui permet de résumer :
+\[
+h_\gamma(u) = \frac{u^\gamma - 1}{\gamma}, \quad \text{avec } h_0(u) = \log u.
+\]
+
+\end{proof}	
 \subsection{Les lois limites}
 En reprenant $(3)$ et en utilisant ce qui précède, on obtient :
 \[
