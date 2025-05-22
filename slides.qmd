@@ -2,14 +2,16 @@
 title: "Étude des valeurs extrêmes univariées"
 author: "Damien Mariac, Wahel El Mazzouji, Fabian Condamy"
 date: "28/05/2025"
-format: revealjs
+format:
+  revealjs:        
+    incremental: true
 theme: solarized
 slide-number: true
 ---
 
 ## Introduction
 
-- Etudier des événements  : crues, canicules, krachs boursiers
+- Etudier des événements  : crues, canicules, krachs boursiers, météo ...
 - Statistiques classiques inadaptées, au lieu de partir de simples variables aléatoires, on part du maximum : $M_n = \max(X_1, ..., X_n)$
 - Trouver les lois limites de ce maximum pour modéliser
 
@@ -17,15 +19,17 @@ slide-number: true
 
 ## Le théorème
 
+::: {.incremental}
 - Reformulation du théorème central limite dans notre cadre : théorème de Fisher-Tippett-Gnedenko.
 
-L'idée est de prendre deux suites $(a_n)$ et $(b_n)$ avec $a_n>0$ pour tout $n$, et alors on a, sous de bonnes conditions : 
+- L'idée est de prendre deux suites $(a_n)$ et $(b_n)$ avec $a_n>0$ pour tout $n$, et alors on a : 
 $$
 \mathbb{P}\left( \frac{M_n - b_n}{a_n} \leq x \right)
 \xrightarrow[n \to \infty]{} G(x)
 $$
 
-G représente ici une distribution limite possible qui dépend de l'indice de queue $\gamma$.
+- G représente ici une distribution limite possible qui dépend de l'indice de queue $\gamma$.
+:::
 
 ## Détermination des suites
 
@@ -99,7 +103,6 @@ $$
 - Mais ne fonctionne que pour les $\gamma > 0$
 - Biaisé
 - Sa formule :
-
 $$
 \hat{\gamma}_h = \frac{1}{k-1} \sum_{i=1}^{k-1} \log(X_{n-i+1, n}) - \log(X_{n - k + 1, n})
 $$
@@ -129,7 +132,6 @@ $$
 ## Dépassement de seuil
 
 - On ne conserve que les observations excédant un certain seuil u. Lorsque celui-ci est assez élevée, alors F suit une loi de Pareto généralisée :
-
 $$
 G_{\gamma, \beta}(y) =
 \begin{cases}

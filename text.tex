@@ -82,7 +82,7 @@ En effet, si on note $F_{M_n}$ la fonction de repartition de $M_n$, et $F$ la fo
 \forall t \in \mathbb{R} , \quad F_{M_n}(t) = \mathbb{P}(M_n \le t) = \mathbb{P}(X_1 \le t,...,X_n \le t)=\mathbb{P}(X_1 \le t)^n = F^n(t) 
 \]
 \\
-On remarque que, pour tout $t<t^*$ où $t^*$ est la borne supérieure du support des $X_i$, on a $F(t)<1$, 
+On déduit de cette forme que pour $t<t^*$ où $t^*$ est la borne supérieure du support des $X_i$, on a $F(t)<1$, 
 \[
 \text{et donc} \; \; F^n(t) \xrightarrow[n\to +\infty]{} 0,
 \]
@@ -90,7 +90,7 @@ et dans le cas ou t est supérieur ou égal à $t^*$,
 \[
 \text{, on a} \; \; F^n(t) \xrightarrow[n\to +\infty]{} 1.
 \]
-L'idée derrière la théorie des valeurs extremes est d'introduire deux suites ($b_n$) et ($a_n$) (avec $a_n > $  0 pour tout $n$) afin d'avoir une limite non dégénérée pour le maximum d'un échatillon en posant $\frac{M_n - b_n}{a_n}$. 
+L'idée derrière la théorie des valeurs extremes est d'introduire deux suites ($b_n$) et ($a_n$) (avec $a_n > $  0 pour tout $n$) afin d'avoir une limite non dégénérée pour le maximum en posant $\frac{M_n - b_n}{a_n}$. 
 \\
 On sait que la fonction de répartition caractérise la loi, donc il nous suffit d'étudier la fonction $G$ définie pour tout $t$ dans le support des $X_i$ comme :
 
@@ -112,7 +112,7 @@ Alors $Y_n \xrightarrow{\mathcal{L} } Y$ si et seulement si pour toute fonction 
 \mathbb{E}[z(Y_n)] \xrightarrow[n\to +\infty]{} \mathbb{E}[z(Y)].
 \]
 \end{definition}
-\noindent On note alors $Y_n = \frac{M_n -b_n}{a_n}$ et sont ésperance devient : 
+\noindent Dans notre context, on décide de poser $Y_n = \frac{M_n -b_n}{a_n}$ et sont ésperance devient : 
 \[
 \mathbb{E} \left[ z \left( \frac{M_n -b_n}{a_n} \right) \right] = \int_{-\infty}^{\infty} z \left( \frac{x-b_n}{a_n} \right) \: n \:  F^{n-1} (x)dF(x)
 \]
@@ -153,7 +153,7 @@ Ce changement de variable nous conduit à exprimer l’espérance sous une nouve
 
 \subsection{Le paramètre $b_n$}
 
-En reprenant les hypothèse de base, on remarque que pour tout $t\in\mathbb R$,
+En reprenant les hypothèses, on remarque que pour tout $t\in\mathbb R$,
 \[
 \mathbb{P}  \Bigl(\frac{M_n - b_n}{a_n} \le t\Bigr)
 \;=\;
@@ -191,11 +191,11 @@ Le cas particulier de cette convergence pour $t=0$ et en passant à l'opposé do
 n\bigl(F(b_n)-1\bigr)\;\xrightarrow[n\to\infty]{}\; \ln G(0) < 0
 \quad(\text{puisque }G(0)\in[0,1]).
 \]
-Comme on souhaite une limite non-dégénérée et non nulle, on impose
+Comme on souhaite une limite non-dégénérée et non nulle, on impose :
 \[
 n\bigl[1 - F(b_n)\bigr] \;=\; 1.
 \]
-Il vient alors en composant par la fonction quantile,
+Il vient alors en composant par la fonction quantile :
 \[
 F(b_n)=1-\frac1n
 \quad\Longleftrightarrow\quad
@@ -421,7 +421,23 @@ On retrouve ici une queue à décroissance exponentielle, ce qui est caractéris
 Il s'agit d'un cas intermédiaire entre les deux cas précédents.
 \\
 \subsection{Résumé}
-Les lois limites sont les suivantes :
+On observe alors qu’apparaît un \textbf{modèle paramétrique} : la loi limite des maxima s’exprime selon une famille de lois qu’on appelle \emph{GEV} (Generalized Extreme Value), paramétrée par trois paramètres :
+
+\begin{itemize}
+  \item un paramètre de position $\mu$,
+  \item un paramètre d’échelle $\sigma > 0$,
+  \item un paramètre de forme $\gamma$.
+\end{itemize}
+
+Ils proviennent des suites de normalisation $a_n > 0$ et $b_n$ introduites dans l’étude de la variable normalisée \(\frac{M_n - b_n}{a_n}\). 
+
+On pose alors $\mu = b_n \; \text{et} \; \sigma = a_n$, ce qui permet de réécrire la variable réduite \(u = \frac{x - \mu}{\sigma}\). Ainsi, la forme générale de la fonction de répartition limite devient :
+\[
+G_{\mu, \sigma, \gamma}(x) = \exp\left\{-\left[1 + \gamma \left(\frac{x - \mu}{\sigma} \right)\right]^{-1/\gamma} \right\}.
+\]
+
+Ce modèle permet donc d’ajuster statistiquement la loi des maxima à partir des données, en estimant directement ces trois paramètres. Les lois limites portent un nom différent selon la valeur du paramètre \(\gamma\).
+Elles sont les suivantes :
 \\
 \begin{itemize}
     \item Si \(\gamma>0\) (loi de Fréchet) :
@@ -439,22 +455,6 @@ Les lois limites sont les suivantes :
     G_\gamma(u)=\exp\left\{-\left(1+\gamma u\right)^{-1/\gamma}\right\}, \quad u < -\frac{1}{\gamma}.
     \]
 \end{itemize}
-On observe alors qu’apparaît un \textbf{modèle paramétrique} : la loi limite des maxima s’exprime selon une famille de lois qu’on appelle \emph{GEV} (Generalized Extreme Value), paramétrée par trois paramètres :
-
-\begin{itemize}
-  \item un paramètre de position $\mu$,
-  \item un paramètre d’échelle $\sigma > 0$,
-  \item un paramètre de forme $\gamma$.
-\end{itemize}
-
-Ils proviennent des suites de normalisation $a_n > 0$ et $b_n$ introduites dans l’étude de la variable normalisée \(\frac{M_n - b_n}{a_n}\). 
-
-On pose alors $\mu = b_n \; \text{et} \; \sigma = a_n$, ce qui permet de réécrire la variable réduite \(u = \frac{x - \mu}{\sigma}\). Ainsi, la forme générale de la fonction de répartition limite devient :
-\[
-G_{\mu, \sigma, \gamma}(x) = \exp\left\{-\left[1 + \gamma \left(\frac{x - \mu}{\sigma} \right)\right]^{-1/\gamma} \right\}.
-\]
-
-Ce modèle permet donc d’ajuster statistiquement la loi des maxima à partir des données, en estimant directement ces trois paramètres.
 
 
 \newpage
@@ -978,7 +978,7 @@ On retrouve donc une loi exponentielle, qui correspond à une GPD avec \(\gamma 
 Le résultat central qui justifie l’utilisation de la GPD pour modéliser les excès est le suivant :
 
 \begin{quote}
-Soit \(F\) une fonction de répartition appartenant au domaine d’attraction d’une loi de valeur extrême \(\mathcal{H}_\gamma\). Alors, lorsque \(u \to x_F\), il existe une fonction \(\beta(u)\) telle que :
+Soit \(F\) une fonction de répartition appartenant au domaine d’attraction d’une loi de valeur extrême. Alors, lorsque \(u \to x_F\), il existe une fonction \(\beta(u)\) telle que :
 \[
 \sup_{0 \leq x \leq x_F - u} \left| F_u(x) - G_{\gamma, \beta(u)}(x) \right| \to 0.
 \]
@@ -994,7 +994,7 @@ Cette propriété est essentielle en statistique des valeurs extrêmes, car elle
 
 Afin d'illustrer les méthodes d'estimation de l'indice de valeurs extrêmes, nous allons appliquer ces techniques sur des données réelles.
 Nous allons utiliser les données du package $ismev$ de R. Plus précisément celui de rain et de danish. Ils contienent respectivement les données de pluie journalière en Angleterre de 1914 à 1962 et 
-les grands sinistres incendie survenus au Danemark entre 1980 et 1990 (Données issue du package \textbf{ismev} de R).
+les montants des grands sinistres d'incendie survenus au Danemark entre 1980 et 1990 (Données issue du package \textbf{ismev} de R).
 \\
 \\
 L'objectif sur ces données est de savoir s'il existe (et le cas échéant de le calculer) une valeur tel qu'à l'avenir on la dépasse rarement tout en restant raisonable. C'est exactement ce que fait le quantile de retour.
@@ -1023,21 +1023,33 @@ Pour les sinistres, on remarque que la majorité des montants sont de faible int
 
 Les données étant journalières, on va choisir des blocs de taille 365, comme les données vont de 1914 à 1962, on se retrouve avec 48 blocs de 365 jours.
 \\
-Via le package \textbf{evd}, on obtient via une estimations par maximum de vraisemblance les paramètres suivants :
+Via le package \textbf{evd}, on obtient via une estimations par maximum de vraisemblance les paramètres suivants : $\mu = 40,8$, $\sigma = 9,73$ et $\gamma = 0,107$.
 \\
-$\mu = 40,8$, $\sigma = 9,73$ et $\gamma = 0,107$.
-\\
-L'estimation des paramètres sont calculées par maximum de vraisemblance via l'algorithme de Nelder-Mead.
+L'estimation des paramètres sont calculées par maximum de vraisemblance.
 \\
 \\
 On suppose alors que $\gamma \geq 0$, donc il n’existe pas de valeur maximale finie : la probabilité de très gros maxima décroît mais n'est pas finie, selon un comportement polynomial ou exponentiel ce qui est embettant dans le cas pratique surtout quand on cherche des seuils rarement atteints.
+\\
+\\
+On calcule alors le quantile de retour pour $T=100$ afin d'avoir une valeur de pluie qui ne devrait pas être dépassée plus d'une fois tous les 100 ans.
+\\
+\\
+On obtient alors : $z_t = 98,636$. Autrement dit, une fois tous les 100 ans, on peut s'attendre à avoir une pluie de plus de 98.636 mm.
+
+
+
+
 \subsubsection{Application sur les données danish}
 On applique la même méthode sur les données de sinistres mais avec une approche légèrement différente puisque les données ne sont pas dans le même format. En effet, on ne dispose pas de données journalières mais des sinistres enregistré sur une période de 10 ans. C'est à dire qu'il existe des jours sans sinistres qui ne sont pas comptabilisés.
 On regroupe alors les sinistres par mois et on prend le montant de sinistre le plus élevé. On se retrouve alors avec des blocs de taille irrégulière.
 \\
 Après analyse numérique par maximum de vraisemblance, on obtient les paramètres suivants : $\mu = 8,376$, $\sigma = 5,971$ et $\gamma = 0,623$.
 \\
-On possède une valeur de gamma positive ce qui renforce l'hypothèse d'une queue lourde pour la distribution du max.
+\\
+On peut alors calculer le quantile de retour pour $T=50$ afin d'avoir une valeur de sinistre qui ne devrait pas être dépassée plus d'une fois tous les 50 ans.
+\\
+\\
+On obtient alors : $z_t = 515,22$. Autrement dit, une fois tous les 50 ans, on peut s'attendre à avoir un sinistre depassant plus de $515,22$.
 
 \subsubsection{Synthèse sur la méthode des maxima en bloc}
 
@@ -1050,13 +1062,11 @@ Par ailleurs, le choix de $k$ est important car il faut choisir un nombre de blo
 
 \subsubsection{Application sur les données de Rain}
 
-On a calculé la valeur de $\gamma$ par la méthode des maxima en bloc et obtenu une valeur de $\gamma > 0 $ mais proche de 0. On souhaite s'assurer du signe de $\gamma$
-en procédant par la méthode de dépassement de seuil.
+On a calculé la valeur de $\gamma$ par la méthode des maxima en bloc et obtenu une valeur de $\gamma > 0 $ mais proche de 0. On souhaite s'assurer de l'efficacité des deux méthodes $\gamma$
+en procédant cette fois par la méthode de dépassement de seuil.
 \\
-On décide de prendre un seuil correspondant au quantile d’ordre 0,95.
+On décide de prendre un seuil correspondant au quantile d’ordre 0,95 et on obtient numériquement : $\gamma  = -0.027$.
 \\
-On obtient numériquement : 
-$\gamma  = -0.027$.
 \\
 On a obtenu dans la méthode des maxima en bloc une valeur de $\gamma$ postive mais proche de 0,
 tandis qu'avec la méthode de dépassement de seuil, on obtient une valeur négative mais tout aussi proche de 0.
@@ -1072,19 +1082,13 @@ On observe qu'il y'a une stabilisation de l'estimateur de Pickands pour $k$ entr
 \\
 Étant donnée qu'on a obtenu plusieurs valeurs de $\gamma$ positives et négatives, on pourrait procéder à un test de significativité pour savoir si la valeur de $\gamma$ est différente de 0. Nous omettons cette partie et supposons que $\gamma$ est égal à 0. C'est à dire que le maximum de pluie suit une loi de Gumbel.
 \\
-On peut néamoins donner une valeur "seuil" qui nous assurerait que la probabilité de dépasser cette valeur est très faible. 
-On calcule alors le quantile de retour pour $T=100$ afin d'avoir une valeur de pluie qui ne devrait pas être dépassée plus d'une fois tous les 100 ans.
-\\
-\\
-Dans notre cas, on obtient alors : $z_t = 98,636$. Autrement dit, une fois tous les 100 ans, on peut s'attendre à avoir une pluie de plus de 98.636 mm.
-
 \subsubsection{Application sur les données danish}
 
 On prend un seuil correspondant au quantile d’ordre 0,95. Apres calcul numérique, on obtient $\gamma = 0.492$.
 \\
 On a obtenue une valeur de $\gamma$ positive ce qui renforce l'hypothèse d'une queue lourde pour la distribution du max, ce qui est cohérent avec la méthode des maxima en bloc. 
 \\
-Avec l'estimateur de Pickands, on observe une stabilisation de l'estimateur pour $k$ entre 70 et 110. On obtient alors apres estimation numérique une valeur de $\gamma = 0.938$.
+Avec l'estimateur de Pickands, on observe une stabilisation de l'estimateur pour $k$ entre 70 et 110. On obtient alors apres estimation numérique une valeur de $\gamma = 0.938$. Un résultat assez haut qui est due à l'instabilité de l'estimateur de Pickands. 
 
 \begin{center}
 	\includegraphics[scale=0.65]{./images/pickandsdansih.png} 
@@ -1103,10 +1107,6 @@ On trace alors la courbe de l'estimateur de Hill en fonction de $k$.
 \end{center}
 
 On observe alors un plateau pour k entre 30 et 45. On obtient alors apres estimation numérique une valeur de $\gamma = 0,66$.
-\\
-On peut alors calculer le quantile de retour pour $T=50$ afin d'avoir une valeur de sinistre qui ne devrait pas être dépassée plus d'une fois tous les 50 ans.
-\\
-On obtient alors : $z_t = 515,22$. Autrement dit, une fois tous les 50 ans, on peut s'attendre à avoir un sinistre depassant plus de $515,22$.
 
 \subsubsection{Synthèse sur la méthode de dépassement de seuil}
 Cette méthode à le bont goût d'exploiter toutes les valeurs supérieures à un seuil, pas seulement un maximum par bloc. Elle utilise donc plus de données.
@@ -1119,11 +1119,10 @@ Dans ce projet, nous avons exploré la \textbf{théorie des valeurs extrêmes}, 
 La démonstration de la convergence des maxima d’échantillons vers une loi de valeurs extrêmes a été au cœur de notre étude. Cette loi dépend de trois paramètres : un paramètre de localisation $\mu$, un paramètre d’échelle $\sigma > 0$, et un paramètre de forme $\gamma$, qui gouverne le comportement de la queue.
 \\
 Ce paramètre de forme $\gamma$ est le plus important à estimer en pratique. En effet, il permet de connaître le comportement de la queue de la distribution.
-L'estimation de ce paramètre à prit une bonne partie de notre projet. Nous avons utilisé :
-\begin{itemize}
-    \item des méthodes \textbf{non paramétriques} : les estimateurs de \textbf{Hill} (adapté aux queues lourdes, $\gamma > 0$) et de \textbf{Pickands}, permettant une estimation robuste de $\gamma$ à partir des ordres statistiques des excès,
-    \item et des méthodes \textbf{paramétriques} via le maximum de vraisemblance, en ajustant les lois GEV et GPD avec les fonctions \texttt{fgev()} et \texttt{gpd.fit()} sous \textsf{R}.
-\end{itemize}
+L'estimation de ce paramètre à prit une bonne partie de notre projet. Nous avons utilisé
+des méthodes \textbf{non paramétriques} : les estimateurs de \textbf{Hill} (adapté aux queues lourdes, $\gamma > 0$) et de \textbf{Pickands}, permettant une estimation robuste de $\gamma$ à partir des ordres statistiques des excès,
+
+
 
 \medskip
 
@@ -1131,7 +1130,7 @@ Nous avons appliqué ces méthodes à plusieurs jeux de données réelles, comme
 
 \medskip
 
-Nous aurions pu approfondir notre étude en réalisant des tests de significativité pour déterminer le signe de $\gamma$, mais nous avons choisi de nous concentrer sur l'estimation et l'interprétation des résultats par souci de temps.
+Nous aurions pu approfondir notre étude en réalisant des tests de significativité pour déterminer le signe de $\gamma$ comme par exemple le test de van Montfort et Otten, mais nous avons choisi de nous concentrer sur l'estimation et l'interprétation des résultats par souci de temps.
 
 \medskip
 

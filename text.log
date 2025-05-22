@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.1.28)  16 MAY 2025 15:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.1.28)  22 MAY 2025 16:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -428,12 +428,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 419--423
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 424--426
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 439--442
 
  []
 
-[7] [8]
+[8]
 <./images/Max_Uniforme.png, id=46, 460.72125pt x 281.55188pt>
 File: ./images/Max_Uniforme.png Graphic file (type png)
 <use ./images/Max_Uniforme.png>
@@ -609,78 +609,101 @@ File: ./images/sinistres.png Graphic file (type png)
 Package pdftex.def Info: ./images/sinistres.png  used on input line 1017.
 (pdftex.def)             Requested size: 288.91139pt x 185.76208pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1024--1034
+Underfull \hbox (badness 10000) in paragraph at lines 1024--1038
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1024--1038
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1024--1038
 
  []
 
 [22 <./images/rainhisto.png (PNG copy)> <./images/sinistres.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 1043--1053
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1043--1053
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1065--1075
+
+ []
+
 <./images/pickandsrain.png, id=121, 465.99094pt x 299.61937pt>
 File: ./images/pickandsrain.png Graphic file (type png)
 <use ./images/pickandsrain.png>
-Package pdftex.def Info: ./images/pickandsrain.png  used on input line 1067.
+Package pdftex.def Info: ./images/pickandsrain.png  used on input line 1077.
 (pdftex.def)             Requested size: 265.61758pt x 170.7848pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1070--1080
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1070--1080
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 1080--1085
 
  []
 
-[23 <./images/pickandsrain.png (PNG copy)>]
+
+Underfull \hbox (badness 10000) in paragraph at lines 1080--1085
+
+ []
+
 <./images/pickandsdansih.png, id=125, 465.99094pt x 299.61937pt>
 File: ./images/pickandsdansih.png Graphic file (type png)
 <use ./images/pickandsdansih.png>
-Package pdftex.def Info: ./images/pickandsdansih.png  used on input line 1090.
+Package pdftex.def Info: ./images/pickandsdansih.png  used on input line 1094.
 (pdftex.def)             Requested size: 302.89052pt x 194.75027pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1096--1100
+Underfull \hbox (badness 10000) in paragraph at lines 1100--1104
 
  []
 
 <./images/danishsad.png, id=126, 465.99094pt x 299.61937pt>
 File: ./images/danishsad.png Graphic file (type png)
 <use ./images/danishsad.png>
-Package pdftex.def Info: ./images/danishsad.png  used on input line 1102.
+Package pdftex.def Info: ./images/danishsad.png  used on input line 1106.
 (pdftex.def)             Requested size: 302.89052pt x 194.75027pt.
-[24 <./images/pickandsdansih.png (PNG copy)> <./images/danishsad.png (PNG copy)>] [25]
-Underfull \hbox (badness 10000) in paragraph at lines 1145--1146
+[24 <./images/pickandsrain.png (PNG copy)> <./images/pickandsdansih.png (PNG copy)>] [25 <./images/danishsad.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 1144--1145
 
  []
 
-<./images/MB_Uniforme.png, id=136, 646.66594pt x 466.74374pt>
+<./images/MB_Uniforme.png, id=135, 646.66594pt x 466.74374pt>
 File: ./images/MB_Uniforme.png Graphic file (type png)
 <use ./images/MB_Uniforme.png>
-Package pdftex.def Info: ./images/MB_Uniforme.png  used on input line 1150.
+Package pdftex.def Info: ./images/MB_Uniforme.png  used on input line 1149.
 (pdftex.def)             Requested size: 388.00255pt x 280.0484pt.
-<./images/MB_Normale.png, id=137, 646.66594pt x 466.74374pt>
+<./images/MB_Normale.png, id=136, 646.66594pt x 466.74374pt>
 File: ./images/MB_Normale.png Graphic file (type png)
 <use ./images/MB_Normale.png>
-Package pdftex.def Info: ./images/MB_Normale.png  used on input line 1154.
+Package pdftex.def Info: ./images/MB_Normale.png  used on input line 1153.
 (pdftex.def)             Requested size: 452.66307pt x 326.71838pt.
 [26 <./images/MB_Uniforme.png>]
-<./images/MB_Cauchy.png, id=142, 646.66594pt x 466.74374pt>
+<./images/MB_Cauchy.png, id=141, 646.66594pt x 466.74374pt>
 File: ./images/MB_Cauchy.png Graphic file (type png)
 <use ./images/MB_Cauchy.png>
-Package pdftex.def Info: ./images/MB_Cauchy.png  used on input line 1158.
+Package pdftex.def Info: ./images/MB_Cauchy.png  used on input line 1157.
 (pdftex.def)             Requested size: 452.66307pt x 326.71838pt.
-<./images/DS_Uniforme.png, id=143, 646.66594pt x 466.74374pt>
+<./images/DS_Uniforme.png, id=142, 646.66594pt x 466.74374pt>
 File: ./images/DS_Uniforme.png Graphic file (type png)
 <use ./images/DS_Uniforme.png>
-Package pdftex.def Info: ./images/DS_Uniforme.png  used on input line 1164.
+Package pdftex.def Info: ./images/DS_Uniforme.png  used on input line 1163.
 (pdftex.def)             Requested size: 452.66307pt x 326.71838pt.
  [27 <./images/MB_Normale.png> <./images/MB_Cauchy.png>]
-<./images/DS_Normale.png, id=149, 646.66594pt x 466.74374pt>
+<./images/DS_Normale.png, id=148, 646.66594pt x 466.74374pt>
 File: ./images/DS_Normale.png Graphic file (type png)
 <use ./images/DS_Normale.png>
-Package pdftex.def Info: ./images/DS_Normale.png  used on input line 1168.
+Package pdftex.def Info: ./images/DS_Normale.png  used on input line 1167.
 (pdftex.def)             Requested size: 452.66307pt x 326.71838pt.
-<./images/DS_Cauchy.png, id=150, 646.66594pt x 466.74374pt>
+<./images/DS_Cauchy.png, id=149, 646.66594pt x 466.74374pt>
 File: ./images/DS_Cauchy.png Graphic file (type png)
 <use ./images/DS_Cauchy.png>
-Package pdftex.def Info: ./images/DS_Cauchy.png  used on input line 1172.
+Package pdftex.def Info: ./images/DS_Cauchy.png  used on input line 1171.
 (pdftex.def)             Requested size: 452.66307pt x 326.71838pt.
  [28 <./images/DS_Uniforme.png> <./images/DS_Normale.png>] [29 <./images/DS_Cauchy.png>] [30] (./text.aux)
  ***********
@@ -689,18 +712,18 @@ L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 7297 strings out of 474222
- 114713 string characters out of 5748733
+ 7295 strings out of 474222
+ 114692 string characters out of 5748733
  1942975 words of memory out of 5000000
- 29466 multiletter control sequences out of 15000+600000
- 569898 words of font info for 81 fonts, out of 8000000 for 9000
+ 29465 multiletter control sequences out of 15000+600000
+ 569593 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,14n,65p,813b,428s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on text.pdf (30 pages, 755396 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on text.pdf (30 pages, 745207 bytes).
 PDF statistics:
- 263 PDF objects out of 1000 (max. 8388607)
- 140 compressed objects within 2 object streams
+ 258 PDF objects out of 1000 (max. 8388607)
+ 137 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  116 words of extra memory for PDF output out of 10000 (max. 10000000)
 
