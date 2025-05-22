@@ -1,0 +1,157 @@
+---
+title: "Étude des valeurs extrêmes univariées"
+author: "Damien Mariac, Wahel El Mazzouji, Fabian Condamy"
+date: "28/05/2025"
+format: revealjs
+theme: solarized
+slide-number: true
+---
+
+## Introduction
+
+- Etudier des événements  : crues, canicules, krachs boursiers
+- Statistiques classiques inadaptées, au lieu de partir de simples variables aléatoires, on part du maximum : $M_n = \max(X_1, ..., X_n)$
+- Trouver les lois limites de ce maximum pour modéliser
+
+# Le résultat central
+
+## Le théorème
+
+- Reformulation du théorème central limite dans notre cadre : théorème de Fisher-Tippett-Gnedenko.
+
+L'idée est de prendre deux suites $(a_n)$ et $(b_n)$ avec $a_n>0$ pour tout $n$, et alors on a, sous de bonnes conditions : 
+$$
+\mathbb{P}\left( \frac{M_n - b_n}{a_n} \leq x \right)
+\xrightarrow[n \to \infty]{} G(x)
+$$
+
+G représente ici une distribution limite possible qui dépend de l'indice de queue $\gamma$.
+
+## Détermination des suites
+
+- $F$ la fonction de répartition des $X_i$ est alors dite dans le domaine d'attraction de G.
+- Pour déterminer les suites $a_n$ et $b_n$, on utilise des outils comme la méthode de la fonction muette et la fonction quantile $Q$ définie par :
+$$
+Q(p) = F^{-1}(p) = \inf\{ x \in \mathbb{R} : F(x) \geq p\}    
+$$
+
+- On peut alors démontrer que : 
+$$
+b_n = Q(1-\frac{1}{n})
+$$ 
+
+- Et $a_n$ se déduit ensuite de ceci.
+
+## Les lois limites
+
+- On a la disjonction de cas :
+ - $\gamma > 0$ : queue lourde, loi de Fréchet
+ - $\gamma = 0$ : queue légère, loi de Gumbel
+ - $\gamma < 0$ : queue bornée, loi de Weibull
+
+- On peut généraliser ces 3 lois sous la forme suivante dite GEV : 
+$$
+G_{\gamma}(x) = \exp (-[1 + \gamma u]^{-\frac{1}{\gamma}})
+$$
+
+
+## Quelques simulations
+
+
+:::{.columns}
+::: {.column width="50%"}
+![](images/image1.png){width=100%}
+:::
+
+::: {.column width="50%"}
+![](images/image2.png){width=100%}
+:::
+:::
+
+
+# Estimation de l'indice de queue
+
+
+## Motivations 
+
+- Objectif : estimer $\gamma$ pour pouvoir déterminer la loi limite parmi les 3 possibles
+- Deux méthodes classiques :
+  - Pickands
+  - Hill
+
+---
+
+## Estimateur de Pickands
+
+- Basé sur les statistiques d'ordre
+- Robuste mais sensible à $k$
+- Fonctionne pour tous les domaines d’attraction
+- Sa formule :
+$$ 
+\hat{\gamma}_p = \frac{1}{\ln(2)} \ln(\frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-2k+1, n} - X_{n-4k+1, n}})
+$$
+
+---
+
+## Estimateur de Hill
+
+- Plus performant que Pickands pour les queues lourdes
+- Mais ne fonctionne que pour les $\gamma > 0$
+- Biaisé
+- Sa formule :
+
+$$
+\hat{\gamma}_h = \frac{1}{k-1} \sum_{i=1}^{k-1} \log(X_{n-i+1, n}) - \log(X_{n - k + 1, n})
+$$
+
+---
+
+## Simulations pour Pickands
+
+
+---
+
+## Simulations pour Hill
+
+
+# Méthodes de simulations
+
+
+## Maxima par blocs
+
+- Principe : division des données en blocs pour ensuite estimer la loi des maxima qui sera une des 3 lois vues auparavant d'après le théorème de Fisher-Tippett-Gnedenko
+- Cette méthode est robuste et facile à implémenter.
+- Elle nécessite néanmoins de prendre des précautions quant à la valeur du nombre de blocs.
+- On peut alors déterminer de nouveaux estimateurs PWM.
+
+---
+
+## Dépassement de seuil
+
+- On ne conserve que les observations excédant un certain seuil u. Lorsque celui-ci est assez élevée, alors F suit une loi de Pareto généralisée :
+
+$$
+G_{\gamma, \beta}(y) =
+\begin{cases}
+1 - \left(1 + \frac{\gamma y}{\beta} \right)^{-1/\gamma}, & \text{si } \gamma \ne 0, \\
+1 - \exp\left( -\frac{y}{\beta} \right), & \text{si } \gamma = 0.
+\end{cases}
+$$
+
+
+- Le seuil u est néanmoins difficile à déterminer.
+
+
+
+# Application à des données réelles
+
+## Données de pluie
+
+---
+
+## Sinistres danois
+
+# Conclusion
+
+## Conclusion
+
