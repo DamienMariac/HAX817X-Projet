@@ -134,8 +134,7 @@ Q(p) \;=\; F^{-1}(p)
 \quad p\in[0,1].
 \]
 
-\noindent Afin de faciliter l’analyse asymptotique et de réécrire l’intégrale sous une forme plus exploitable, nous introduisons la fonction quantile $Q$.
-(\textit{Statistics of Extremes, Jan Beirlant 2004}): 
+\noindent On pose alors le changement de variable issue de \textit{Statistics of Extremes, Jan Beirlant 2004}: 
 
 \[
 x = Q(1-\frac{1}{y}) = U(y) \; \; \; \; \; \; 
@@ -191,8 +190,7 @@ n(1 - F(a_n t + b_n)) \xrightarrow[n\to +\infty]{} - \ln (G(t))
 \\
 Le cas particulier de cette convergence pour $t=0$ et en passant à l'opposé donne :
 \[
-n\bigl(F(b_n)-1\bigr)\;\xrightarrow[n\to\infty]{}\; \ln G(0) < 0
-\quad(\text{puisque }G(0)\in[0,1]).
+n\bigl(F(b_n)-1\bigr)\;\xrightarrow[n\to\infty]{}\; \ln G(0)
 \]
 Comme on souhaite une limite non-dégénérée et non nulle, on impose :
 \[
@@ -208,7 +206,7 @@ b_n \;=\; Q\!\Bigl(1-\tfrac1n\Bigr)
  On obtient alors une forme explicite pour la suite $(b_n)$ qui est $U(n)$.
 
 \subsection{Le paramètre $a_n$}
-\noindent Une fois la suite $(b_n)$ fixée comme précédemment, nous devons maintenant déterminer la suite $(a_n)$. L’objectif est de trouver des
+\noindent Une fois la suite $(b_n)$ fixée comme précédemment, nous devons maintenant déterminer la suite $(a_n)$. Il n'existe pas de forme explicite à celle-ci. L’objectif est alors de trouver des
  conditions suffisantes sur la fonction de répartition $F$ pour garantir l’existence d’une loi limite non dégénérée de $\frac{M_n - b_n}{a_n}$.
 \\
 
@@ -458,15 +456,14 @@ Elles sont les suivantes :
     \]
 \end{itemize}
 
-
-\newpage
+\vspace{1cm}
 \section{Quelques exemples numériques}
 
 \noindent Voici maintenant quelques applications numériques sur des lois usuelles de ce que nous avons vu dans cette section. Pour chacune des représentations suivantes, nous avons réalisé $n=1000$ simulations de chaque loi puis ensuite effectué $N=10000$ réalisations du maximum de ces $n$ lois afin d'avoir une précision correcte. 
 
 \subsubsection{Loi uniforme}
 
-\noindent Pour une loi uniforme sur [0,1], on peut démontrer que le maximum suit une loi de Weibull de paramètres 1 et 1. \\
+Pour une loi uniforme sur [0,1], on peut démontrer que le maximum suit une loi de Weibull de paramètres 1 et 1. \\
 \noindent Soient \( U_1, U_2, \dots, U_n \) des variables aléatoires indépendantes et identiquement distribuées selon la loi uniforme sur \([0,1]\).
 
 \noindent On a, pour $ x \in [0,1]$ :
@@ -1012,12 +1009,11 @@ Nous allons utiliser les données du package $ismev$ de R. Plus précisément ce
 les montants des grands sinistres d'incendie survenus au Danemark entre 1980 et 1990 (Données issue du package \textbf{ismev} de R).
 \\
 \\
-L'objectif sur ces données est de savoir s'il existe (et le cas échéant de le calculer) une valeur tel qu'à l'avenir on la dépasse rarement tout en restant raisonable. C'est exactement ce que fait le quantile de retour.
+L'objectif sur ces données est de savoir s'il existe et le cas échéant de le calculer, une valeur tel qu'à l'avenir on la dépasse rarement tout en restant raisonable. C'est exactement ce que fait le quantile de retour.
 \\
 \\
 Concernant les données de pluie, on dispose de $17531$ données qui prennent des valeurs entre $0$ et $86,6$. On observe un moyenne de $3,476$ et une médiane de $0,5$.
-
-
+\\
 On remarque de plus que les données sont fortement concentrées autour de 0.
 Il est alors raisonnable de penser qu'après estimation, on va obtenir une valeur de gamma positive ou nulle. En effet, il n'apparait pas de cassure dans la distribution des données.
 De plus, les données prennent des valeurs grandes mais perdent rapidement en densité pour celle-ci. Ce qui suggèrerait une valeur de gamma proche de $0$ et positive.
