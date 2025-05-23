@@ -486,7 +486,7 @@ P(M_n \leq 1 - y/n) = (1 - y/n)^n.
 \noindent De plus, on a: $(1 - y/n)^n \xrightarrow[n \to +\infty]{} e^{-y} $ donc $ P(M_n \leq 1 - y/n) \xrightarrow[n \to +\infty]{} e^{-y} $.
 
 
-\noindent Or, par définition, la loi de Weibull(1,1) a pour fonction de répartition : $ P(Y \leq y) = 1 - e^{-y}, \quad y > 0. $
+\noindent Or, par définition, la loi de Weibull(1,1) a pour fonction de répartition : $ P(Y \leq y) = 1 - e^{-y} \text{ pour } y > 0. $
 
 \noindent Ainsi, on a donc montré que :
 
@@ -499,7 +499,7 @@ P(n(1 - M_n) \leq y) \to P(Y \leq y) = 1 - e^{-y},
 \[
 Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \text{Weibull}(1,1)
 \] 
-\noindent Ainsi, on prendra ici $a_n$ = $\frac{1}{n}$ et $b_n$ = 1. \\
+\noindent Donc, $a_n$ = $\frac{1}{n}$ et $b_n$ = 1 sont des paramètres satisfaisants. \\
 
 \noindent Une simulation sur Rstudio donne le graphe suivant :
 
@@ -556,13 +556,14 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \text{Weibull}(1,1)
 
 \noindent Pour une loi de Cauchy, on sait que la fonction de répartition est donnée par $ F(x) = \frac{1}{2} + \frac{1}{\pi} \arctan(x) $. Donc, sa fonction de survie est $ \bar{F}(x) = 1 - F(x) = \frac{1}{2} - \frac{1}{\pi} \arctan(x) $. \\
 
-\noindent On va utiliser le développement asymptotique suivant, pour \( x \to +\infty \): $\arctan(x) = \frac{\pi}{2} - \frac{1}{x} + o\left(\frac{1}{x}\right) $. \\
+\noindent Pour \( x \to +\infty \), on a le développement asymptotique suivant : $\arctan(x) = \frac{\pi}{2} - \frac{1}{x} + o\left(\frac{1}{x}\right) $. \\
 
 \noindent Ainsi, on a $\bar{F}(x) \sim \frac{1}{\pi x} \quad \text{lorsque } x \to +\infty$. \\
+
 \noindent Et donc la loi du maximum \( M_n \) s’écrit alors : $ \mathbb{P}(M_n \leq x) = F(x)^n \xrightarrow[n \to +\infty]{} \left(1 - \frac{1}{\pi x}\right)^n $
 
 
-\noindent On cherche donc \( a_n > 0 \), \( b_n \) tels que : $ \mathbb{P}\left( \frac{M_n - b_n}{a_n} \leq z \right) \to \exp(-1/z) $ ce qui correspond à la fonction de répartition d'une loi de Fréchet de paramètre 1. \\
+\noindent On cherche donc \( a_n > 0 \), \( b_n \) tels que : $ \mathbb{P}\left( \frac{M_n - b_n}{a_n} \leq z \right) \xrightarrow[n \to +\infty]{} \exp(-1/z) $ \\
 
 \noindent Posons \( b_n = n \), \( a_n = \pi \). Il vient :
 
@@ -584,7 +585,7 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \text{Weibull}(1,1)
 	\includegraphics[scale=0.8]{./images/Max_Cauchy.png} 
 \end{center}
 
-\noindent Les valeurs extrêmes de la loi de Cauchy décroissent lentement, ce qui est caractéristique d'une loi à queue lourde. La simulation confirme donc que la loi limite est bien une loi de Fréchet comme nous l'avions vu théoriquement précédemment.
+\noindent Les valeurs extrêmes de la loi de Cauchy décroissent lentement, ce qui est caractéristique d'une loi à queue lourde. La simulation confirme donc que la loi limite est bien une loi de Fréchet comme nous l'avions vu théoriquement.
 
 \section{Méthodes d'estimation de l'indice de valeurs extrêmes}
 \noindent Dans cette section, nous cherchons à estimer le paramètre \(\gamma\) directement à partir des observations \(X_i\), sans nous limiter aux maxima \(M_n\), afin de tirer parti de l’ensemble des données.  
@@ -630,7 +631,7 @@ L’estimateur de Pickands est défini par :
 \]
 \end{definition}
 \medskip
-Cet estimateur repose sur le comportement asymptotique des grandes statistiques d’ordre. Plus précisément, sous l’hypothèse que la loi sous-jacente appartient au domaine d’attraction d’une loi extrême, la queue de la distribution peut être approchée localement par une fonction puissance. Ainsi, les rapports d’intervalles entre les grandes valeurs suivent une régularité qui dépend uniquement de l’indice de queue \(\gamma\). En prenant une combinaison logarithmique de ces rapports, on obtient une estimation directe de \(\gamma\).
+\noindent Cet estimateur repose sur le comportement asymptotique des grandes statistiques d’ordre. Plus précisément, sous l’hypothèse que la loi sous-jacente appartient au domaine d’attraction d’une loi extrême, la queue de la distribution peut être approchée localement par une fonction puissance. Ainsi, les rapports d’intervalles entre les grandes valeurs suivent une régularité qui dépend uniquement de l’indice de queue \(\gamma\). En prenant une combinaison logarithmique de ces rapports, on obtient une estimation directe de \(\gamma\).
 \medskip
 \begin{property}
 Si \((k_n)_{n \geq 1}\) est une suite intermédiaire, alors :
@@ -639,7 +640,7 @@ Si \((k_n)_{n \geq 1}\) est une suite intermédiaire, alors :
 \quad \text{lorsque } n \to \infty.
 \]
 \end{property}
-De plus, sous des hypothèses régulières, telles que l’appartenance de la loi sous-jacente au domaine d’attraction d’une loi de valeur extrême et la condition que la suite $(k_n)_{n \geq 1}$ soit intermédiaire, l’estimateur de Pickands est asymptotiquement normal :
+\noindent De plus, sous des hypothèses régulières, telles que l’appartenance de la loi sous-jacente au domaine d’attraction d’une loi de valeur extrême et la condition que la suite $(k_n)_{n \geq 1}$ soit intermédiaire, l’estimateur de Pickands est asymptotiquement normal :
 \[
 \sqrt{k} \left( \hat{\gamma}_{k,n} - \gamma \right) \xrightarrow{\mathcal{L}} \mathcal{N}(0, \sigma^2(\gamma))
 \]
@@ -649,11 +650,11 @@ où la variance asymptotique est donnée par :
 \]
 
 \medskip
-Cette formule théorique permet de construire des intervalles de confiance pour l’estimation de \(\gamma\), bien qu’en pratique la variance soit souvent estimée par simulation.
+\noindent Cette formule théorique permet de construire des intervalles de confiance pour l’estimation de \(\gamma\), bien qu’en pratique la variance soit souvent estimée par simulation.
 
 \subsubsection{Construction de l'estimateur de Pickands}
 
-Afin de construire l'estimateur de Pickands, nous allons reprendre la proposition (2.3). Pour \(x,y > 0\) et \(y \neq 1\), la proposition est équivalente à :
+\noindent Afin de construire l'estimateur de Pickands, nous allons reprendre la proposition (2.3). Pour \(x,y > 0\) et \(y \neq 1\), la proposition est équivalente à :
 \[
 \lim_{t \to 0} \frac{U(tx) - U(t)}{U(ty) - U(t)} = 
 \begin{cases} 
@@ -677,7 +678,7 @@ Ce résultat généralise un fait fondamental en probabilité selon lequel, si \
 \\
 \noindent \textbf{Construction de l'estimateur de Pickands :}
 
-Par la proposition précédente, pour $\gamma \in \mathbb{R}$ on a avec le choix $t = 2s$, $x = 2$ et $y = \frac{1}{2}$,
+\noindent Par la proposition précédente, pour $\gamma \in \mathbb{R}$ on a avec le choix $t = 2s$, $x = 2$ et $y = \frac{1}{2}$,
 \[
 \lim_{t \to \infty} \frac{U(t) - U(t/2)}{U(t/2) - U(t/4)} = 2^{\gamma}.
 \]
@@ -694,65 +695,66 @@ Soit $k_n,$ pour $ n \geq 1$ une suite d’entiers telle que $1 \leq k_n \leq \f
 Soit $(V_{1,n},\dots,V_{n,n})$ la statistique d’ordre d’un échantillon de variables aléatoires indépendantes de loi de Pareto. On note $F_V(x) = 1 - x^{-1}, x \geq 1$.
 \\
 \\
-On déduit avec certains résultats de bases liés à $(V_{1,n},\dots,V_{n,n})$ que les suites
+\noindent On déduit avec certains résultats de bases liés à $(V_{1,n},\dots,V_{n,n})$ que les suites
 \[
 \frac{k_n}{n} V_{n-k_n+1,n}, \quad \frac{2k_n}{n} V_{n-2k_n+1,n}, \quad \frac{4k_n}{n} V_{n-4k_n+1,n}
 \]
 pour \(n \geq 1\) convergent en probabilité vers 1.
 
-On en déduit en particulier, les convergences en probabilité suivantes :
+\noindent On en déduit en particulier, les convergences en probabilité suivantes :
 \[
 V_{n-k_n+1,n}  \to \infty, \quad \frac{V_{n-2k_n+1,n}}{V_{n-k_n+1,n}} \to \frac{1}{2}, \quad \frac{V_{n-4k_n+1,n}}{V_{n-k_n+1,n}} \to \frac{1}{4}.
 \]
 
-Donc la convergence suivante a lieu en probabilité :
+\noindent Donc la convergence suivante a lieu en probabilité :
 \[
 \frac{U(V_{n-k_n+1,n}) - U(V_{n-2k_n+1,n})}{U(V_{n-2k_n+1,n}) - U(V_{n-4k_n+1,n})} \to 2^{\gamma}.
 \]
 
-Remarquons que si $x \geq 1$, alors $U(x) = F^{-1}(F_V(x))$. On a donc
+\noindent Remarquons que si $x \geq 1$, alors $U(x) = F^{-1}(F_V(x))$. On a donc
 \[
 (U(V_{1,n}), \dots, U(V_{n,n})) = (F^{-1}(F_V(V_{1,n})), \dots, F^{-1}(F_V(V_{n,n}))).
 \]
 
-Or \(F_V\) est la fonction de répartition de la loi de Pareto. \newline
+\noindent Or, \(F_V\) est la fonction de répartition de la loi de Pareto. \newline
 On déduit de la croissance de $F_V$ que $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_V(V_{n,n})))$ a la même loi qu’une suite de $n$ variables aléatoires uniformes sur $[0,1]$ indépendantes. 
 
-On déduit du lemme 4.1 que le vecteur aléatoire $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_V(V_{n,n})))$ a la même loi que $(X_1,\dots,X_n)$. 
+\noindent Et d'après le lemme 4.1, le vecteur aléatoire $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_V(V_{n,n})))$ a la même loi que $(X_1,\dots,X_n)$. \\
 
-Donc la variable aléatoire \(\frac{U(V_{n-k_n+1,n}) - U(V_{n-2k_n+1,n})}{U(V_{n-k_n+1,n}) - U(V_{n-4k_n+1,n})}\) a la même loi que :
+\noindent Donc la variable aléatoire \(\frac{U(V_{n-k_n+1,n}) - U(V_{n-2k_n+1,n})}{U(V_{n-k_n+1,n}) - U(V_{n-4k_n+1,n})}\) a la même loi que :
 
 \[
 \frac{X_{n-k_n+1,n} - X_{n-2k_n+1,n}}{X_{n-k_n+1,n} - X_{n-4k_n+1,n}}
 \]
 
-Ainsi cette quantité converge en loi vers $2^{\gamma}$ quand $n$ tend vers l’infini.
+\noindent Ainsi cette quantité converge en loi vers $2^{\gamma}$ quand $n$ tend vers l’infini.
 
 \subsubsection{Représentation graphique de l’estimateur de Pickands}
 
-Pour mieux comprendre le comportement de l’estimateur de Pickands dans différents contextes, nous l’appliquons à des données simulées qui sont les mêmes que dans la partie 3, c'est à dire : Pareto, Exponentielle, Uniforme et Cauchy. Ces lois sont choisies pour représenter les trois domaines d’attraction des lois de valeurs extrêmes.
+\noindent Pour mieux comprendre le comportement de l’estimateur de Pickands dans différents contextes, nous l’appliquons à des données simulées qui sont les mêmes que dans la partie 3, c'est à dire : Pareto, Exponentielle, Uniforme et Cauchy. Ces lois sont choisies pour représenter les trois domaines d’attraction des lois de valeurs extrêmes.
 
-Chaque échantillon comporte $n = 100000$ observations, et la représentation graphique est faite en fonction de $k$, où \(k\) représente le nombre de plus grandes valeurs utilisées pour estimer l’indice de queue \(\gamma\).
+\noindent Chaque échantillon comporte $n = 100000$ observations, et la représentation graphique est faite en fonction de $k$, où \(k\) représente le nombre de plus grandes valeurs utilisées pour estimer l’indice de queue \(\gamma\).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{./Evolution des estimateurs/pickands/estimateur_pickands_pareto.png}
     \caption{Estimateur de Pickands appliqué à la loi de Pareto ($\gamma = 0.5$)}
 \end{figure}
-Tout d'abord, pour la loi de Pareto, nous remarquons que l'estimateur de Pickands converge rapidement et de manière stable vers la valeur théorique \(\gamma = 0.5\), dès que \(k\) devient raisonnablement grand. Cela confirme la bonne performance de l’estimateur pour les lois à queue lourde. On observe cependant une légère variabilité pour les très petites valeurs de \(k\), car dans ce cas, l’estimation repose sur un nombre insuffisant de données, ce qui la rend plus sensible aux fluctuations aléatoires.
+\noindent Tout d'abord, pour la loi de Pareto, nous remarquons que l'estimateur de Pickands converge rapidement et de manière stable vers la valeur théorique \(\gamma = 0.5\), dès que \(k\) devient raisonnablement grand. Cela confirme la bonne performance de l’estimateur pour les lois à queue lourde. On observe cependant une légère variabilité pour les très petites valeurs de \(k\), car dans ce cas, l’estimation repose sur un nombre insuffisant de données, ce qui la rend plus sensible aux fluctuations aléatoires.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{./Evolution des estimateurs/pickands/estimateur_pickands_exponentielle.png}
     \caption{Estimateur de Pickands appliqué à la loi Exponentielle ($\gamma = 0$)}
 \end{figure}
-Dans le cas de la loi exponentielle, qui appartient au domaine d'attraction de Gumbel, l’estimateur de Pickands se stabilise rapidement autour de \(\gamma = 0\). Ce comportement est conforme aux attentes théoriques, puisque pour les distributions à queue exponentielle, l’indice de queue est effectivement nul.
+\noindent Dans le cas de la loi exponentielle, qui appartient au domaine d'attraction de Gumbel, l’estimateur de Pickands se stabilise rapidement autour de \(\gamma = 0\). Ce comportement est conforme aux attentes théoriques, puisque pour les distributions à queue exponentielle, l’indice de queue est effectivement nul.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{./Evolution des estimateurs/pickands/estimateur_pickands_uniforme.png}
     \caption{Estimateur de Pickands appliqué à la loi Uniforme ($\gamma = -1$)}
 \end{figure}
-Avec la loi uniforme, dont le support est borné, l’estimateur converge vers $\gamma = -1$, ce qui est cohérent avec la théorie. On observe une plus grande variabilité dans les faibles valeurs de $k$, mais une convergence raisonnablement bonne lorsque $k$ augmente.
+\noindent Avec la loi uniforme, dont le support est borné, l’estimateur converge vers $\gamma = -1$, ce qui est cohérent avec la théorie. On observe une plus grande variabilité dans les faibles valeurs de $k$, mais une convergence raisonnablement bonne lorsque $k$ augmente.
 
 
 \begin{figure}[H]
@@ -760,9 +762,11 @@ Avec la loi uniforme, dont le support est borné, l’estimateur converge vers $
     \includegraphics[width=0.6\textwidth]{./Evolution des estimateurs/pickands/estimateur_pickands_cauchy.png}
     \caption{Estimateur de Pickands appliqué à la loi de Cauchy ($\gamma = 1$)}
 \end{figure}
-La loi de Cauchy, caractérisée par une queue extrêmement lourde, induit un comportement plus instable de l’estimateur de Pickands. Pour les faibles valeurs de \(k\), l’estimateur est très variable. On observe un plateau autour de \(\gamma = 1\) dès \(k \approx 5000\), ce qui suggère une estimation correcte dans cette zone. Toutefois, lorsque \(k\) devient trop grand (au-delà de \(k \approx 10000\)), l’estimateur commence à décroître, indiquant une perte de précision. Ce phénomène illustre la sensibilité de l’estimateur de Pickands au choix de \(k\), en particulier pour les lois à queue très lourde : l’inclusion de données moins extrêmes peut introduire un biais significatif.
+\noindent La loi de Cauchy, caractérisée par une queue extrêmement lourde, induit un comportement plus instable de l’estimateur de Pickands. Pour les faibles valeurs de \(k\), l’estimateur est très variable. On observe un plateau autour de \(\gamma = 1\) dès \(k \approx 5000\), ce qui suggère une estimation correcte dans cette zone. Toutefois, lorsque \(k\) devient trop grand (au-delà de \(k \approx 10000\)), l’estimateur commence à décroître, indiquant une perte de précision. Ce phénomène illustre la sensibilité de l’estimateur de Pickands au choix de \(k\), en particulier pour les lois à queue très lourde : l’inclusion de données moins extrêmes peut introduire un biais significatif.
 
-Ainsi, ces résultats illustrent bien les limites de l’estimateur de Pickands : si \(k\) est trop petit, on observe une forte variance, tandis que si \(k\) est trop grand, l’estimation est biaisée car elle intègre des observations non extrêmes. D’un point de vue théorique, la validité asymptotique de l’estimateur repose sur les conditions suivantes : \(k \to \infty\) et \(k/n \to 0\) lorsque \(n \to \infty\). Cela signifie qu’on doit considérer suffisamment de valeurs extrêmes, tout en veillant à ce que \(k\) reste petit devant \(n\). Dans cette optique, nous limitons volontairement \(k\) à \(n/4\) dans nos simulations, afin de respecter ce cadre théorique et d’éviter que l’estimation ne soit dégradée.
+\vspace{0.5cm}
+
+\noindent Ainsi, ces résultats illustrent bien les limites de l’estimateur de Pickands : si \(k\) est trop petit, on observe une forte variance, tandis que si \(k\) est trop grand, l’estimation est biaisée car elle intègre des observations non extrêmes. D’un point de vue théorique, la validité asymptotique de l’estimateur repose sur les conditions suivantes : \(k \to \infty\) et \(k/n \to 0\) lorsque \(n \to \infty\). Cela signifie qu’on doit considérer suffisamment de valeurs extrêmes, tout en veillant à ce que \(k\) reste petit devant \(n\). Dans cette optique, nous limitons volontairement \(k\) à \(n/4\) dans nos simulations, afin de respecter ce cadre théorique et d’éviter que l’estimation ne soit dégradée.
 
 
 \subsection{Estimateur de Hill}
