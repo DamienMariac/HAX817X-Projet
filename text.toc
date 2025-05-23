@@ -37,5 +37,5 @@
 \contentsline {section}{\numberline {9}Annexe}{28}{}%
 \contentsline {subsection}{\numberline {9.1}Quelques simulations pour les méthodes de maxima par blocs et dépassement de seuil}{28}{}%
 \contentsline {subsubsection}{\numberline {9.1.1}Maxima par blocs}{28}{}%
-\contentsline {subsubsection}{\numberline {9.1.2}Dépassements de seuil}{30}{}%
-\contentsline {subsection}{\numberline {9.2}Codes R}{31}{}%
+\contentsline {subsubsection}{\numberline {9.1.2}Dépassements de seuil}{29}{}%
+\contentsline {subsection}{\numberline {9.2}Codes R}{30}{}%

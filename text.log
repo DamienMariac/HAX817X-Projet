@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.8)  23 MAY 2025 17:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.8)  23 MAY 2025 17:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -821,53 +821,47 @@ Package pdftex.def Info: ./images/danishsad.png  used on input line 1104.
 py)>]
 
 [27 <./images/danishsad.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 1142--1143
-
- []
-
 <./images/MB_Uniforme.png, id=139, 646.66594pt x 466.74374pt>
 File: ./images/MB_Uniforme.png Graphic file (type png)
 <use ./images/MB_Uniforme.png>
-Package pdftex.def Info: ./images/MB_Uniforme.png  used on input line 1147.
+Package pdftex.def Info: ./images/MB_Uniforme.png  used on input line 1148.
 (pdftex.def)             Requested size: 388.00255pt x 280.0484pt.
 <./images/MB_Normale.png, id=140, 646.66594pt x 466.74374pt>
 File: ./images/MB_Normale.png Graphic file (type png)
 <use ./images/MB_Normale.png>
-Package pdftex.def Info: ./images/MB_Normale.png  used on input line 1151.
-(pdftex.def)             Requested size: 452.66307pt x 326.71838pt.
-
-
-[28 <./images/MB_Uniforme.png>]
-<./images/MB_Cauchy.png, id=145, 646.66594pt x 466.74374pt>
+Package pdftex.def Info: ./images/MB_Normale.png  used on input line 1152.
+(pdftex.def)             Requested size: 388.00255pt x 280.0484pt.
+<./images/MB_Cauchy.png, id=141, 646.66594pt x 466.74374pt>
 File: ./images/MB_Cauchy.png Graphic file (type png)
 <use ./images/MB_Cauchy.png>
-Package pdftex.def Info: ./images/MB_Cauchy.png  used on input line 1155.
-(pdftex.def)             Requested size: 452.66307pt x 326.71838pt.
-<./images/DS_Uniforme.png, id=146, 646.66594pt x 466.74374pt>
+Package pdftex.def Info: ./images/MB_Cauchy.png  used on input line 1156.
+(pdftex.def)             Requested size: 388.00255pt x 280.0484pt.
+
+
+[28 <./images/MB_Uniforme.png> <./images/MB_Normale.png>]
+<./images/DS_Uniforme.png, id=147, 646.66594pt x 466.74374pt>
 File: ./images/DS_Uniforme.png Graphic file (type png)
 <use ./images/DS_Uniforme.png>
-Package pdftex.def Info: ./images/DS_Uniforme.png  used on input line 1161.
-(pdftex.def)             Requested size: 452.66307pt x 326.71838pt.
-
-
-[29 <./images/MB_Normale.png> <./images/MB_Cauchy.png>]
-<./images/DS_Normale.png, id=152, 646.66594pt x 466.74374pt>
+Package pdftex.def Info: ./images/DS_Uniforme.png  used on input line 1162.
+(pdftex.def)             Requested size: 388.00255pt x 280.0484pt.
+<./images/DS_Normale.png, id=148, 646.66594pt x 466.74374pt>
 File: ./images/DS_Normale.png Graphic file (type png)
 <use ./images/DS_Normale.png>
-Package pdftex.def Info: ./images/DS_Normale.png  used on input line 1165.
-(pdftex.def)             Requested size: 452.66307pt x 326.71838pt.
-<./images/DS_Cauchy.png, id=153, 646.66594pt x 466.74374pt>
+Package pdftex.def Info: ./images/DS_Normale.png  used on input line 1166.
+(pdftex.def)             Requested size: 388.00255pt x 280.0484pt.
+
+
+[29 <./images/MB_Cauchy.png> <./images/DS_Uniforme.png>]
+<./images/DS_Cauchy.png, id=154, 646.66594pt x 466.74374pt>
 File: ./images/DS_Cauchy.png Graphic file (type png)
 <use ./images/DS_Cauchy.png>
-Package pdftex.def Info: ./images/DS_Cauchy.png  used on input line 1169.
-(pdftex.def)             Requested size: 452.66307pt x 326.71838pt.
+Package pdftex.def Info: ./images/DS_Cauchy.png  used on input line 1170.
+(pdftex.def)             Requested size: 388.00255pt x 280.0484pt.
 
 
-[30 <./images/DS_Uniforme.png> <./images/DS_Normale.png>]
+[30 <./images/DS_Normale.png> <./images/DS_Cauchy.png>]
 
-[31 <./images/DS_Cauchy.png>]
-
-[32] (text.aux)
+[31] (text.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
@@ -907,9 +901,9 @@ ts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Fabian/AppData/Local/Programs/
 MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Fabian/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Fabia
 n/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on text.pdf (32 pages, 652463 bytes).
+Output written on text.pdf (31 pages, 654933 bytes).
 PDF statistics:
- 261 PDF objects out of 1000 (max. 8388607)
+ 258 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  116 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -30,6 +30,6 @@ ggplot(data.frame(exces), aes(x = exces)) +
   labs(title = "Méthode du dépassement de seuil (POT) pour une loi normale",
        x = "Excès au-dessus du seuil",
        y = "Densité") +
-  theme_minimal() +
+  theme_minimal() + xlim(-0.2,2)
   theme(legend.position = "top")
 

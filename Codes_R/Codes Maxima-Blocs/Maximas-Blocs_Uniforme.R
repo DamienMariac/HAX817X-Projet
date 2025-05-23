@@ -2,9 +2,9 @@
 library(evd)
 library(ggplot2)
 
-# Génération d'une loi uniforme, on prend [0,10] pour que ce soit moins resserré 
+# Génération d'une loi uniforme, on prend [0,100] pour que ce soit moins resserré 
 n <- 10000
-x <- runif(n, min = 0, max = 10)
+x <- runif(n, min = 0, max = 100)
 
 # Taille des blocs
 taille_blocs <- 50
@@ -22,7 +22,7 @@ fit_weibull <- fgev(block_maxima, std.err = FALSE) # std.err=FALSE pour que la f
 
 # Graphe
 ggplot(data.frame(block_maxima), aes(x = block_maxima)) +
-  geom_histogram(aes(y = ..density.., fill = "Simulation"), bins = 10,
+  geom_histogram(aes(y = ..density.., fill = "Simulation"), bins = 22,
                  color = "black") +
   stat_function(aes(color = "Densité théorique"),
                 fun = function(x) dgev(x,
@@ -30,7 +30,7 @@ ggplot(data.frame(block_maxima), aes(x = block_maxima)) +
                                        scale = fit_weibull$estimate["scale"],
                                        shape = fit_weibull$estimate["shape"]),
                 size = 1.2) +
-  coord_cartesian(xlim = c(7, 12)) +
+  coord_cartesian(xlim = c(90, 102)) +
   scale_fill_manual("", values = c("Simulation" = "skyblue")) +
   scale_color_manual("", values = c("Densité théorique" = "red")) +
   labs(title = "Méthode des maximas en bloc pour une loi uniforme",
@@ -38,3 +38,4 @@ ggplot(data.frame(block_maxima), aes(x = block_maxima)) +
        y = "Densité") +
   theme_minimal() +
   theme(legend.position = "top")
+

@@ -18,13 +18,13 @@ fit_gpd <- fpot(x, threshold = u, model = "gpd")
 # Visualisation : histogramme des excès + densité théorique GPD
 ggplot(data.frame(exces), aes(x = exces)) +
   geom_histogram(aes(y = ..density.., fill = "Simulation"),
-                 bins = 40, color = "black", alpha = 0.6) +
+                 bins = 30, color = "black", alpha = 0.6) +
   stat_function(aes(color = "Densité théorique"),
                 fun = function(x) dgpd(x,
                                        loc = 0,
                                        scale = fit_gpd$estimate["scale"],
                                        shape = fit_gpd$estimate["shape"]),
-                size = 1.2) + xlim(c(-5,10)) +
+                size = 1.2) + xlim(c(-2,7)) +
   scale_fill_manual("", values = c("Simulation" = "skyblue")) +
   scale_color_manual("", values = c("Densité théorique" = "red")) +
   labs(title = "Méthode du dépassement de seuil (POT) - Loi uniforme",

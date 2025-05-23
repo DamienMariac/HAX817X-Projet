@@ -22,14 +22,16 @@ fit_gumbel <- fgev(block_maxima, shape = 0)
 
 # Graphe ggplot
 ggplot(data.frame(block_maxima), aes(x = block_maxima)) +
-  geom_histogram(aes(y = ..density..), bins = 10, fill = "skyblue", color = "black") +
-  stat_function(fun = function(x) dgumbel(x, loc = fit_gumbel$estimate["loc"],
-                                          scale = fit_gumbel$estimate["scale"]),
-                color = "red", size = 1.2) +
+  geom_histogram(aes(y = ..density.., fill = "Simulation"), bins = 30, color = "black") +
+  stat_function(aes(color = "Densité théorique"), fun = function(x) dgumbel(x, loc = fit_gumbel$estimate["loc"],
+                                                                            scale = fit_gumbel$estimate["scale"]),
+                size = 1.2) +
   scale_fill_manual("", values = c("Simulation" = "skyblue")) +
   scale_color_manual("", values = c("Densité théorique" = "red")) +
   labs(title = "Méthode des maximas en bloc pour une loi normale",
-       x = "Blocs",
+       x = "Maxima par blocs",
        y = "Densité") +
+  xlim(0, 5) +
   theme_minimal()
+
 

@@ -22,14 +22,14 @@ fit_frechet <- fgev(block_maxima)
 
 # Graphe avec ggplot2
 ggplot(data.frame(block_maxima), aes(x = block_maxima), xlim=2000) +
-  geom_histogram(aes(y = ..density.., fill = "Simulation"), bins = 60,
+  geom_histogram(aes(y = ..density.., fill = "Simulation"), bins = 30,
                  color = "black") +
   stat_function(aes(color = "Densité théorique"),
                 fun = function(x) dgev(x,
                                        loc = fit_frechet$estimate["loc"],
                                        scale = fit_frechet$estimate["scale"],
                                        shape = fit_frechet$estimate["shape"]),
-                size = 1.2) + xlim(0, 1000) +
+                size = 1.2) + xlim(0, 300) +
   scale_fill_manual("", values = c("Simulation" = "skyblue")) +
   scale_color_manual("", values = c("Densité théorique" = "red")) +
   labs(title = "Méthode des maximas en bloc pour une loi de Cauchy",

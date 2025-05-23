@@ -16,14 +16,14 @@ fit_gpd <- fpot(x, threshold = u, model = "gpd")
 
 # Graphe : histogramme des excès + densité GPD
 ggplot(data.frame(exces), aes(x = exces)) +
-  geom_histogram(aes(y = ..density.., fill = "Simulation"), bins = 150,
+  geom_histogram(aes(y = ..density.., fill = "Simulation"), bins = 40,
                  color = "black", alpha = 0.6) +
   stat_function(aes(color = "Densité théorique"),
                 fun = function(x) dgpd(x,
                                        loc = 0,  # car les excès sont centrés
                                        scale = fit_gpd$estimate["scale"],
                                        shape = fit_gpd$estimate["shape"]),
-                size = 1.2) + xlim(c(-10,400)) +
+                size = 1.2) + xlim(c(-10,100)) +
   scale_fill_manual("", values = c("Simulation" = "skyblue")) +
   scale_color_manual("", values = c("Densité théorique" = "red")) +
   labs(title = "Méthode du dépassement de seuil (POT) pour une loi de Cauchy",

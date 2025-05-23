@@ -582,7 +582,7 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \text{Weibull}(1,1)
 	\includegraphics[scale=0.8]{./images/Max_Cauchy.png} 
 \end{center}
 
-\noindent Enfin ici, on avait une loi à queue lourde, et on obtient bien la loi de Fréchet attendue.
+\noindent Les valeurs extrêmes de la loi de Cauchy décroissent lentement, ce qui est caractéristique d'une loi à queue lourde. La simulation confirme donc que la loi limite est bien une loi de Fréchet comme nous l'avions vu théoriquement précédemment.
 
 \section{Méthodes d'estimation de l'indice de valeurs extrêmes}
 Dans cette section, nous cherchons à estimer le paramètre \(\gamma\) directement à partir des observations \(X_i\), sans nous limiter aux maxima \(M_n\), afin de tirer parti de l’ensemble des données.  
@@ -1140,6 +1140,7 @@ Ainsi, la théorie des valeurs extrêmes s’avère être un outil indispensable
 \subsection{Quelques simulations pour les méthodes de maxima par blocs et dépassement de seuil}
 
 \noindent Quelques illustrations simulées des méthodes vues dans le texte pour les lois uniforme, normale et de Cauchy. \\
+\noindent Les codes des simulations suivantes sont disponibles sur Github dans les sous dossiers Codes Dépassement-Seuil et Codes Maxima-Blocs du dossier CodesR.
 
 \subsubsection{Maxima par blocs}
 
@@ -1148,25 +1149,25 @@ Ainsi, la théorie des valeurs extrêmes s’avère être un outil indispensable
 \end{center}
 
 \begin{center}
-	\includegraphics[scale=0.70]{./images/MB_Normale} 
+	\includegraphics[scale=0.60]{./images/MB_Normale} 
 \end{center}
 
 \begin{center}
-	\includegraphics[scale=0.70]{./images/MB_Cauchy} 
+	\includegraphics[scale=0.60]{./images/MB_Cauchy} 
 \end{center}
 
 \subsubsection{Dépassements de seuil}
 
 \begin{center}
-	\includegraphics[scale=0.70]{./images/DS_Uniforme} 
+	\includegraphics[scale=0.60]{./images/DS_Uniforme} 
 \end{center}
 
 \begin{center}
-	\includegraphics[scale=0.70]{./images/DS_Normale} 
+	\includegraphics[scale=0.60]{./images/DS_Normale} 
 \end{center}
 
 \begin{center}
-	\includegraphics[scale=0.70]{./images/DS_Cauchy} 
+	\includegraphics[scale=0.60]{./images/DS_Cauchy} 
 \end{center}
 
 \subsection{Codes R}
@@ -1181,7 +1182,8 @@ Ainsi, la théorie des valeurs extrêmes s’avère être un outil indispensable
 	\item Modelling Extremal Events  Paul Embrechts , Claudia Klüppelberg , Thomas Mikosch
 	\item Statistics of Extremes Theory and Applications, Jan Beirlant, Yuri Goegebeur, Johan Segers, Jozef Teugels
 	\item Bibm@th.net
-	\item Théorie des valeurs extrêmes et estimation de mesures de risque, Jonathan EL METHNI, Gilles STUPFLER
+	\item Théorie des valeurs extrêmes et estimation de mesures de risque, Jonathan El Methni, Gilles Stupfler
+	\item On The Limiting Distribution of the Maximum Term in a Random Series, Boris Vladimirovitch Gnedenko
 \end{itemize}
 
 \end{document}
