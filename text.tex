@@ -24,6 +24,7 @@
 \newtheorem{theorem}[definition]{Théorème}
 \newtheorem{lemma}[definition]{Lemme}
 \newtheorem{proposition}[definition]{Proposition}
+\newtheorem{property}{Propriété}
 
 
 
@@ -59,19 +60,18 @@
 \tableofcontents 
 \newpage
 \section{Introduction}
-Les événements extrêmes, comme les crues majeures, les canicules intenses ou les krachs financiers, sont rares mais peuvent avoir des conséquences très importantes. Les étudier est devenu essentiel dans des domaines variés comme la climatologie, l’assurance, la finance ou encore l’ingénierie.
+Les événements extrêmes, comme les crues, les canicules ou les krachs financiers, sont rares mais peuvent avoir des conséquences majeures. Leur étude est devenue essentielle dans des domaines comme la climatologie, la finance ou l’assurance.
 
-\noindent La théorie des valeurs extrêmes est un outil statistique qui permet de modéliser ces phénomènes rares, en se concentrant sur les valeurs situées aux extrémités d’un jeu de données : les plus grandes ou les plus petites (Stuart Coles 2001). Contrairement aux méthodes classiques qui s'intéressent surtout à la moyenne ou à la variance, la théorie des valeurs extrêmes cherche à comprendre le comportement des valeurs extrêmes.
+La théorie des valeurs extrêmes fournit un cadre statistique pour analyser ces phénomènes rares. Contrairement aux méthodes classiques, centrées sur la moyenne ou la variance, elle se concentre sur les plus grandes ou plus petites observations.
 
-\noindent Dans les statistiques classiques, beaucoup de résultats reposent sur le théorème central limite, qui explique que, sous certaines conditions, la moyenne d’un grand nombre de variables aléatoires suit une loi normale. C’est un fondement de nombreuses méthodes, mais il ne dit rien sur les valeurs les plus extrêmes d’un échantillon, qui sont pourtant cruciales dans l’analyse du risque.
-
-\noindent Cette théorie s’intéresse donc à des grandeurs comme le maximum d’un échantillon $(X_1, X_2, \dots, X_n)$~:
+Alors que le théorème central limite traite des moyennes, la théorie des valeurs extrêmes s’intéresse au comportement du maximum d’un échantillon :
 \[
 M_n = \max\{X_1, X_2, \dots, X_n\}.
 \]
 
-On cherche à savoir si, en normalisant ce maximum, il converge vers une loi limite. Les travaux de Fréchet, Fisher, Tippett et Gnedenko ont montré que cette convergence est possible, et qu’il n’existe que trois lois limites possibles : la loi de Fréchet, la loi de Gumbel et la loi de Weibull, qui correspondent à différents types de comportements des queues de distribution.
-En s’intéressant aux comportements les plus rares, la théorie des valeurs extrêmes fournit un cadre rigoureux pour mieux anticiper l’intensité et la fréquence des événements extrêmes, et ainsi mieux s’y préparer.
+Les travaux de Fréchet, Fisher, Tippett et Gnedenko ont montré que ce maximum, après normalisation, converge vers l’une des trois lois limites : Fréchet, Gumbel ou Weibull. Ces lois permettent de modéliser différentes formes de queues de distribution.
+
+En se focalisant sur les extrêmes, la théorie des valeurs extrêmes offre des outils puissants pour anticiper la fréquence et l’intensité des événements rares.
 \section{Comportement asymptotique de $M_n$}
 
 \subsection{Caractérisation avec la fonction de répartition}
@@ -588,53 +588,58 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \text{Weibull}(1,1)
 Dans cette section, nous cherchons à estimer le paramètre \(\gamma\) directement à partir des observations \(X_i\), sans nous limiter aux maxima \(M_n\), afin de tirer parti de l’ensemble des données.  
 Nous nous concentrons sur deux approches non paramétriques classiques : les estimateurs de Hill et de Pickands. Ces méthodes reposent uniquement sur les statistiques d’ordre et sont particulièrement utilisées en pratique. D'autres estimateurs existent, notamment des versions généralisées ou des approches paramétriques basées sur la vraisemblance ou les moments, mais ils ne seront pas abordés ici. \\
 
-\textbf{Définition :} On appelle \textit{statistique d'ordre} la permutation aléatoire de l'échantillon \(X_1, \dots, X_n\), qui ordonne les valeurs de l’échantillon par ordre croissant :
+\begin{definition}
+On appelle \textit{statistique d'ordre} la permutation aléatoire de l'échantillon \(X_1, \dots, X_n\), qui ordonne les valeurs de l’échantillon par ordre croissant :
 
 \[
 X_{(1)} \leq X_{(2)} \leq \dots \leq X_{(n)}
 \]
+\end{definition}
 
-\textbf{Définition :} On dit qu'une suite \((k_n)_{n \geq 0}\) d'entiers est intermédiaire si :
+\begin{definition}
+On dit qu'une suite \((k_n)_{n \geq 0}\) d'entiers est intermédiaire si :
 
 \[
-\lim_{n \to \infty} k_n = \infty \quad et \lim_{n \to \infty} \frac{k_n}{n} = 0
+\lim_{n \to \infty} k_n = \infty, \quad \lim_{n \to \infty} \frac{k_n}{n} = 0
 \]
 
-\textbf{Définition :}
+\end{definition}
+
+
+\begin{definition}
 On dit qu'un estimateur \(\hat{\gamma_{n}}\) est convergent s'il converge en probabilité vers \(\gamma\), soit :
 \[
 \lim_{n \to \infty} P(\lvert \hat{\gamma_{n}} - \gamma \rvert > \epsilon) = 0 \quad \forall \epsilon > 0
-\]
+\]  
+\end{definition}
 
 \subsection{Estimateur de Pickands}
+L’estimateur de Pickands est construit à partir de trois statistiques d’ordre d'un échantillon. Il constitue l’un des premiers estimateurs non paramétriques proposés pour estimer l’indice des valeurs extrêmes \(\gamma\). Son principal avantage réside dans le fait qu’il est valide quel que soit le domaine d’attraction de la loi sous-jacente. Il n'est donc pas restreint à une famille particulière de distributions et reste applicable dans un cadre très général.
 
-L’estimateur de Pickands est construit à partir de trois statistiques d’ordre dans un échantillon. Il constitue l’un des premiers estimateurs non paramétriques proposés pour estimer l’indice des valeurs extrêmes \(\gamma\). Son principal avantage réside dans le fait qu’il est valide quel que soit le domaine d’attraction de la loi sous-jacente : Fréchet (\(\xi > 0\)), Gumbel (\(\xi = 0\)) ou Weibull (\(\xi < 0\)). Il n'est donc pas restreint à une famille particulière de distributions et reste applicable dans un cadre très général.
-
-Néanmoins, cet estimateur est connu pour être assez sensible à la taille de l’échantillon, et en particulier au choix du paramètre intermédiaire \(k\), ce qui peut entraîner une certaine instabilité dans les estimations. Cela limite parfois sa robustesse, en particulier pour des tailles d’échantillon modestes.
-
-En 1975, Pickands a démontré la consistance faible de son estimateur, c’est-à-dire la convergence en probabilité vers le vrai paramètre lorsque la taille de l’échantillon tend vers l’infini. Plus tard en 1989, Dekkers et de Haan ont établi la convergence forte ainsi que la normalité asymptotique de cet estimateur sous des conditions plus générales.
+Cependant, cet estimateur est connu pour être sensible à la taille de l’échantillon, en particulier au choix du paramètre intermédiaire \(k_n\). Cette dépendance peut induire une variabilité notable dans les estimations, notamment pour des échantillons de taille modeste, ce qui limite sa robustesse dans certaines situations pratiques.
 \\
 \\
 \medskip
-\textbf{Définition.} Soit \(X_1, \dots, X_n\) une suite de variables aléatoires i.i.d. de loi \(F\), appartenant à l’un des domaines d’attraction des lois de valeurs extrêmes. On note \(X_{1,n} \leq \dots \leq X_{n,n}\) les statistiques d’ordre croissantes. Soit \((k_n)_{n \geq 1}\) une suite intermédiaire telle que \(k_n \to \infty\) et \(k_n / n \to 0\), l’estimateur de Pickands est défini par :
-
+\begin{definition}
+Soit \(X_1, \dots, X_n\) une suite de variables aléatoires i.i.d de loi \(F\), appartenant à l’un des domaines d’attraction des lois de valeurs extrêmes. On note \(X_{(1)} \leq X_{(2)} \leq \dots \leq X_{(n)}\) les statistiques d’ordre associées à l’échantillon. Soit \((k_n)_{n \geq 1}\) une suite intermédiaire.
+L’estimateur de Pickands est défini par :
 \[
-\hat{\gamma}_{k_n,n} = \frac{1}{\ln(2)} \ln\left( \frac{X_{n-k_n +1,n} - X_{n-2k_n +1,n}}{X_{n-2k_n +1,n} - X_{n-4k_n +1,n}} \right)
+\hat{\gamma}_{k_n,n} = \frac{1}{\ln(2)} \ln\left( \frac{X_{n-k_n+1,n} - X_{n-2k_n+1,n}}{X_{n-2k_n+1,n} - X_{n-4k_n+1,n}} \right)
 \]
-
+\end{definition}
 \medskip
-L’estimateur de Pickands repose sur l’idée que, dans les queues d’une distribution extrême, les plus grandes observations suivent un comportement régulier. En considérant des statistiques d’ordre décroissantes, on peut approximer la structure de la queue à l’aide de différences successives entre grandes valeurs. L’utilisation d’une transformation logarithmique permet alors d’isoler l’indice de queue \(\gamma\), sous des conditions d’attraction à une loi limite.
-
+Cet estimateur repose sur le comportement asymptotique des grandes statistiques d’ordre. Plus précisément, sous l’hypothèse que la loi sous-jacente appartient au domaine d’attraction d’une loi extrême, la queue de la distribution peut être approchée localement par une fonction puissance. Ainsi, les rapports d’intervalles entre les grandes valeurs suivent une régularité qui dépend uniquement de l’indice de queue \(\gamma\). En prenant une combinaison logarithmique de ces rapports, on obtient une estimation directe de \(\gamma\).
 \medskip
-\textbf{Propriété de consistance.} Si \((k_n)\) est une suite intermédiaire, alors :
+\begin{property}
+Si \((k_n)_{n \geq 1}\) est une suite intermédiaire, alors :
 \[
-\hat{\gamma}_{k_n,n} \xrightarrow{\mathbb{P}} \gamma
+\hat{\gamma}_{k,n} \xrightarrow{\mathbb{P}} \gamma
 \quad \text{lorsque } n \to \infty.
 \]
-
-De plus, sous hypothèses régulières, l’estimateur est asymptotiquement normal :
+\end{property}
+De plus, sous des hypothèses régulières, telles que l’appartenance de la loi sous-jacente au domaine d’attraction d’une loi de valeur extrême et la condition que la suite $(k_n)_{n \geq 1}$ soit intermédiaire, l’estimateur de Pickands est asymptotiquement normal :
 \[
-\sqrt{k_n} \left( \hat{\gamma}_{k_n,n} - \gamma \right) \xrightarrow{\mathcal{L}} \mathcal{N}(0, \sigma^2(\gamma))
+\sqrt{k} \left( \hat{\gamma}_{k,n} - \gamma \right) \xrightarrow{\mathcal{L}} \mathcal{N}(0, \sigma^2(\gamma))
 \]
 où la variance asymptotique est donnée par :
 \[
@@ -648,7 +653,7 @@ Cette formule théorique permet de construire des intervalles de confiance pour 
 
 Afin de construire l'estimateur de Pickands, nous allons reprendre la proposition (2.3). Pour \(x,y > 0\) et \(y \neq 1\), la proposition est équivalente à :
 \[
-\lim_{s \to 0} \frac{U(sx) - U(s)}{U(sy) - U(s)} = 
+\lim_{t \to 0} \frac{U(tx) - U(t)}{U(ty) - U(t)} = 
 \begin{cases} 
 \frac{x^\gamma - 1}{y^\gamma - 1} & \text{si } \gamma \neq 0, \\
 \frac{\log(x)}{\log(y)} & \text{si } \gamma = 0.
@@ -664,12 +669,13 @@ Soit \(U_1, \dots, U_n\) des variables aléatoires indépendantes de loi uniform
 \begin{proof}
 admis
 \end{proof}
-\noindent On en déduit la construction de l'estimateur de Pickands.
+\noindent
+Ce résultat généralise un fait fondamental en probabilité selon lequel, si \(U \sim \mathcal{U}[0,1]\), alors \(F^{-1}(U) \sim F\). Ici, cette propriété est étendue au cas des statistiques d'ordre : la suite \((F^{-1}(U_{1,n}), \dots, F^{-1}(U_{n,n}))\) a même loi que \((X_{1,n}, \dots, X_{n,n})\). Cela justifie la construction d’estimateurs basés sur les quantiles empiriques, tels que l’estimateur de Pickands.
 \\
 \\
 \noindent \textbf{Construction de l'estimateur de Pickands :}
 
-Par la proposition précédente, pour $\gamma \in \mathbb{R}$ et $\alpha$ on a avec le choix $t = 2s$, $x = 2$ et $y = \frac{1}{2}$,
+Par la proposition précédente, pour $\gamma \in \mathbb{R}$ on a avec le choix $t = 2s$, $x = 2$ et $y = \frac{1}{2}$,
 \[
 \lim_{t \to \infty} \frac{U(t) - U(t/2)}{U(t/2) - U(t/4)} = 2^{\gamma}.
 \]
@@ -710,7 +716,7 @@ Remarquons que si $x \geq 1$, alors $U(x) = F^{-1}(F_V(x))$. On a donc
 Or \(F_V\) est la fonction de répartition de la loi de Pareto. \newline
 On déduit de la croissance de $F_V$ que $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_V(V_{n,n})))$ a la même loi qu’une suite de $n$ variables aléatoires uniformes sur $[0,1]$ indépendantes. 
 
-On déduit du lemme A que le vecteur aléatoire $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_V(V_{n,n})))$ a la même loi que $(X_1,\dots,X_n)$. 
+On déduit du lemme 4.1 que le vecteur aléatoire $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_V(V_{n,n})))$ a la même loi que $(X_1,\dots,X_n)$. 
 
 Donc la variable aléatoire \(\frac{U(V_{n-k_n+1,n}) - U(V_{n-2k_n+1,n})}{U(V_{n-k_n+1,n}) - U(V_{n-4k_n+1,n})}\) a la même loi que :
 
