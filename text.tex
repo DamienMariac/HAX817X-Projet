@@ -79,7 +79,7 @@ En se focalisant sur les extrêmes, la théorie des valeurs extrêmes offre des 
 
 \subsection{Caractérisation avec la fonction de répartition}
 
-On commence par faire une remarque (\textit{Stochastic Modelling 1988}) sur la fonction de repartion de $M_n$ en utilisant le fait que les $X_i$ sont i.i.d.
+\noindent On commence par faire une remarque (\textit{Stochastic Modelling 1988}) sur la fonction de repartion de $M_n$ en utilisant le fait que les $X_i$ sont i.i.d.
 En effet, si on note $F_{M_n}$ la fonction de repartition de $M_n$, et $F$ la fonction de repartition de $X_i$ on a :
 \[
 \forall t \in \mathbb{R} , \quad F_{M_n}(t) = \mathbb{P}(M_n \le t) = \mathbb{P}(X_1 \le t,...,X_n \le t)=\mathbb{P}(X_1 \le t)^n = F^n(t) 
@@ -156,7 +156,7 @@ Ce changement de variable nous conduit à exprimer l’espérance sous une nouve
 
 \subsection{Le paramètre $b_n$}
 
-En reprenant les hypothèses, on remarque que pour tout $t\in\mathbb R$,
+\noindent En reprenant les hypothèses, on remarque que pour tout $t\in\mathbb R$,
 \[
 \mathbb{P}  \Bigl(\frac{M_n - b_n}{a_n} \le t\Bigr)
 \;=\;
@@ -208,24 +208,22 @@ b_n \;=\; Q\!\Bigl(1-\tfrac1n\Bigr)
  On obtient alors une forme explicite pour la suite $(b_n)$ qui est $U(n)$.
 
 \subsection{Le paramètre $a_n$}
-Une fois la suite $(b_n)$ fixée comme précédemment, nous devons maintenant déterminer la suite $(a_n)$. L’objectif est de trouver des
+\noindent Une fois la suite $(b_n)$ fixée comme précédemment, nous devons maintenant déterminer la suite $(a_n)$. L’objectif est de trouver des
  conditions suffisantes sur la fonction de répartition $F$ pour garantir l’existence d’une loi limite non dégénérée de $\frac{M_n - b_n}{a_n}$.
 \\
 
-\noindent
-
-En reprenant la convergence  $F^n(a_n t + b_n) \longrightarrow G(t)$, cela implique, en inversant \( G \) :
+\noindent En reprenant la convergence  $F^n(a_n t + b_n) \longrightarrow G(t)$, cela implique, en inversant \( G \) :
 \[
 a_n t + b_n = G^{-1}(F^n(a_n t + b_n)) \longrightarrow G^{-1}(G(t)) = t.
 \]
 
-En posant \( U(y) = Q\left(1 - \frac{1}{y}\right) \), on en déduit, pour de grandes valeurs de \( x \), que la convergence en loi est équivalente à la convergence des quantiles :
+\noindent En posant \( U(y) = Q\left(1 - \frac{1}{y}\right) \), on en déduit, pour de grandes valeurs de \( x \), que la convergence en loi est équivalente à la convergence des quantiles :
 \[
 \frac{U(xu) - U(x)}{a(x)} \longrightarrow h(u),
 \]
-où \( h(u) \) dépend du domaine d’attraction de \( F \).
+où \( h(u) \) dépend du domaine d’attraction de \( F \). \\
 
-Cette condition traduit, en quelque sorte, une régularité asymptotique de la queue de distribution.
+\noindent Cette condition traduit, en quelque sorte, une régularité asymptotique de la queue de distribution.
 
 
 \begin{remark}
@@ -233,7 +231,7 @@ Cette condition traduit, en quelque sorte, une régularité asymptotique de la q
 \end{remark}
 
 \vspace{0.3cm}
-Il reste à étudier las limites possible, pour cela nous avons la proposition suivante (\textit{Statistics of Extremes, Jan Beirlant 2004}) :
+\noindent Il reste à étudier las limites possible, pour cela nous avons la proposition suivante (\textit{Statistics of Extremes, Jan Beirlant 2004}) :
 \vspace{0.3cm}
 \begin{proposition}[Limites possibles de la fonction $h$]
 Les fonctions limites possibles sont données, pour une certaine constante $c > 0$, par :
@@ -242,7 +240,7 @@ c \cdot h_\gamma(u) = c \int_1^u v^{-\gamma - 1} \, dv = \frac{c(u^\gamma - 1)}{
 \tag{2}
 \]
 
-Nous interprétons la fonction limite dans le cas $\gamma = 0$ par passage à la limite :
+\noindent Nous interprétons la fonction limite dans le cas $\gamma = 0$ par passage à la limite :
 
 \[
 h_0(u) = \log(u).
@@ -261,15 +259,15 @@ Soient $u, v > 0$. Pour étudier la limite
 \[
 \lim_{x \to \infty} \frac{U(xu) - U(x)}{a(x)} = h(u),
 \]
-nous cherchons à établir une structure fonctionnelle sur la fonction limite $h(u)$.
+nous cherchons à établir une structure fonctionnelle sur la fonction limite $h(u)$. \\
 
-Pour cela, nous considérons l’expression étendue :
+\noindent Pour cela, nous considérons l’expression étendue :
 \[
 \frac{U(xuv) - U(x)}{a(x)},
 \]
 qui, par hypothèse, converge vers $h(uv)$ lorsque $x \to \infty$. Cette forme généralisée permet de relier $h(uv)$ à $h(u)$ et $h(v)$ en introduisant un point intermédiaire $xu$.
 
-Nous décomposons alors l’expression :
+\noindent Nous décomposons alors l’expression :
 \[
 \frac{U(xuv) - U(x)}{a(x)} =
 \frac{U(xuv) - U(xu)}{a(xu)} \cdot \frac{a(xu)}{a(x)} +
@@ -277,20 +275,20 @@ Nous décomposons alors l’expression :
 \tag{3}
 \]
 
-Par hypothèse de convergence, on sait que :
+\noindent Par hypothèse de convergence, on sait que :
 \[
 \lim_{x \to \infty} \frac{U(xu) - U(x)}{a(x)} = h(u),
 \quad \text{et} \quad
 \lim_{x \to \infty} \frac{U(xuv) - U(xu)}{a(xu)} = h(v).
 \]
 
-On suppose également que la fonction $a(x)$ satisfait la propriété de régularité suivante :
+\noindent On suppose également que la fonction $a(x)$ satisfait la propriété de régularité suivante :
 \[
 \lim_{x \to \infty} \frac{a(xu)}{a(x)} = g(u),
 \]
-pour une certaine fonction positive $g(u)$.
+pour une certaine fonction positive $g(u)$. \\
 
-En reportant ces limites dans l'équation (3), on obtient :
+\noindent En reportant ces limites dans l'équation (3), on obtient :
 \[
 \lim_{x \to \infty} \frac{U(xuv) - U(x)}{a(x)} = h(v) \cdot g(u) + h(u),
 \]
@@ -300,44 +298,45 @@ h(uv) = h(v) \cdot g(u) + h(u).
 \tag{4}
 \]
 
-Cette relation impose une structure fonctionnelle entre $h$ et $g$. Pour que l'équation (4) soit cohérente pour tout $u, v > 0$, la fonction $g$ doit satisfaire l'équation fonctionnelle multiplicative :
+\noindent Cette relation impose une structure fonctionnelle entre $h$ et $g$. Pour que l'équation (4) soit cohérente pour tout $u, v > 0$, la fonction $g$ doit satisfaire l'équation fonctionnelle multiplicative :
 \[
 g(uv) = g(u) g(v),
 \]
-connue sous le nom d’équation de Cauchy multiplicative.
+connue sous le nom d’équation de Cauchy multiplicative. \\
 
-Les solutions mesurables et positives de cette équation sont les fonctions puissance, soit :
+\noindent Les solutions mesurables et positives de cette équation sont les fonctions puissance, soit :
 \[
 g(u) = u^{\gamma} \quad \text{pour un certain } \gamma \in \mathbb{R}.
 \]
 
-On en déduit que $a(x)$ est une fonction à \textit{variation régulière} d’indice $\gamma$, ce qui signifie :
+\noindent On en déduit que $a(x)$ est une fonction à \textit{variation régulière} d’indice $\gamma$, ce qui signifie :
 \[
 \frac{a(xu)}{a(x)} \longrightarrow u^\gamma \quad \text{quand } x \to \infty.
 \]
 
-En remplaçant cette forme de $g(u)$ dans l’équation (4), on obtient :
+\noindent En remplaçant cette forme de $g(u)$ dans l’équation (4), on obtient :
 \[
 h(uv) = h(v) \cdot u^\gamma + h(u).
 \]
 
-Cette équation admet comme solution (admis) (à une constante multiplicative près) :
+\noindent Cette équation admet comme solution (admis) (à une constante multiplicative près) :
 \[
 h(u) = c \cdot \frac{u^\gamma - 1}{\gamma}, \quad \text{pour } \gamma \neq 0.
 \]
-Dans le cas limite $\gamma = 0$, par passage à la limite, on retrouve :
+
+\noindent Dans le cas limite $\gamma = 0$, par passage à la limite, on retrouve :
 \[
 h_0(u) = c \cdot \log u.
 \]
 
-On adopte la convention $h_0(u) = \log u$ en fixant $c = 1$, ce qui permet de résumer :
+\noindent On adopte la convention $h_0(u) = \log u$ en fixant $c = 1$, ce qui permet de résumer :
 \[
 h_\gamma(u) = \frac{u^\gamma - 1}{\gamma}, \quad \text{avec } h_0(u) = \log u.
 \]
 
 \end{proof}	
 \subsection{Les lois limites}
-En reprenant $(3)$ et en utilisant ce qui précède, on obtient :
+\noindent En reprenant $(3)$ et en utilisant ce qui précède, on obtient :
 \[
 \lim_{x\to \infty} \frac{U(xuv) - U(x)}{a(x)} = u^{\gamma} h(v) + h(u)
 \]
@@ -588,7 +587,7 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \text{Weibull}(1,1)
 \noindent Les valeurs extrêmes de la loi de Cauchy décroissent lentement, ce qui est caractéristique d'une loi à queue lourde. La simulation confirme donc que la loi limite est bien une loi de Fréchet comme nous l'avions vu théoriquement précédemment.
 
 \section{Méthodes d'estimation de l'indice de valeurs extrêmes}
-Dans cette section, nous cherchons à estimer le paramètre \(\gamma\) directement à partir des observations \(X_i\), sans nous limiter aux maxima \(M_n\), afin de tirer parti de l’ensemble des données.  
+\noindent Dans cette section, nous cherchons à estimer le paramètre \(\gamma\) directement à partir des observations \(X_i\), sans nous limiter aux maxima \(M_n\), afin de tirer parti de l’ensemble des données.  
 Nous nous concentrons sur deux approches non paramétriques classiques : les estimateurs de Hill et de Pickands. Ces méthodes reposent uniquement sur les statistiques d’ordre et sont particulièrement utilisées en pratique. D'autres estimateurs existent, notamment des versions généralisées ou des approches paramétriques basées sur la vraisemblance ou les moments, mais ils ne seront pas abordés ici. \\
 
 \begin{definition}
@@ -1121,7 +1120,7 @@ On trace alors la courbe de l'estimateur de Hill en fonction de $k$.
 On observe alors un plateau pour k entre 30 et 45. On obtient alors apres estimation numérique une valeur de $\gamma = 0,66$.
 
 \subsubsection{Synthèse sur la méthode de dépassement de seuil}
-Cette méthode à le bont goût d'exploiter toutes les valeurs supérieures à un seuil, pas seulement un maximum par bloc. Elle utilise donc plus de données.
+Cette méthode à le bon goût d'exploiter toutes les valeurs supérieures à un seuil, pas seulement un maximum par bloc. Elle utilise donc plus de données.
 \\
 En revanche le choix du seuil est important car il faut choisir un seuil suffisamment élevé pour ne pas avoir trop peu de données mais pas trop élevé pour ne pas perdre d'informations sur les max. Il faut donc faire le compromis entre le biais et la variance.
 
