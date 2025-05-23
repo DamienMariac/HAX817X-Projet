@@ -27,6 +27,7 @@
 \newtheorem{lemma}[definition]{Lemme}
 \newtheorem{proposition}[definition]{Proposition}
 \newtheorem{property}{Propriété}
+\newtheorem{exemplecustom}{Exemple}
 
 
 
@@ -730,25 +731,23 @@ Ainsi cette quantité converge en loi vers $2^{\gamma}$ quand $n$ tend vers l’
 
 \subsubsection{Représentation graphique de l’estimateur de Pickands}
 
-Pour mieux comprendre le comportement de l’estimateur de Pickands dans différents contextes, nous l’appliquons à des données simulées qui sont les mêmes que dans la partie 3, c'est à dire : Pareto, Exponentielle, Uniforme et Cauchy. Ces lois sont choisies pour représenter les trois domaines d’attraction des lois de valeurs extrêmes :
+Pour mieux comprendre le comportement de l’estimateur de Pickands dans différents contextes, nous l’appliquons à des données simulées qui sont les mêmes que dans la partie 3, c'est à dire : Pareto, Exponentielle, Uniforme et Cauchy. Ces lois sont choisies pour représenter les trois domaines d’attraction des lois de valeurs extrêmes.
 
-Chaque échantillon comporte $n = 100000$ observations, et l’estimation est faite en fonction de $k$, où \(k\) représente le nombre de plus grandes valeurs utilisées pour estimer l’indice de queue \(\gamma\).
+Chaque échantillon comporte $n = 100000$ observations, et la représentation graphique est faite en fonction de $k$, où \(k\) représente le nombre de plus grandes valeurs utilisées pour estimer l’indice de queue \(\gamma\).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{./Evolution des estimateurs/pickands/estimateur_pickands_pareto.png}
     \caption{Estimateur de Pickands appliqué à la loi de Pareto ($\gamma = 0.5$)}
 \end{figure}
-Tout d'abord, pour la loi de Pareto, nous remarquons que l'estimateur de Pickands converge rapidement et de manière stable vers la valeur théorique $\gamma = 0.5$, dès que $k$ devient raisonnablement grand. Cela confirme la bonne performance de l’estimateur pour des lois à queue lourde. On observe cependant une légère variabilité pour les très petites valeurs de $k$, comme attendu.
-
+Tout d'abord, pour la loi de Pareto, nous remarquons que l'estimateur de Pickands converge rapidement et de manière stable vers la valeur théorique \(\gamma = 0.5\), dès que \(k\) devient raisonnablement grand. Cela confirme la bonne performance de l’estimateur pour les lois à queue lourde. On observe cependant une légère variabilité pour les très petites valeurs de \(k\), car dans ce cas, l’estimation repose sur un nombre insuffisant de données, ce qui la rend plus sensible aux fluctuations aléatoires.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{./Evolution des estimateurs/pickands/estimateur_pickands_exponentielle.png}
     \caption{Estimateur de Pickands appliqué à la loi Exponentielle ($\gamma = 0$)}
 \end{figure}
-Dans le cas de la loi exponentielle, qui appartient au domaine de Gumbel, l’estimateur se stabilise très rapidement autour de $\gamma = 0$. Le résultat est ainsi conforme aux attentes.
-
+Dans le cas de la loi exponentielle, qui appartient au domaine d'attraction de Gumbel, l’estimateur de Pickands se stabilise rapidement autour de \(\gamma = 0\). Ce comportement est conforme aux attentes théoriques, puisque pour les distributions à queue exponentielle, l’indice de queue est effectivement nul.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{./Evolution des estimateurs/pickands/estimateur_pickands_uniforme.png}
@@ -762,7 +761,7 @@ Avec la loi uniforme, dont le support est borné, l’estimateur converge vers $
     \includegraphics[width=0.6\textwidth]{./Evolution des estimateurs/pickands/estimateur_pickands_cauchy.png}
     \caption{Estimateur de Pickands appliqué à la loi de Cauchy ($\gamma = 1$)}
 \end{figure}
-La loi de Cauchy, caractérisée par une queue extrêmement lourde, présente un comportement plus instable. Pour les faibles valeurs de $k$, l’estimateur est instable. Il converge vers $\gamma = 1$ mais, passé un certain seuil (vers $k = 10000$), il commence à décroître, indiquant une dégradation de l’estimation. Cela met en évidence la sensibilité de l’estimateur de Pickands au choix de $k$, en particulier pour des lois aux queues extrêmes. Lorsque trop d'observations non-extrêmes sont incluses, l’estimation devient biaisée.
+La loi de Cauchy, caractérisée par une queue extrêmement lourde, induit un comportement plus instable de l’estimateur de Pickands. Pour les faibles valeurs de \(k\), l’estimateur est très variable. On observe un plateau autour de \(\gamma = 1\) dès \(k \approx 5000\), ce qui suggère une estimation correcte dans cette zone. Toutefois, lorsque \(k\) devient trop grand (au-delà de \(k \approx 10000\)), l’estimateur commence à décroître, indiquant une perte de précision. Ce phénomène illustre la sensibilité de l’estimateur de Pickands au choix de \(k\), en particulier pour les lois à queue très lourde : l’inclusion de données moins extrêmes peut introduire un biais significatif.
 
 Ainsi, ces résultats illustrent bien les limites de l’estimateur de Pickands : si \(k\) est trop petit, on observe une forte variance, tandis que si \(k\) est trop grand, l’estimation est biaisée car elle intègre des observations non extrêmes. D’un point de vue théorique, la validité asymptotique de l’estimateur repose sur les conditions suivantes : \(k \to \infty\) et \(k/n \to 0\) lorsque \(n \to \infty\). Cela signifie qu’on doit considérer suffisamment de valeurs extrêmes, tout en veillant à ce que \(k\) reste petit devant \(n\). Dans cette optique, nous limitons volontairement \(k\) à \(n/4\) dans nos simulations, afin de respecter ce cadre théorique et d’éviter que l’estimation ne soit dégradée.
 
@@ -783,7 +782,7 @@ Soient \(\alpha_n\) et \(\beta_n\) deux suites de nombres positifs. La construct
 
 Ici, \(q_{\alpha}\) représente le quantile d'ordre \(\alpha\) de la distribution, et \(\gamma\) est l'indice de queue que nous cherchons à estimer. Cette relation exprime que le quantile d'ordre \(\beta_n\) peut être approximé par le quantile d'ordre \(\alpha_n\) multiplié par un facteur dépendant de \(\gamma\).
 
-Pour déterminer l'estimateur de Hill, nous commençons par prendre le logarithme des deux côtés de l'équation du dessus. Nous obtenons :
+Pour obtenir l'estimateur de Hill, nous commençons par prendre le logarithme des deux côtés de l'équation du dessus. Nous obtenons :
 
 \[
 \log(q_{\beta_n}) - \log(q_{\alpha_n}) \simeq \gamma \log\left( \frac{\alpha_n}{\beta_n} \right).
@@ -825,15 +824,27 @@ L’estimateur de Hill satisfait la propriété de consistance faible. Plus pré
 \end{remark}
 
 \subsubsection{Comportement empirique de l’estimateur de Hill}
-Pour analyser le comportement de l’estimateur de Hill, nous l’appliquons à des échantillons simulés de taille $n = 40000$, issus de plusieurs distributions : la loi de Lévy, la loi exponentielle, la loi uniforme sur \([0,1]\), et la loi de Cauchy. Ces distributions couvrent les trois domaines d’attraction des lois de valeurs extrêmes.
-Les figures suivantes présentent l’évolution de l’estimateur de Hill en fonction de $k$, le nombre de plus grandes valeurs utilisées. La ligne rouge indique la valeur théorique de $\gamma$, tandis que la courbe noire représente l’estimation, accompagnée d’une bande de confiance à 95\%.
+Pour analyser le comportement de l’estimateur de Hill, nous l’appliquons à des échantillons simulés de taille \(n = 40000\), issus de plusieurs distributions : la loi de Lévy, la loi exponentielle, la loi uniforme sur \([0,1]\), et la loi de Cauchy. Ces distributions permettent d’explorer les trois domaines d’attraction des lois de valeurs extrêmes.
+Il est important de noter que l’estimateur de Hill est conçu spécifiquement pour les lois à queue lourde, appartenant au domaine d’attraction de Fréchet (\(\gamma > 0\)). On ne s’attend donc pas à obtenir de bonnes performances pour des lois comme l’exponentielle ou l’uniforme, qui ne satisfont pas cette condition.
+Les figures suivantes présentent l’évolution de l’estimateur de Hill en fonction de \(k\), le nombre de plus grandes valeurs utilisées. La ligne rouge indique la valeur théorique de \(\gamma\), tandis que la courbe noire représente l’estimation, accompagnée d’une bande de confiance à 95\%.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.55\textwidth]{./Evolution des estimateurs/hill/estimateur_hill_levy.png}
     \caption{Estimateur de Hill appliqué à la loi de Lévy ($\gamma = 0.5$)}
 \end{figure}
-Pour la loi de Lévy, à queue lourde, l’estimateur de Hill converge de manière assez stable vers \(\gamma = 0.5\). Au-delà d’un certain seuil de \(k\), on note cependant une dégradation due à l’inclusion d’observations moins extrêmes.
+La loi de Lévy est une loi à queue lourde appartenant au domaine d’attraction de Fréchet. Sa densité de probabilité est donnée par :
 
+\[
+f(x; \mu, c) =
+\begin{cases}
+\sqrt{\dfrac{c}{2\pi}} \dfrac{1}{(x - \mu)^{3/2}} \exp\left(-\dfrac{c}{2(x - \mu)}\right), & \text{si } x > \mu, \\
+0, & \text{sinon.}
+\end{cases}
+\]
+
+où \(\mu \in \mathbb{R}\) est un paramètre de position et \(c > 0\) un paramètre d’échelle. Cette loi est caractérisée par une forte asymétrie et une variance infinie.
+
+Sur le graphique, on observe que l’estimateur de Hill converge globalement vers la valeur théorique \(\gamma = 0.5\), ce qui est attendu pour une loi à queue lourde. Cette convergence devient plus stable lorsque \(k\) atteint des valeurs modérées. Toutefois, lorsque \(k\) devient trop grand, on remarque une détérioration progressive de l’estimation : cela s'explique par l’inclusion d’observations moins extrêmes, qui introduisent un biais dans le calcul de l’estimateur.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.55\textwidth]{./Evolution des estimateurs/hill/estimateur_hill_exponentielle.png}
@@ -853,8 +864,7 @@ La loi uniforme a un support borné et un indice théorique de \(\gamma = -1\), 
     \includegraphics[width=0.55\textwidth]{./Evolution des estimateurs/hill/estimateur_hill_cauchy.png}
     \caption{Estimateur de Hill appliqué à la loi de Cauchy ($\gamma = 1$)}
 \end{figure}
-La loi de Cauchy, avec un indice \(\gamma = 1\), appartient au domaine de Fréchet. L’estimateur fonctionne bien pour de faibles valeurs de \(k\), avec une estimation proche de la valeur théorique. Mais dès que \(k\) devient trop grand, la courbe chute, signe d’un biais induit par les valeurs non extrêmes. Cela illustre la sensibilité de l’estimateur au choix du seuil.
-
+La loi de Cauchy, avec un indice $\gamma = 1$, appartient au domaine de Fréchet. L’estimateur fonctionne bien pour de faibles valeurs de $k$, avec une estimation proche de la valeur théorique. On observe un plateau autour de $k = 3000-4000$, indiquant une estimation stable dans cette plage. Cependant, dès que $k$ devient trop grand, la courbe chute, signe d’un biais induit par les valeurs non extrêmes. Cela illustre la sensibilité de l’estimateur au choix du seuil, similaire à ce qui est observé avec l'estimateur de Pickands.
 \medskip
 \noindent
 Ainsi, ces résultats montrent que l’estimateur de Hill est très dépendant du choix du paramètre \(k\), et de la nature de la distribution. Un compromis est nécessaire entre biais (si \(k\) est trop grand) et variance (si \(k\) est trop petit), pour garantir une estimation fiable.
@@ -954,14 +964,9 @@ Et sa version en fonction de survie :
 \overline{F}_u(x) := \mathbb{P}(X - u > x \mid X > u) = \frac{\overline{F}(x + u)}{\overline{F}(u)}.
 \]
 
-Lorsque le seuil \(u\) est suffisamment élevé, \(F_u\) peut être bien approchée par une distribution de Pareto généralisée \(G_{\gamma, \beta(u)}\), définie comme suit :
-
-\subsection{Loi de Pareto généralisée (GPD)}
-
-La fonction de répartition de la GPD est donnée par :
-
+Lorsque le seuil \(u\) est suffisamment élevé, \(F_u\) peut être bien approchée par une distribution de Pareto généralisée \(H_{\gamma, \beta(u)}\), définie comme suit :
 \[
-G_{\gamma, \beta}(y) =
+H_{\gamma, \beta}(y) =
 \begin{cases}
 1 - \left(1 + \dfrac{\gamma y}{\beta}\right)^{-1/\gamma}, & \text{si } \gamma \neq 0, \\
 1 - \exp\left(-\dfrac{y}{\beta}\right), & \text{si } \gamma = 0,
@@ -970,16 +975,16 @@ G_{\gamma, \beta}(y) =
 avec \( y \geq 0 \), sous la condition \(1 + \gamma y/\beta > 0\). Le paramètre \(\beta > 0\) représente l’échelle et \(\gamma\) le paramètre de forme (indice de queue).
 
 \medskip
-\textbf{Exemple (cas exponentiel)}.\\
+\begin{example}
 Soit \(F(x) = 1 - e^{-x}\) la loi exponentielle standard. On a pour tout \(y > 0\) :
 
 \[
 \mathbb{P}(X - u > y \mid X > u) = \frac{e^{-(u + y)}}{e^{-u}} = e^{-y}.
 \]
-
 On retrouve donc une loi exponentielle, qui correspond à une GPD avec \(\gamma = 0\) et \(\beta = 1\). Cela montre que l’exponentielle est un cas particulier de GPD.
+\end{example}
 
-\subsection{Théorème de Balkema–de Haan–Pickands}
+\begin{theorem}
 
 Le résultat central qui justifie l’utilisation de la GPD pour modéliser les excès est le suivant :
 
@@ -994,6 +999,7 @@ Autrement dit, plus le seuil \(u\) est élevé, plus la loi des excès au-dessus
 
 \medskip
 Cette propriété est essentielle en statistique des valeurs extrêmes, car elle permet d’exploiter pleinement les données situées dans les queues de distribution, sans se limiter au maximum d’un bloc.
+\end{theorem}
 \newpage
 \section{Application sur des données réelles}
 \subsection{Description des données}

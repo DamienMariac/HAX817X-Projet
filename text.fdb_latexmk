@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1748026944.85603 "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" "text.pdf" "text" 1748026948.29666 0
+["pdflatex"] 1748028501.29656 "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" "text.pdf" "text" 1748028504.60066 0
   "C:/Users/welma/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1748026892.85042 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/welma/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbi1000.pk" 1748026587.57503 34112 444265a03457171c1611d35a77bce495 ""
   "C:/Users/welma/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1000.pk" 1748026595.23974 25420 faca94d459e534378261c705d56b9b5b ""
@@ -123,7 +123,7 @@
   "Evolution des estimateurs/pickands/estimateur_pickands_exponentielle.png" 1747996807.35616 7294 cc39a275ff2e7d0bf95eac388cfd91ee ""
   "Evolution des estimateurs/pickands/estimateur_pickands_pareto.png" 1747996829.62793 7331 255a5baeb067f6979545df3631e56770 ""
   "Evolution des estimateurs/pickands/estimateur_pickands_uniforme.png" 1747996780.02061 7154 c6313a2af3453a7229a6a14c69f69182 ""
-  "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" 1748026698.06726 62769 9b61a6e46eb73d6b53626c5e5ca83b44 ""
+  "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" 1748028496.57148 64352 ff99d3a638780e0ae747ba2df2cc8516 ""
   "images/DS_Cauchy.png" 1748020546.9966 10114 cc227bbc3738c5dcae6db861bc94915f ""
   "images/DS_Normale.png" 1748020546.9996 11131 26ddebb30ea2f33154c2087271ca94d1 ""
   "images/DS_Uniforme.png" 1748020547.0006 9030 91e2499800f99014c54255572fa25a43 ""
@@ -139,8 +139,8 @@
   "images/pickandsrain.png" 1747993734.62038 29523 f4c956ea56a92c6467fbcd2c86a312f7 ""
   "images/rainhisto.png" 1743094035.88691 15391 fcc4701932f5090998a8bf7e0659151b ""
   "images/sinistres.png" 1746697179.03577 15786 7d32ff9acf380f76114b8487f09a7edf ""
-  "text.aux" 1748026947.56418 6536 904f67ac1d142fbd86bb358d575fa60e "pdflatex"
-  "text.toc" 1748026947.57211 3338 fe1a1da60a86e7a90887e5137692c67f "pdflatex"
+  "text.aux" 1748028503.97683 6272 c10e9a21efffffc9462221234079976c "pdflatex"
+  "text.toc" 1748028503.99111 3156 64426d272595182008018fef5d27c827 "pdflatex"
   (generated)
   "text.aux"
   "text.log"
