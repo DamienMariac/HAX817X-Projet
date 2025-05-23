@@ -460,11 +460,11 @@ Elles sont les suivantes :
 \newpage
 \section{Quelques exemples numériques}
 
-\noindent Voici maintenant quelques applications numériques sur des lois usuelles de ce que nous avons vu dans cette section. Pour chacune des représentations suivantes, nous avons simulé $n=1000$ fois chaque loi puis ensuite effectué $N=10000$ simulations pour le maximum afin d'avoir une précision correcte. 
+\noindent Voici maintenant quelques applications numériques sur des lois usuelles de ce que nous avons vu dans cette section. Pour chacune des représentations suivantes, nous avons réalisé $n=1000$ simulations de chaque loi puis ensuite effectué $N=10000$ réalisations du maximum de ces $n$ lois afin d'avoir une précision correcte. 
 
 \subsubsection{Loi uniforme}
 
-\noindent Pour la loi uniforme sur [0,1], on peut montrer théoriquement que la limite du max est une loi exponentielle de paramètre 1 (loi de Weibull bien particulière). \\
+\noindent Pour une loi uniforme sur [0,1], on peut démontrer que le maximum suit une loi de Weibull de paramètres 1 et 1. \\
 \noindent Soient \( U_1, U_2, \dots, U_n \) des variables aléatoires indépendantes et identiquement distribuées selon la loi uniforme sur \([0,1]\).
 
 \noindent On a, pour $ x \in [0,1]$ :
@@ -481,10 +481,10 @@ Elles sont les suivantes :
 P(M_n \leq 1 - y/n) = (1 - y/n)^n.
 \]
 
-\noindent De plus, on a: $(1 - y/n)^n \xrightarrow[n \to +\infty]{} e^{-y} $. Donc, $ P(M_n \leq 1 - y/n) \xrightarrow[n \to +\infty]{} e^{-y} $.
+\noindent De plus, on a: $(1 - y/n)^n \xrightarrow[n \to +\infty]{} e^{-y} $ donc $ P(M_n \leq 1 - y/n) \xrightarrow[n \to +\infty]{} e^{-y} $.
 
 
-\noindent Or, par définition, la loi exponentielle de paramètre 1 a pour fonction de répartition : $ P(Y \leq y) = 1 - e^{-y}, \quad y > 0. $
+\noindent Or, par définition, la loi de Weibull(1,1) a pour fonction de répartition : $ P(Y \leq y) = 1 - e^{-y}, \quad y > 0. $
 
 \noindent Ainsi, on a donc montré que :
 
@@ -495,9 +495,9 @@ P(n(1 - M_n) \leq y) \to P(Y \leq y) = 1 - e^{-y},
 \noindent ce qui établit la convergence en loi :
 
 \[
-Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
+Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \text{Weibull}(1,1)
 \] 
-\noindent Ainsi, on prendra ici $a_n$ = $\frac{1}{n}$ et $b_n$ = 1.
+\noindent Ainsi, on prendra ici $a_n$ = $\frac{1}{n}$ et $b_n$ = 1. \\
 
 \noindent Une simulation sur Rstudio donne le graphe suivant :
 
@@ -508,18 +508,17 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
 \noindent Remarquons que l'on obtient une loi de Gumbel, ce qui est assez logique au vu du fait que ce soit une loi à queue très légère (elle n'en a tout simplement pas car son support est borné).
 
 \subsubsection{Loi exponentielle}
-\noindent Pour une loi exponentielle de paramètre 1, la loi limite est une loi de Gumbel. Théoriquement, on trouve $a_n = 1 $ et $b_n = \log(n) $. \\
+\noindent On considère une loi exponentielle de paramètre 1, la loi limite est une loi de Gumbel. Montrons que $a_n = 1 $ et $b_n = \log(n) $ conviennent. \\
 \noindent En effet, soient $X_1, \dots, X_n$ des variables aléatoires iid de loi $\mathcal{E}(1)$. On a pour $ x \geq 0 $ :
 
 \begin{align*}
 	P(M_n \leq x) &= P(X_1 \leq x, \dots, X_n \leq x) \\
-	&= P(X_1 \leq x)^n \\
 	&= (1-\exp(- x))^n
 \end{align*}
 
 \noindent Passons donc à la normalisation, posons $z=\frac{x-b_n}{a_n}$, on va utiliser le fait que $(1-\exp(- x))^n \xrightarrow[x \to +\infty]{} \exp(-n\exp(-x)) $. \\
-\noindent Ainsi on veut choisir $b_n$ de telle sorte que $n \exp(-b_n) \xrightarrow[n \to +\infty]{} 1 $. D'où $b_n = \log(n)$ \\
-\noindent On a donc $ x = a_n z + \log(n) $. On peut donc choisir $ a_n = 1$ afin d'avoir : 
+\noindent Ainsi on veut choisir $b_n$ de telle sorte que $n \exp(-b_n) \xrightarrow[n \to +\infty]{} 1 $. D'où $b_n = \log(n)$. \\
+\noindent On peut donc choisir $ a_n = 1$ afin d'avoir : 
 \begin{align*}
 	P(\frac{M_n - \log(n)}{1} \leq z) &= (1 - \exp(-(z+\log(n))))^n \\
 	&= (1 - \frac{\exp(-z)}{n})^n 
@@ -535,11 +534,12 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
 	\includegraphics[scale=0.8]{./images/Max_Expo.png} 
 \end{center}
 
-\noindent Cette fois-ci, on avait une loi à queue fine, et on obtient loi de Gumbel, ce qui était attendu.
+\noindent Les valeurs de la loi exponentielle décroissent rapidement, on peut donc caractériser sa queue de distribution comme étant fine, on obtient donc une loi de Gumbel, ce qui était attendu.
 
 \subsubsection{Loi normale}
 
-\noindent Pour maintenant une loi normale centrée-réduite, on peut montrer que la loi limite est encore une fois une loi de Gumbel. Théoriquement, on trouve les paramètres généralisés suivants : $a_n = \frac{\log\left(\frac{4\log^2(2)}{\log^2\left(\frac{4}{3}\right)}\right)}{2\sqrt{2\log(n)}} $ et $b_n = \sqrt{2\log(n)} - \frac{\log(\log(n)) + \log\left(4\pi \log^2(2)\right)}{2\sqrt{2\log(n)}} $. (Gnedenko, \textit{On The Limiting Distribution of the Maximum Term in a Random Series}). \\
+\noindent Considérons maintenant une loi normale centrée réduite, on peut montrer que la loi limite est encore une fois une loi de Gumbel. Théoriquement, on peut démontrer que les paramètres généralisés suivants sont satisfaisants : $a_n = \frac{\log\left(\frac{4\log^2(2)}{\log^2\left(\frac{4}{3}\right)}\right)}{2\sqrt{2\log(n)}} $ et $b_n = \sqrt{2\log(n)} - \frac{\log(\log(n)) + \log\left(4\pi \log^2(2)\right)}{2\sqrt{2\log(n)}} $. (voir Gnedenko, \textit{On The Limiting Distribution of the Maximum Term in a Random Series}). \\
+
 \noindent On obtient cette fois-ci le graphe suivant :
 
 \begin{center}
@@ -550,9 +550,9 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
 
 \subsubsection{Loi de Cauchy}
 
-\noindent Enfin, pour une loi de Cauchy (de paramètres 0 et 1 ici), la loi limite est une loi de Fréchet. On a les coefficients suivants : $a_n = \pi $ et $b_n = n $. \\
+\noindent Enfin, pour une loi de Cauchy (de paramètres 0 et 1 ici), la loi limite est une loi de Fréchet. Les coefficients suivants conviennent : $a_n = \pi $ et $b_n = n $. \\
 
-\noindent On s'intéresse au comportement asymptotique du maximum $ M_n = \max(X_1, \dots, X_n) $. Pour la loi de Cauchy, on sait que la fonction de répartition est donnée par $ F(x) = \frac{1}{2} + \frac{1}{\pi} \arctan(x) $. Donc, la fonction de survie est $ \bar{F}(x) = 1 - F(x) = \frac{1}{2} - \frac{1}{\pi} \arctan(x) $. \\
+\noindent Pour une loi de Cauchy, on sait que la fonction de répartition est donnée par $ F(x) = \frac{1}{2} + \frac{1}{\pi} \arctan(x) $. Donc, sa fonction de survie est $ \bar{F}(x) = 1 - F(x) = \frac{1}{2} - \frac{1}{\pi} \arctan(x) $. \\
 
 \noindent On va utiliser le développement asymptotique suivant, pour \( x \to +\infty \): $\arctan(x) = \frac{\pi}{2} - \frac{1}{x} + o\left(\frac{1}{x}\right) $. \\
 
@@ -560,9 +560,9 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
 \noindent Et donc la loi du maximum \( M_n \) s’écrit alors : $ \mathbb{P}(M_n \leq x) = F(x)^n \xrightarrow[n \to +\infty]{} \left(1 - \frac{1}{\pi x}\right)^n $
 
 
-\noindent On cherche donc \( a_n > 0 \), \( b_n \) tels que : $ \mathbb{P}\left( \frac{M_n - b_n}{a_n} \leq z \right) \to G(z) = \exp(-1/z) $ où G est la fonction de répartition d'une loi de Fréchet de paramètre 1. \\
+\noindent On cherche donc \( a_n > 0 \), \( b_n \) tels que : $ \mathbb{P}\left( \frac{M_n - b_n}{a_n} \leq z \right) \to \exp(-1/z) $ ce qui correspond à la fonction de répartition d'une loi de Fréchet de paramètre 1. \\
 
-\noindent Posons \( b_n = n \), \( a_n = \pi \). Alors :
+\noindent Posons \( b_n = n \), \( a_n = \pi \). Il vient :
 
 \[
 \mathbb{P}\left( \frac{M_n - n}{\pi} \leq z \right) = \mathbb{P}\left( M_n \leq \pi z + n \right) \xrightarrow[n \to +\infty]{} \left(1 - \frac{1}{\pi(\pi z + n)}\right)^n
@@ -570,13 +570,11 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \mathcal{E}(1).
 
 \noindent En développant, on obtient : $\left(1 - \frac{1}{\pi(\pi z + n)}\right)^n \xrightarrow[n \to +\infty]{} \exp\left(- \frac{n}{\pi(\pi z + n)} \right)$
 
-\noindent Et lorsque \( n \to \infty \), on a $ \frac{n}{\pi(\pi z + n)} \to \frac{1}{z} $
-
-\noindent Donc : $\mathbb{P}\left( \frac{M_n - n}{\pi} \leq z \right) \to \exp\left(-\frac{1}{z} \right)$ \\
+\noindent Donc : $\mathbb{P}\left( \frac{M_n - n}{\pi} \leq z \right) \xrightarrow[n \to +\infty]{} \exp\left(-\frac{1}{z} \right)$ \\
 
 \noindent Ce qui montre que :
 \[
-\frac{M_n - n}{\pi} \xrightarrow{d} Z \sim \text{Fréchet}(1)
+\frac{M_n - n}{\pi} \xrightarrow[n \to +\infty]{\mathcal{L}} Z \sim \text{Fréchet}(1)
 \]
 
 
@@ -730,7 +728,7 @@ Chaque échantillon comporte $n = 100000$ observations, et l’estimation est fa
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{./image_hill_pickands/pareto_pickands.png}
+    \includegraphics[width=0.6\textwidth]{./Evolution des estimateurs/pickands/estimateur_pickands_pareto.png}
     \caption{Estimateur de Pickands appliqué à la loi de Pareto ($\gamma = 0.5$)}
 \end{figure}
 Tout d'abord, pour la loi de Pareto, nous remarquons que l'estimateur de Pickands converge rapidement et de manière stable vers la valeur théorique $\gamma = 0.5$, dès que $k$ devient raisonnablement grand. Cela confirme la bonne performance de l’estimateur pour des lois à queue lourde. On observe cependant une légère variabilité pour les très petites valeurs de $k$, comme attendu.
@@ -738,14 +736,14 @@ Tout d'abord, pour la loi de Pareto, nous remarquons que l'estimateur de Pickand
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{./image_hill_pickands/exponentielle_pickands.png}
+    \includegraphics[width=0.6\textwidth]{./Evolution des estimateurs/pickands/estimateur_pickands_exponentielle.png}
     \caption{Estimateur de Pickands appliqué à la loi Exponentielle ($\gamma = 0$)}
 \end{figure}
 Dans le cas de la loi exponentielle, qui appartient au domaine de Gumbel, l’estimateur se stabilise très rapidement autour de $\gamma = 0$. Le résultat est ainsi conforme aux attentes.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{./image_hill_pickands/uniforme_pickands.png}
+    \includegraphics[width=0.6\textwidth]{./Evolution des estimateurs/pickands/estimateur_pickands_uniforme.png}
     \caption{Estimateur de Pickands appliqué à la loi Uniforme ($\gamma = -1$)}
 \end{figure}
 Avec la loi uniforme, dont le support est borné, l’estimateur converge vers $\gamma = -1$, ce qui est cohérent avec la théorie. On observe une plus grande variabilité dans les faibles valeurs de $k$, mais une convergence raisonnablement bonne lorsque $k$ augmente.
@@ -753,7 +751,7 @@ Avec la loi uniforme, dont le support est borné, l’estimateur converge vers $
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{./image_hill_pickands/cauchy_pickands.png}
+    \includegraphics[width=0.6\textwidth]{./Evolution des estimateurs/pickands/estimateur_pickands_cauchy.png}
     \caption{Estimateur de Pickands appliqué à la loi de Cauchy ($\gamma = 1$)}
 \end{figure}
 La loi de Cauchy, caractérisée par une queue extrêmement lourde, présente un comportement plus instable. Pour les faibles valeurs de $k$, l’estimateur est instable. Il converge vers $\gamma = 1$ mais, passé un certain seuil (vers $k = 10000$), il commence à décroître, indiquant une dégradation de l’estimation. Cela met en évidence la sensibilité de l’estimateur de Pickands au choix de $k$, en particulier pour des lois aux queues extrêmes. Lorsque trop d'observations non-extrêmes sont incluses, l’estimation devient biaisée.
@@ -823,28 +821,28 @@ Pour analyser le comportement de l’estimateur de Hill, nous l’appliquons à 
 Les figures suivantes présentent l’évolution de l’estimateur de Hill en fonction de $k$, le nombre de plus grandes valeurs utilisées. La ligne rouge indique la valeur théorique de $\gamma$, tandis que la courbe noire représente l’estimation, accompagnée d’une bande de confiance à 95\%.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.55\textwidth]{./image_hill_pickands/levy_hill.png}
+    \includegraphics[width=0.55\textwidth]{./Evolution des estimateurs/hill/estimateur_hill_levy.png}
     \caption{Estimateur de Hill appliqué à la loi de Lévy ($\gamma = 0.5$)}
 \end{figure}
 Pour la loi de Lévy, à queue lourde, l’estimateur de Hill converge de manière assez stable vers \(\gamma = 0.5\). Au-delà d’un certain seuil de \(k\), on note cependant une dégradation due à l’inclusion d’observations moins extrêmes.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.55\textwidth]{./image_hill_pickands/exponentielle_hill.png}
+    \includegraphics[width=0.55\textwidth]{./Evolution des estimateurs/hill/estimateur_hill_exponentielle.png}
     \caption{Estimateur de Hill appliqué à la loi exponentielle ($\gamma = 0$)}
 \end{figure}
 La loi exponentielle appartient au domaine de Gumbel, avec un indice de queue nul. L’estimateur de Hill n’est pas conçu pour ce cas, ce que montre bien le graphique : les valeurs estimées sont nettement surestimées et décroissent lentement sans atteindre la valeur théorique. Ce comportement traduit l’inadéquation de Hill pour ce type de loi.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.55\textwidth]{./image_hill_pickands/uniforme_hill.png}
+    \includegraphics[width=0.55\textwidth]{./Evolution des estimateurs/hill/estimateur_hill_uniforme.png}
     \caption{Estimateur de Hill appliqué à la loi uniforme ($\gamma = -1$)}
 \end{figure}
 La loi uniforme a un support borné et un indice théorique de \(\gamma = -1\), ce qui sort du domaine d’application de Hill, qui suppose \(\gamma > 0\). L’estimateur produit ici des résultats très instables et incohérents, confirmant qu’il ne doit pas être utilisé sur ce type de distribution.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.55\textwidth]{./image_hill_pickands/cauchy_hill.png}
+    \includegraphics[width=0.55\textwidth]{./Evolution des estimateurs/hill/estimateur_hill_cauchy.png}
     \caption{Estimateur de Hill appliqué à la loi de Cauchy ($\gamma = 1$)}
 \end{figure}
 La loi de Cauchy, avec un indice \(\gamma = 1\), appartient au domaine de Fréchet. L’estimateur fonctionne bien pour de faibles valeurs de \(k\), avec une estimation proche de la valeur théorique. Mais dès que \(k\) devient trop grand, la courbe chute, signe d’un biais induit par les valeurs non extrêmes. Cela illustre la sensibilité de l’estimateur au choix du seuil.
