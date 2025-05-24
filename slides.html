@@ -400,48 +400,59 @@ G_{\gamma}(x) = \exp (-[1 + \gamma u]^{-\frac{1}{\gamma}})
 </div></div>
 </section></section>
 <section>
-<section id="estimation-de-lindice-de-queue" class="title-slide slide level1 center">
-<h1>Estimation de l’indice de queue</h1>
-
-</section>
-<section id="motivations" class="slide level2">
-<h2>Motivations</h2>
+<section id="estimation-de-lindice-de-queue-objectifs" class="title-slide slide level1 center">
+<h1>Estimation de l’indice de queue : objectifs</h1>
 <ul>
-<li class="fragment">Objectif : estimer <span class="math inline">\(\gamma\)</span> pour pouvoir déterminer la loi limite parmi les 3 possibles</li>
-<li class="fragment">Deux méthodes classiques :
-<ul>
-<li class="fragment">Pickands</li>
-<li class="fragment">Hill</li>
-</ul></li>
+<li class="fragment">L’indice de queue <span class="math inline">\(\gamma\)</span> permet d’identifier la loi limite (Fréchet, Gumbel, Weibull)</li>
+<li class="fragment">Plusieurs méthodes existent, basées sur des statistiques d’ordre</li>
+<li class="fragment">On se concentre ici sur deux estimateurs classiques :</li>
+<li class="fragment">Pickands (robuste, toutes queues)</li>
+<li class="fragment">Hill (plus performant mais uniquement pour queues lourdes, <span class="math inline">\(\gamma &gt; 0\)</span>)</li>
 </ul>
 </section>
 <section id="estimateur-de-pickands" class="slide level2">
 <h2>Estimateur de Pickands</h2>
 <ul>
-<li class="fragment">Basé sur les statistiques d’ordre</li>
-<li class="fragment">Robuste mais sensible à <span class="math inline">\(k\)</span></li>
-<li class="fragment">Fonctionne pour tous les domaines d’attraction</li>
-<li class="fragment">Sa formule : <span class="math display">\[
-\hat{\gamma}_p = \frac{1}{\ln(2)} \ln(\frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-2k+1, n} - X_{n-4k+1, n}})
+<li class="fragment">Méthode non-paramétrique robuste</li>
+<li class="fragment">Utilise des statistiques d’ordre</li>
+<li class="fragment">Valable pour tous les domaines d’attraction <span class="math display">\[
+\hat{\gamma}_p = \frac{1}{\ln(2)} \ln\left(\frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-2k+1, n} - X_{n-4k+1, n}}\right)
 \]</span></li>
+<li class="fragment">Sensible au choix du paramètre <span class="math inline">\(k\)</span></li>
 </ul>
 </section>
 <section id="estimateur-de-hill" class="slide level2">
 <h2>Estimateur de Hill</h2>
 <ul>
-<li class="fragment">Plus performant que Pickands pour les queues lourdes</li>
-<li class="fragment">Mais ne fonctionne que pour les <span class="math inline">\(\gamma &gt; 0\)</span></li>
-<li class="fragment">Biaisé</li>
-<li class="fragment">Sa formule : <span class="math display">\[
+<li class="fragment">Construit uniquement pour queues lourdes (Fréchet)</li>
+<li class="fragment">Meilleure performance que Pickands dans ce cadre <span class="math display">\[
 \hat{\gamma}_h = \frac{1}{k-1} \sum_{i=1}^{k-1} \log(X_{n-i+1, n}) - \log(X_{n - k + 1, n})
 \]</span></li>
+<li class="fragment">Mais biaisé et très sensible à <span class="math inline">\(k\)</span></li>
 </ul>
 </section>
-<section id="simulations-pour-pickands" class="slide level2">
-<h2>Simulations pour Pickands</h2>
+<section id="simulations-pickands" class="slide level2">
+<h2>Simulations : Pickands</h2>
+<div class="center">
+<p><img data-src="Evolution%20des%20estimateurs/pickands//estimateur_pickands_pareto.png" style="width:50.0%"></p>
+</div>
+<ul>
+<li class="fragment">Pour la loi de Pareto (<span class="math inline">\(\gamma = 0.5\)</span>), l’estimateur converge bien pour un <span class="math inline">\(k\)</span> modéré</li>
+<li class="fragment">Trop petit : variance élevée ; trop grand : biais</li>
+</ul>
 </section>
-<section id="simulations-pour-hill" class="slide level2">
-<h2>Simulations pour Hill</h2>
+<section id="simulations-hill" class="slide level2">
+<h2>Simulations : Hill</h2>
+<div class="center">
+<p><img data-src="Evolution%20des%20estimateurs/hill/estimateur_hill_cauchy.png" style="width:50.0%"></p>
+</div>
+<ul>
+<li class="fragment">Pour la loi de Cauchy (<span class="math inline">\(\gamma = 1\)</span>), l’estimateur est stable pour <span class="math inline">\(k \in [3000, 4000]\)</span></li>
+<li class="fragment">Au-delà, inclusion de valeurs non extrêmes → biais important</li>
+</ul>
+</section>
+<section class="slide level2">
+
 </section></section>
 <section>
 <section id="méthodes-de-simulations" class="title-slide slide level1 center">
@@ -457,18 +468,22 @@ G_{\gamma}(x) = \exp (-[1 + \gamma u]^{-\frac{1}{\gamma}})
 <li class="fragment">On peut alors déterminer de nouveaux estimateurs PWM.</li>
 </ul>
 </section>
-<section id="dépassement-de-seuil" class="slide level2">
-<h2>Dépassement de seuil</h2>
+<section id="méthode-des-excès" class="slide level2">
+<h2>Méthode des excès</h2>
 <ul>
-<li class="fragment"><p>On ne conserve que les observations excédant un certain seuil u. Lorsque celui-ci est assez élevée, alors F suit une loi de Pareto généralisée : <span class="math display">\[
+<li class="fragment">On ne garde que les observations supérieures à un seuil <span class="math inline">\(u\)</span></li>
+<li class="fragment">On modélise la distribution des excès par la loi de Pareto généralisée <span class="math display">\[
 G_{\gamma, \beta}(y) =
 \begin{cases}
 1 - \left(1 + \frac{\gamma y}{\beta} \right)^{-1/\gamma}, &amp; \text{si } \gamma \ne 0, \\
 1 - \exp\left( -\frac{y}{\beta} \right), &amp; \text{si } \gamma = 0.
 \end{cases}
-\]</span></p></li>
-<li class="fragment"><p>Le seuil u est néanmoins difficile à déterminer.</p></li>
+\]</span></li>
+<li class="fragment">Méthode très utilisée en finance, assurance, hydrologie</li>
 </ul>
+</section>
+<section class="slide level2">
+
 </section></section>
 <section>
 <section id="application-à-des-données-réelles" class="title-slide slide level1 center">

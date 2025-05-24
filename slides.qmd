@@ -73,49 +73,60 @@ $$
 :::
 
 
-# Estimation de l'indice de queue
-
-
-## Motivations 
-
-- Objectif : estimer $\gamma$ pour pouvoir déterminer la loi limite parmi les 3 possibles
-- Deux méthodes classiques :
-  - Pickands
-  - Hill
+# Estimation de l'indice de queue : objectifs
+- L’indice de queue $\gamma$ permet d’identifier la loi limite (Fréchet, Gumbel, Weibull)
+- Plusieurs méthodes existent, basées sur des statistiques d’ordre
+- On se concentre ici sur deux estimateurs classiques :
+- Pickands (robuste, toutes queues)
+- Hill (plus performant mais uniquement pour queues lourdes, $\gamma > 0$)
 
 ---
 
 ## Estimateur de Pickands
 
-- Basé sur les statistiques d'ordre
-- Robuste mais sensible à $k$
-- Fonctionne pour tous les domaines d’attraction
-- Sa formule :
+- Méthode non-paramétrique robuste
+- Utilise des statistiques d’ordre
+- Valable pour tous les domaines d’attraction
 $$ 
-\hat{\gamma}_p = \frac{1}{\ln(2)} \ln(\frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-2k+1, n} - X_{n-4k+1, n}})
+\hat{\gamma}_p = \frac{1}{\ln(2)} \ln\left(\frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-2k+1, n} - X_{n-4k+1, n}}\right)
 $$
+- Sensible au choix du paramètre $k$
 
 ---
 
 ## Estimateur de Hill
 
-- Plus performant que Pickands pour les queues lourdes
-- Mais ne fonctionne que pour les $\gamma > 0$
-- Biaisé
-- Sa formule :
+- Construit uniquement pour queues lourdes (Fréchet)
+- Meilleure performance que Pickands dans ce cadre
 $$
 \hat{\gamma}_h = \frac{1}{k-1} \sum_{i=1}^{k-1} \log(X_{n-i+1, n}) - \log(X_{n - k + 1, n})
 $$
+- Mais biaisé et très sensible à $k$
 
 ---
 
-## Simulations pour Pickands
+## Simulations : Pickands
 
+:::{.center}
+![](Evolution%20des%20estimateurs/pickands//estimateur_pickands_pareto.png){width=50%}
+:::
+
+
+- Pour la loi de Pareto ($\gamma = 0.5$), l’estimateur converge bien pour un $k$ modéré
+- Trop petit : variance élevée ; trop grand : biais
 
 ---
 
-## Simulations pour Hill
+## Simulations : Hill
 
+:::{.center}
+![](Evolution%20des%20estimateurs/hill/estimateur_hill_cauchy.png){width=50%}
+:::
+
+- Pour la loi de Cauchy ($\gamma = 1$), l’estimateur est stable pour $k \in [3000, 4000]$
+- Au-delà, inclusion de valeurs non extrêmes → biais important
+
+---
 
 # Méthodes de simulations
 
@@ -129,9 +140,11 @@ $$
 
 ---
 
-## Dépassement de seuil
 
-- On ne conserve que les observations excédant un certain seuil u. Lorsque celui-ci est assez élevée, alors F suit une loi de Pareto généralisée :
+## Méthode des excès
+
+- On ne garde que les observations supérieures à un seuil $u$
+- On modélise la distribution des excès par la loi de Pareto généralisée
 $$
 G_{\gamma, \beta}(y) =
 \begin{cases}
@@ -139,11 +152,9 @@ G_{\gamma, \beta}(y) =
 1 - \exp\left( -\frac{y}{\beta} \right), & \text{si } \gamma = 0.
 \end{cases}
 $$
+- Méthode très utilisée en finance, assurance, hydrologie
 
-
-- Le seuil u est néanmoins difficile à déterminer.
-
-
+---
 
 # Application à des données réelles
 
