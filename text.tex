@@ -52,13 +52,19 @@
 	{ç}{{\c{c}}}1
 }
 
-\title{Étude des valeurs extrêmes univariées}
+\title{\Huge \textbf{Étude des valeurs extrêmes univariées}}
 \author{El Mazzouji Wahel, Mariac Damien, Condamy Fabian} 
 \date{\today} 
 
 \begin{document}
 
 \maketitle 
+
+\begin{center}
+	\vspace{4cm} 
+	\includegraphics[width=0.4\textwidth]{./images/LogoSSD.png} 
+\end{center}
+
 \newpage
 \tableofcontents 
 \newpage
@@ -767,54 +773,55 @@ On déduit de la croissance de $F_V$ que $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_
 
 
 \subsection{Estimateur de Hill}
-Cet estimateur a été introduit par Hill en 1975 dans le but d’estimer, de manière non paramétrique, le paramètre de queue des lois appartenant au domaine d’attraction de Fréchet. Il offre une estimation de l’indice de queue généralement plus efficace que celle fournie par l’estimateur de Pickands. La construction de cet estimateur repose sur l’utilisation des $k_n$ plus grandes statistiques d’ordre de l’échantillon.
+
+\noindent Cet estimateur a été introduit par Hill en 1975 dans le but d’estimer, de manière non paramétrique, le paramètre de queue des lois appartenant au domaine d’attraction de Fréchet. Il offre une estimation de l’indice de queue généralement plus efficace que celle fournie par l’estimateur de Pickands. La construction de cet estimateur repose sur l’utilisation des $k_n$ plus grandes statistiques d’ordre de l’échantillon.
 
 
 
 \subsubsection{La construction de l’estimateur de Hill}
-Dans le cadre de l'analyse des valeurs extrêmes, l'estimation de l'indice de queue \(\gamma\) est cruciale pour comprendre le comportement des queues de distribution. L'estimateur de Hill est une méthode largement utilisée pour estimer cet indice de queue.
+\noindent Dans le cadre de l'analyse des valeurs extrêmes, l'estimation de l'indice de queue \(\gamma\) est cruciale pour comprendre le comportement des queues de distribution. L'estimateur de Hill est une méthode largement utilisée pour estimer cet indice de queue.
 
-Soient \(\alpha_n\) et \(\beta_n\) deux suites de nombres positifs. La construction de l'estimateur de Hill repose sur une relation fondamentale entre les quantiles d’une distribution à queue lourde appartenant au domaine d’attraction de Fréchet. Cette relation est donnée par :
+\noindent Soient \(\alpha_n\) et \(\beta_n\) deux suites de nombres positifs. La construction de l'estimateur de Hill repose sur une relation fondamentale entre les quantiles d’une distribution à queue lourde appartenant au domaine d’attraction de Fréchet. Cette relation est donnée par :
 
 \[
     q_{\beta_n} \simeq q_{\alpha_n} \left( \frac{\alpha_n}{\beta_n} \right)^{\gamma}.
 \]
 
-Ici, \(q_{\alpha}\) représente le quantile d'ordre \(\alpha\) de la distribution, et \(\gamma\) est l'indice de queue que nous cherchons à estimer. Cette relation exprime que le quantile d'ordre \(\beta_n\) peut être approximé par le quantile d'ordre \(\alpha_n\) multiplié par un facteur dépendant de \(\gamma\).
+\noindent Ici, \(q_{\alpha}\) représente le quantile d'ordre \(\alpha\) de la distribution, et \(\gamma\) est l'indice de queue que nous cherchons à estimer. Cette relation exprime que le quantile d'ordre \(\beta_n\) peut être approximé par le quantile d'ordre \(\alpha_n\) multiplié par un facteur dépendant de \(\gamma\).
 
-Pour obtenir l'estimateur de Hill, nous commençons par prendre le logarithme des deux côtés de l'équation du dessus. Nous obtenons :
+\noindent Pour obtenir l'estimateur de Hill, nous commençons par prendre le logarithme des deux côtés de l'équation du dessus. Nous obtenons :
 
 \[
 \log(q_{\beta_n}) - \log(q_{\alpha_n}) \simeq \gamma \log\left( \frac{\alpha_n}{\beta_n} \right).
 \]
 
-En posant $\alpha_n = k_n/n$, où \(k_n\) est un nombre d'observations extrêmes que nous considérons, et en prenant plusieurs valeurs pour \(\beta_n\), avec \(\beta_n = i/n\) pour \(i = 1, \ldots, k_n - 1\) et \(\beta_n < \alpha_n\), nous obtenons :
+\noindent En posant $\alpha_n = k_n/n$, où \(k_n\) est un nombre d'observations extrêmes que nous considérons, et en prenant plusieurs valeurs pour \(\beta_n\), avec \(\beta_n = i/n\) pour \(i = 1, \ldots, k_n - 1\) et \(\beta_n < \alpha_n\), nous obtenons :
 
 \[
 \log(q_{i/n}) - \log(q_{k_n/n}) \simeq \gamma \log(k_n/i).
 \]
 
-Ensuite, nous estimons les quantiles par leurs équivalents empiriques, c'est-à-dire les statistiques d'ordre de l'échantillon. Cela conduit à :
+\noindent Ensuite, nous estimons les quantiles par leurs équivalents empiriques, c'est-à-dire les statistiques d'ordre de l'échantillon. Cela conduit à :
 
 \[
 \log(X_{n - i + 1, n}) - \log(X_{n - k_n + 1, n}) \simeq \gamma \log(k_n / i).
 \]
 
-En sommant sur \(i = 1, \ldots, k_n - 1\), nous obtenons :
+\noindent En sommant sur \(i = 1, \ldots, k_n - 1\), nous obtenons :
 
 \[
 \gamma = \frac{\sum_{i=1}^{k_n - 1} \log(X_{n - i + 1, n}) - \log(X_{n - k_n + 1, n})}{\sum_{i=1}^{k_n - 1} \log(k_n / i)}.
 \]
 
-Le dénominateur peut être réécrit comme \(\log(k_n^{k_n - 1}/(k_n - 1)!)\). En utilisant la formule de Stirling, nous trouvons que ce dénominateur est équivalent à \(k_n\) au voisinage de l'infini. Cela nous permet d'obtenir l'estimateur de Hill.
+\noindent Le dénominateur peut être réécrit comme \(\log(k_n^{k_n - 1}/(k_n - 1)!)\). En utilisant la formule de Stirling, nous trouvons que ce dénominateur est équivalent à \(k_n\) au voisinage de l'infini. Cela nous permet d'obtenir l'estimateur de Hill.
 
-Soit $(k_n)_{n \geq 1}$ une suite d'entiers avec $1 \leq k_n \leq n$, l’estimateur de Hill est défini par :
+\noindent Soit $(k_n)_{n \geq 1}$ une suite d'entiers avec $1 \leq k_n \leq n$, l’estimateur de Hill est défini par :
 
 \[
 \hat{\gamma}^{H}_{k_n} = \frac{1}{k_n - 1} \sum_{i=1}^{k_n - 1} \log(X_{n - i + 1, n}) - \log(X_{n - k_n + 1, n}).
 \]
 
-L’estimateur de Hill satisfait la propriété de consistance faible. Plus précisément, si $(k_n)_{n \geq 1}$ est une suite intermédiaire, alors l’estimateur $\hat{\gamma}^{H}_{k_n}$ converge en probabilité vers le paramètre de queue $\gamma$, c’est-à-dire :
+\noindent L’estimateur de Hill satisfait la propriété de consistance faible. Plus précisément, si $(k_n)_{n \geq 1}$ est une suite intermédiaire, alors l’estimateur $\hat{\gamma}^{H}_{k_n}$ converge en probabilité vers le paramètre de queue $\gamma$, c’est-à-dire :
 \[
 \hat{\gamma}^{H}_{k_n} \xrightarrow{\mathbb{P}} \gamma.
 \]
@@ -824,7 +831,7 @@ L’estimateur de Hill satisfait la propriété de consistance faible. Plus pré
 \end{remark}
 
 \subsubsection{Comportement empirique de l’estimateur de Hill}
-Pour analyser le comportement de l’estimateur de Hill, nous l’appliquons à des échantillons simulés de taille \(n = 40000\), issus de plusieurs distributions : la loi de Lévy, la loi exponentielle, la loi uniforme sur \([0,1]\), et la loi de Cauchy. Ces distributions permettent d’explorer les trois domaines d’attraction des lois de valeurs extrêmes.
+\noindent Pour analyser le comportement de l’estimateur de Hill, nous l’appliquons à des échantillons simulés de taille \(n = 40000\), issus de plusieurs distributions : la loi de Lévy, la loi exponentielle, la loi uniforme sur \([0,1]\), et la loi de Cauchy. Ces distributions permettent d’explorer les trois domaines d’attraction des lois de valeurs extrêmes.
 Il est important de noter que l’estimateur de Hill est conçu spécifiquement pour les lois à queue lourde, appartenant au domaine d’attraction de Fréchet (\(\gamma > 0\)). On ne s’attend donc pas à obtenir de bonnes performances pour des lois comme l’exponentielle ou l’uniforme, qui ne satisfont pas cette condition.
 Les figures suivantes présentent l’évolution de l’estimateur de Hill en fonction de \(k\), le nombre de plus grandes valeurs utilisées. La ligne rouge indique la valeur théorique de \(\gamma\), tandis que la courbe noire représente l’estimation, accompagnée d’une bande de confiance à 95\%.
 \begin{figure}[H]
@@ -832,7 +839,7 @@ Les figures suivantes présentent l’évolution de l’estimateur de Hill en fo
     \includegraphics[width=0.55\textwidth]{./Evolution des estimateurs/hill/estimateur_hill_levy.png}
     \caption{Estimateur de Hill appliqué à la loi de Lévy ($\gamma = 0.5$)}
 \end{figure}
-La loi de Lévy est une loi à queue lourde appartenant au domaine d’attraction de Fréchet. Sa densité de probabilité est donnée par :
+\noindent La loi de Lévy est une loi à queue lourde appartenant au domaine d’attraction de Fréchet. Sa densité de probabilité est donnée par :
 
 \[
 f(x; \mu, c) =
@@ -844,30 +851,28 @@ f(x; \mu, c) =
 
 où \(\mu \in \mathbb{R}\) est un paramètre de position et \(c > 0\) un paramètre d’échelle. Cette loi est caractérisée par une forte asymétrie et une variance infinie.
 
-Sur le graphique, on observe que l’estimateur de Hill converge globalement vers la valeur théorique \(\gamma = 0.5\), ce qui est attendu pour une loi à queue lourde. Cette convergence devient plus stable lorsque \(k\) atteint des valeurs modérées. Toutefois, lorsque \(k\) devient trop grand, on remarque une détérioration progressive de l’estimation : cela s'explique par l’inclusion d’observations moins extrêmes, qui introduisent un biais dans le calcul de l’estimateur.
+\noindent Sur le graphique, on observe que l’estimateur de Hill converge globalement vers la valeur théorique \(\gamma = 0.5\), ce qui est attendu pour une loi à queue lourde. Cette convergence devient plus stable lorsque \(k\) atteint des valeurs modérées. Toutefois, lorsque \(k\) devient trop grand, on remarque une détérioration progressive de l’estimation : cela s'explique par l’inclusion d’observations moins extrêmes, qui introduisent un biais dans le calcul de l’estimateur.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.55\textwidth]{./Evolution des estimateurs/hill/estimateur_hill_exponentielle.png}
     \caption{Estimateur de Hill appliqué à la loi exponentielle ($\gamma = 0$)}
 \end{figure}
-La loi exponentielle appartient au domaine de Gumbel, avec un indice de queue nul. L’estimateur de Hill n’est pas conçu pour ce cas, ce que montre bien le graphique : les valeurs estimées sont nettement surestimées et décroissent lentement sans atteindre la valeur théorique. Ce comportement traduit l’inadéquation de Hill pour ce type de loi.
+\noindent La loi exponentielle appartient au domaine de Gumbel, avec un indice de queue nul. L’estimateur de Hill n’est pas conçu pour ce cas, ce que montre bien le graphique : les valeurs estimées sont nettement surestimées et décroissent lentement sans atteindre la valeur théorique. Ce comportement traduit l’inadéquation de Hill pour ce type de loi.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.55\textwidth]{./Evolution des estimateurs/hill/estimateur_hill_uniforme.png}
     \caption{Estimateur de Hill appliqué à la loi uniforme ($\gamma = -1$)}
 \end{figure}
-La loi uniforme a un support borné et un indice théorique de \(\gamma = -1\), ce qui sort du domaine d’application de Hill, qui suppose \(\gamma > 0\). L’estimateur produit ici des résultats très instables et incohérents, confirmant qu’il ne doit pas être utilisé sur ce type de distribution.
+\noindent La loi uniforme a un support borné et un indice théorique de \(\gamma = -1\), ce qui sort du domaine d’application de Hill, qui suppose \(\gamma > 0\). L’estimateur produit ici des résultats très instables et incohérents, confirmant qu’il ne doit pas être utilisé sur ce type de distribution.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.55\textwidth]{./Evolution des estimateurs/hill/estimateur_hill_cauchy.png}
     \caption{Estimateur de Hill appliqué à la loi de Cauchy ($\gamma = 1$)}
 \end{figure}
-La loi de Cauchy, avec un indice $\gamma = 1$, appartient au domaine de Fréchet. L’estimateur fonctionne bien pour de faibles valeurs de $k$, avec une estimation proche de la valeur théorique. On observe un plateau autour de $k = 3000-4000$, indiquant une estimation stable dans cette plage. Cependant, dès que $k$ devient trop grand, la courbe chute, signe d’un biais induit par les valeurs non extrêmes. Cela illustre la sensibilité de l’estimateur au choix du seuil, similaire à ce qui est observé avec l'estimateur de Pickands.
-\medskip
-\noindent
-Ainsi, ces résultats montrent que l’estimateur de Hill est très dépendant du choix du paramètre \(k\), et de la nature de la distribution. Un compromis est nécessaire entre biais (si \(k\) est trop grand) et variance (si \(k\) est trop petit), pour garantir une estimation fiable.
+\noindent La loi de Cauchy, avec un indice $\gamma = 1$, appartient au domaine de Fréchet. L’estimateur fonctionne bien pour de faibles valeurs de $k$, avec une estimation proche de la valeur théorique. On observe un plateau autour de $k = 3000-4000$, indiquant une estimation stable dans cette plage. Cependant, dès que $k$ devient trop grand, la courbe chute, signe d’un biais induit par les valeurs non extrêmes. Cela illustre la sensibilité de l’estimateur au choix du seuil, similaire à ce qui est observé avec l'estimateur de Pickands. \\
+\noindent Ainsi, ces résultats montrent que l’estimateur de Hill est très dépendant du choix du paramètre \(k\), et de la nature de la distribution. Un compromis est nécessaire entre biais (si \(k\) est trop grand) et variance (si \(k\) est trop petit), pour garantir une estimation fiable.
 
 
 \section{Méthode des maxima par blocs}
@@ -891,27 +896,11 @@ G_{\mu,\sigma,\gamma}(x)
 \noindent Pour $a_n$ : $\hat{a}_{k,m} = \frac{\hat{\gamma}_{k,m}}{2\hat{\gamma}_{k,m} - 1} \cdot \frac{2\beta_1 - \beta_0}{\Gamma(1 - \hat{\gamma}_{k,m})}$ \\
 \noindent Pour $b_n$ : $\hat{b}_{k,m} = \beta_0 + \hat{a}_{k,m} \cdot \frac{1 - \Gamma(1 - \hat{\gamma}_{k,m})}{\hat{\gamma}_{k,m}}$ \\
 
-\noindent Sous certaines conditions, on peut enfin démontrer que les quantiles élevés sont estimables par cette méthode. On a ainsi :
-\[
-\frac{\sqrt{k} \left( \hat{X}_{k,m} - X_n \right)}{a_n \, q_{\gamma}(c_n)}
-\xrightarrow{d}
-\Delta + (\gamma^-)^2 B - \gamma^- \Lambda - \lambda \frac{\gamma^-}{\gamma^- + \rho}
-\]
-où : \begin{itemize}
-	\item $\hat{X}_{k,m}$ est l’estimateur du quantile extrême
-	\item $X_n$ est le vrai quantile à estimer
-	\item $a_n$ est le paramètre d'échelle
-	\item $\Delta, \Lambda, \lambda$ sont des paramètres issus de la théorie asymptotique de Ferreira et de Haan (2015)
-	\item $B$ est un pont brownien
-	\item $q_{\gamma}(c_n)$ est une fonction définie par $q_{\gamma}(t) = \int_1^t s^{\gamma - 1} \log s \, ds$
-	\item $\gamma^- = \min(0, \gamma)$
-\end{itemize}
-\vspace{0.5cm}
 \noindent Cette approche possède tout de même un défaut car lorsque l'on prend le maximum sur un bloc, on fait potentiellement disparaître des valeurs élevées, on perd des données intéressantes.
 
-\subsection{quantile de retour}
+\subsection{Quantile de retour}
 
-En pratique, on cherche une valeur qui donnerait une certaine confiance quand à l'apparition
+\noindent En pratique, on cherche une valeur qui donnerait une certaine confiance quand à l'apparition
 de données la depassant. Dans le cas d'une distribution à queue bornée il suffit de prendre la bornes supérieure de la distribution.
 \\
 Or, dans le cas d'une distribution à queue lourde et exponentiel ce n'est pas possible. On introduit alors la notion de \textbf{quantile de retour} qui est une valeur que l'on dépasse en moyenne une fois tous les T ans (\textit{Séminaire CNAM 2019}).
@@ -940,31 +929,31 @@ z_T =
 \\
 \section{Méthode des excès}
 
-La méthode des excès, également appelée approche par dépassement de seuil (en anglais \textit{Peaks Over Threshold}, ou POT), a été introduite par Pickands en 1975. Elle constitue une alternative à l’approche classique par blocs pour modéliser les phénomènes extrêmes.
+\noindent La méthode des excès, également appelée approche par dépassement de seuil (en anglais \textit{Peaks Over Threshold}, ou POT), a été introduite par Pickands en 1975. Elle constitue une alternative à l’approche classique par blocs pour modéliser les phénomènes extrêmes.
 
-Le principe est de ne conserver que les observations excédant un seuil élevé \( u \). Si ce seuil est bien choisi la distribution des excès définis par :
+\noindent Le principe est de ne conserver que les observations excédant un seuil élevé \( u \). Si ce seuil est bien choisi la distribution des excès définis par :
 \[
 Y_i = X_i - u \quad \text{pour} \quad X_i > u
 \]
 peut être approximée par une distribution de Pareto généralisée (GPD).
 
 \medskip
-Cette approche repose sur un résultat fondamental de Balkema et de Haan (1974), et de Pickands (1975), selon lequel, pour une grande classe de lois de probabilité \(F\), la loi des excès conditionnels au-delà d’un seuil élevé converge vers une loi de Pareto généralisée lorsque le seuil \(u\) tend vers la borne supérieure de \(F\).
+\noindent Cette approche repose sur un résultat fondamental de Balkema et de Haan (1974), et de Pickands (1975), selon lequel, pour une grande classe de lois de probabilité \(F\), la loi des excès conditionnels au-delà d’un seuil élevé converge vers une loi de Pareto généralisée lorsque le seuil \(u\) tend vers la borne supérieure de \(F\).
 
 \medskip
-Formellement, on considère une suite de variables aléatoires i.i.d. \(X_1, \dots, X_n\) de fonction de répartition \(F\), et \(x_F\) le point terminal de \(F\). Pour tout seuil \(u < x_F\), on définit la fonction de répartition des excès par :
+\noindent Formellement, on considère une suite de variables aléatoires i.i.d. \(X_1, \dots, X_n\) de fonction de répartition \(F\), et \(x_F\) le point terminal de \(F\). Pour tout seuil \(u < x_F\), on définit la fonction de répartition des excès par :
 
 \[
 F_u(x) := \mathbb{P}(X - u \leq x \mid X > u) = \frac{F(x + u) - F(u)}{1 - F(u)},
 \quad \text{pour } 0 \leq x \leq x_F - u.
 \]
 
-Et sa version en fonction de survie :
+\noindent Et sa version en fonction de survie :
 \[
 \overline{F}_u(x) := \mathbb{P}(X - u > x \mid X > u) = \frac{\overline{F}(x + u)}{\overline{F}(u)}.
 \]
 
-Lorsque le seuil \(u\) est suffisamment élevé, \(F_u\) peut être bien approchée par une distribution de Pareto généralisée \(H_{\gamma, \beta(u)}\), définie comme suit :
+\noindent Lorsque le seuil \(u\) est suffisamment élevé, \(F_u\) peut être bien approchée par une distribution de Pareto généralisée \(H_{\gamma, \beta(u)}\), définie comme suit :
 \[
 H_{\gamma, \beta}(y) =
 \begin{cases}
@@ -989,22 +978,22 @@ On retrouve donc une loi exponentielle, qui correspond à une GPD avec \(\gamma 
 Le résultat central qui justifie l’utilisation de la GPD pour modéliser les excès est le suivant :
 
 \begin{quote}
-Soit \(F\) une fonction de répartition appartenant au domaine d’attraction d’une loi de valeur extrême. Alors, lorsque \(u \to x_F\), il existe une fonction \(\beta(u)\) telle que :
+\noindent Soit \(F\) une fonction de répartition appartenant au domaine d’attraction d’une loi de valeur extrême. Alors, lorsque \(u \to x_F\), il existe une fonction \(\beta(u)\) telle que :
 \[
 \sup_{0 \leq x \leq x_F - u} \left| F_u(x) - G_{\gamma, \beta(u)}(x) \right| \to 0.
 \]
 \end{quote}
 
-Autrement dit, plus le seuil \(u\) est élevé, plus la loi des excès au-dessus de ce seuil est bien approchée par une GPD.
+\noindent Autrement dit, plus le seuil \(u\) est élevé, plus la loi des excès au-dessus de ce seuil est bien approchée par une GPD.
 
 \medskip
-Cette propriété est essentielle en statistique des valeurs extrêmes, car elle permet d’exploiter pleinement les données situées dans les queues de distribution, sans se limiter au maximum d’un bloc.
+\noindent Cette propriété est essentielle en statistique des valeurs extrêmes, car elle permet d’exploiter pleinement les données situées dans les queues de distribution, sans se limiter au maximum d’un bloc.
 \end{theorem}
 \newpage
 \section{Application sur des données réelles}
 \subsection{Description des données}
 
-Afin d'illustrer les méthodes d'estimation de l'indice de valeurs extrêmes, nous allons appliquer ces techniques sur des données réelles.
+\noindent Afin d'illustrer les méthodes d'estimation de l'indice de valeurs extrêmes, nous allons appliquer ces techniques sur des données réelles.
 Nous allons utiliser les données du package $ismev$ de R. Plus précisément celui de rain et de danish. Ils contienent respectivement les données de pluie journalière en Angleterre de 1914 à 1962 et 
 les montants des grands sinistres d'incendie survenus au Danemark entre 1980 et 1990 (Données issue du package \textbf{ismev} de R).
 \\
@@ -1023,7 +1012,7 @@ De plus, les données prennent des valeurs grandes mais perdent rapidement en de
 \end{center}
 
 
-Pour les sinistres, on remarque que la majorité des montants sont de faible intensité mais qu'il existe des sinistres avec des valeurs élevé. Les données se répartissent de $1$ à $263.500$ avec une moyenne de $3,385$ et une médiane de $1,778$. Dans le même cas que dans les données de rain, on peut donc s'attendre à une valeur de gamma positive ou nulle.
+\noindent Pour les sinistres, on remarque que la majorité des montants sont de faible intensité mais qu'il existe des sinistres avec des valeurs élevé. Les données se répartissent de $1$ à $263.500$ avec une moyenne de $3,385$ et une médiane de $1,778$. Dans le même cas que dans les données de rain, on peut donc s'attendre à une valeur de gamma positive ou nulle.
 \begin{center}
 	\includegraphics[scale=0.62]{./images/sinistres.png} 
 \end{center}
@@ -1032,7 +1021,7 @@ Pour les sinistres, on remarque que la majorité des montants sont de faible int
 
 \subsubsection{Application sur les données de Rain}
 
-Les données étant journalières, on va choisir des blocs de taille 365, comme les données vont de 1914 à 1962, on se retrouve avec 48 blocs de 365 jours.
+\noindent Les données étant journalières, on va choisir des blocs de taille 365, comme les données vont de 1914 à 1962, on se retrouve avec 48 blocs de 365 jours.
 \\
 Via le package \textbf{evd}, on obtient via une estimations par maximum de vraisemblance les paramètres suivants : $\mu = 40,8$, $\sigma = 9,73$ et $\gamma = 0,107$.
 \\
@@ -1051,7 +1040,7 @@ On obtient alors : $z_t = 98,636$. Autrement dit, une fois tous les 100 ans, on 
 
 
 \subsubsection{Application sur les données danish}
-On applique la même méthode sur les données de sinistres mais avec une approche légèrement différente puisque les données ne sont pas dans le même format. En effet, on ne dispose pas de données journalières mais des sinistres enregistré sur une période de 10 ans. C'est à dire qu'il existe des jours sans sinistres qui ne sont pas comptabilisés.
+\noindent On applique la même méthode sur les données de sinistres mais avec une approche légèrement différente puisque les données ne sont pas dans le même format. En effet, on ne dispose pas de données journalières mais des sinistres enregistré sur une période de 10 ans. C'est à dire qu'il existe des jours sans sinistres qui ne sont pas comptabilisés.
 On regroupe alors les sinistres par mois et on prend le montant de sinistre le plus élevé. On se retrouve alors avec des blocs de taille irrégulière.
 \\
 Après analyse numérique par maximum de vraisemblance, on obtient les paramètres suivants : $\mu = 8,376$, $\sigma = 5,971$ et $\gamma = 0,623$.
@@ -1064,7 +1053,7 @@ On obtient alors : $z_t = 515,22$. Autrement dit, une fois tous les 50 ans, on p
 
 \subsubsection{Synthèse sur la méthode des maxima en bloc}
 
-Quand on dispose des données sur une longue période, la méthode des maxima en bloc est efficace. D'autant plus quand on a des données temporelles (journalières, mensuelles, annuelles).
+\noindent Quand on dispose des données sur une longue période, la méthode des maxima en bloc est efficace. D'autant plus quand on a des données temporelles (journalières, mensuelles, annuelles).
 En revanche, elle utilise moins de données ce qui la rend plus difficile à utiliser en pratique. En effet, on ne garde que les maximums et on perd donc une partie des données qui peuvent etre consequents en fonction du choix de $k$.
 Par ailleurs, le choix de $k$ est important car il faut choisir un nombre de blocs suffisant pour avoir une estimation fiable mais pas trop grand pour ne pas perdre trop d'informations.
 
@@ -1073,7 +1062,7 @@ Par ailleurs, le choix de $k$ est important car il faut choisir un nombre de blo
 
 \subsubsection{Application sur les données de Rain}
 
-On a calculé la valeur de $\gamma$ par la méthode des maxima en bloc et obtenu une valeur de $\gamma > 0 $ mais proche de 0. On souhaite s'assurer de l'efficacité des deux méthodes $\gamma$
+\noindent On a calculé la valeur de $\gamma$ par la méthode des maxima en bloc et obtenu une valeur de $\gamma > 0 $ mais proche de 0. On souhaite s'assurer de l'efficacité des deux méthodes $\gamma$
 en procédant cette fois par la méthode de dépassement de seuil.
 \\
 On décide de prendre un seuil correspondant au quantile d’ordre 0,95 et on obtient numériquement : $\gamma  = -0.027$.
@@ -1088,14 +1077,14 @@ On peut poursuivre l'étude en calculant la valeur de $\gamma$ via l'estimateur 
 	\includegraphics[scale=0.57]{./images/pickandsrain.png} 
 \end{center}
 
-On observe qu'il y'a une stabilisation de l'estimateur de Pickands pour $k$ entre 80 et 135. On obtient alors apres estimation numérique une valeur de $\gamma = -0,079$.
+\noindent On observe qu'il y'a une stabilisation de l'estimateur de Pickands pour $k$ entre 80 et 135. On obtient alors apres estimation numérique une valeur de $\gamma = -0,079$.
 \\
 \\
 Étant donnée qu'on a obtenu plusieurs valeurs de $\gamma$ positives et négatives, on pourrait procéder à un test de significativité pour savoir si la valeur de $\gamma$ est différente de 0. Nous omettons cette partie et supposons que $\gamma$ est égal à 0. C'est à dire que le maximum de pluie suit une loi de Gumbel.
 \\
 \subsubsection{Application sur les données danish}
 
-On prend un seuil correspondant au quantile d’ordre 0,95. Apres calcul numérique, on obtient $\gamma = 0.492$.
+\noindent On prend un seuil correspondant au quantile d’ordre 0,95. Apres calcul numérique, on obtient $\gamma = 0.492$.
 \\
 On a obtenue une valeur de $\gamma$ positive ce qui renforce l'hypothèse d'une queue lourde pour la distribution du max, ce qui est cohérent avec la méthode des maxima en bloc. 
 \\
@@ -1108,7 +1097,7 @@ Avec l'estimateur de Pickands, on observe une stabilisation de l'estimateur pour
 
 
 
-Ayant plusieurs fois obtenue un valeur de $\gamma > 0$, on peut pousser son analyse en calculant son estimation via l'estimateur de Hill pour obtenir une valeur plus précise.
+\noindent Ayant plusieurs fois obtenue un valeur de $\gamma > 0$, on peut pousser son analyse en calculant son estimation via l'estimateur de Hill pour obtenir une valeur plus précise.
 \\
 \\
 On trace alors la courbe de l'estimateur de Hill en fonction de $k$.
@@ -1117,10 +1106,10 @@ On trace alors la courbe de l'estimateur de Hill en fonction de $k$.
 	\includegraphics[scale=0.65]{./images/danishsad.png} 
 \end{center}
 
-On observe alors un plateau pour k entre 30 et 45. On obtient alors apres estimation numérique une valeur de $\gamma = 0,66$.
+\noindent On observe alors un plateau pour k entre 30 et 45. On obtient alors apres estimation numérique une valeur de $\gamma = 0,66$.
 
 \subsubsection{Synthèse sur la méthode de dépassement de seuil}
-Cette méthode à le bon goût d'exploiter toutes les valeurs supérieures à un seuil, pas seulement un maximum par bloc. Elle utilise donc plus de données.
+\noindent Cette méthode à le bon goût d'exploiter toutes les valeurs supérieures à un seuil, pas seulement un maximum par bloc. Elle utilise donc plus de données.
 \\
 En revanche le choix du seuil est important car il faut choisir un seuil suffisamment élevé pour ne pas avoir trop peu de données mais pas trop élevé pour ne pas perdre d'informations sur les max. Il faut donc faire le compromis entre le biais et la variance.
 

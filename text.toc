@@ -19,7 +19,7 @@
 \contentsline {subsubsection}{\numberline {4.2.1}La construction de l’estimateur de Hill}{16}{}%
 \contentsline {subsubsection}{\numberline {4.2.2}Comportement empirique de l’estimateur de Hill}{17}{}%
 \contentsline {section}{\numberline {5}Méthode des maxima par blocs}{20}{}%
-\contentsline {subsection}{\numberline {5.1}quantile de retour}{21}{}%
+\contentsline {subsection}{\numberline {5.1}Quantile de retour}{21}{}%
 \contentsline {section}{\numberline {6}Méthode des excès}{21}{}%
 \contentsline {section}{\numberline {7}Application sur des données réelles}{23}{}%
 \contentsline {subsection}{\numberline {7.1}Description des données}{23}{}%
