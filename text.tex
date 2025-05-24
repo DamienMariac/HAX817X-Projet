@@ -649,7 +649,7 @@ Cependant, cet estimateur est connu pour être sensible à la taille de l’éch
 Soit \(X_1, \dots, X_n\) une suite de variables aléatoires i.i.d de loi \(F\), appartenant à l’un des domaines d’attraction des lois de valeurs extrêmes. On note \(X_{(1)} \leq X_{(2)} \leq \dots \leq X_{(n)}\) les statistiques d’ordre associées à l’échantillon. Soit \((k_n)_{n \geq 1}\) une suite intermédiaire.
 L’estimateur de Pickands est défini par :
 \[
-\hat{\gamma}_{k_n,n} = \frac{1}{\ln(2)} \ln\left( \frac{X_{n-k_n+1,n} - X_{n-2k_n+1,n}}{X_{n-2k_n+1,n} - X_{n-4k_n+1,n}} \right)
+\hat{\gamma}_{k_n,n} = \frac{1}{\ln(2)} \ln\left( \frac{X_{n-k_n+1,n} - X_{n-2k_n+1,n}}{X_{n-2k_n+1,n} - X_{n-4k_n+1,n}} \right).
 \]
 \end{definition}
 \medskip
@@ -666,7 +666,7 @@ Si \((k_n)_{n \geq 1}\) est une suite intermédiaire, alors :
 \[
 \sqrt{k} \left( \hat{\gamma}_{k,n} - \gamma \right) \xrightarrow{\mathcal{L}} \mathcal{N}(0, \sigma^2(\gamma))
 \]
-où la variance asymptotique est donnée par :
+où l’écart-type asymptotique est donné par :
 \[
 \sigma(\gamma) = \frac{\gamma \sqrt{2^{2\gamma + 1} + 1}}{2(2^{\gamma} - 1)\ln(2)}.
 \]
@@ -678,7 +678,7 @@ où la variance asymptotique est donnée par :
 
 \noindent Afin de construire l'estimateur de Pickands, nous allons reprendre la proposition (2.3). Pour \(x,y > 0\) et \(y \neq 1\), la proposition est équivalente à :
 \[
-\lim_{t \to 0} \frac{U(tx) - U(t)}{U(ty) - U(t)} = 
+\lim_{s \to 0} \frac{U(sx) - U(s)}{U(sy) - U(s)} = 
 \begin{cases} 
 \frac{x^\gamma - 1}{y^\gamma - 1} & \text{si } \gamma \neq 0, \\
 \frac{\log(x)}{\log(y)} & \text{si } \gamma = 0.
@@ -743,17 +743,17 @@ On déduit de la croissance de $F_V$ que $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_
 
 \noindent Et d'après le lemme précédent, le vecteur aléatoire $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_V(V_{n,n})))$ a la même loi que $(X_1,\dots,X_n)$. \\
 
-\noindent Donc la variable aléatoire \(\frac{U(V_{n-k_n+1,n}) - U(V_{n-2k_n+1,n})}{U(V_{n-k_n+1,n}) - U(V_{n-4k_n+1,n})}\) a la même loi que :
+\noindent Donc la variable aléatoire \(\frac{U(V_{n-k_n+1,n}) - U(V_{n-2k_n+1,n})}{U(V_{n-2k_n+1,n}) - U(V_{n-4k_n+1,n})}\) a la même loi que :
 
 \[
-\frac{X_{n-k_n+1,n} - X_{n-2k_n+1,n}}{X_{n-k_n+1,n} - X_{n-4k_n+1,n}}
+\frac{X_{n-k_n+1,n} - X_{n-2k_n+1,n}}{X_{n-2k_n+1,n} - X_{n-4k_n+1,n}}
 \]
 
 \noindent Ainsi cette quantité converge en loi vers $2^{\gamma}$ quand $n$ tend vers l’infini.
 
 \subsubsection{Représentation graphique de l’estimateur de Pickands}
 
-\noindent Pour mieux comprendre le comportement de l’estimateur de Pickands dans différents contextes, nous l’appliquons à des données simulées qui sont les mêmes que dans la partie 3, c'est à dire : Pareto, Exponentielle, Uniforme et Cauchy. Ces lois sont choisies pour représenter les trois domaines d’attraction des lois de valeurs extrêmes.
+\noindent Pour mieux étudier le comportement de l’estimateur de Pickands dans divers contextes, nous l’appliquons à des données simulées provenant de plusieurs lois : Pareto, exponentielle, uniforme et Cauchy. Ces distributions ont été sélectionnées car elles illustrent les trois principaux domaines d’attraction des lois de valeurs extrêmes.
 
 \noindent Chaque échantillon comporte $n = 100000$ observations, et la représentation graphique est faite en fonction de $k$, où \(k\) représente le nombre de plus grandes valeurs utilisées pour estimer l’indice de queue \(\gamma\).
 
@@ -833,18 +833,21 @@ On déduit de la croissance de $F_V$ que $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_
 \gamma = \frac{\sum_{i=1}^{k_n - 1} \log(X_{n - i + 1, n}) - \log(X_{n - k_n + 1, n})}{\sum_{i=1}^{k_n - 1} \log(k_n / i)}.
 \]
 
-\noindent Le dénominateur peut être réécrit comme \(\log(k_n^{k_n - 1}/(k_n - 1)!)\). En utilisant la formule de Stirling, nous trouvons que ce dénominateur est équivalent à \(k_n\) au voisinage de l'infini. Cela nous permet d'obtenir l'estimateur de Hill.
-
+\noindent Le dénominateur peut être réécrit comme \(\log(k_n^{k_n - 1}/(k_n - 1)!)\). En utilisant la formule de Stirling, nous trouvons que ce dénominateur est équivalent à \(k_n\) au voisinage de l'infini. Cela nous permet d'obtenir l'estimateur de Hill.\newline
+\newline
+\begin{definition}
 \noindent Soit $(k_n)_{n \geq 1}$ une suite d'entiers avec $1 \leq k_n \leq n$, l’estimateur de Hill est défini par :
 
 \[
 \hat{\gamma}^{H}_{k_n} = \frac{1}{k_n - 1} \sum_{i=1}^{k_n - 1} \log(X_{n - i + 1, n}) - \log(X_{n - k_n + 1, n}).
 \]
-
+\end{definition}
+\begin{property}
 \noindent L’estimateur de Hill satisfait la propriété de consistance faible. Plus précisément, si $(k_n)_{n \geq 1}$ est une suite intermédiaire, alors l’estimateur $\hat{\gamma}^{H}_{k_n}$ converge en probabilité vers le paramètre de queue $\gamma$, c’est-à-dire :
 \[
 \hat{\gamma}^{H}_{k_n} \xrightarrow{\mathbb{P}} \gamma.
 \]
+\end{property}
 
 \begin{remark}
 	Dans la pratique, déterminer une valeur appropriée pour le paramètre $k_n$, c’est-à-dire le nombre de plus grandes observations à retenir, constitue une étape délicate. Il faut en effet trouver un compromis entre la variance et le biais : utiliser suffisamment de données pour obtenir une estimation fiable, tout en s’assurant que ces données proviennent bien de la queue de la distribution. Diverses approches ont été développées dans la littérature pour guider ce choix.
@@ -865,7 +868,7 @@ Les figures suivantes présentent l’évolution de l’estimateur de Hill en fo
 f(x; \mu, c) =
 \begin{cases}
 \sqrt{\dfrac{c}{2\pi}} \dfrac{1}{(x - \mu)^{3/2}} \exp\left(-\dfrac{c}{2(x - \mu)}\right), & \text{si } x > \mu, \\
-0, & \text{sinon.}
+0 & \text{sinon.}
 \end{cases}
 \]
 
@@ -986,21 +989,11 @@ H_{\gamma, \beta}(y) =
 avec \( y \geq 0 \), sous la condition \(1 + \gamma y/\beta > 0\). Le paramètre \(\beta > 0\) représente l’échelle et \(\gamma\) le paramètre de forme (indice de queue).
 
 \medskip
-\begin{example}
-Soit \(F(x) = 1 - e^{-x}\) la loi exponentielle standard. On a pour tout \(y > 0\) :
-
-\[
-\mathbb{P}(X - u > y \mid X > u) = \frac{e^{-(u + y)}}{e^{-u}} = e^{-y}.
-\]
-On retrouve donc une loi exponentielle, qui correspond à une GPD avec \(\gamma = 0\) et \(\beta = 1\). Cela montre que l’exponentielle est un cas particulier de GPD.
-\end{example}
-
 \begin{theorem}
 
-Le résultat central qui justifie l’utilisation de la GPD pour modéliser les excès est le suivant :
-
-\begin{quote}
+Le résultat central qui justifie l’utilisation de la GPD pour modéliser les excès est le suivant : \newline
 \noindent Soit \(F\) une fonction de répartition appartenant au domaine d’attraction d’une loi de valeur extrême. Alors, lorsque \(u \to x_F\), il existe une fonction \(\beta(u)\) telle que :
+\begin{quote}
 \[
 \sup_{0 \leq x \leq x_F - u} \left| F_u(x) - G_{\gamma, \beta(u)}(x) \right| \to 0.
 \]

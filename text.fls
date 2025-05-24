@@ -252,6 +252,7 @@ INPUT .\images\Max_Uniforme.png
 INPUT .\images\Max_Uniforme.png
 INPUT .\images\Max_Uniforme.png
 INPUT .\images\Max_Uniforme.png
+INPUT C:\Users\welma\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\eccc1000.tfm
 INPUT .\images\Max_Expo.png
 INPUT .\images\Max_Expo.png
 INPUT .\images\Max_Expo.png
@@ -288,7 +289,6 @@ INPUT .\Evolution des estimateurs\pickands\estimateur_pickands_pareto.png
 INPUT .\Evolution des estimateurs\pickands\estimateur_pickands_pareto.png
 INPUT .\Evolution des estimateurs\pickands\estimateur_pickands_pareto.png
 INPUT .\Evolution des estimateurs\pickands\estimateur_pickands_pareto.png
-INPUT C:\Users\welma\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\eccc1000.tfm
 INPUT .\Evolution des estimateurs\pickands\estimateur_pickands_exponentielle.png
 INPUT .\Evolution des estimateurs\pickands\estimateur_pickands_exponentielle.png
 INPUT .\Evolution des estimateurs\pickands\estimateur_pickands_exponentielle.png
@@ -366,13 +366,10 @@ INPUT .\images\pickandsdansih.png
 INPUT .\images\pickandsdansih.png
 INPUT .\images\pickandsdansih.png
 INPUT .\images\pickandsdansih.png
-INPUT .\images\danishsad.png
-INPUT .\images\danishsad.png
-INPUT .\images\danishsad.png
-INPUT .\images\danishsad.png
-INPUT .\images\danishsad.png
-INPUT .\images\danishsad.png
-INPUT .\images\danishsad.png
+INPUT .\images\pickandsdansih.png
+INPUT .\images\pickandsdansih.png
+INPUT .\images\pickandsdansih.png
+INPUT .\images\pickandsdansih.png
 INPUT C:\Users\welma\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ectt1000.tfm
 INPUT .\images\MB_Uniforme.png
 INPUT .\images\MB_Uniforme.png
@@ -415,8 +412,6 @@ INPUT .\text.out
 INPUT .\text.out
 INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
 INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
-INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\eccc1000.pk
-INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\eccc1000.pk
 INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt0800.pk
 INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt0800.pk
 INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti0800.pk
@@ -425,6 +420,8 @@ INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecr
 INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk
 INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0700.pk
 INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0700.pk
+INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\eccc1000.pk
+INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\eccc1000.pk
 INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbi1000.pk
 INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbi1000.pk
 INPUT C:\Users\welma\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1000.pk

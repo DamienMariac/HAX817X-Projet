@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1748085231.13918 "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" "text.pdf" "text" 1748085234.57491 0
+["pdflatex"] 1748094258.78259 "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" "text.pdf" "text" 1748094263.08134 0
   "C:/Users/welma/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1748082581.9422 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/welma/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbi1000.pk" 1748026587.57503 34112 444265a03457171c1611d35a77bce495 ""
   "C:/Users/welma/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ecbx1000.pk" 1748026595.23974 25420 faca94d459e534378261c705d56b9b5b ""
@@ -160,7 +160,7 @@
   "Evolution des estimateurs/pickands/estimateur_pickands_exponentielle.png" 1747996807.35616 7294 cc39a275ff2e7d0bf95eac388cfd91ee ""
   "Evolution des estimateurs/pickands/estimateur_pickands_pareto.png" 1747996829.62793 7331 255a5baeb067f6979545df3631e56770 ""
   "Evolution des estimateurs/pickands/estimateur_pickands_uniforme.png" 1747996780.02061 7154 c6313a2af3453a7229a6a14c69f69182 ""
-  "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" 1748085229.85397 65393 436f3dcb5119535bd54766d68780af0b ""
+  "c:/Users/welma/HAX717X/HAX817X-Projet/text.tex" 1748094258.63712 67237 b32d5bb781a6a5fbfad01194ff25a95c ""
   "images/DS_Cauchy.png" 1748020546.9966 10114 cc227bbc3738c5dcae6db861bc94915f ""
   "images/DS_Normale.png" 1748020546.9996 11131 26ddebb30ea2f33154c2087271ca94d1 ""
   "images/DS_Uniforme.png" 1748020547.0006 9030 91e2499800f99014c54255572fa25a43 ""
@@ -171,15 +171,14 @@
   "images/Max_Cauchy.png" 1744975402.84079 13946 72b414540d1d1f27c679ee53da1d37b4 ""
   "images/Max_Expo.png" 1744975402.84234 15632 c137b4c1518a08d2526968ed352e04b9 ""
   "images/Max_Normale.png" 1744975402.84364 16072 e28c09bcc5dfff9459671bf279e3edb5 ""
-  "images/Max_Uniforme.png" 1744975402.84472 13615 c7dd48017fb3c60612af934e8d64ff6f ""
-  "images/danishsad.png" 1746697179.02718 35998 7b6482c73643eb052cecbba5e7927ab4 ""
+  "images/Max_Uniforme.png" 1748093496.88205 6913 f40362b40da066ce234a33bd0261f7ab ""
   "images/pickandsdansih.png" 1747993734.62038 22095 5bb33165f33b7fe566ea08a8754eca19 ""
   "images/pickandsrain.png" 1747993734.62038 29523 f4c956ea56a92c6467fbcd2c86a312f7 ""
   "images/rainhisto.png" 1743094035.88691 15391 fcc4701932f5090998a8bf7e0659151b ""
   "images/sinistres.png" 1746697179.03577 15786 7d32ff9acf380f76114b8487f09a7edf ""
-  "text.aux" 1748085233.96778 7093 7f375fcbaca4f7ea420d3c5e96fc8704 "pdflatex"
-  "text.out" 1748085233.97619 7909 70095219bf0c10a5045536b773b17582 "pdflatex"
-  "text.toc" 1748085233.97619 3722 1851f5c56cd8fda66574a5213e54d4a2 "pdflatex"
+  "text.aux" 1748094262.33301 8731 c56f6c01153cca650d8729c1ed3b829b "pdflatex"
+  "text.out" 1748094262.3731 7909 70095219bf0c10a5045536b773b17582 "pdflatex"
+  "text.toc" 1748094262.37913 3722 b6c0844e0a65f6fcff0a0f133866a67e "pdflatex"
   (generated)
   "text.aux"
   "text.log"
