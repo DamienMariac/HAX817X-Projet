@@ -13,6 +13,8 @@
 \usepackage{comment}
 \usepackage{float}
 \usepackage{amsthm}
+\usepackage{hyperref}
+
 
 
 \theoremstyle{plain}
@@ -603,7 +605,7 @@ X_{(1)} \leq X_{(2)} \leq \dots \leq X_{(n)}
 \end{definition}
 
 \begin{definition}
-On dit qu'une suite \((k_n)_{n \geq 0}\) d'entiers est intermédiaire si :
+On dit qu'une suite \((k_n)_{n \geq 1}\) d'entiers est intermédiaire si :
 
 \[
 \lim_{n \to \infty} k_n = \infty, \quad \lim_{n \to \infty} \frac{k_n}{n} = 0
@@ -669,7 +671,7 @@ où la variance asymptotique est donnée par :
 
 \begin{lemma}
 Soit \(X_1, \dots, X_n\) des variables aléatoires indépendantes et de fonction de répartition \(F\).
-Soit \(U_1, \dots, U_n\) des variables aléatoires indépendantes de loi uniforme \(\left[0,1\right]\). Alors \(F^{-1}(U_{1,n}), \dots, F^{-1}(U_{n,n})\) a même loi que \((X_{1,n}, \dots, X_{n,n})\).
+Soit \(U_1, \dots, U_n\) des variables aléatoires indépendantes de loi uniforme \(\left[0,1\right]\). Alors \(F^{-1}(U_{(1)}), \dots, F^{-1}(U_{(n)})\) a même loi que \((X_{(1)}, \dots, X_{(n)})\).
 \end{lemma}
 
 \begin{proof}
@@ -680,7 +682,7 @@ Ce résultat généralise un fait fondamental en probabilité selon lequel, si \
 \\
 \\
 \noindent \textbf{Construction de l'estimateur de Pickands :}
-
+\noindent La démonstration qui suit est adaptée du contenu présenté par Yoann (2019) sur la plateforme RPubs\footnote{Yoann, \textit{Estimateur de Hill – Illustration avec R}, consulté sur \url{https://rpubs.com/Yoann/499582}, en mars 2025.}.
 \noindent Par la proposition précédente, pour $\gamma \in \mathbb{R}$ on a avec le choix $t = 2s$, $x = 2$ et $y = \frac{1}{2}$,
 \[
 \lim_{t \to \infty} \frac{U(t) - U(t/2)}{U(t/2) - U(t/4)} = 2^{\gamma}.
@@ -722,7 +724,7 @@ V_{n-k_n+1,n}  \to \infty, \quad \frac{V_{n-2k_n+1,n}}{V_{n-k_n+1,n}} \to \frac{
 \noindent Or, \(F_V\) est la fonction de répartition de la loi de Pareto. \newline
 On déduit de la croissance de $F_V$ que $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_V(V_{n,n})))$ a la même loi qu’une suite de $n$ variables aléatoires uniformes sur $[0,1]$ indépendantes. 
 
-\noindent Et d'après le lemme 4.1, le vecteur aléatoire $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_V(V_{n,n})))$ a la même loi que $(X_1,\dots,X_n)$. \\
+\noindent Et d'après le lemme précédent, le vecteur aléatoire $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_V(V_{n,n})))$ a la même loi que $(X_1,\dots,X_n)$. \\
 
 \noindent Donc la variable aléatoire \(\frac{U(V_{n-k_n+1,n}) - U(V_{n-2k_n+1,n})}{U(V_{n-k_n+1,n}) - U(V_{n-4k_n+1,n})}\) a la même loi que :
 
@@ -781,6 +783,7 @@ On déduit de la croissance de $F_V$ que $(F^{-1}(F_V(V_{1,n})),\dots, F^{-1}(F_
 \subsubsection{La construction de l’estimateur de Hill}
 \noindent Dans le cadre de l'analyse des valeurs extrêmes, l'estimation de l'indice de queue \(\gamma\) est cruciale pour comprendre le comportement des queues de distribution. L'estimateur de Hill est une méthode largement utilisée pour estimer cet indice de queue.
 
+\noindent Nous présentons ci-dessous une démonstration classique de la construction de cet estimateur, en nous inspirant du mémoire de Bouazza (2018)\footnote{I. Bouazza, \textit{Estimation non-paramétrique des quantiles extrêmes conditionnels}, Mémoire de Master, Université de Saïda - Dr Moulay Tahar, 2018.}.
 \noindent Soient \(\alpha_n\) et \(\beta_n\) deux suites de nombres positifs. La construction de l'estimateur de Hill repose sur une relation fondamentale entre les quantiles d’une distribution à queue lourde appartenant au domaine d’attraction de Fréchet. Cette relation est donnée par :
 
 \[
@@ -983,12 +986,10 @@ Le résultat central qui justifie l’utilisation de la GPD pour modéliser les 
 \sup_{0 \leq x \leq x_F - u} \left| F_u(x) - G_{\gamma, \beta(u)}(x) \right| \to 0.
 \]
 \end{quote}
-
+\end{theorem}
 \noindent Autrement dit, plus le seuil \(u\) est élevé, plus la loi des excès au-dessus de ce seuil est bien approchée par une GPD.
-
 \medskip
 \noindent Cette propriété est essentielle en statistique des valeurs extrêmes, car elle permet d’exploiter pleinement les données situées dans les queues de distribution, sans se limiter au maximum d’un bloc.
-\end{theorem}
 \newpage
 \section{Application sur des données réelles}
 \subsection{Description des données}
@@ -1186,6 +1187,9 @@ Ainsi, la théorie des valeurs extrêmes s’avère être un outil indispensable
 	\item Bibm@th.net
 	\item Théorie des valeurs extrêmes et estimation de mesures de risque, Jonathan El Methni, Gilles Stupfler
 	\item On The Limiting Distribution of the Maximum Term in a Random Series, Boris Vladimirovitch Gnedenko
+	\item Estimation non-paramétrique des quantiles extrêmes conditionnels, Imene Bouazza, Mémoire de Master, Université de Saïda - Dr Moulay Tahar, 2018
+	\item Méthodes non paramétriques d’estimation des quantiles extrêmes conditionnels, Jonathan El Methni, Mémoire de Master, École normale supérieure de Cachan, 2015
+	\item Yoann, Estimateur de Hill – Illustration avec R, RPubs, 2019. \url{https://rpubs.com/Yoann/499582}
 \end{itemize}
 
 \end{document}
