@@ -18,7 +18,7 @@ hist(Y_n, breaks = 50, probability = TRUE,
 curve(dexp(x, rate = 1), col = "red", lwd = 2, add = TRUE)
 
 # Légende
-legend("topright", legend = c("Simulation", "Densité théorique : exp(1)"),
+legend("topright", legend = c("Simulation", "Densité théorique : Weibull(1,1)"),
        fill = c("lightblue", NA), border = c("white", NA), 
        lty = c(NA, 1), col = c(NA, "red"), lwd = c(NA, 2))
 

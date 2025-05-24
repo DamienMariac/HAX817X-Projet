@@ -97,9 +97,9 @@ On déduit de cette forme que pour $t<t^*$ où $t^*$ est la borne supérieure du
 \[
 \text{et donc} \; \; F^n(t) \xrightarrow[n\to +\infty]{} 0,
 \]
-et dans le cas ou t est supérieur ou égal à $t^*$,
+et dans le cas ou t est supérieur ou égal à $t^*$, on a :
 \[
-\text{, on a} \; \; F^n(t) \xrightarrow[n\to +\infty]{} 1.
+ \; \; F^n(t) \xrightarrow[n\to +\infty]{} 1.
 \]
 L'idée derrière la théorie des valeurs extremes est d'introduire deux suites ($b_n$) et ($a_n$) (avec $a_n > $  0 pour tout $n$) afin d'avoir une limite non dégénérée pour le maximum en posant $\frac{M_n - b_n}{a_n}$. 
 \\
@@ -123,7 +123,7 @@ Alors $Y_n \xrightarrow{\mathcal{L} } Y$ si et seulement si pour toute fonction 
 \mathbb{E}[z(Y_n)] \xrightarrow[n\to +\infty]{} \mathbb{E}[z(Y)].
 \]
 \end{definition}
-\noindent Dans notre context, on décide de poser $Y_n = \frac{M_n -b_n}{a_n}$ et sont ésperance devient : 
+\noindent Dans notre contexte, on décide de poser $Y_n = \frac{M_n -b_n}{a_n}$ et son espérance devient : 
 \[
 \mathbb{E} \left[ z \left( \frac{M_n -b_n}{a_n} \right) \right] = \int_{-\infty}^{\infty} z \left( \frac{x-b_n}{a_n} \right) \: n \:  F^{n-1} (x)dF(x)
 \]
@@ -133,7 +133,7 @@ Afin de pouvoir identifier la loi limite, on voudrait ramener l'intégrale sous 
 \[
 \int_{-\infty}^{\infty} z(u) \, dG(u)
 \]
-On va alors procéder par un changement de variable. Mais avant on introduit la fonction quantile qui va nous être utilise à ses fin. Elle est définie par :
+On va alors procéder à un changement de variable. Mais avant on introduit la fonction quantile qui va nous être utile par la suite. Elle est définie par :
 \\
 \[
 Q(p) \;=\; F^{-1}(p)
@@ -142,7 +142,7 @@ Q(p) \;=\; F^{-1}(p)
 \quad p\in[0,1].
 \]
 
-\noindent On pose alors le changement de variable issue de \textit{Statistics of Extremes, Jan Beirlant 2004}: 
+\noindent On pose alors le changement de variable issu de \textit{Statistics of Extremes, Jan Beirlant 2004}: 
 
 \[
 x = Q(1-\frac{1}{y}) = U(y) \; \; \; \; \; \; 
@@ -190,7 +190,7 @@ G(t).
 \[
 n \: \ln (F(a_n t + b_n)) \xrightarrow[n\to +\infty]{} \ln (G(t))
 \]
-En faisant un développement limité du logarithme :
+Et par un développement limité du logarithme :
 \[
 n(1 - F(a_n t + b_n)) \xrightarrow[n\to +\infty]{} - \ln (G(t))
 \]
@@ -237,7 +237,7 @@ où \( h(u) \) dépend du domaine d’attraction de \( F \). \\
 \end{remark}
 
 \vspace{0.3cm}
-\noindent Il reste à étudier las limites possible, pour cela nous avons la proposition suivante (\textit{Statistics of Extremes, Jan Beirlant 2004}) :
+\noindent Il reste à étudier les limites possibles, pour cela nous utilisons la proposition suivante (\textit{Statistics of Extremes, Jan Beirlant 2004}) :
 \vspace{0.3cm}
 \begin{proposition}[Limites possibles de la fonction $h$]
 Les fonctions limites possibles sont données, pour une certaine constante $c > 0$, par :
@@ -255,7 +255,7 @@ h_0(u) = \log(u).
 
 \noindent
 \begin{remark}
-	La constante $c$ ne peut pas être nulle, car cela conduirait à une limite dégénérée pour la variable normalisée $\frac{M_n - b_n}{a_n}$. En pratique, on peut toujours ramener le cas $c > 0$ au cas $c = 1$ en absorbant $c$ dans la définition de la fonction $a$.
+	La constante $c$ ne peut pas être nulle, car cela conduirait à une limite dégénérée pour la variable normalisée $\frac{M_n - b_n}{a_n}$. En pratique, on peut toujours se ramener le cas $c > 0$ au cas $c = 1$ en absorbant $c$ dans la définition de la fonction $a$.
 \end{remark}
 
 \vspace{0.5cm}
@@ -325,7 +325,7 @@ g(u) = u^{\gamma} \quad \text{pour un certain } \gamma \in \mathbb{R}.
 h(uv) = h(v) \cdot u^\gamma + h(u).
 \]
 
-\noindent Cette équation admet comme solution (admis) (à une constante multiplicative près) :
+\noindent Cette équation admet comme solution à une constante multiplicative près (admis) :
 \[
 h(u) = c \cdot \frac{u^\gamma - 1}{\gamma}, \quad \text{pour } \gamma \neq 0.
 \]
@@ -385,7 +385,7 @@ Or, par un développement asymptotique,  \(\bigl(1 + \gamma x\bigr)^{-1/\gamma}\
 S_{\gamma} \approx \exp\bigl[-C\,x^{-1/\gamma}\bigr] 
 \quad (\text{pour une constante } C>0).
 \]
-Par croissance comparé, comme \(x^{-1/\gamma}\) tend vers 0 moins vite que \(\exp(-\alpha x)\). On a alors : 
+Par croissance comparée, comme \(x^{-1/\gamma}\) tend vers 0 moins vite que \(\exp(-\alpha x)\). On a alors : 
 \[
 S_{\gamma}\,\sim\, K\,x^{-1/\gamma} 
 \quad (\text{pour } x\to\infty),
@@ -429,7 +429,7 @@ On retrouve ici une queue à décroissance exponentielle, ce qui est caractéris
 Il s'agit d'un cas intermédiaire entre les deux cas précédents.
 \\
 \subsection{Résumé}
-On observe alors qu’apparaît un \textbf{modèle paramétrique} : la loi limite des maxima s’exprime selon une famille de lois qu’on appelle \emph{GEV} (Generalized Extreme Value), paramétrée par trois paramètres :
+\noindent On observe alors qu’apparaît un \textbf{modèle paramétrique} : la loi limite des maxima s’exprime selon une famille de lois qu’on appelle \emph{GEV} (Generalized Extreme Value), paramétrée par trois paramètres :
 
 \begin{itemize}
   \item un paramètre de position $\mu$,
@@ -437,14 +437,14 @@ On observe alors qu’apparaît un \textbf{modèle paramétrique} : la loi limit
   \item un paramètre de forme $\gamma$.
 \end{itemize}
 
-Ils proviennent des suites de normalisation $a_n > 0$ et $b_n$ introduites dans l’étude de la variable normalisée \(\frac{M_n - b_n}{a_n}\). 
+\noindent Ils proviennent des suites de normalisation $a_n > 0$ et $b_n$ introduites dans l’étude de la variable normalisée \(\frac{M_n - b_n}{a_n}\). 
 
-On pose alors $\mu = b_n \; \text{et} \; \sigma = a_n$, ce qui permet de réécrire la variable réduite \(u = \frac{x - \mu}{\sigma}\). Ainsi, la forme générale de la fonction de répartition limite devient :
+\noindent On pose alors $\mu = b_n \; \text{et} \; \sigma = a_n$, ce qui permet de réécrire la variable réduite \(u = \frac{x - \mu}{\sigma}\). Ainsi, la forme générale de la fonction de répartition limite devient :
 \[
 G_{\mu, \sigma, \gamma}(x) = \exp\left\{-\left[1 + \gamma \left(\frac{x - \mu}{\sigma} \right)\right]^{-1/\gamma} \right\}.
 \]
 
-Ce modèle permet donc d’ajuster statistiquement la loi des maxima à partir des données, en estimant directement ces trois paramètres. Les lois limites portent un nom différent selon la valeur du paramètre \(\gamma\).
+\noindent Ce modèle permet donc d’ajuster statistiquement la loi des maxima à partir des données, en estimant directement ces trois paramètres. Les lois limites portent un nom différent selon la valeur du paramètre \(\gamma\).
 Elles sont les suivantes :
 \\
 \begin{itemize}
@@ -471,7 +471,7 @@ Elles sont les suivantes :
 
 \subsubsection{Loi uniforme}
 
-Pour une loi uniforme sur [0,1], on peut démontrer que le maximum suit une loi de Weibull de paramètres 1 et 1. \\
+\noindent Commençons par étudier une loi uniforme sur [0,1], on peut démontrer que le maximum suit une loi de Weibull de paramètres 1 et 1. \\
 \noindent Soient \( U_1, U_2, \dots, U_n \) des variables aléatoires indépendantes et identiquement distribuées selon la loi uniforme sur \([0,1]\).
 
 \noindent On a, pour $ x \in [0,1]$ :
@@ -508,11 +508,17 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \text{Weibull}(1,1)
 
 \noindent Une simulation sur Rstudio donne le graphe suivant :
 
-\begin{center}
-	\includegraphics[scale=0.8]{./images/Max_Uniforme.png} 
-\end{center}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{./images/Max_Uniforme.png}
+	\caption{Comparaison entre le maximum de 1000 lois uniformes sur [0,1] et la loi Weibull(1,1)}
+\end{figure}
 
-\noindent Remarquons que l'on obtient une loi de Weibull, ce qui est logique au vu du fait que ce soit une loi à queue très légère, elle n'en a tout simplement pas car son support est borné.
+\noindent Remarquons que l'on obtient une loi de Weibull, ce qui est logique au vu du fait que ce soit une loi à queue bornée car son support est fini.
+
+\begin{remark}
+	Dans les graphes de cette section, la mention Y\_n en légende correspond au maximum normalisé : $ Y_n = \frac{M_n - b_n}{a_n} $.
+\end{remark}
 
 \subsubsection{Loi exponentielle}
 \noindent On considère une loi exponentielle de paramètre 1, la loi limite est une loi de Gumbel. Montrons que $a_n = 1 $ et $b_n = \log(n) $ conviennent. \\
@@ -523,7 +529,7 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \text{Weibull}(1,1)
 	&= (1-\exp(- x))^n
 \end{align*}
 
-\noindent Passons donc à la normalisation, posons $z=\frac{x-b_n}{a_n}$, on va utiliser le fait que $(1-\exp(- x))^n \xrightarrow[x \to +\infty]{} \exp(-n\exp(-x)) $. \\
+\noindent Passons donc à la normalisation, posons $z=\frac{x-b_n}{a_n}$, on va utiliser le fait que \[(1-\exp(- x))^n \xrightarrow[x \to +\infty]{} \exp(-n\exp(-x))\] \\
 \noindent Ainsi on veut choisir $b_n$ de telle sorte que $n \exp(-b_n) \xrightarrow[n \to +\infty]{} 1 $. D'où $b_n = \log(n)$. \\
 \noindent On peut donc choisir $ a_n = 1$ afin d'avoir : 
 \begin{align*}
@@ -537,11 +543,15 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \text{Weibull}(1,1)
 
 \noindent On obtient alors numériquement le graphe suivant :
 
-\begin{center}
-	\includegraphics[scale=0.8]{./images/Max_Expo.png} 
-\end{center}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{./images/Max_Expo.png}
+	\caption{Comparaison entre le maximum de 1000 lois exponentielles de paramètre 1 et la loi  Gumbel(0,1)}
+\end{figure}
 
 \noindent Les valeurs de la loi exponentielle décroissent rapidement, on peut donc caractériser sa queue de distribution comme étant fine, on obtient donc une loi de Gumbel, ce qui était attendu.
+
+\vspace{0.5cm}
 
 \subsubsection{Loi normale}
 
@@ -549,11 +559,15 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \text{Weibull}(1,1)
 
 \noindent On obtient cette fois-ci le graphe suivant :
 
-\begin{center}
-	\includegraphics[scale=0.8]{./images/Max_Normale.png} 
-\end{center}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{./images/Max_Normale.png}
+	\caption{Comparaison entre le maximum de 1000 lois normales centrées réduites et la loi  Gumbel(0,1)}
+\end{figure}
 
 \noindent Notons ainsi que l'on a la même loi limite que pour la loi exponentielle de paramètre 1, les graphes sont quasiment identiques.
+
+\vspace{0.5cm}
 
 \subsubsection{Loi de Cauchy}
 
@@ -585,13 +599,15 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \text{Weibull}(1,1)
 \frac{M_n - n}{\pi} \xrightarrow[n \to +\infty]{\mathcal{L}} Z \sim \text{Fréchet}(1)
 \]
 
-\noindent Une simulation donne :
+\noindent Une nouvelle simulation donne :
 
-\begin{center}
-	\includegraphics[scale=0.8]{./images/Max_Cauchy.png} 
-\end{center}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{./images/Max_Cauchy.png}
+	\caption{Comparaison entre le maximum de 1000 lois de Cauchy(0,1) et la loi Fréchet(1)}
+\end{figure}
 
-\noindent Les valeurs extrêmes de la loi de Cauchy décroissent lentement, ce qui est caractéristique d'une loi à queue lourde. La simulation confirme donc que la loi limite est bien une loi de Fréchet comme nous l'avions vu théoriquement.
+\noindent Les valeurs extrêmes de la loi de Cauchy décroissent lentement, ce qui est caractéristique d'une loi à queue lourde. La simulation confirme donc que la loi limite est bien une loi de Fréchet comme nous l'avions vu théoriquement dans la section précédente.
 
 \section{Méthodes d'estimation de l'indice de valeurs extrêmes}
 \noindent Dans cette section, nous cherchons à estimer le paramètre \(\gamma\) directement à partir des observations \(X_i\), sans nous limiter aux maxima \(M_n\), afin de tirer parti de l’ensemble des données.  
@@ -853,7 +869,7 @@ f(x; \mu, c) =
 \end{cases}
 \]
 
-où \(\mu \in \mathbb{R}\) est un paramètre de position et \(c > 0\) un paramètre d’échelle. Cette loi est caractérisée par une forte asymétrie et une variance infinie.
+où \(\mu \in \mathbb{R}\) est un paramètre de position et \(c > 0\) un paramètre d’échelle. Cette loi est caractérisée par une forte asymétrie et une variance infinie. \\
 
 \noindent Sur le graphique, on observe que l’estimateur de Hill converge globalement vers la valeur théorique \(\gamma = 0.5\), ce qui est attendu pour une loi à queue lourde. Cette convergence devient plus stable lorsque \(k\) atteint des valeurs modérées. Toutefois, lorsque \(k\) devient trop grand, on remarque une détérioration progressive de l’estimation : cela s'explique par l’inclusion d’observations moins extrêmes, qui introduisent un biais dans le calcul de l’estimateur.
 \begin{figure}[H]
@@ -881,8 +897,8 @@ où \(\mu \in \mathbb{R}\) est un paramètre de position et \(c > 0\) un paramè
 
 \section{Méthode des maxima par blocs}
 
-\noindent L'approche des maxima par blocs (en anglais Blocks Maxima) consiste à diviser les n observations en N blocs de taille k. Concrètement, la suite $X_1, ..., X_n$ est divisée en N blocs, le premier bloc est $X_1, ..., X_k$, le second $X_{k+1}, ..., X_{2k}$, etc. On obtient ainsi une suite de maxima $M_1, ..., M_n$ définis sur chacun des blocs.\\
-\noindent En général, on considère une période temporelle, comme une journée ou bien une année pour refléter le sens des observations.  \\
+\noindent L'approche des maxima par blocs (en anglais \textit{Blocks Maxima}) consiste à diviser les n observations en N blocs de taille k. Concrètement, la suite $X_1, ..., X_n$ est divisée en N blocs, le premier bloc est $X_1, ..., X_k$, le second $X_{k+1}, ..., X_{2k}$, etc. On obtient ainsi une suite de maxima $M_1, ..., M_n$ définis sur chacun des blocs.\\
+\noindent En général, on considère une période temporelle, comme une journée ou bien une année pour refléter le sens des observations. Dans d'autres cas, c'est moins clair, et le choix du découpage devient crucial car il faut trouver une bonne valeur pour ne pas perdre trop de données tout en conservant suffisamment d'information. \\
 \noindent On peut alors déterminer la loi limite des maxima, en vertu du théorème de Fisher-Tippett-Gnedenko c'est une distribution GEV classique de la forme :
 \[
 G_{\mu,\sigma,\gamma}(x)
@@ -894,20 +910,22 @@ G_{\mu,\sigma,\gamma}(x)
 \[
 \beta_r = \frac{1}{k} \sum_{i=1}^{k} \frac{(i-1)...(i-r)}{(k-1)...(k-r)} X_{i,k} ~ \text{ pour $r = 1,2,3,...,k>r $}
 \] \\
-\noindent A partir de $\beta_r$, on peut ensuite définir les trois estimateurs PVM suivants pour $\gamma, a_n$ et $b_n$ qui possèdent de bonnes propriétés asymptotiques sous certaines conditions ($\Gamma$ est la fonction gamma d'Euler). \\
+\noindent A partir de $\beta_r$, on peut ensuite définir les trois estimateurs PVM (méthode des moments pondérés) suivants pour $\gamma, a_n$ et $b_n$ qui possèdent de bonnes propriétés asymptotiques sous certaines conditions ($\Gamma$ est la fonction gamma d'Euler). \\
 
 \noindent Pour $\gamma$ : $\hat{\gamma}_{k,m}$ est solution de $\frac{3\hat{\gamma}_{k,m} - 1}{2\hat{\gamma}_{k,m} - 1} = \frac{3\beta_2 - \beta_0}{2\beta_1 - \beta_0} $ \\
 \noindent Pour $a_n$ : $\hat{a}_{k,m} = \frac{\hat{\gamma}_{k,m}}{2\hat{\gamma}_{k,m} - 1} \cdot \frac{2\beta_1 - \beta_0}{\Gamma(1 - \hat{\gamma}_{k,m})}$ \\
 \noindent Pour $b_n$ : $\hat{b}_{k,m} = \beta_0 + \hat{a}_{k,m} \cdot \frac{1 - \Gamma(1 - \hat{\gamma}_{k,m})}{\hat{\gamma}_{k,m}}$ \\
+
+\noindent Grâce à ces estimateurs, ou des méthodes plus simples comme des calculs de maximum de vraisemblance, on peut facilement déterminer les valeurs de nos paramètres. \\
 
 \noindent Cette approche possède tout de même un défaut car lorsque l'on prend le maximum sur un bloc, on fait potentiellement disparaître des valeurs élevées, on perd des données intéressantes.
 
 \subsection{Quantile de retour}
 
 \noindent En pratique, on cherche une valeur qui donnerait une certaine confiance quand à l'apparition
-de données la depassant. Dans le cas d'une distribution à queue bornée il suffit de prendre la bornes supérieure de la distribution.
+de données la depassant. Dans le cas d'une distribution à queue bornée il suffit de prendre la borne supérieure de la distribution.
 \\
-Or, dans le cas d'une distribution à queue lourde et exponentiel ce n'est pas possible. On introduit alors la notion de \textbf{quantile de retour} qui est une valeur que l'on dépasse en moyenne une fois tous les T ans (\textit{Séminaire CNAM 2019}).
+Or, dans le cas d'une distribution à queue lourde et exponentielle ce n'est pas possible. On introduit alors la notion de \textbf{quantile de retour} qui est une valeur que l'on dépasse en moyenne une fois tous les T ans (\textit{Séminaire CNAM 2019}).
 \\
 On pose $z_T$ cette quantité, et elle est solution de l'équation suivante :
 \[
@@ -1000,24 +1018,28 @@ Nous allons utiliser les données du package $ismev$ de R. Plus précisément ce
 les montants des grands sinistres d'incendie survenus au Danemark entre 1980 et 1990 (Données issue du package \textbf{ismev} de R).
 \\
 \\
-L'objectif sur ces données est de savoir s'il existe et le cas échéant de le calculer, une valeur tel qu'à l'avenir on la dépasse rarement tout en restant raisonable. C'est exactement ce que fait le quantile de retour.
+L'objectif sur ces données est de savoir s'il existe et le cas échéant de le calculer, une valeur telle qu'à l'avenir on la dépasse rarement tout en restant raisonnable. C'est exactement ce que fait le quantile de retour.
 \\
 \\
-Concernant les données de pluie, on dispose de $17531$ données qui prennent des valeurs entre $0$ et $86,6$. On observe un moyenne de $3,476$ et une médiane de $0,5$.
+Concernant les données de pluie, on dispose de $17531$ observations qui prennent des valeurs entre $0$ et $86,6$. On observe un moyenne de $3,476$ et une médiane de $0,5$.
 \\
 On remarque de plus que les données sont fortement concentrées autour de 0.
 Il est alors raisonnable de penser qu'après estimation, on va obtenir une valeur de gamma positive ou nulle. En effet, il n'apparait pas de cassure dans la distribution des données.
 De plus, les données prennent des valeurs grandes mais perdent rapidement en densité pour celle-ci. Ce qui suggèrerait une valeur de gamma proche de $0$ et positive.
 
-\begin{center}
-	\includegraphics[scale=0.62]{./images/rainhisto.png} 
-\end{center}
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.48]{./images/rainhisto.png}
+	\caption{Distribution des données du fichier rain}
+\end{figure}
 
 \noindent Pour les sinistres, on remarque que la majorité des montants sont de faible intensité mais qu'il existe des sinistres avec des valeurs élevé. Les données se répartissent de $1$ à $263.500$ avec une moyenne de $3,385$ et une médiane de $1,778$. Dans le même cas que dans les données de rain, on peut donc s'attendre à une valeur de gamma positive ou nulle.
-\begin{center}
-	\includegraphics[scale=0.62]{./images/sinistres.png} 
-\end{center}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.52]{./images/sinistres.png}
+	\caption{Distribution des données du fichier danish}
+\end{figure}
 
 \subsection{Méthode des maxima par bloc}
 
@@ -1025,12 +1047,12 @@ De plus, les données prennent des valeurs grandes mais perdent rapidement en de
 
 \noindent Les données étant journalières, on va choisir des blocs de taille 365, comme les données vont de 1914 à 1962, on se retrouve avec 48 blocs de 365 jours.
 \\
-Via le package \textbf{evd}, on obtient via une estimations par maximum de vraisemblance les paramètres suivants : $\mu = 40,8$, $\sigma = 9,73$ et $\gamma = 0,107$.
+Via le package \textbf{evd}, on obtient via une estimation par maximum de vraisemblance les paramètres suivants : $\mu = 40,8$, $\sigma = 9,73$ et $\gamma = 0,107$.
 \\
-L'estimation des paramètres sont calculées par maximum de vraisemblance.
+L'estimation des paramètres est calculée par maximum de vraisemblance.
 \\
 \\
-On suppose alors que $\gamma \geq 0$, donc il n’existe pas de valeur maximale finie : la probabilité de très gros maxima décroît mais n'est pas finie, selon un comportement polynomial ou exponentiel ce qui est embettant dans le cas pratique surtout quand on cherche des seuils rarement atteints.
+On suppose alors que $\gamma \geq 0$, donc il n’existe pas de valeur maximale finie : la probabilité d'avoir de très gros maxima décroît mais n'est pas finie, selon un comportement polynomial ou exponentiel ce qui est embêtant dans le cas pratique surtout quand on cherche des seuils rarement atteints.
 \\
 \\
 On calcule alors le quantile de retour pour $T=100$ afin d'avoir une valeur de pluie qui ne devrait pas être dépassée plus d'une fois tous les 100 ans.
@@ -1042,7 +1064,7 @@ On obtient alors : $z_t = 98,636$. Autrement dit, une fois tous les 100 ans, on 
 
 
 \subsubsection{Application sur les données danish}
-\noindent On applique la même méthode sur les données de sinistres mais avec une approche légèrement différente puisque les données ne sont pas dans le même format. En effet, on ne dispose pas de données journalières mais des sinistres enregistré sur une période de 10 ans. C'est à dire qu'il existe des jours sans sinistres qui ne sont pas comptabilisés.
+\noindent On applique la même méthode sur les données de sinistres mais avec une approche légèrement différente puisque les données ne sont pas dans le même format. En effet, on ne dispose pas de données journalières mais des sinistres enregistrés sur une période de 10 ans. C'est à dire qu'il existe des jours sans sinistres qui ne sont pas comptabilisés.
 On regroupe alors les sinistres par mois et on prend le montant de sinistre le plus élevé. On se retrouve alors avec des blocs de taille irrégulière.
 \\
 Après analyse numérique par maximum de vraisemblance, on obtient les paramètres suivants : $\mu = 8,376$, $\sigma = 5,971$ et $\gamma = 0,623$.
@@ -1056,7 +1078,7 @@ On obtient alors : $z_t = 515,22$. Autrement dit, une fois tous les 50 ans, on p
 \subsubsection{Synthèse sur la méthode des maxima en bloc}
 
 \noindent Quand on dispose des données sur une longue période, la méthode des maxima en bloc est efficace. D'autant plus quand on a des données temporelles (journalières, mensuelles, annuelles).
-En revanche, elle utilise moins de données ce qui la rend plus difficile à utiliser en pratique. En effet, on ne garde que les maximums et on perd donc une partie des données qui peuvent etre consequents en fonction du choix de $k$.
+En revanche, elle utilise moins de données ce qui la rend plus difficile à utiliser en pratique. En effet, on ne garde que les maximums et on perd donc une partie des données qui peuvent etre conséquents en fonction du choix de $k$.
 Par ailleurs, le choix de $k$ est important car il faut choisir un nombre de blocs suffisant pour avoir une estimation fiable mais pas trop grand pour ne pas perdre trop d'informations.
 
 \subsection{Méthode de dépassement de seuil}
@@ -1075,9 +1097,11 @@ tandis qu'avec la méthode de dépassement de seuil, on obtient une valeur néga
 \\
 On peut poursuivre l'étude en calculant la valeur de $\gamma$ via l'estimateur de Pickands.
 
-\begin{center}
-	\includegraphics[scale=0.57]{./images/pickandsrain.png} 
-\end{center}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{./images/pickandsrain.png}
+	\caption{Valeur de l'estimateur de Pickands pour rain en fonction de k}
+\end{figure}
 
 \noindent On observe qu'il y'a une stabilisation de l'estimateur de Pickands pour $k$ entre 80 et 135. On obtient alors apres estimation numérique une valeur de $\gamma = -0,079$.
 \\
@@ -1092,11 +1116,12 @@ On a obtenue une valeur de $\gamma$ positive ce qui renforce l'hypothèse d'une 
 \\
 Avec l'estimateur de Pickands, on observe une stabilisation de l'estimateur pour $k$ entre 70 et 110. On obtient alors apres estimation numérique une valeur de $\gamma = 0.938$. Un résultat assez haut qui est due à l'instabilité de l'estimateur de Pickands. 
 
-\begin{center}
-	\includegraphics[scale=0.65]{./images/pickandsdansih.png} 
-\end{center}
 
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{./images/pickandsdansih.png}
+	\caption{Valeur de l'estimateur de Pickands pour danish en fonction de k}
+\end{figure}
 
 
 \noindent Ayant plusieurs fois obtenue un valeur de $\gamma > 0$, on peut pousser son analyse en calculant son estimation via l'estimateur de Hill pour obtenir une valeur plus précise.
@@ -1104,16 +1129,18 @@ Avec l'estimateur de Pickands, on observe une stabilisation de l'estimateur pour
 \\
 On trace alors la courbe de l'estimateur de Hill en fonction de $k$.
 
-\begin{center}
-	\includegraphics[scale=0.65]{./images/danishsad.png} 
-\end{center}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.62]{./images/pickandsdansih.png}
+	\caption{Valeur de l'estimateur de Hill pour danish en fonction de k}
+\end{figure}
 
 \noindent On observe alors un plateau pour k entre 30 et 45. On obtient alors apres estimation numérique une valeur de $\gamma = 0,66$.
 
 \subsubsection{Synthèse sur la méthode de dépassement de seuil}
 \noindent Cette méthode à le bon goût d'exploiter toutes les valeurs supérieures à un seuil, pas seulement un maximum par bloc. Elle utilise donc plus de données.
 \\
-En revanche le choix du seuil est important car il faut choisir un seuil suffisamment élevé pour ne pas avoir trop peu de données mais pas trop élevé pour ne pas perdre d'informations sur les max. Il faut donc faire le compromis entre le biais et la variance.
+En revanche le choix du seuil est important car il faut choisir un seuil suffisamment élevé pour ne pas avoir trop peu de données mais pas trop élevé pour ne pas perdre d'information sur les max. Il faut donc faire le compromis entre le biais et la variance.
 
 \section{Conclusion}
 
@@ -1121,7 +1148,7 @@ Dans ce projet, nous avons exploré la \textbf{théorie des valeurs extrêmes}, 
 La démonstration de la convergence des maxima d’échantillons vers une loi de valeurs extrêmes a été au cœur de notre étude. Cette loi dépend de trois paramètres : un paramètre de localisation $\mu$, un paramètre d’échelle $\sigma > 0$, et un paramètre de forme $\gamma$, qui gouverne le comportement de la queue.
 \\
 Ce paramètre de forme $\gamma$ est le plus important à estimer en pratique. En effet, il permet de connaître le comportement de la queue de la distribution.
-L'estimation de ce paramètre à prit une bonne partie de notre projet. Nous avons utilisé
+L'estimation de ce paramètre a pris une bonne partie de notre projet. Nous avons utilisé
 des méthodes \textbf{non paramétriques} : les estimateurs de \textbf{Hill} (adapté aux queues lourdes, $\gamma > 0$) et de \textbf{Pickands}, permettant une estimation robuste de $\gamma$ à partir des ordres statistiques des excès,
 
 
@@ -1136,7 +1163,7 @@ Nous aurions pu approfondir notre étude en réalisant des tests de significativ
 
 \medskip
 
-Ainsi, la théorie des valeurs extrêmes s’avère être un outil indispensable pour la modélisation des événements rares dans de nombreux domaines appliqués (hydrologie, finance, assurance, climatologie, etc.). Une bonne estimation du paramètre de forme $\gamma$ est essentielle pour la prise de décision en conditions extrêmes.
+Ainsi, la théorie des valeurs extrêmes s’avère être un outil indispensable pour la modélisation des événements rares dans de nombreux domaines appliqués (hydrologie, finance, assurance, climatologie, etc). Une bonne estimation du paramètre de forme $\gamma$ est essentielle pour la prise de décision en conditions extrêmes.
 
 
 \newpage
@@ -1147,6 +1174,8 @@ Ainsi, la théorie des valeurs extrêmes s’avère être un outil indispensable
 \noindent Les codes des simulations suivantes sont disponibles sur Github dans les sous dossiers Codes Dépassement-Seuil et Codes Maxima-Blocs du dossier CodesR.
 
 \subsubsection{Maxima par blocs}
+
+\noindent Ces codes comparent $n = 10000$ simulations de maxima en blocs pour des lois biens connues par rapport à la loi théorique GEV déterminée grâce à une méthode de vraisemblance du package \textbf{evd}.
 
 \begin{center}
 	\includegraphics[scale=0.60]{./images/MB_Uniforme} 
@@ -1161,6 +1190,8 @@ Ainsi, la théorie des valeurs extrêmes s’avère être un outil indispensable
 \end{center}
 
 \subsubsection{Dépassements de seuil}
+
+\noindent Ces codes R illustrent l’application de la méthode des dépassements de seuil à des données simulées suivant des lois bien connues, en vue d’ajuster une loi de Pareto généralisée aux excès au-dessus d’un certain seuil (le quantile choisi est de 95\% ici). On a encore utilisé le package \textbf{evd}.
 
 \begin{center}
 	\includegraphics[scale=0.60]{./images/DS_Uniforme} 
