@@ -13,7 +13,7 @@
 \contentsline {subsubsection}{\numberline {3.0.4}Loi de Cauchy}{10}{subsubsection.3.0.4}%
 \contentsline {section}{\numberline {4}Méthodes d'estimation de l'indice de valeurs extrêmes}{11}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Estimateur de Pickands}{12}{subsection.4.1}%
-\contentsline {subsubsection}{\numberline {4.1.1}Construction de l'estimateur de Pickands}{12}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Construction de l'estimateur de Pickands}{13}{subsubsection.4.1.1}%
 \contentsline {subsubsection}{\numberline {4.1.2}Représentation graphique de l’estimateur de Pickands}{14}{subsubsection.4.1.2}%
 \contentsline {subsection}{\numberline {4.2}Estimateur de Hill}{16}{subsection.4.2}%
 \contentsline {subsubsection}{\numberline {4.2.1}La construction de l’estimateur de Hill}{16}{subsubsection.4.2.1}%

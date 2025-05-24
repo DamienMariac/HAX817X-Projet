@@ -496,7 +496,7 @@ P(M_n \leq 1 - y/n) = (1 - y/n)^n.
 \noindent Ainsi, on a donc montré que :
 
 \[
-P(n(1 - M_n) \leq y) \to P(Y \leq y) = 1 - e^{-y},
+P(n(1 - M_n) \leq y) \xrightarrow[n \to +\infty]{} P(Y \leq y) = 1 - e^{-y},
 \]
 
 \noindent ce qui établit la convergence en loi :
@@ -512,7 +512,7 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \text{Weibull}(1,1)
 	\includegraphics[scale=0.8]{./images/Max_Uniforme.png} 
 \end{center}
 
-\noindent Remarquons que l'on obtient une loi de Gumbel, ce qui est assez logique au vu du fait que ce soit une loi à queue très légère (elle n'en a tout simplement pas car son support est borné).
+\noindent Remarquons que l'on obtient une loi de Weibull, ce qui est logique au vu du fait que ce soit une loi à queue très légère, elle n'en a tout simplement pas car son support est borné.
 
 \subsubsection{Loi exponentielle}
 \noindent On considère une loi exponentielle de paramètre 1, la loi limite est une loi de Gumbel. Montrons que $a_n = 1 $ et $b_n = \log(n) $ conviennent. \\
@@ -585,6 +585,7 @@ Y_n = n(1 - M_n) \xrightarrow{\mathcal{L}} \text{Weibull}(1,1)
 \frac{M_n - n}{\pi} \xrightarrow[n \to +\infty]{\mathcal{L}} Z \sim \text{Fréchet}(1)
 \]
 
+\noindent Une simulation donne :
 
 \begin{center}
 	\includegraphics[scale=0.8]{./images/Max_Cauchy.png} 
