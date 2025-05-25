@@ -218,9 +218,9 @@ $$
 
 
 
-# Application à des données réelles
+# Application à des données réelles (fleuve du Lez)
 
-## Jeux de donnée du Lez
+## Context
 
 - Débits ($m^3/s$), du fleuve du Lez issue des 30 derniers jours.
 
@@ -228,11 +228,49 @@ $$
 ![](images/lezloc.png){width=50%}
 :::
 
+## Description {.smaller}
+
+
+
+::: columns
+::: column
+![](images/lezhisto.png){height=360px}
+
+
+:::
+
+::: column
+![](images/lezdata.png){height=360px}
+
+
+:::
+:::
+
+
+- moyenne : 3.547998 $m^3 /s$
+- variance : 21.93014
+- min : 0.243 et max : 30.9
+
 - Objectif : calculer un seuil qui est dépassé que rarement.
+
+## Estimation des paramêtres 
+
+![](images/lezpickands.png){height=360px}
+
 
 # Conclusion
 
 ## Conclusion
+
+1. Démonstration d'un théoreme
+
+2. Estimateurs du paramêtre de forme
+
+3. Méthodes dans le cas pratique
+
+4. Applications sur des données
+
+5. Experiences
 
 ## Perspectives
 

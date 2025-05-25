@@ -367,21 +367,37 @@ G_{\gamma, \beta}(y) =
 </ul>
 </section></section>
 <section>
-<section id="application-à-des-données-réelles" class="title-slide slide level1 center">
-<h1>Application à des données réelles</h1>
+<section id="application-à-des-données-réelles-fleuve-du-lez" class="title-slide slide level1 center">
+<h1>Application à des données réelles (fleuve du Lez)</h1>
 
 </section>
-<section id="jeux-de-donnée-du-lez" class="slide level2">
-<h2>Jeux de donnée du Lez</h2>
+<section id="context-1" class="slide level2">
+<h2>Context</h2>
 <ul>
 <li class="fragment">Débits (<span class="math inline">\(m^3/s\)</span>), du fleuve du Lez issue des 30 derniers jours.</li>
 </ul>
 <div class="fragment">
 <p><img data-src="images/lezloc.png" style="width:50.0%"></p>
 </div>
+</section>
+<section id="description" class="slide level2 smaller">
+<h2>Description</h2>
+<div class="columns">
+<div class="column">
+<p><img data-src="images/lezhisto.png" height="360"></p>
+</div><div class="column">
+<p><img data-src="images/lezdata.png" height="360"></p>
+</div></div>
 <ul>
-<li class="fragment">Objectif : calculer un seuil qui est dépassé que rarement.</li>
+<li class="fragment"><p>moyenne : 3.547998 <span class="math inline">\(m^3 /s\)</span></p></li>
+<li class="fragment"><p>variance : 21.93014</p></li>
+<li class="fragment"><p>min : 0.243 et max : 30.9</p></li>
+<li class="fragment"><p>Objectif : calculer un seuil qui est dépassé que rarement.</p></li>
 </ul>
+</section>
+<section id="estimation-des-paramêtres" class="slide level2">
+<h2>Estimation des paramêtres</h2>
+<p><img data-src="images/lezpickands.png" height="360"></p>
 </section></section>
 <section>
 <section id="conclusion" class="title-slide slide level1 center">
@@ -390,12 +406,19 @@ G_{\gamma, \beta}(y) =
 </section>
 <section id="conclusion-1" class="slide level2">
 <h2>Conclusion</h2>
+<ol type="1">
+<li class="fragment"><p>Démonstration d’un théoreme</p></li>
+<li class="fragment"><p>Estimateurs du paramêtre de forme</p></li>
+<li class="fragment"><p>Méthodes dans le cas pratique</p></li>
+<li class="fragment"><p>Applications sur des données</p></li>
+<li class="fragment"><p>Experiences</p></li>
+</ol>
 </section>
 <section id="perspectives" class="slide level2">
 <h2>Perspectives</h2>
 <ul>
 <li class="fragment"><p>Si les observations ne sont pas indépendante ?</p></li>
-<li class="fragment"><p>Si il y’a une tendance ? et une saisonnalité ?</p></li>
+<li class="fragment"><p>Si il y’a une tendance ? Et une saisonnalité ?</p></li>
 <li class="fragment"><p>Dans le cas multidimmensionnel ?</p></li>
 <li class="fragment"><p>Variable qualitatif ?</p></li>
 <li class="fragment"><p>…</p></li>
