@@ -17,46 +17,119 @@ slide-number: true
 
 # Le résultat central
 
-## Le théorème
+## Context
 
 ::: {.incremental}
-- Reformulation du théorème central limite dans notre cadre : théorème de Fisher-Tippett-Gnedenko.
+- On suppose avoir un échantillion iid.
 
-- L'idée est de prendre deux suites $(a_n)$ et $(b_n)$ avec $a_n>0$ pour tout $n$, et alors on a : 
+- Donc 
+$$
+\quad F_{M_n}(t) = \mathbb{P}(M_n \le t) = \mathbb{P}(X_1 \le t,...,X_n \le t)
+\\
+=\mathbb{P}(X_1 \le t)^n = F^n(t) 
+$$
+
+- À l'image du TCL, on prend deux suites $(a_n)$ et $(b_n)$ pour que : 
 $$
 \mathbb{P}\left( \frac{M_n - b_n}{a_n} \leq x \right)
 \xrightarrow[n \to \infty]{} G(x)
 $$
 
-- G représente ici une distribution limite possible qui dépend de l'indice de queue $\gamma$.
+- Si il existe de tel suite, on dit que F est dans le domaine d'attraction de G.
 :::
 
-## Détermination des suites
+## Théorème de Fisher-Tippett-Gnedenko
 
-- $F$ la fonction de répartition des $X_i$ est alors dite dans le domaine d'attraction de G.
-- Pour déterminer les suites $a_n$ et $b_n$, on utilise des outils comme la méthode de la fonction muette et la fonction quantile $Q$ définie par :
+- La fonction de repartition limite est donnée par :
 $$
-Q(p) = F^{-1}(p) = \inf\{ x \in \mathbb{R} : F(x) \geq p\}    
+G_{\mu, \sigma, \gamma}(x) = \exp\left\{-\left[1 + \gamma \left(\frac{x - \mu}{\sigma} \right)\right]^{-1/\gamma} \right\}.
 $$
 
-- On peut alors démontrer que : 
+
+- Cela correspond à :
+
+::: {.fragment}
+Loi de Fréchet  $\gamma < 0$
+:::
+
+::: {.fragment}
+Loi de Gumbel $\gamma = 0$
+:::
+
+::: {.fragment}
+Loi de Weibull $\gamma > 0$
+:::
+
+
+
+## Idée de la démonstration
+
+<!-- 1 -->
+- Pour $z$ bornée, on a :
+
+  ::: {.small .fragment data-fragment-index=2}
+  $$
+  \mathbb{E}\!\Bigl[ z\!\bigl(\tfrac{M_n-b_n}{a_n}\bigr) \Bigr]
+     = \int_{-\infty}^{\infty}
+       z\!\bigl(\tfrac{x-b_n}{a_n}\bigr)\;
+       n\,F^{\,n-1}(x)\,dF(x)
+  $$
+  :::
+
+<!-- 2 -->
+- Par changement de variable  
+  $x = Q\!\bigl(1-\tfrac{1}{y}\bigr) = U(y)$
+
+<!-- 3 -->
+- Ce qui donne :
+
+  ::: {.small .fragment data-fragment-index=5}
+  $$
+  \int_{0}^{n} z\!\Bigl(\tfrac{U(n/v)-b_n}{a_n}\Bigr)
+  \Bigl(1-\tfrac{v}{n}\Bigr)^{n-1} \, dv
+  $$
+  :::
+
+
+## Idée de la démonstration {.smaller}
+
+- **Choix de $b_n$**
 $$
-b_n = Q(1-\frac{1}{n})
-$$ 
-
-- Et $a_n$ se déduit ensuite de ceci.
-
-## Les lois limites
-
-- On a la disjonction de cas :
- - $\gamma > 0$ : queue lourde, loi de Fréchet
- - $\gamma = 0$ : queue légère, loi de Gumbel
- - $\gamma < 0$ : queue bornée, loi de Weibull
-
-- On peut généraliser ces 3 lois sous la forme suivante dite GEV : 
+b_n = Q(1-\frac{1}{n}) = U(n)
 $$
-G_{\gamma}(x) = \exp (-[1 + \gamma u]^{-\frac{1}{\gamma}})
+
+
+- **Choix de $a_n$** Pas de forme explicite, mais $a$ est tel que :
 $$
+\frac{U(xu) - U(x)}{a(x)} \xrightarrow[x\to\infty]{} h_{\gamma}(u) = \frac{u^{\gamma}-1}{\gamma} 
+$$
+
+- **Ainsi**, on a :
+
+::: {.small .fragment}
+$$
+ \int_{0}^{n} z\!\Bigl(\tfrac{U(n/v)-b_n}{a_n}\Bigr)
+  \Bigl(1-\tfrac{v}{n}\Bigr)^{n-1} \, dv \xrightarrow[x\to\infty]{} \int_{0}^{\infty} z\!\bigl(h_\gamma(1/v)\bigr)\,e^{-v}\,dv   
+$$
+:::
+
+::: {.fragment}
+$$
+= \int_{u\in S_\gamma} z(u)\,d\Bigl\{\exp\Bigl[-\left(1+\gamma u\right)^{-1/\gamma}]\Bigr\}
+$$
+:::
+
+
+
+
+## Disjonction de cas sur le signe de $\gamma$ 
+
+| Signe de $\gamma$ | Queue de $F$ | Forme de $G_{\gamma}$ | Nom
+|:---:|--------------------------------------------|-------------------------------------|---------------------|----------------------------|
+| $\gamma>0$ | queues lourdes | $\exp\!\{- (1+\gamma u)^{-1/\gamma}\}$, $u>-1/\gamma$ | **Fréchet** |
+| $\gamma=0$ | décroissance exponentielle| $\exp\!\{-e^{-u}\}$, $u\in\mathbb R$ | **Gumbel** |
+| $\gamma<0$ | queues bornées| $\exp\!\{- (1+\gamma u)^{-1/\gamma}\}$, $u<-1/\gamma$ | **Weibull** |
+
 
 
 ## Quelques simulations
@@ -73,60 +146,49 @@ $$
 :::
 
 
-# Estimation de l'indice de queue : objectifs
-- L’indice de queue $\gamma$ permet d’identifier la loi limite (Fréchet, Gumbel, Weibull)
-- Plusieurs méthodes existent, basées sur des statistiques d’ordre
-- On se concentre ici sur deux estimateurs classiques :
-- Pickands (robuste, toutes queues)
-- Hill (plus performant mais uniquement pour queues lourdes, $\gamma > 0$)
+# Estimation de l'indice de queue
+
+
+## Motivations 
+
+- Objectif : estimer $\gamma$ pour pouvoir déterminer la loi limite parmi les 3 possibles
+- Deux méthodes classiques :
+  - Pickands
+  - Hill
 
 ---
 
 ## Estimateur de Pickands
 
-- Méthode non-paramétrique robuste
-- Utilise des statistiques d’ordre
-- Valable pour tous les domaines d’attraction
+- Basé sur les statistiques d'ordre
+- Robuste mais sensible à $k$
+- Fonctionne pour tous les domaines d’attraction
+- Sa formule :
 $$ 
-\hat{\gamma}_p = \frac{1}{\ln(2)} \ln\left(\frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-2k+1, n} - X_{n-4k+1, n}}\right)
+\hat{\gamma}_p = \frac{1}{\ln(2)} \ln(\frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-2k+1, n} - X_{n-4k+1, n}})
 $$
-- Sensible au choix du paramètre $k$
 
 ---
 
 ## Estimateur de Hill
 
-- Construit uniquement pour queues lourdes (Fréchet)
-- Meilleure performance que Pickands dans ce cadre
+- Plus performant que Pickands pour les queues lourdes
+- Mais ne fonctionne que pour les $\gamma > 0$
+- Biaisé
+- Sa formule :
 $$
 \hat{\gamma}_h = \frac{1}{k-1} \sum_{i=1}^{k-1} \log(X_{n-i+1, n}) - \log(X_{n - k + 1, n})
 $$
-- Mais biaisé et très sensible à $k$
 
 ---
 
-## Simulations : Pickands
+## Simulations pour Pickands
 
-:::{.center}
-![](Evolution%20des%20estimateurs/pickands//estimateur_pickands_pareto.png){width=50%}
-:::
-
-
-- Pour la loi de Pareto ($\gamma = 0.5$), l’estimateur converge bien pour un $k$ modéré
-- Trop petit : variance élevée ; trop grand : biais
 
 ---
 
-## Simulations : Hill
+## Simulations pour Hill
 
-:::{.center}
-![](Evolution%20des%20estimateurs/hill/estimateur_hill_cauchy.png){width=50%}
-:::
-
-- Pour la loi de Cauchy ($\gamma = 1$), l’estimateur est stable pour $k \in [3000, 4000]$
-- Au-delà, inclusion de valeurs non extrêmes → biais important
-
----
 
 # Méthodes de simulations
 
@@ -140,11 +202,9 @@ $$
 
 ---
 
+## Dépassement de seuil
 
-## Méthode des excès
-
-- On ne garde que les observations supérieures à un seuil $u$
-- On modélise la distribution des excès par la loi de Pareto généralisée
+- On ne conserve que les observations excédant un certain seuil u. Lorsque celui-ci est assez élevée, alors F suit une loi de Pareto généralisée :
 $$
 G_{\gamma, \beta}(y) =
 \begin{cases}
@@ -152,19 +212,37 @@ G_{\gamma, \beta}(y) =
 1 - \exp\left( -\frac{y}{\beta} \right), & \text{si } \gamma = 0.
 \end{cases}
 $$
-- Méthode très utilisée en finance, assurance, hydrologie
 
----
+
+- Le seuil u est néanmoins difficile à déterminer.
+
+
 
 # Application à des données réelles
 
-## Données de pluie
+## Jeux de donnée du Lez
 
----
+- Débits ($m^3/s$), du fleuve du Lez issue des 30 derniers jours.
 
-## Sinistres danois
+::: {.fragment}
+![](images/lezloc.png){width=50%}
+:::
+
+- Objectif : calculer un seuil qui est dépassé que rarement.
 
 # Conclusion
 
 ## Conclusion
+
+## Perspectives
+
+- Si les observations ne sont pas indépendante ?
+
+- Si il y'a une tendance ? Et une saisonnalité ?
+
+- Dans le cas multidimmensionnel ?
+
+- Variable qualitatif ?
+
+- ...
 
