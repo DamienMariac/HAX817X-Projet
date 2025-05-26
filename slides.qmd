@@ -195,26 +195,34 @@ $$
 
 ## Maxima par blocs
 
-- Principe : division des données en blocs pour ensuite estimer la loi des maxima qui sera une des 3 lois vues auparavant d'après le théorème de Fisher-Tippett-Gnedenko
-- Cette méthode est robuste et facile à implémenter.
-- Elle nécessite néanmoins de prendre des précautions quant à la valeur du nombre de blocs.
-- On peut alors déterminer de nouveaux estimateurs PWM.
-
+- Principe : division des données en blocs pour ensuite estimer la loi des maxima qui sera une des 3 lois vues auparavant
+- Choix à faire sur le nombre de blocs : perdre peu d'information tout en gardant des maxima significatifs
+- Existence d'autres estimateurs PWM (moments pondérés) définis d'après :
+$$
+\beta_r = \frac{1}{k} \sum_{i=1}^k \frac{(k - i) \cdots (k - i - r + 1)}{(k - 1) \cdots (k - r)} X_{i,k} \\
+\quad \text{pour } r = 1, 2, 3, ..., k > r
+$$
 ---
 
 ## Dépassement de seuil
 
-- On ne conserve que les observations excédant un certain seuil u. Lorsque celui-ci est assez élevée, alors F suit une loi de Pareto généralisée :
+- Principe : on ne conserve que les observations excédant un certain seuil u qui doit être élevé. 
+- Sous ces conditions, alors F suit une loi de Pareto généralisée :
 $$
-G_{\gamma, \beta}(y) =
+H_{\gamma, \beta}(y) =
 \begin{cases}
 1 - \left(1 + \frac{\gamma y}{\beta} \right)^{-1/\gamma}, & \text{si } \gamma \ne 0, \\
 1 - \exp\left( -\frac{y}{\beta} \right), & \text{si } \gamma = 0.
 \end{cases}
 $$
 
+- Le seuil u est néanmoins difficile à déterminer : il y a encore une fois un choix à faire.
 
-- Le seuil u est néanmoins difficile à déterminer.
+## Comparaison
+
+- La méthode des maxima par blocs est simple à mettre en oeuvre et repose sur une théorie bien fournie (théorème de Fisher-Tippett), toutefois on perd de l'information en l'utilisant
+- Le dépassement de seuil repose lui aussi sur une théorie précise et a en général une meilleure précision, mais est moins robuste
+- Dans les deux cas, on se trouve face à un dilemme quant à la valeur du seuil ou du nombre de blocs
 
 
 
