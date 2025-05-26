@@ -22,20 +22,23 @@ slide-number: true
 ::: {.incremental}
 - On suppose avoir un échantillion iid.
 
-- Donc 
+- Intuition naïve :
 $$
 \quad F_{M_n}(t) = \mathbb{P}(M_n \le t) = \mathbb{P}(X_1 \le t,...,X_n \le t)
 \\
-=\mathbb{P}(X_1 \le t)^n = F^n(t) 
+=\mathbb{P}(X_1 \le t)^n = F^n(t) = 
+\begin{cases}
+      0 & \text{si} \; t \in ]- \infty , t^*]\\
+      1 & \text{si} \; t \geq t^*
+\end{cases}
 $$
 
-- À l'image du TCL, on prend deux suites $(a_n)$ et $(b_n)$ pour que : 
+- Idée : comme pour le TCL, on prend deux suites $(a_n)$ et $(b_n)$ pour que : 
 $$
 \mathbb{P}\left( \frac{M_n - b_n}{a_n} \leq x \right)
 \xrightarrow[n \to \infty]{} G(x)
 $$
 
-- Si il existe de tel suite, on dit que F est dans le domaine d'attraction de G.
 :::
 
 ## Théorème de Fisher-Tippett-Gnedenko
@@ -101,7 +104,11 @@ $$
 
 - **Choix de $a_n$** Pas de forme explicite, mais $a$ est tel que :
 $$
-\frac{U(xu) - U(x)}{a(x)} \xrightarrow[x\to\infty]{} h_{\gamma}(u) = \frac{u^{\gamma}-1}{\gamma} 
+\frac{U(xu) - U(x)}{a(x)} \xrightarrow[x\to\infty]{} h_{\gamma}(u) = 
+\begin{cases}
+  \frac{u^{\gamma}-1}{\gamma} \; \text{si} \; \gamma \neq 0 \\
+  log(u) \; \text{si} \; \gamma = 0
+\end{cases} 
 $$
 
 - **Ainsi**, on a :
@@ -288,7 +295,7 @@ $$
 
 - Dans le cas multidimmensionnel ?
 
-- Variable qualitatif ?
+- Tests statistiques ?
 
 - ...
 
