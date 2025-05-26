@@ -246,23 +246,22 @@ $$
 
 # Application à des données réelles (fleuve du Lez)
 
-## Context
+## Contexte
 
 - Débits ($m^3/s$), du fleuve du Lez issue des 30 derniers jours.
 
-::: {.fragment}
-![](images/lezloc.png){width=50%}
-:::
+<div class="fragment" style="text-align: center;">
+  <img src="images/lezloc.png" width="50%">
+</div>
 
 ## Description {.smaller}
 
 
 
 ::: columns
+
 ::: column
 ![](images/lezhisto.png){height=360px}
-
-
 :::
 
 ::: column
@@ -273,15 +272,20 @@ $$
 :::
 
 
-- moyenne : 3.547998 $m^3 /s$
-- variance : 21.93014
-- min : 0.243 et max : 30.9
+- moyenne : 3.55 $m^3 /s$
+- variance : 21.93 $m^3 /s$
+- min : 0.24 $m^3 /s$ et max : 30.90 $m^3 /s$
+- Objectif : calculer un seuil qui n'est dépassé que rarement.
 
-- Objectif : calculer un seuil qui est dépassé que rarement.
+## Estimation des paramètres et conclusion {.smaller}
 
-## Estimation des paramêtres 
+<div style="text-align: center;">
+  <img src="images/lezpickands.png" width="50%">
+</div>
 
-![](images/lezpickands.png){height=360px}
+- Pickands plot réalisé sur les blocs : pas très précis du fait du faible nombre de blocs
+- $\gamma < 0$ 
+- Quantile de retour (pour 700 unités) : 31,71 $m^3/s$
 
 
 # Conclusion
