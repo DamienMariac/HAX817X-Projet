@@ -288,15 +288,11 @@ $$
 
 ## Conclusion
 
-1. Démonstration d'un théoreme
+1. Repartition des taches
 
-2. Estimateurs du paramêtre de forme
+2. Expérience
 
-3. Méthodes dans le cas pratique
-
-4. Applications sur des données
-
-5. Experiences
+3. Parties Théoriques interessante
 
 ## Perspectives
 
@@ -310,3 +306,11 @@ $$
 
 - ...
 
+## Remerciments
+
+- **Nous tenons à remercier chaleureusement** Mr Nicolas Meyer
+
+
+* pour sa disponibilité et ses retours précis
+
+* pour les pistes méthodologiques partagées
