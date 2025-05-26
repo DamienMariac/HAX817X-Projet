@@ -26,7 +26,7 @@ slide-number: true
 $$
 \quad F_{M_n}(t) = \mathbb{P}(M_n \le t) = \mathbb{P}(X_1 \le t,...,X_n \le t)
 \\
-=\mathbb{P}(X_1 \le t)^n = F^n(t) = 
+=\mathbb{P}(X_1 \le t)^n = F^n(t) \xrightarrow[n \to \infty]{}
 \begin{cases}
       0 & \text{si} \; t \in ]- \infty , t^*]\\
       1 & \text{si} \; t \geq t^*
