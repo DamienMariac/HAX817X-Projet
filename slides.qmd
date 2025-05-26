@@ -13,11 +13,11 @@ slide-number: true
 
 - Etudier des événements  : crues, canicules, krachs boursiers, météo ...
 - Statistiques classiques inadaptées, au lieu de partir de simples variables aléatoires, on part du maximum : $M_n = \max(X_1, ..., X_n)$
-- Trouver les lois limites de ce maximum pour modéliser
+- Trouver les lois limites de ce maximum pour différentes formes de queues de distribution
 
 # Le résultat central
 
-## Context
+## Contexte
 
 ::: {.incremental}
 - On suppose avoir un échantillion iid.
@@ -177,6 +177,13 @@ $$
 
 ---
 
+## Simulations pour Pickands
+::: {.fragment}
+![](Evolution%20des%20estimateurs/pickands/estimateur_pickands_cauchy.png){width=50%}
+:::
+
+---
+
 ## Estimateur de Hill
 
 - Plus performant que Pickands pour les queues lourdes
@@ -189,13 +196,10 @@ $$
 
 ---
 
-## Simulations pour Pickands
-
-
----
-
 ## Simulations pour Hill
-
+::: {.fragment}
+![](Evolution%20des%20estimateurs/hill/estimateur_hill_cauchy.png){width=50%}
+:::
 
 # Méthodes de simulations
 
