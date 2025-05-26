@@ -170,7 +170,7 @@ $$
 - Basé sur les statistiques d'ordre
 - Robuste mais sensible à $k$
 - Fonctionne pour tous les domaines d’attraction
-- Sa formule :
+- 
 $$ 
 \hat{\gamma}_p = \frac{1}{\ln(2)} \ln(\frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-2k+1, n} - X_{n-4k+1, n}})
 $$
@@ -179,27 +179,34 @@ $$
 
 ## Simulations pour Pickands
 ::: {.fragment}
-![](Evolution%20des%20estimateurs/pickands/estimateur_pickands_cauchy.png){width=50%}
+![](Evolution%20des%20estimateurs/pickands/estimateur_pickands_cauchy.png){width=40%}
 :::
 
+- Instable pour petits \(k\)
+- Plateau vers \(k \approx 5000\)
+- Biais si \(k > 10000\)
 ---
 
 ## Estimateur de Hill
 
-- Plus performant que Pickands pour les queues lourdes
-- Mais ne fonctionne que pour les $\gamma > 0$
-- Biaisé
-- Sa formule :
+- Plus performant que Pickands pour les queues lourdes  
+- Mais ne fonctionne que pour les $\gamma > 0$  
+- 
 $$
-\hat{\gamma}_h = \frac{1}{k-1} \sum_{i=1}^{k-1} \log(X_{n-i+1, n}) - \log(X_{n - k + 1, n})
+\hat{\gamma}_h = \frac{1}{k-1} \sum_{i=1}^{k-1} \left( \log(X_{n-i+1, n}) - \log(X_{n - k + 1, n}) \right)
 $$
 
----
 
 ## Simulations pour Hill
 ::: {.fragment}
-![](Evolution%20des%20estimateurs/hill/estimateur_hill_cauchy.png){width=50%}
+![](Evolution%20des%20estimateurs/hill/estimateur_hill_cauchy.png){width=40%}
 :::
+
+- Plateau vers \(k = 3000\)–\(4000\)
+- Bonne estimation pour petits \(k\)
+- Biais si \(k\) trop grand
+
+---
 
 # Méthodes de simulations
 

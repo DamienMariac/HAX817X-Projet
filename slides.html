@@ -523,7 +523,7 @@ log(u) \; \text{si} \; \gamma = 0
 <li class="fragment">Basé sur les statistiques d’ordre</li>
 <li class="fragment">Robuste mais sensible à <span class="math inline">\(k\)</span></li>
 <li class="fragment">Fonctionne pour tous les domaines d’attraction</li>
-<li class="fragment">Sa formule : <span class="math display">\[
+<li class="fragment"><span class="math display">\[
 \hat{\gamma}_p = \frac{1}{\ln(2)} \ln(\frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-2k+1, n} - X_{n-4k+1, n}})
 \]</span></li>
 </ul>
@@ -531,25 +531,39 @@ log(u) \; \text{si} \; \gamma = 0
 <section id="simulations-pour-pickands" class="slide level2">
 <h2>Simulations pour Pickands</h2>
 <div class="fragment">
-<p><img data-src="Evolution%20des%20estimateurs/pickands/estimateur_pickands_cauchy.png" style="width:50.0%"></p>
+<p><img data-src="Evolution%20des%20estimateurs/pickands/estimateur_pickands_cauchy.png" style="width:40.0%"></p>
 </div>
+<ul>
+<li class="fragment">Instable pour petits (k)</li>
+<li class="fragment">Plateau vers (k )</li>
+<li class="fragment">Biais si (k &gt; 10000)</li>
+</ul>
 </section>
 <section id="estimateur-de-hill" class="slide level2">
 <h2>Estimateur de Hill</h2>
 <ul>
-<li class="fragment">Plus performant que Pickands pour les queues lourdes</li>
-<li class="fragment">Mais ne fonctionne que pour les <span class="math inline">\(\gamma &gt; 0\)</span></li>
-<li class="fragment">Biaisé</li>
-<li class="fragment">Sa formule : <span class="math display">\[
-\hat{\gamma}_h = \frac{1}{k-1} \sum_{i=1}^{k-1} \log(X_{n-i+1, n}) - \log(X_{n - k + 1, n})
+<li class="fragment">Plus performant que Pickands pour les queues lourdes<br>
+</li>
+<li class="fragment">Mais ne fonctionne que pour les <span class="math inline">\(\gamma &gt; 0\)</span><br>
+</li>
+<li class="fragment"><span class="math display">\[
+\hat{\gamma}_h = \frac{1}{k-1} \sum_{i=1}^{k-1} \left( \log(X_{n-i+1, n}) - \log(X_{n - k + 1, n}) \right)
 \]</span></li>
 </ul>
 </section>
 <section id="simulations-pour-hill" class="slide level2">
 <h2>Simulations pour Hill</h2>
 <div class="fragment">
-<p><img data-src="Evolution%20des%20estimateurs/hill/estimateur_hill_cauchy.png" style="width:50.0%"></p>
+<p><img data-src="Evolution%20des%20estimateurs/hill/estimateur_hill_cauchy.png" style="width:40.0%"></p>
 </div>
+<ul>
+<li class="fragment">Plateau vers (k = 3000)–(4000)</li>
+<li class="fragment">Bonne estimation pour petits (k)</li>
+<li class="fragment">Biais si (k) trop grand</li>
+</ul>
+</section>
+<section class="slide level2">
+
 </section></section>
 <section>
 <section id="méthodes-de-simulations" class="title-slide slide level1 center">
