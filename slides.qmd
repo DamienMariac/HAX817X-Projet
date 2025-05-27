@@ -234,7 +234,7 @@ $$
 
 
 
-# Méthodes de simulations
+# Méthodes numériques
 
 
 ## Maxima par blocs
@@ -310,7 +310,7 @@ $$
 </div>
 
 - Pickands plot réalisé sur les blocs : pas très précis du fait du faible nombre de blocs
-- $\gamma < 0$ 
+- Toutes les méthodes trouvent un $\gamma < 0$ 
 - Quantile de retour (pour 700 unités) : 31,71 $m^3/s$
 
 
