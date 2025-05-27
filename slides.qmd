@@ -117,7 +117,7 @@ $$
 ::: {.small .fragment}
 $$
  \int_{0}^{n} z\!\Bigl(\tfrac{U(n/v)-b_n}{a_n}\Bigr)
-  \Bigl(1-\tfrac{v}{n}\Bigr)^{n-1} \, dv \xrightarrow[x\to\infty]{} \int_{0}^{\infty} z\!\bigl(h_\gamma(1/v)\bigr)\,e^{-v}\,dv   
+  \Bigl(1-\tfrac{v}{n}\Bigr)^{n-1} \, dv \xrightarrow[n\to\infty]{} \int_{0}^{\infty} z\!\bigl(h_\gamma(1/v)\bigr)\,e^{-v}\,dv   
 $$
 :::
 
