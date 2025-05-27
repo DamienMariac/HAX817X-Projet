@@ -551,6 +551,34 @@ log(u) \; \text{si} \; \gamma = 0
 \]</span></li>
 </ul>
 </section>
+<section id="construction-de-lestimateur-de-hill-12" class="slide level2">
+<h2>Construction de l’estimateur de Hill (1/2)</h2>
+<div class="fragment">
+<ul>
+<li class="fragment">Loi de puissance (queue lourde) : <span class="math display">\[
+q_{\beta_n} \approx q_{\alpha_n} \left( \frac{\alpha_n}{\beta_n} \right)^\gamma
+\]</span></li>
+<li class="fragment">Logarithme : <span class="math display">\[
+\log q_{\beta_n} - \log q_{\alpha_n} \approx \gamma \log \left( \frac{\alpha_n}{\beta_n} \right)
+\]</span></li>
+<li class="fragment">Remplacement par les statistiques d’ordre : <span class="math display">\[
+\log X_{n - i + 1, n} - \log X_{n - k + 1, n} \approx \gamma \log \left( \frac{k}{i} \right)
+\]</span></li>
+</ul>
+</div>
+</section>
+<section id="construction-de-lestimateur-de-hill-22" class="slide level2">
+<h2>Construction de l’estimateur de Hill (2/2)</h2>
+<div class="fragment">
+<ul>
+<li class="fragment">Relation linéaire</li>
+<li class="fragment">Moyenne des (k - 1) premières relations : <span class="math display">\[
+\hat{\gamma}_k = \frac{1}{k - 1} \sum_{i = 1}^{k - 1}
+\left( \log X_{n - i + 1, n} - \log X_{n - k + 1, n} \right)
+\]</span></li>
+</ul>
+</div>
+</section>
 <section id="simulations-pour-hill" class="slide level2">
 <h2>Simulations pour Hill</h2>
 <div class="fragment">
@@ -608,13 +636,13 @@ H_{\gamma, \beta}(y) =
 <h1>Application à des données réelles (fleuve du Lez)</h1>
 
 </section>
-<section id="context" class="slide level2">
-<h2>Context</h2>
+<section id="contexte-1" class="slide level2">
+<h2>Contexte</h2>
 <ul>
 <li class="fragment">Débits (<span class="math inline">\(m^3/s\)</span>), du fleuve du Lez issue des 30 derniers jours.</li>
 </ul>
-<div class="fragment">
-<p><img data-src="images/lezloc.png" style="width:50.0%"></p>
+<div class="fragment" style="text-align: center;">
+<p><img src="images/lezloc.png" width="50%"></p>
 </div>
 </section>
 <section id="description" class="slide level2 smaller">
@@ -626,15 +654,22 @@ H_{\gamma, \beta}(y) =
 <p><img data-src="images/lezdata.png" height="360"></p>
 </div></div>
 <ul>
-<li class="fragment"><p>moyenne : 3.547998 <span class="math inline">\(m^3 /s\)</span></p></li>
-<li class="fragment"><p>variance : 21.93014</p></li>
-<li class="fragment"><p>min : 0.243 et max : 30.9</p></li>
-<li class="fragment"><p>Objectif : calculer un seuil qui est dépassé que rarement.</p></li>
+<li class="fragment">moyenne : 3.55 <span class="math inline">\(m^3 /s\)</span></li>
+<li class="fragment">variance : 21.93 <span class="math inline">\(m^3 /s\)</span></li>
+<li class="fragment">min : 0.24 <span class="math inline">\(m^3 /s\)</span> et max : 30.90 <span class="math inline">\(m^3 /s\)</span></li>
+<li class="fragment">Objectif : calculer un seuil qui n’est dépassé que rarement.</li>
 </ul>
 </section>
-<section id="estimation-des-paramêtres" class="slide level2">
-<h2>Estimation des paramêtres</h2>
-<p><img data-src="images/lezpickands.png" height="360"></p>
+<section id="estimation-des-paramètres-et-conclusion" class="slide level2 smaller">
+<h2>Estimation des paramètres et conclusion</h2>
+<div style="text-align: center;">
+<p><img src="images/lezpickands.png" width="50%"></p>
+</div>
+<ul>
+<li class="fragment">Pickands plot réalisé sur les blocs : pas très précis du fait du faible nombre de blocs</li>
+<li class="fragment"><span class="math inline">\(\gamma &lt; 0\)</span></li>
+<li class="fragment">Quantile de retour (pour 700 unités) : 31,71 <span class="math inline">\(m^3/s\)</span></li>
+</ul>
 </section></section>
 <section>
 <section id="conclusion" class="title-slide slide level1 center">

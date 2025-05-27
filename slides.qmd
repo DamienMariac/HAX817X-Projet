@@ -1,13 +1,18 @@
 ---
 title: "Étude des valeurs extrêmes univariées"
 author: "Damien Mariac, Wahel El Mazzouji, Fabian Condamy"
-date: "28/05/2025"
+date: "2025-05-28"
 format:
-  revealjs:        
+  revealjs:
     incremental: true
-theme: solarized
-slide-number: true
+    slide-number: true
+    theme: solarized
 ---
+
+## Slide test
+
+
+
 
 ## Introduction
 
@@ -43,7 +48,7 @@ $$
 
 ## Théorème de Fisher-Tippett-Gnedenko
 
-- La fonction de repartition limite est donnée par :
+- La fonction de répartition limite est donnée par :
 $$
 G_{\mu, \sigma, \gamma}(x) = \exp\left\{-\left[1 + \gamma \left(\frac{x - \mu}{\sigma} \right)\right]^{-1/\gamma} \right\}.
 $$
@@ -176,6 +181,19 @@ $$
 $$
 
 ---
+## Idée de la construction de Pickands
+
+::: {.fragment}
+- Approximation asymptotique des quantiles :
+  $$
+  \frac{U(t) - U(t/2)}{U(t/2) - U(t/4)} \to 2^\gamma
+  $$
+- Remplacement par quantiles empiriques :
+  $$
+  \frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-2k+1,n} - X_{n-4k+1,n}} \to 2^\gamma
+  $$
+- On prend le log et on isole $\gamma$
+:::
 
 ## Simulations pour Pickands
 ::: {.fragment}
@@ -196,6 +214,33 @@ $$
 \hat{\gamma}_h = \frac{1}{k-1} \sum_{i=1}^{k-1} \left( \log(X_{n-i+1, n}) - \log(X_{n - k + 1, n}) \right)
 $$
 
+## Construction de l'estimateur de Hill (1/2)
+
+::: {.fragment}
+- Loi de puissance (queue lourde) :
+  $$
+  q_{\beta_n} \approx q_{\alpha_n} \left( \frac{\alpha_n}{\beta_n} \right)^\gamma
+  $$
+- Logarithme :
+  $$
+  \log q_{\beta_n} - \log q_{\alpha_n} \approx \gamma \log \left( \frac{\alpha_n}{\beta_n} \right)
+  $$
+- Remplacement par les statistiques d'ordre :
+  $$
+  \log X_{n - i + 1, n} - \log X_{n - k + 1, n} \approx \gamma \log \left( \frac{k}{i} \right)
+  $$
+:::
+
+## Construction de l'estimateur de Hill (2/2)
+
+::: {.fragment}
+- Relation linéaire
+- Moyenne des \(k - 1\) premières relations :
+  $$
+  \hat{\gamma}_k = \frac{1}{k - 1} \sum_{i = 1}^{k - 1} 
+  \left( \log X_{n - i + 1, n} - \log X_{n - k + 1, n} \right)
+  $$
+:::
 
 ## Simulations pour Hill
 ::: {.fragment}
@@ -292,19 +337,19 @@ $$
 
 ## Conclusion
 
-1. Repartition des taches
+1. Répartition des taches
 
-2. Expérience
+2. Expériences
 
-3. Parties Théoriques interessante
+3. Parties théoriques intéressantes
 
 ## Perspectives
 
-- Si les observations ne sont pas indépendante ?
+- Si les observations ne sont pas indépendantes ?
 
-- Si il y'a une tendance ? Et une saisonnalité ?
+- S'il y'a une tendance ? Et une saisonnalité ?
 
-- Dans le cas multidimmensionnel ?
+- Dans le cas multidimensionnel ?
 
 - Tests statistiques ?
 
