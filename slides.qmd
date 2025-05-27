@@ -174,7 +174,7 @@ $$
   $$
   \frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-2k+1,n} - X_{n-4k+1,n}} \to 2^\gamma
   $$
-- On prend le log et on isole $\gamma$
+- On prend le $\log$ et on isole $\gamma$
 :::
 
 ## Simulations pour Pickands
@@ -183,7 +183,7 @@ $$
 :::
 
 - Instable pour petits \(k\)
-- Plateau vers \(k \approx 5000\)
+- Plateau vers $k \approx 5000$
 - Biais si \(k > 10000\)
 
 ## Estimateur de Hill
