@@ -9,10 +9,6 @@ format:
     theme: solarized
 ---
 
-## Slide test
-
-
-
 
 ## Introduction
 
@@ -144,20 +140,6 @@ $$
 
 
 
-## Quelques simulations
-
-
-:::{.columns}
-::: {.column width="50%"}
-![](images/image1.png){width=100%}
-:::
-
-::: {.column width="50%"}
-![](images/image2.png){width=100%}
-:::
-:::
-
-
 # Estimation de l'indice de queue
 
 
@@ -168,7 +150,7 @@ $$
   - Pickands
   - Hill
 
----
+
 
 ## Estimateur de Pickands
 
@@ -180,7 +162,7 @@ $$
 \hat{\gamma}_p = \frac{1}{\ln(2)} \ln(\frac{X_{n-k+1,n} - X_{n-2k+1,n}}{X_{n-2k+1, n} - X_{n-4k+1, n}})
 $$
 
----
+
 ## Idée de la construction de Pickands
 
 ::: {.fragment}
@@ -203,7 +185,6 @@ $$
 - Instable pour petits \(k\)
 - Plateau vers \(k \approx 5000\)
 - Biais si \(k > 10000\)
----
 
 ## Estimateur de Hill
 
@@ -251,7 +232,7 @@ $$
 - Bonne estimation pour petits \(k\)
 - Biais si \(k\) trop grand
 
----
+
 
 # Méthodes de simulations
 
@@ -265,7 +246,7 @@ $$
 \beta_r = \frac{1}{k} \sum_{i=1}^k \frac{(k - i) \cdots (k - i - r + 1)}{(k - 1) \cdots (k - r)} X_{i,k} \\
 \quad \text{pour } r = 1, 2, 3, ..., k > r
 $$
----
+
 
 ## Dépassement de seuil
 
