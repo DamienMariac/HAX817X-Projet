@@ -12,7 +12,7 @@ format:
 
 ## Introduction
 
-- Etudier des événements  : crues, canicules, krachs boursiers, météo ...
+- Etudier des évènements  : crues, canicules, krachs boursiers, météo ...
 - Statistiques classiques inadaptées, au lieu de partir de simples variables aléatoires, on part du maximum : $M_n = \max(X_1, ..., X_n)$
 - Trouver les lois limites de ce maximum pour différentes formes de queues de distribution
 
@@ -21,7 +21,7 @@ format:
 ## Contexte
 
 ::: {.incremental}
-- On suppose avoir un échantillion iid.
+- On suppose avoir un échantillon i.i.d
 
 - Intuition naïve :
 $$
@@ -182,9 +182,9 @@ $$
 ![](Evolution%20des%20estimateurs/pickands/estimateur_pickands_cauchy.png){width=40%}
 :::
 
-- Instable pour petits \(k\)
+- Instable pour petits $k$
 - Plateau vers $k \approx 5000$
-- Biais si \(k > 10000\)
+- Biais si $k > 10000$
 
 ## Estimateur de Hill
 
@@ -195,7 +195,7 @@ $$
 \hat{\gamma}_h = \frac{1}{k-1} \sum_{i=1}^{k-1} \left( \log(X_{n-i+1, n}) - \log(X_{n - k + 1, n}) \right)
 $$
 
-## Construction de l'estimateur de Hill (1/2)
+## Construction de l'estimateur de Hill (1/2) {.smaller}
 
 ::: {.fragment}
 - Loi de puissance (queue lourde) :
@@ -216,7 +216,7 @@ $$
 
 ::: {.fragment}
 - Relation linéaire
-- Moyenne des \(k - 1\) premières relations :
+- Moyenne des $k - 1$ premières relations :
   $$
   \hat{\gamma}_k = \frac{1}{k - 1} \sum_{i = 1}^{k - 1} 
   \left( \log X_{n - i + 1, n} - \log X_{n - k + 1, n} \right)
@@ -228,9 +228,9 @@ $$
 ![](Evolution%20des%20estimateurs/hill/estimateur_hill_cauchy.png){width=40%}
 :::
 
-- Plateau vers \(k = 3000\)–\(4000\)
-- Bonne estimation pour petits \(k\)
-- Biais si \(k\) trop grand
+- Plateau vers $k = 3000$–$4000$
+- Bonne estimation pour petits $k$
+- Biais si $k$ trop grand
 
 
 
@@ -318,7 +318,7 @@ $$
 
 ## Conclusion
 
-1. Répartition des taches
+1. Répartition des tâches
 
 2. Expériences
 
@@ -336,7 +336,7 @@ $$
 
 - ...
 
-## Remerciments
+## Remerciements
 
 - **Nous tenons à remercier chaleureusement** Mr Nicolas Meyer
 

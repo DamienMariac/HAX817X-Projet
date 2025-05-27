@@ -342,7 +342,7 @@ Damien Mariac, Wahel El Mazzouji, Fabian Condamy
 <section id="introduction" class="slide level2">
 <h2>Introduction</h2>
 <ul>
-<li class="fragment">Etudier des événements : crues, canicules, krachs boursiers, météo …</li>
+<li class="fragment">Etudier des évènements : crues, canicules, krachs boursiers, météo …</li>
 <li class="fragment">Statistiques classiques inadaptées, au lieu de partir de simples variables aléatoires, on part du maximum : <span class="math inline">\(M_n = \max(X_1, ..., X_n)\)</span></li>
 <li class="fragment">Trouver les lois limites de ce maximum pour différentes formes de queues de distribution</li>
 </ul>
@@ -356,7 +356,7 @@ Damien Mariac, Wahel El Mazzouji, Fabian Condamy
 <h2>Contexte</h2>
 <div>
 <ul>
-<li class="fragment"><p>On suppose avoir un échantillion iid.</p></li>
+<li class="fragment"><p>On suppose avoir un échantillon i.i.d</p></li>
 <li class="fragment"><p>Intuition naïve : <span class="math display">\[
 \quad F_{M_n}(t) = \mathbb{P}(M_n \le t) = \mathbb{P}(X_1 \le t,...,X_n \le t)
 \\
@@ -539,9 +539,9 @@ log(u) \; \text{si} \; \gamma = 0
 <p><img data-src="Evolution%20des%20estimateurs/pickands/estimateur_pickands_cauchy.png" style="width:40.0%"></p>
 </div>
 <ul>
-<li class="fragment">Instable pour petits (k)</li>
+<li class="fragment">Instable pour petits <span class="math inline">\(k\)</span></li>
 <li class="fragment">Plateau vers <span class="math inline">\(k \approx 5000\)</span></li>
-<li class="fragment">Biais si (k &gt; 10000)</li>
+<li class="fragment">Biais si <span class="math inline">\(k &gt; 10000\)</span></li>
 </ul>
 </section>
 <section id="estimateur-de-hill" class="slide level2">
@@ -556,7 +556,7 @@ log(u) \; \text{si} \; \gamma = 0
 \]</span></li>
 </ul>
 </section>
-<section id="construction-de-lestimateur-de-hill-12" class="slide level2">
+<section id="construction-de-lestimateur-de-hill-12" class="slide level2 smaller">
 <h2>Construction de l’estimateur de Hill (1/2)</h2>
 <div class="fragment">
 <ul>
@@ -577,7 +577,7 @@ q_{\beta_n} \approx q_{\alpha_n} \left( \frac{\alpha_n}{\beta_n} \right)^\gamma
 <div class="fragment">
 <ul>
 <li class="fragment">Relation linéaire</li>
-<li class="fragment">Moyenne des (k - 1) premières relations : <span class="math display">\[
+<li class="fragment">Moyenne des <span class="math inline">\(k - 1\)</span> premières relations : <span class="math display">\[
 \hat{\gamma}_k = \frac{1}{k - 1} \sum_{i = 1}^{k - 1}
 \left( \log X_{n - i + 1, n} - \log X_{n - k + 1, n} \right)
 \]</span></li>
@@ -590,9 +590,9 @@ q_{\beta_n} \approx q_{\alpha_n} \left( \frac{\alpha_n}{\beta_n} \right)^\gamma
 <p><img data-src="Evolution%20des%20estimateurs/hill/estimateur_hill_cauchy.png" style="width:40.0%"></p>
 </div>
 <ul>
-<li class="fragment">Plateau vers (k = 3000)–(4000)</li>
-<li class="fragment">Bonne estimation pour petits (k)</li>
-<li class="fragment">Biais si (k) trop grand</li>
+<li class="fragment">Plateau vers <span class="math inline">\(k = 3000\)</span>–<span class="math inline">\(4000\)</span></li>
+<li class="fragment">Bonne estimation pour petits <span class="math inline">\(k\)</span></li>
+<li class="fragment">Biais si <span class="math inline">\(k\)</span> trop grand</li>
 </ul>
 </section></section>
 <section>
@@ -696,8 +696,8 @@ H_{\gamma, \beta}(y) =
 <li class="fragment"><p>…</p></li>
 </ul>
 </section>
-<section id="remerciments" class="slide level2">
-<h2>Remerciments</h2>
+<section id="remerciements" class="slide level2">
+<h2>Remerciements</h2>
 <ul>
 <li class="fragment"><p><strong>Nous tenons à remercier chaleureusement</strong> Mr Nicolas Meyer</p></li>
 <li class="fragment"><p>pour sa disponibilité et ses retours précis</p></li>
