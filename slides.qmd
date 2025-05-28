@@ -229,7 +229,7 @@ $$
 :::
 
 - Plateau vers $k = 3000$–$4000$
-- Bonne estimation pour petits $k$
+- Instable pour petits $k$
 - Biais si $k$ trop grand
 
 
